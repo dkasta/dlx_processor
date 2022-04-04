@@ -36,10 +36,13 @@ architecture structural of alu is
 
 begin
 
+	-- sum 
+	B_ADDER	<= In_B when In_OP = FUNC_ADD;
+	C_IN	<= '0' when  In_OP = FUNC_ADD;
+	--subtraction
+	B_ADDER	<= NOT In_B when In_OP = FUNC_SUB;
+	C_IN	<= '1' when  In_OP = FUNC_SUB;
 
-	B_ADDER	<= In_B when In_OP = FUNC_ADD else NOT In_B;
-	C_IN	<= '0' when  In_OP = FUNC_ADD else '1';
-	--sum and subtraction
 	adder: P4_adder
 		generic map (NBIT => NBIT, NBIT_PER_BLOCK => NBIT_PER_BLOCK)
 		port map (A => In_A, B => B_ADDER, Cin => C_IN, S => SUM, Cout => C_OUT);
