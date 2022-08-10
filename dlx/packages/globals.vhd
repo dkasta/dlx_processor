@@ -40,5 +40,8 @@ package globals is
 	constant I_SIZE : integer := 32;
 	-------------data memory------------
 	constant BIT_DRAM : integer := 32;
+	-------------data memory------------
+	constant BIT_RISC_no_ext : integer := 16;
+
 
 end globals;
