@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 
 package globals is
 --constants used for the testbenches of every component--
-	-------------mux---------------------------
 	constant Bit_Mux21 : integer := 32;
 	-------------register----------------------
 	constant Bit_Register : integer := 32;
@@ -39,6 +38,7 @@ package globals is
 	-------------instruction memory------------
 	constant RAM_DEPTH : integer := 30;
 	constant I_SIZE : integer := 32;
-
+	-------------data memory------------
+	constant BIT_DRAM : integer := 32;
 
 end globals;

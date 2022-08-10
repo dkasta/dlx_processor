@@ -8,22 +8,22 @@ entity TB_DRAM is
 end TB_DRAM;
 
 architecture TEST of TB_DRAM is
-  signal s_address : std_logic_vector(NBIT-1 downto 0) := (others => '0');
-  signal s_data_in : std_logic_vector(NBIT-1 downto 0);
+  signal s_address : std_logic_vector(BIT_DRAM-1 downto 0) := (others => '0');
+  signal s_data_in : std_logic_vector(BIT_DRAM-1 downto 0);
   signal s_write_enable : std_logic := '1';
   signal s_read_enable : std_logic := '1';
-  signal s_data_out : std_logic_vector(NBIT-1 downto 0);
+  signal s_data_out : std_logic_vector(BIT_DRAM-1 downto 0);
   signal s_reset : std_logic := '1';
   signal s_clk : std_logic := '0';
 
   component DRAM
   port(clk : IN std_logic;
-       address : IN std_logic_vector(NBIT-1 downto 0);
-       data_in : IN std_logic_vector(NBIT-1 downto 0);
+       address : IN std_logic_vector(BIT_DRAM-1 downto 0);
+       data_in : IN std_logic_vector(BIT_DRAM-1 downto 0);
        write_enable : IN std_logic;
        read_enable : IN std_logic;
        reset : IN std_logic;
-       data_out : OUT std_logic_vector(NBIT-1 downto 0);
+       data_out : OUT std_logic_vector(BIT_DRAM-1 downto 0);
        address_error : OUT std_logic);
   end component;
 

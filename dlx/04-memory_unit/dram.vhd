@@ -6,18 +6,18 @@ use WORK.globals.all;
 
 entity DRAM is
   port(clk : IN std_logic;
-       address : IN std_logic_vector(NBIT-1 downto 0);
-       data_in : IN std_logic_vector(NBIT-1 downto 0);
+       address : IN std_logic_vector(BIT_DRAM-1 downto 0);
+       data_in : IN std_logic_vector(BIT_DRAM-1 downto 0);
        write_enable : IN std_logic;
        read_enable : IN std_logic;
        reset : IN std_logic;
-       data_out : OUT std_logic_vector(NBIT-1 downto 0);
+       data_out : OUT std_logic_vector(BIT_DRAM-1 downto 0);
        address_error : OUT std_logic);
 end DRAM;
 
 architecture BEHAVIORAL of DRAM is
 
-    type memory_matrix is array(NBIT-1 downto 0) of std_logic_vector(NBIT-1 downto 0); -- define dram matrix
+    type memory_matrix is array(BIT_DRAM-1 downto 0) of std_logic_vector(BIT_DRAM-1 downto 0); -- define dram matrix
     signal data : memory_matrix := (others => (others => '0')); -- Initialize my data memory to 0;
   
     begin
