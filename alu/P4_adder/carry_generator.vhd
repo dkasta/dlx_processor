@@ -81,14 +81,14 @@ PGnetwork:	for i in 0 to NBIT-1 generate
 --init part and first row of G, PG from couples p, g.
 exter:	for k in 1 to INIT_CYCLE generate
 firstrow:	for i in 0 to NBIT/(2**k)-1 generate
-				--utilizzo la matrice 1 per inserire i valori PG e G
+				--first matrix to insert PG and G values
 				z0:if i=0 and k/=INIT_CYCLE generate
 				  		G_mx0: G port map(PGin => mx(k-1)(2*i+1),Gin => mx(k-1)(2*i)(0),Gout => mx(k)(i)(0)); 
 					 end generate;				
 			  noz0:if i /= 0 and k/=INIT_CYCLE generate
 						PG_mx0: PG port map(PGin1 => mx(k-1)(2*i+1),PGin2 => mx(k-1)(2*i),PGout => mx(k)(i)); 				
 					end generate;
-				--inizializzo seconda matrice fitmatrix for i=0 to 15
+				--initialize second matrix for i=0 to 15
 				z:if i=0 and k=INIT_CYCLE generate
 				  		G_fm0: G port map(PGin => mx(k-1)(2*i+1),Gin => mx(k-1)(2*i)(0),Gout => fm(0)(i)(0)); 
 					 end generate;				
@@ -114,8 +114,7 @@ cycle1:			for j in 0 to NBLOCKS-1 generate
 			end generate;
 
 deliver_out: for i in 0 to NBLOCKS-1 generate
-			 	--uscita: BUF generic map(1) port map(I(0) => fm(NUM_CARRY)(i)(0), O(0) => Co(i));
-				uscita: BUF1 port map(fm(NUM_CARRY)(i)(0), Co(i));
+				exit: BUF1 port map(fm(NUM_CARRY)(i)(0), Co(i));
 			 end generate;
 
 

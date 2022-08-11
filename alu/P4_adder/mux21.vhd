@@ -1,6 +1,6 @@
 library IEEE;
-use IEEE.std_logic_1164.all; --  libreria IEEE con definizione tipi standard logic
-use WORK.constants.all; -- libreria WORK user-defined
+use IEEE.std_logic_1164.all;
+use WORK.constants.all;
 
 entity mux21 is
 	generic (NBIT_PER_BLOCK: integer);

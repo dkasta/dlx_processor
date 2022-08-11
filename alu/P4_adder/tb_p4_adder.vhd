@@ -7,7 +7,6 @@ entity tb_p4_adder is
 end tb_p4_adder;
 
 architecture test of tb_p4_adder is
-	-- P4 component declaration
 	component P4_adder is
 		generic (NBIT:	integer;
 			 NBIT_PER_BLOCK: integer);
@@ -43,8 +42,7 @@ proc: process
 		B <= x"00000000";
 		wait for 10 ns;
 		
----Casi particolari
---------------- [cin=1, a= -1, b= 0]
+-- Test special case: cin=1, a=-1, b=0
 		Cin <= '1';
 		A <= x"FFFFFFFF";
 		B <= x"00000000";
@@ -55,7 +53,7 @@ proc: process
 		B <= x"00000000";
 		wait for 10 ns;
 
---------------  [cin =1 , a= -65536, b= 65535]
+-- Test special case: cin =1, a=-65536, b=65535
 		Cin <= '1';
 		A <= x"FFFF0000";
 		B <= x"0000FFFF";
@@ -110,9 +108,6 @@ proc: process
 		A <= x"FFFFFFFF";
 		B <= x"FFFFFFFF";
 		wait for 10 ns;
-		
-	
-		
 		
       wait;
    end process;

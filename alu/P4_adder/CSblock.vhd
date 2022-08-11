@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
-use WORK.constants.all; -- libreria WORK user-defined
+use WORK.constants.all;
 
 entity CSblock is
 	generic(NBIT_PER_BLOCK: integer);

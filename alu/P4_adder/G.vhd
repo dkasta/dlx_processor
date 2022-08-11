@@ -11,5 +11,5 @@ end entity G;
 architecture behavioral of G is
 begin
 	Gout <= PGin(0) or (PGin(1) and Gin); --Gi:k + Pi:k * Gk-1:j  -----PGin(0)-> g PGin(1)-> p
-
+	
 end behavioral;
