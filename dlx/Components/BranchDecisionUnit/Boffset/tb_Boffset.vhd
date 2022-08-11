@@ -25,11 +25,3 @@ architecture TEST of TB_BOFFSET is
     boffsetin <= (others => '0'), (others => '1') after 10 ns;
 
 end TEST;
-
-configuration CFG_TB_BOFFSET of TB_BOFFSET is
-  for TEST
-    for DUT: BOFFSET
-      use configuration WORK.CFG_BOFFSET;
-    end for;
-  end for;
-end CFG_TB_BOFFSET;

@@ -51,11 +51,3 @@ PORT MAP (CK,Reset,Write_enable,Write_address,Read_one_address,Read_two_address,
 	end process;
 
 end TEST;
-
-configuration CFG_TB_REGISTER_FILE of TB_REGISTER_FILE is
-  for TEST
-	  for RG : register_file
-		  use configuration WORK.CFG_REGISTER_FILE_BEHAVIORAL;
-	  end for;
-  end for;
-end CFG_TB_REGISTER_FILE;

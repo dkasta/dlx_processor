@@ -1,4 +1,4 @@
---the write back stage is modelled as multiplexer whose inputs are LMD and ALUOUT signals
+-- the write back stage is modelled as multiplexer whose inputs are LMD and ALUOUT signals
 
 library IEEE;
 use IEEE.std_logic_1164.all;

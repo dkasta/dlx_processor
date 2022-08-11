@@ -1,6 +1,3 @@
--- if SEL == '0' => Y == A else Y == B
---test : tested OK, the component works as expected
-
 library IEEE;
 use IEEE.std_logic_1164.all;
 use WORK.globals.all;
@@ -15,17 +12,17 @@ end MUX21_GENERIC;
 
 architecture structural of MUX21_GENERIC is
 
-  signal SEL_INV : std_logic_vector(NBIT-1 downto 0);            -- support signal for the not(SEL)
-  signal NAND_ONE_OUT : std_logic_vector(NBIT-1 downto 0);       -- support signal for output of first nand
-  signal NAND_TWO_OUT : std_logic_vector(NBIT-1 downto 0);       -- support signal for output of second nand
+  signal SEL_INV : std_logic_vector(NBIT-1 downto 0);
+  signal NAND_ONE_OUT : std_logic_vector(NBIT-1 downto 0);
+  signal NAND_TWO_OUT : std_logic_vector(NBIT-1 downto 0);
 
-  component ND2                                                  -- instantiating nand2 component
+  component ND2
   port( A: in std_logic;
         B: in std_logic;
         Y: out std_logic);
   end component;
 
-  component IV                                                   -- instantiating inverter component
+  component IV
   port( A: in std_logic;
         Y: out std_logic);
   end component;

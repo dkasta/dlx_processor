@@ -1,10 +1,3 @@
---test : tested OK, the component works as expected
---during the risign clock the register samlples according to what
---has been provided before the rise of clock
---eg: at 2 ns clock rises, the sampled value which goes into execution stage out
---depends on which inputs the execution stage had right before the
---2 ns mark, even if at 2 ns the inputs change
-
 library ieee;
 use ieee.std_logic_1164.all;
 use WORK.globals.all;

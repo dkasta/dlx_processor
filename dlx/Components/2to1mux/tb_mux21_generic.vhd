@@ -32,19 +32,8 @@ architecture TEST of TB_MUX21_GENERIC is
     generic map(NBIT)
     port map(A_IN,B_IN,SEL_IN,OUT_STRUCTURAL);
 
-    A_IN <= "10000000000000000000000000000000";           --testing only for one value of A_IN
-    B_IN <= "00000000000000000000000000000001";           --testing only for one value of B_IN
-    SEL_IN <= '0','1' after 5 ns;                         --testing only for one switch
+    A_IN <= "10000000000000000000000000000000";
+    B_IN <= "00000000000000000000000000000001";
+    SEL_IN <= '0','1' after 5 ns;
 
 end TEST;
-
-configuration CFG_TB_MUX21_GENERIC of TB_MUX21_GENERIC is
-  for TEST
-    for DUT1 : MUX21_GENERIC
-      use configuration WORK.CFG_MUX21_GENERIC_BEHAVIORAL;
-    end for;
-    for DUT2 : MUX21_GENERIC
-       use configuration WORK.CFG_MUX21_GENERIC_STRUCTURAL;
-    end for;
-  end for;
-end CFG_TB_MUX21_GENERIC;

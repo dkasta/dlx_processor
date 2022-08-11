@@ -1,4 +1,5 @@
 -- read and write ram synchronous memory used as data memory by the dlx memory stage
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;

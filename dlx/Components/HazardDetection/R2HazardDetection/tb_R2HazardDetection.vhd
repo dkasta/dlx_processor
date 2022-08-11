@@ -56,11 +56,3 @@ architecture TEST of TB_R2_HAZARD_DETECTION is
     reset <= '0' after 4 ns;
 
 end TEST;
-
-configuration CFG_TB_R2_HAZARD_DETECTION of TB_R2_HAZARD_DETECTION is
-  for TEST
-    for DUT: R2_HAZARD_DETECTION
-      use configuration WORK.CFG_R2_HAZARD_DETECTION;
-    end for;
-  end for;
-end CFG_TB_R2_HAZARD_DETECTION;
