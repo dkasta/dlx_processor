@@ -1,5 +1,4 @@
 library ieee;
-use work.log_pkg.all;                               --package that contains the definition of log2(x)
 use ieee.std_logic_1164.all;
 
 package globals is
@@ -27,7 +26,7 @@ package globals is
 	-------------register file-----------------
 	constant NumBitData : integer := 32;
 	constant NumBitRegisterFile : integer := 32;
-	constant NumBitAddress : integer := log2N(NumBitRegisterFile);
+	constant NumBitAddress : integer := 5;
 	-------------p4 adder----------------------
 	constant NumBitPGNetwork : integer := 32;
 	constant NumBitP4Distance : integer := 4;
