@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use WORK.globals.all;
 
 entity MUX21_GENERIC is
-  generic( NBIT : integer := NumBitMux21);
+  generic( NBIT : integer := Bit_Mux21);
   port(    A:   in std_logic_vector(NBIT-1 downto 0);
            B:   in std_logic_vector(NBIT-1 downto 0);
            SEL: in std_logic;

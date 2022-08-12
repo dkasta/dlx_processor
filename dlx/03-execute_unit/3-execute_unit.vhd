@@ -28,7 +28,7 @@ end execution_unit;
 architecture structural of execution_unit is
 
   component MUX21_GENERIC
-  generic( NBIT: integer := NumBitMux21);
+  generic( NBIT: integer := Bit_Mux21);
   port(    A:    in std_logic_vector(NBIT-1 downto 0);
            B:    in std_logic_vector(NBIT-1 downto 0);
            SEL:  in std_logic;
@@ -36,7 +36,7 @@ architecture structural of execution_unit is
   end component;
 
   component REGISTER_GENERIC
-  generic( NBIT : integer := NumBitRegister);
+  generic( NBIT : integer := Bit_Register);
   port(    D:     in std_logic_vector(NBIT-1 downto 0);
            CK:    in std_logic;
            RESET: in std_logic;
