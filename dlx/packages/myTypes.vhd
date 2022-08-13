@@ -7,7 +7,7 @@ package myTypes is
 -- Control unit input sizes
     constant OP_CODE_SIZE : integer :=  6;                                              -- OPCODE field size
     constant FUNC_SIZE    : integer :=  11;                                             -- FUNC field size
-	  constant MICROCODE_MEM_SIZE : integer := 62;                                        -- size of each memory
+    constant MICROCODE_MEM_SIZE : integer := 62;                                        -- size of each memory
     constant ALU_OPC_SIZE : integer := 4;                                               -- size of alu control signals
     constant CW_SIZE : integer := 7 + ALU_OPC_SIZE;                                     -- cw final size
 
@@ -15,7 +15,7 @@ package myTypes is
 -- R-Type instruction -> FUNC field
     constant RTYPE_SLL : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000000100";    -- RTYPE_SLL
     constant RTYPE_SRL : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000000110";    -- RTYPE_SRL
-    constant RTYPE_SRA : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000000111";    -- RTYPE_SRA
+    constant RTYPE_SRA : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000000111";    -- RTYPE_SRA -Shift Right Arithmetic (keep the sign)
     constant RTYPE_ADD : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000100000";    -- RTYPE_ADD
     constant RTYPE_ADDU : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000100001";    -- RTYPE_ADDU
     constant RTYPE_SUB : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000100010";    -- RTYPE_SUB
