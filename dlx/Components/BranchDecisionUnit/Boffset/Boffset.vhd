@@ -29,8 +29,3 @@ architecture BEHAVIORAL of BOFFSET is
     end process;
 
 end BEHAVIORAL;
-
-configuration CFG_BOFFSET of BOFFSET is
-  for BEHAVIORAL
-  end for;
-end CFG_BOFFSET;

@@ -1,6 +1,4 @@
---test : tested OK, the component works as expected
---the write back stage is a simple MUX21 which has as
---inputs LMD and ALUOUT
+-- the write back stage is modelled as multiplexer whose inputs are LMD and ALUOUT signals
 
 library IEEE;
 use IEEE.std_logic_1164.all;

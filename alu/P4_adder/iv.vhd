@@ -12,6 +12,6 @@ architecture behavioral of iv is
 
 begin
 	Y <= not(A);
-
+	
 end behavioral;
 

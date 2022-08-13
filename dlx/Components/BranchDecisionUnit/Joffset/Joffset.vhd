@@ -29,8 +29,3 @@ architecture BEHAVIORAL of JOFFSET is
     end process;
 
 end BEHAVIORAL;
-
-configuration CFG_JOFFSET of JOFFSET is
-  for BEHAVIORAL
-  end for;
-end CFG_JOFFSET;

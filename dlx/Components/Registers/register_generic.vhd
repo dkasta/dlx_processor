@@ -1,5 +1,5 @@
--- RESET is active high, so if RESET is 1 the register has '0' at the output
---test : tested OK, the component works as expected
+-- generic register with syncronous reset described structurally using
+-- positive edge triggered flip flop D
 
 library ieee;
 use ieee.std_logic_1164.all;

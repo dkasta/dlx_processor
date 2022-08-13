@@ -1,5 +1,3 @@
---test : tested OK, the component works as expected
-
 library ieee;
 use ieee.std_logic_1164.all;
 use WORK.globals.all;
@@ -19,7 +17,7 @@ end memory_unit;
 architecture structural of memory_unit is
 
   component REGISTER_GENERIC
-    generic( NBIT: integer := NumBitRegister);
+    generic( NBIT: integer := Bit_Register);
     port(    D:     in std_logic_vector(NBIT-1 downto 0);
              CK:    in std_logic;
              RESET: in std_logic;

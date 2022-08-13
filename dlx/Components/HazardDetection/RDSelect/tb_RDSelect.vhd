@@ -31,11 +31,3 @@ architecture TEST of TB_RD_SELECT is
     RD_REG_IN_ITYPE <= "00000", "00010" after 6 ns, "00011" after 8 ns, "00100" after 12 ns, "00101" after 14 ns;
 
 end TEST;
-
-configuration CFG_TB_RD_SELECT of TB_RD_SELECT is
-  for TEST
-    for DUT: RDSELECT
-      use configuration WORK.CFG_RD_SELECT;
-    end for;
-  end for;
-end CFG_TB_RD_SELECT;

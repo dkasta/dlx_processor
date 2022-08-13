@@ -30,11 +30,3 @@ architecture TEST of TB_RDMUX is
     opcode_in <= "000000", "000001" after 2 ns, "111110" after 4 ns, "000000" after 6 ns;
 
   end TEST;
-
-configuration CFG_TB_RDMUX of TB_RDMUX is
-  for TEST
-    for DUT : RDMUX
-      use configuration WORK.CFG_RDMUX_BEHAVIORAL;
-    end for;
-  end for;
-end CFG_TB_RDMUX;

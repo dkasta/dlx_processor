@@ -39,11 +39,3 @@ architecture TEST of TB_BRANCHDECISIONUNIT is
     REG1_IN <= (others => '1') after 6 ns, (others => '0') after 10 ns, "00000000000000000000000000001111" after 40 ns;
 
 end TEST;
-
-configuration CFG_TB_BRANCHDECISIONUNIT of TB_BRANCHDECISIONUNIT is
-  for TEST
-    for DUT: BRANCHDECISIONUNIT
-      use configuration WORK.CFG_BRANCHDECISIONUNIT;
-    end for;
-  end for;
-end CFG_TB_BRANCHDECISIONUNIT;

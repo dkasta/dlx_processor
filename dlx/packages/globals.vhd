@@ -1,10 +1,8 @@
 library ieee;
-use work.log_pkg.all;                               --package that contains the definition of log2(x)
 use ieee.std_logic_1164.all;
 
 package globals is
 --constants used for the testbenches of every component--
-	-------------mux---------------------------
 	constant Bit_Mux21 : integer := 32;
 	-------------register----------------------
 	constant Bit_Register : integer := 32;
@@ -28,7 +26,7 @@ package globals is
 	-------------register file-----------------
 	constant NumBitData : integer := 32;
 	constant NumBitRegisterFile : integer := 32;
-	constant NumBitAddress : integer := log2N(NumBitRegisterFile);
+	constant NumBitAddress : integer := 5;
 	-------------p4 adder----------------------
 	constant NumBitPGNetwork : integer := 32;
 	constant NumBitP4Distance : integer := 4;
@@ -39,6 +37,10 @@ package globals is
 	-------------instruction memory------------
 	constant RAM_DEPTH : integer := 30;
 	constant I_SIZE : integer := 32;
+	-------------data memory------------
+	constant BIT_DRAM : integer := 32;
+	-------------data memory------------
+	constant BIT_RISC_no_ext : integer := 16;
 
 
 end globals;

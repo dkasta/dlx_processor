@@ -1,10 +1,3 @@
---test : tested OK, the component works as expected
---during the risign clock the register samlples according to what
---has been provided before the rise of clock
---eg: at 2 ns clock rises, the sampled value which goes into execution stage out
---depends on which inputs the execution stage had right before the
---2 ns mark, even if at 2 ns the inputs change
-
 library ieee;
 use ieee.std_logic_1164.all;
 use WORK.globals.all;
@@ -35,7 +28,7 @@ end execution_unit;
 architecture structural of execution_unit is
 
   component MUX21_GENERIC
-  generic( NBIT: integer := NumBitMux21);
+  generic( NBIT: integer := Bit_Mux21);
   port(    A:    in std_logic_vector(NBIT-1 downto 0);
            B:    in std_logic_vector(NBIT-1 downto 0);
            SEL:  in std_logic;
@@ -43,7 +36,7 @@ architecture structural of execution_unit is
   end component;
 
   component REGISTER_GENERIC
-  generic( NBIT : integer := NumBitRegister);
+  generic( NBIT : integer := Bit_Register);
   port(    D:     in std_logic_vector(NBIT-1 downto 0);
            CK:    in std_logic;
            RESET: in std_logic;

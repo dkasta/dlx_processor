@@ -25,11 +25,3 @@ architecture TEST of TB_JOFFSET is
     joffsetin <= (others => '0'), (others => '1') after 10 ns;
 
 end TEST;
-
-configuration CFG_TB_JOFFSET of TB_JOFFSET is
-  for TEST
-    for DUT: JOFFSET
-      use configuration WORK.CFG_JOFFSET;
-    end for;
-  end for;
-end CFG_TB_JOFFSET;
