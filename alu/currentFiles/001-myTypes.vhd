@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use WORK.globals.all;
 
-package myTypes1 is
+package myTypes is
 
 -- Control unit input sizes
     constant OP_CODE_SIZE : integer :=  6;                                              -- OPCODE field size
@@ -12,76 +12,7 @@ package myTypes1 is
     constant CW_SIZE : integer := 7 + ALU_OPC_SIZE;                                     -- cw final size
     
     
-    type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, OROP, XOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP);
-
-
-  type aluop_array is array (0 to 63) of aluOp;
-  signal aluop_rtype: aluop_array := (	
-					4 =>	SLLOP,
-					6 =>	SRLOP,
-					7 =>	SRAOP,
-					14 =>   MULOP,
-					32 =>	ADDOP,
-					33 =>	ADDOP,	
-					34 =>	SUBOP,
-					35 =>	SUBOP,	
-					36 =>	ANDOP,
-					37 =>	OROP,
-					38 =>	XOROP,
-					40 =>	EQOP,
-					41 =>	NEQOP,
-					42 =>	LTOP,
-					43 =>	GTOP,
-					44 =>	LETOP,
-					45 =>	GETOP,
-					58 =>	LTUOP,	
-					59 =>	GTUOP,	
-					60 =>	LETUOP,	
-					61 =>	GETUOP,	
-					others => NOP
-					);        
-
-  signal aluop_itype : aluop_array := (
-					2 	=> ADDOP, 	-- JUMP
-					3 	=> ADDOP, 	-- JAL
-					4 	=> ADDOP, 	-- BEQZ
-					5 	=> ADDOP, 	-- BNEZ
-					8 	=> ADDOP, 	-- ADDI
-					9 	=> ADDOP, 	-- ADDUI
-					10	=> SUBOP, 	-- SUBI
-					11	=> SUBOP, 	-- SUBUI
-					12	=> ANDOP, 	-- ANDI
-					13	=> OROP, 	-- ORI
-					14	=> XOROP, 	-- XORI
-					15	=> LHIOP, 	-- LHI
-					16	=> NOP,		-- RET
-					17	=> NOP,		-- CALL
-					18	=> ADDOP, 	-- JR
-					19	=> ADDOP, 	-- JALR
-					20	=> SLLOP, 	-- SLLI
-					21	=> NOP,		-- NOP
-					22	=> SRLOP, 	-- SRLI
-					23	=> SRAOP, 	-- SRAI
-					24	=> EQOP, 	-- SEQI
-					25	=> NEQOP, 	-- SNEI
-					26	=> LTOP, 	-- SLTI
-					27	=> GTOP, 	-- SGTI
-					28	=> LETOP, 	-- SLEI
-					29	=> GETOP, 	-- SGEI
-					32	=> ADDOP,	-- LB
-					33	=> ADDOP,	-- LH
-					35	=> ADDOP, 	-- LW
-					36	=> ADDOP,	-- LBU
-					37	=> ADDOP,	-- LHU
-					40	=> ADDOP,	-- SB
-					41	=> ADDOP,	-- SH
-					43	=> ADDOP, 	-- SW
-					58	=> LTUOP, 	-- SLTUI
-					59	=> GTUOP, 	-- SGTUI
-					60	=> LETUOP, 	-- SLEUI
-					61	=> GETUOP,  	-- SGEUI
-					others  => NOP
-					); 
+    type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP);
 
 
 -- R-Type instruction -> FUNC field
@@ -146,4 +77,4 @@ package myTypes1 is
     constant REG30 : std_logic_vector(NumBitAddress-1 downto 0) := "11110";
     constant REG31 : std_logic_vector(NumBitAddress-1 downto 0) := "11111";
 
-end myTypes1;
+end myTypes;

@@ -11,13 +11,13 @@ end mux21;
 
 architecture structural of mux21 is
 
-	component n_and
+	component nand2
 	     Port( A: in std_logic;
 		   B: in std_logic;
 	    	   Y: out std_logic);
 	end component;
 
-	component iv
+	component ivx
 		Port ( A: in std_logic;
 		       Y: out std_logic);
 	end component;
@@ -27,12 +27,12 @@ architecture structural of mux21 is
 
 begin
 
-	UIV : iv Port Map ( sel, sb);
+	UIV : ivx Port Map (sel, sb);
 
 	C1:for i in 0 to NBIT_PER_BLOCK-1 generate
-	     UND1 : n_and Port Map( A(i), SEL, y1(i));
-	     UND2 : n_and Port Map( B(i), sb, y2(i));
-	     UND3 : n_and Port Map( y1(i), y2(i), Y(i));
+	     UND1 : nand2 Port Map( A(i), SEL, y1(i));
+	     UND2 : nand2 Port Map( B(i), sb, y2(i));
+	     UND3 : nand2 Port Map( y1(i), y2(i), Y(i));
 	   end generate;
 
 end structural;
