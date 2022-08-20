@@ -34,8 +34,8 @@ architecture TEST of TB_MEMORY_UNIT is
     generic map(NBIT)
     port map(alu_in, rd_reg_in, reset, clk, to_mem_stage_reg, rd_reg_out, memory_stage_out, alu_out);
 
-    reset <= '1' after 29 ns;
-    alu_in <= (others => '0') after 8 ns;
+    reset <= '1' after 10 ns;
+    alu_in <= (others => '0') after 5 ns;
 
     PCLOCK : process(clk)
     begin
