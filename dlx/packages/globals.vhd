@@ -27,13 +27,18 @@ package globals is
 	constant NumBitData : integer := 32;
 	constant NumBitRegisterFile : integer := 32;
 	constant NumBitAddress : integer := 5;
+	------------adder/sub----------------------
+	constant NumBitAdderSub : integer := 32;
 	-------------p4 adder----------------------
-	constant NumBitPGNetwork : integer := 32;
-	constant NumBitP4Distance : integer := 4;
 	constant NumBitP4Data : integer := 32;
+    constant NumBitPerBlock : integer := 4;
+	constant NumBlocks : integer := 8;
+    constant NBIT_PER_BLOCK : integer := 4;
+    constant NBIT: integer := 32;
+    constant NBLOCKS : integer := NBIT/NBIT_PER_BLOCK;
 	-------------booth multiplier--------------
-	constant NumBitMuxBoothMultiplier : integer := 8;
-	constant NumBitBoothMultiplier : integer := 8;
+	constant NumBitMuxBoothMul : integer := 8;
+	constant NumBitBoothMul : integer := 16;
 	-------------instruction memory------------
 	constant RAM_DEPTH : integer := 30;
 	constant I_SIZE : integer := 32;
