@@ -8,6 +8,8 @@ entity decode_unit is
   	 port( 	clk: 			            in std_logic;
            	rst: 			            in std_logic;
        	   	write_enable: 		    in std_logic;
+            rd1_enable            in std_logic;
+            rd2_enable            in std_logic;
             in_IR:    			      in std_logic_vector(numbit-1 downto 0);
        	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
