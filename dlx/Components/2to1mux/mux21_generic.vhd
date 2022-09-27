@@ -16,13 +16,13 @@ architecture structural of MUX21_GENERIC is
   signal NAND_ONE_OUT : std_logic_vector(NBIT-1 downto 0);
   signal NAND_TWO_OUT : std_logic_vector(NBIT-1 downto 0);
 
-  component ND2
+  component NAND2
   port( A: in std_logic;
         B: in std_logic;
         Y: out std_logic);
   end component;
 
-  component IV
+  component IVX
   port( A: in std_logic;
         Y: out std_logic);
   end component;
@@ -30,13 +30,13 @@ architecture structural of MUX21_GENERIC is
    begin
 
      MUX_GENERATE : for i in 0 to NBIT-1 generate
-       UIV : IV
+       UIV : IVX
        port map(SEL,SEL_INV(i));
-       UND1 : ND2
+       UND1 : NAND2
        port map(A(i),SEL_INV(i),NAND_ONE_OUT(i));
-       UND2 : ND2
+       UND2 : NAND2
        port map(B(i),SEL,NAND_TWO_OUT(i));
-       UND3 : ND2
+       UND3 : NAND2
        port map(NAND_ONE_OUT(i),NAND_TWO_OUT(i),Y(i));
     end generate MUX_GENERATE;
 
