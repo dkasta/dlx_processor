@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use WORK.globals.all;
+use work.globals.all;
+use work.myTypes.all;
 
 entity execution_unit is
   generic( numbit: integer := BIT_RISC);
@@ -19,7 +20,7 @@ entity execution_unit is
            rd_reg_in:             in std_logic_vector(4 downto 0);
            mux_one_control:       in std_logic;
            mux_two_control:       in std_logic;
-           alu_control:           in std_logic_vector(3 downto 0);
+           alu_control:           in aluOp;
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
            rd_reg_out:            out std_logic_vector(4 downto 0));
@@ -43,12 +44,12 @@ architecture structural of execution_unit is
            Q:     out std_logic_vector(NBIT-1 downto 0));
   end component;
 
-  component ALU_BEHAVIORAL
-  generic( NBIT : integer := NumBitALU);
-  port 	 ( FUNC:    in std_logic_vector(3 downto 0);
-           DATA1:   in std_logic_vector(NBIT-1 downto 0); 
-           DATA2:   in std_logic_vector(NBIT-1 downto 0);
-           OUTALU:  out std_logic_vector(NBIT-1 downto 0));
+  component ALU
+  port (operand_A : in std_logic_vector(NumBitALU-1 downto 0);
+        operand_B : in std_logic_vector(NumBitALU-1 downto 0);
+        type_alu_operation : in aluOp;
+        output : out std_logic_vector(NumBitALU-1 downto 0);
+        cout : out std_logic);  
   end component;  
 
   signal mux_one_out_rf : std_logic_vector(numbit-1 downto 0);
@@ -58,6 +59,7 @@ architecture structural of execution_unit is
   signal mux_two_out_mem_forwarding : std_logic_vector(numbit-1 downto 0);
   signal mux_two_out_alu_forwarding : std_logic_vector(numbit-1 downto 0);
   signal alu_out : std_logic_vector(numbit-1 downto 0);
+  signal s_cout : std_logic;
 
   begin
 
@@ -85,9 +87,8 @@ architecture structural of execution_unit is
     generic map(numbit)
     port map(mux_two_out_mem_forwarding,alu_forwarding_value,alu_forwarding_two,mux_two_out_alu_forwarding);
 
-    ALU : ALU_BEHAVIORAL
-    generic map(numbit)
-    port map(alu_control,mux_one_out_alu_forwarding,mux_two_out_alu_forwarding,alu_out);
+    ALU_comp : ALU
+    port map(mux_one_out_alu_forwarding, mux_two_out_alu_forwarding, alu_control, alu_out, s_cout);
 
     REG1 : REGISTER_GENERIC
     generic map(numbit)
@@ -102,4 +103,3 @@ architecture structural of execution_unit is
     port map(rd_reg_in,clk,reset,rd_reg_out);
 
 end structural;
-
