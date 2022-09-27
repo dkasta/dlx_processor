@@ -104,11 +104,11 @@ architecture structural of decode_unit is
   generic map(numbit,5,numbit)
   port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
 
-  REGONE : REGISTER_GENERIC
+  REG_A : REGISTER_GENERIC
   generic map(numbit)
   port map(RF_ONE_OUT,clk,rst,A_REG_OUT);
 
-  REGTWO : REGISTER_GENERIC
+  REG_B : REGISTER_GENERIC
   generic map(numbit)
   port map(RF_TWO_OUT,clk,rst,B_REG_OUT);
 
@@ -125,7 +125,7 @@ architecture structural of decode_unit is
   RDMUX_MUX : RDMUX
   port map(in_IR(15 downto 11),in_IR(20 downto 16),in_IR(31 downto 26),rdmux_out);
 
-  RD_OUT_REG : REGISTER_GENERIC
+  RD_REG : REGISTER_GENERIC
   generic map(5)
   port map(rdmux_out,clk,rst,RD_OUT);
 
