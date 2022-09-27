@@ -2,12 +2,12 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use work.globals.all;               
 
-entity IVX is
+entity IV is
   port ( A: in std_logic;
          Y: out std_logic);
-end IVX;
+end IV;
 
-architecture behavioral of IVX is
+architecture behavioral of IV is
   begin
     Y <= not(A);
 end behavioral;
