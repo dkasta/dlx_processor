@@ -33,7 +33,7 @@ package myTypes is
 -- I-Type instruction -> OPCODE field
     constant ITYPE_ADDI:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001000"; -- i, 0x08 ---> 00 1000
     constant ITYPE_ANDI:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001100"; -- i, 0x0C
-	constant ITYPE_LW:	std_logic_vector(OPCODE_SZ - 1 downto 0) := "100011"; -- l, 0x23	
+	constant ITYPE_LW:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "100011"; -- l, 0x23	
     constant ITYPE_ORI:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001101"; -- i, 0x0D	
     constant ITYPE_SGEI:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "011101"; -- i, 0x1D
 	constant ITYPE_SLEI:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "011100"; -- i, 0x1C
