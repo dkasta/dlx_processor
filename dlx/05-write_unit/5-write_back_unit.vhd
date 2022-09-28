@@ -35,9 +35,7 @@ architecture structural of write_back_unit is
 
     WB_OUT <= mux_out;
 
-    JALMUX : MUX21_GENERIC
-    generic map(5)
-    port map(RD_IN, (others => '1'), JAL_SEL, jal_mux_out);
+
 
     RD_OUT <= jal_mux_out;
 

@@ -8,6 +8,7 @@ entity memory_unit is
            rd_reg_in:         in std_logic_vector(4 downto 0);
            reset:             in std_logic;
            clk:               in std_logic;
+           mux_mem_control    in std_logic;
            to_mem_stage_reg:  in std_logic_vector(numbit - 1 downto 0);
            rd_reg_out:        out std_logic_vector(4 downto 0);
            memory_stage_out:  out std_logic_vector(numbit-1 downto 0);
@@ -24,7 +25,23 @@ architecture structural of memory_unit is
              Q:     out std_logic_vector(NBIT-1 downto 0));
   end component;
 
+  component MUX21_GENERIC
+    generic( NBIT: integer := Bit_Mux21);
+    port(    A:    in std_logic_vector(NBIT-1 downto 0);
+             B:    in std_logic_vector(NBIT-1 downto 0);
+             SEL:  in std_logic;
+             Y:    out std_logic_vector(NBIT-1 downto 0));
+    end component;
+
+  signal mux_out : std_logic_vector(numbit-1 downto 0);
+  signal alu_mux_out : std_logic_vector(numbit-1 downto 0);
+
+
   begin
+
+    MUX_MEM : MUX21_GENERIC
+    generic map(numbit)
+    port map(alu_in,to_mem_stage_reg,mux_mem_control,mux_out);
 
     RDREG : REGISTER_GENERIC
     generic map(5)
@@ -34,7 +51,7 @@ architecture structural of memory_unit is
 
     REGALU : REGISTER_GENERIC
     generic map(numbit)
-    port map(alu_in,clk,reset,alu_out);
+    port map(mux_out,clk,reset,alu_mux_out);
 
 end structural;
 

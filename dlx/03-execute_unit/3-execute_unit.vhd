@@ -94,11 +94,11 @@ architecture structural of execution_unit is
     generic map(numbit)
     port map(alu_out,clk,reset,execution_stage_out);
 
-    REG3 : REGISTER_GENERIC
+    REG2 : REGISTER_GENERIC
     generic map(numbit)
     port map(b_reg_in,clk,reset,b_reg_out);
 
-    REG4 : REGISTER_GENERIC
+    REG3 : REGISTER_GENERIC
     generic map(5)
     port map(rd_reg_in,clk,reset,rd_reg_out);
 
