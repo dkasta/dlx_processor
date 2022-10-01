@@ -20,7 +20,6 @@ package myTypes is
 -- R-Type instruction -> FUNC field   -- ALU operation is defined in the extra 11-bit field func
     constant RTYPE_ADD : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000100000";    -- RTYPE_ADD
     constant RTYPE_AND : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000100100";    -- RTYPE_AND
-    constant NOP : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000000000";
     constant RTYPE_OR : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000100101";    -- RTYPE_OR
     constant RTYPE_SGE : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000101101";    -- RTYPE_SGE
     constant RTYPE_SLE : std_logic_vector(FUNC_SIZE - 1 downto 0) :=  "00000101100";    -- RTYPE_SLE

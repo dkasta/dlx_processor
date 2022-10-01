@@ -25,7 +25,7 @@ architecture TEST of TB_IRAM is
     generic map(RAM_DEPTH,NBIT)
     port map(reset,address,dout);
 
-    reset <= '0' after 4 ns;
+    reset <= '0' after 10 ns;
 
     test: process
     begin

@@ -22,7 +22,7 @@ entity IRAM is
        Dout : out std_logic_vector(I_SIZE - 1 downto 0));
 end IRAM;
 
-architecture IRam_Bhe of IRAM is
+architecture behavioural of IRAM is
 
   signal nop : std_logic_vector(I_SIZE - 1 downto 0) := "01010100000000000000000000000000";
 
@@ -42,9 +42,11 @@ begin  -- IRam_Bhe
   variable file_line : line;
   variable index : integer := 0;
   variable tmp_data_u : std_logic_vector(I_SIZE-1 downto 0);
-  begin  -- process FILL_MEM_P
+  
+begin  -- process FILL_MEM_P
+    
     if (Rst = '1') then
-      file_open(mem_fp,"C:\Users\Pk\Desktop\dlx_project",READ_MODE);
+      file_open(mem_fp,"C:/Users/Pk/Desktop/dlx_project/test/assembler.bin/test.asm.mem",READ_MODE);
       while (not endfile(mem_fp)) loop
         readline(mem_fp,file_line);
         hread(file_line,tmp_data_u);
@@ -54,9 +56,9 @@ begin  -- IRam_Bhe
     end if;
   end process FILL_MEM_P;
 
-end IRam_Bhe;
+end behavioural;
 
 configuration CFG_IRAM_BEHAVIORAL of IRAM is
-	for IRam_Bhe
+	for behavioural
 	end for;
 end CFG_IRAM_BEHAVIORAL;
