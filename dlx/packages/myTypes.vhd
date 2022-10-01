@@ -11,6 +11,7 @@ package myTypes is
     constant ALU_OPC_SIZE : integer := 4;                                               -- size of alu control signals
     constant CW_SIZE : integer := 7 + ALU_OPC_SIZE;                                     -- cw final size
 
+    type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP);
 
 
 -- R-Type instruction -> OPCODE field

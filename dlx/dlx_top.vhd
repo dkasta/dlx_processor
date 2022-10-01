@@ -112,12 +112,25 @@ architecture structural of DLX is
        mem_forwarding_value : OUT std_logic_vector(numbit - 1 downto 0));
   end component;
 
-  component CU_fsm
-  port (
-
-    
-  );                  -- Active high
-  end component;
+  component CU_HARDWIRED
+     port (-- ID Control Signals
+           -- EX Control Signal
+           MUX_ONE_CONTROL    : OUT std_logic;    -- MUX-A Sel
+           MUX_TWO_CONTROL    : OUT std_logic;    -- MUX-B Sel
+           ALU_OPCODE      : OUT std_logic_vector(ALU_OPC_SIZE - 1 downto 0); -- ALU Operation Code
+           -- MEM Control Signals
+           DRAM_WE         : OUT std_logic;    -- Data RAM Write Enable
+           DRAM_RE         : OUT std_logic;    -- Data RAM Read Enable
+           -- WB Control Signals
+           WB_MUX_SEL      : OUT std_logic;    -- Write Back MUX Sel
+           JAL_SEL         : OUT std_logic;
+           RF_WE           : OUT std_logic;    -- Register File Write Enable
+           -- INPUTS
+           OPCODE : IN  std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+           FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
+           Clk : IN std_logic;
+           Rst : IN std_logic);                  -- Active high
+     end component;
 
 
 
@@ -169,15 +182,24 @@ architecture structural of DLX is
 
     IRAM_I : IRAM
     generic map(RAM_DEPTH,I_SIZE)
-    port map(reset, toiramfrompc, toirfromiram);
+    port map(Rst => reset,
+             Addr => toiramfrompc, 
+             Dout => toirfromiram);
 
     DRAM_I : DRAM
     generic map(RISC_BIT, RISC_BIT)
-    port map(clk,address_dram, todramfrombreg, dramwesignal, dramresignal, reset, tolmdfromdram, address_error);
+    port map(clk => clk,
+             address => address_dram, 
+             data_in => todramfrombreg, 
+             write_enable => dramwesignal, 
+             read_enable => dramresignal, 
+             reset => reset, 
+             data_out => tolmdfromdram, 
+             address_error => address_error);
 
     CONTROL_I : CU_HARDWIRED
-    port map(MUXA_CONTROL => muxacontrolsignal,
-             MUXB_CONTROL => muxbcontrolsignal,
+    port map(MUX_ONE_CONTROL => muxonecontrolsignal,
+             MUX_TWO_CONTROL => muxtwocontrolsignal,
              ALU_OPCODE => aluopcodesignal,
              DRAM_WE => dramwesignal,
              DRAM_RE => dramresignal,
@@ -195,8 +217,8 @@ architecture structural of DLX is
     port map(   clk =>  clk,
                 reset => reset,
                 write_enable =>  rfwesignal,
-                mux_one_control => muxacontrolsignal,
-                mux_two_control => muxbcontrolsignal,
+                mux_one_control => muxonecontrolsignal,
+                mux_two_control => muxtwocontrolsignal,
                 alu_control => aluopcodesignal,
                 instruction_fetched => instruction_fetched,
                 to_ir => toirfromiram,
