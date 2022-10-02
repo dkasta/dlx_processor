@@ -40,8 +40,9 @@ package globals is
 	constant NumBitMuxBoothMul : integer := 8;
 	constant NumBitBoothMul : integer := 16;
 	-------------instruction memory------------
-	constant RAM_DEPTH : integer := 30;
+	constant RAM_DEPTH : integer := 120;
 	constant I_SIZE : integer := 32;
+	constant BIT_IRAM : integer := 8;
 	-------------data memory------------
 	constant BIT_DRAM : integer := 32;
 	-------------data memory------------
@@ -49,3 +50,8 @@ package globals is
 
 
 end globals;
+
+
+--fill_IRAM : for i in 0 to 3 loop
+--	IRAM_mem(4*index + i) <= conv_integer(unsigned(tmp_data_u(4*i to 4*i + 3)));
+--  end loop fill_IRAM ;

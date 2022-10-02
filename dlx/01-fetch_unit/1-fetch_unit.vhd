@@ -15,9 +15,9 @@ entity fetch_unit is
        	  instr_fetched:   out std_logic_vector(numbit-1 downto 0));
 end fetch_unit;
 
-architecture structural of fetch_stage is
+architecture behavioural of fetch_unit is
   
-  signal pc_reg_out : std_logic_vector( numbit-1 downto 0);
+  signal pc_reg_out : std_logic_vector( numbit-1 downto 0) := (others => '0');
   signal pc_adder_out : std_logic_vector( numbit-1 downto 0);
   signal tomem : std_logic_vector( numbit - 1 downto 0);
 
@@ -29,23 +29,41 @@ component register_generic
       		 Q:  		out std_logic_vector(NBIT-1 downto 0));
   end component;
 
-  begin
+  -----------------------------------------------------------
+  component IRAM is
+    generic(RAM_DEPTH : integer := RAM_DEPTH;
+            I_SIZE : integer := I_SIZE);
+    port(Rst  : in  std_logic;
+         Addr : in  std_logic_vector(I_SIZE - 1 downto 0);
+         Dout : out std_logic_vector(I_SIZE - 1 downto 0));
+  end component;
+  -----------------------------------------------------------
 
+  begin
+    
     pc_reg_out <= program_counter;
+    
     pc_adder_out <= std_logic_vector(unsigned(pc_reg_out) + 4);
 
     NPC : register_generic
    	 	  generic map( numbit)
-    	  	 port map( pc_adder_out, clk, reset, npc_out);
+    	  	 port map( pc_adder_out, clk, rst, npc_out);
 
     instr_fetched <= to_IR;
 
     IR_reg : register_generic
     	 generic map(numbit)
-    	 port map( to_IR,clk,reset,instr_reg_out);
+    	 port map( to_IR,clk,rst,instr_reg_out);
 
-    tomem <= "00" & pc_reg_out(31 downto 2);
+    tomem <= pc_reg_out;
 
+---------------------------------------------------------------------------------
+    C_IRAM : IRAM
+    generic map(RAM_DEPTH,NBIT)
+      port map(Rst => rst,
+               Addr => tomem,
+               Dout => instr_fetched);
+---------------------------------------------------------------------------------
 
     --process to check if a forbidden memory address is being accessed
     IRAM_PROC : process(tomem)
@@ -56,5 +74,5 @@ component register_generic
     end process;
 
 
-end structural;
+end behavioural;
 

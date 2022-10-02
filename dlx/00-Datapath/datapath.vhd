@@ -187,7 +187,14 @@ end component;
 
     FETCH : FETCH_STAGE
     generic map(numbit)
-    port map(npcoutbpusignal, to_ir, clk, reset, to_iram, npcoutifsignal, iroutsignal, instrfetchedsigal);
+    port map(program_counter => npcoutbpusignal, 
+             to_IR => to_ir, 
+             clk => clk, 
+             rst => reset, 
+             to_IRAM => to_iram, 
+             npc_out => npcoutifsignal, 
+             instr_reg_out => iroutsignal, 
+             instr_fetched => instrfetchedsigal);
 
     DECODE : DECODE_STAGE
     generic map(numbit)

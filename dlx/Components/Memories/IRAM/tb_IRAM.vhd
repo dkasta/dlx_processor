@@ -32,7 +32,7 @@ architecture TEST of TB_IRAM is
     wait for 2 ns;
     NumROW : for i in 0 to RAM_DEPTH loop
       wait for 10 ns ;
-	    address <= address + '1';
+	    address <= address + "100"; --Add 4 in binary
     end loop NumROW ;
     end process test;
 

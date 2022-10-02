@@ -24,15 +24,21 @@ end IRAM;
 
 architecture behavioural of IRAM is
 
-  signal nop : std_logic_vector(I_SIZE - 1 downto 0) := "01010100000000000000000000000000";
-
-  type RAMtype is array (0 to RAM_DEPTH - 1) of integer;
+  --signal nop : std_logic_vector(I_SIZE - 1 downto 0) := "01010100000000000000000000000000";
+  signal Dout_byte : std_logic_vector(I_SIZE/4 - 1 downto 0);
+  type RAMtype is array (0 to RAM_DEPTH - 1) of std_logic_vector(BIT_IRAM - 1 downto 0);
   signal IRAM_mem : RAMtype;
 
 begin  -- IRam_Bhe
 
-  Dout <= conv_std_logic_vector(IRAM_mem(conv_integer(unsigned(Addr))),I_SIZE);
-
+  --FILL_DOUT_PROCESS : process(Addr)
+  --begin
+  Dout(31 downto 24) <= IRAM_mem(conv_integer(unsigned(Addr)));
+  Dout(23 downto 16) <= IRAM_mem(conv_integer(unsigned(Addr) + 1));
+  Dout(15 downto 8) <= IRAM_mem(conv_integer(unsigned(Addr) + 2));
+  Dout(7 downto 0) <= IRAM_mem(conv_integer(unsigned(Addr) + 3));
+  --end process FILL_DOUT_PROCESS;
+  
   -- purpose: This process is in charge of filling the Instruction RAM with the firmware
   -- type   : combinational
   -- inputs : Rst
@@ -50,7 +56,10 @@ begin  -- process FILL_MEM_P
       while (not endfile(mem_fp)) loop
         readline(mem_fp,file_line);
         hread(file_line,tmp_data_u);
-        IRAM_mem(index) <= conv_integer(unsigned(tmp_data_u));
+        --IRAM_mem(index) <= conv_integer(unsigned(tmp_data_u));
+        fill_IRAM : for i in 0 to 3 loop
+        	IRAM_mem(4*index + i) <= tmp_data_u(8*(4-i)-1 downto 8*(4-i)- 8);
+        end loop fill_IRAM ;
         index := index + 1;
       end loop;
     end if;
