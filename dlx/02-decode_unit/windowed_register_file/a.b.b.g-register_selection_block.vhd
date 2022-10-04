@@ -28,7 +28,7 @@ begin
         if(to_integer(unsigned(curr_win))+1/=num_windows) then
             out_reg<=tot_reg(numBit_data*(3+(2*to_integer(unsigned(curr_win))))*numreg_inlocout-1 downto numBit_data*2*to_integer(unsigned(curr_win))*numreg_inlocout);
         else
-            out_reg= tot_reg(numBit_data*(2+(2*to_integer(unsigned(curr_win))))*numreg_inlocout-1 downto numBit_data*2*to_integer(unsigned(curr_win))*numreg_inlocout)&tot_reg(numBit_data*numreg_inlocout-1 downto 0);
+            out_reg<= tot_reg(numBit_data*numreg_inlocout-1 downto 0)&tot_reg(numBit_data*(2+(2*to_integer(unsigned(curr_win))))*numreg_inlocout-1 downto numBit_data*2*to_integer(unsigned(curr_win))*numreg_inlocout);
         end if;
     end process;
 end beh;
