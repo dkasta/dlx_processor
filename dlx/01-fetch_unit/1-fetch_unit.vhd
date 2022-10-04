@@ -21,6 +21,7 @@ architecture behavioural of fetch_unit is
   signal pc_adder_out : std_logic_vector( numbit-1 downto 0) := (others => '0');
   signal tomem : std_logic_vector( numbit - 1 downto 0) := (others => '0');
   signal to_IR_signal : std_logic_vector( numbit - 1 downto 0) := (others => '0');
+  signal instr_fetched_signal : std_logic_vector( numbit - 1 downto 0) := (others => '0');
 
 component register_generic
   generic( NBIT : integer := Bit_Register);
@@ -74,17 +75,17 @@ component register_generic
 
     IR_reg : register_generic
     	 generic map(numbit)
-    	 port map( to_IR_signal,clk,rst,instr_reg_out);
+    	 port map( instr_fetched_signal,clk,rst,instr_reg_out);
 
     tomem <= pc_reg_out;
-
+    instr_fetched <= instr_fetched_signal;
 ---------------------------------------------------------------------------------
     C_IRAM : IRAM
     generic map(RAM_DEPTH,NBIT)
       port map(Rst => rst,
                enable => enable,
                Addr => tomem,
-               Dout => instr_fetched);
+               Dout => instr_fetched_signal);
 ---------------------------------------------------------------------------------
 
     --process to check if a forbidden memory address is being accessed
