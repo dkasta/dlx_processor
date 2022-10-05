@@ -8,6 +8,8 @@ entity decode_unit is
   	 port( 	clk: 			            in std_logic;
            	rst: 			            in std_logic;
        	   	write_enable: 		    in std_logic;
+            rd1_enable:           in std_logic;
+            rd2_enable:           in std_logic;
             in_IR:    			      in std_logic_vector(numbit-1 downto 0);
        	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
@@ -29,28 +31,65 @@ architecture structural of decode_unit is
 
 
 
-     component register_file
-       generic(numBit_data:        integer := NumBitData;
-	          numBit_address:     integer := NumBitAddress;
-	          numBit_registers:   integer := NumBitRegisterFile);
-       port(   CK:	             in std_logic;
-               Reset:            in std_logic;
-               Write_enable:     in std_logic;
-               Write_address:    in std_logic_vector(numBit_address-1 downto 0);
-               Read_one_address: in std_logic_vector(numBit_address-1 downto 0);
-               Read_two_address: in std_logic_vector(numBit_address-1 downto 0);
-               Data_in:          in std_logic_vector(numBit_data-1 downto 0);
-               Data_one_out:     out std_logic_vector(numBit_data-1 downto 0);
-               Data_two_out:     out std_logic_vector(numBit_data-1 downto 0));
-     end component;
+     --component register_file
+     --  generic(numBit_data:        integer := NumBitData;
+	   --       numBit_address:     integer := NumBitAddress;
+	   --       numBit_registers:   integer := NumBitRegisterFile);
+     --  port(   CK:	             in std_logic;
+     --         Reset:            in std_logic;
+     --          Write_enable:     in std_logic;
+     --          Write_address:    in std_logic_vector(numBit_address-1 downto 0);
+     --          Read_one_address: in std_logic_vector(numBit_address-1 downto 0);
+     --          Read_two_address: in std_logic_vector(numBit_address-1 downto 0);
+     --          Data_in:          in std_logic_vector(numBit_data-1 downto 0);
+     --          Data_one_out:     out std_logic_vector(numBit_data-1 downto 0);
+     --          Data_two_out:     out std_logic_vector(numBit_data-1 downto 0));
+     --end component;
+     entity wrf is
+          generic(
+              numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
+              numBit_data: integer := NumBitData; -- numero di bit dei registri
+              windowsbit: integer:=2;
+              numreg_inlocout: integer:=8; --number of register in each block in local out
+              numreg_global: integer:=8; --number of register in the global block
+              num_windows: integer:= 4); --number of total windows
+          port( 
+              
+              -- to external
+              clk: 		IN std_logic;
+              rst: 	    IN std_logic;
+              rd1: 		IN std_logic;
+              rd2: 		IN std_logic;
+              WR: 		IN std_logic;
+              rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
+              ADD_RD1: 	IN std_logic_vector(numBit_address - 1 downto 0);
+              ADD_RD2: 	IN std_logic_vector(numBit_address - 1 downto 0);
+              DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
+              --RAM_READY:  IN std_logic;
+              out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+              out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
 
-     component register_generic
-       generic(NBIT:  integer := Bit_Register);
-  	  port( D:    in std_logic_vector(NBIT-1 downto 0);
-       	    CK:   in std_logic;
-       	    ESET: in std_logic;
-     	      Q:    out std_logic_vector(NBIT-1 downto 0));
-     end component;
+              -- Other I/O not important for now
+              --CALL:       IN std_logic;
+              --RET:        IN std_logic;
+              --FILL:       OUT std_logic; -- POP towards memory
+              --SPILL:      OUT std_logic; -- PUSH towards memory
+
+              -- TO MEMORY
+              out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
+              in_mem:  IN std_logic_vector(numBit_data - 1 downto 0)
+
+          );
+      end wrf;
+
+      component register_generic is
+        generic (NBIT : integer := Bit_Register);
+            port(   D:     in std_logic_vector(NBIT-1 downto 0);
+                    CK:    in std_logic;
+                    EN:    in std_logic;
+                    RESET: in std_logic;
+                    Q:     out std_logic_vector(NBIT-1 downto 0));
+      end ;
 
      component SIGN_EXTENTION
        port(   D: in std_logic_vector(15 downto 0);
@@ -99,11 +138,13 @@ architecture structural of decode_unit is
 
   SIGN_REG : SIGN_EXTENTION
   port map(in_IR(15 downto 0),sign_extention_signal);
-
-  RF : REGISTER_FILE
-  generic map(numbit,5,numbit)
-  port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
-
+  signal outmem,inmem: std_logic_vector(31 downto 0);
+  --RF : REGISTER_FILE
+  --generic map(numbit,5,numbit)
+  --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
+  RF: wrf
+    generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,windowsbit=>2,numreg_inlocout=>8, numreg_global=>8,num_windows=> 4)
+    port( clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,in_mem=>inmem);
   REG_A : REGISTER_GENERIC
   generic map(numbit)
   port map(RF_ONE_OUT,clk,rst,A_REG_OUT);
