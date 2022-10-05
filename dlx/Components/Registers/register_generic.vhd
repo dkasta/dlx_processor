@@ -7,10 +7,11 @@ use work.globals.all;
 
 entity register_generic is
   generic (NBIT : integer := Bit_Register);
-      port(   D:     in std_logic_vector(NBIT-1 downto 0);
-              CK:    in std_logic;
-              RESET: in std_logic;
-              Q:     out std_logic_vector(NBIT-1 downto 0));
+      port(   D:      in std_logic_vector(NBIT-1 downto 0);
+              CK:     in std_logic;
+              RESET:  in std_logic;
+              ENABLE: in std_logic;
+              Q:      out std_logic_vector(NBIT-1 downto 0));
 end register_generic;
 
 architecture structural of register_generic is
@@ -19,13 +20,18 @@ architecture structural of register_generic is
   port (	D:      in	std_logic;
 		      CK:	    in	std_logic;
 		      RESET:  in	std_logic;
+          ENABLE: in std_logic;
 		      Q:	    out	std_logic);
   end component;
 
   begin
     Register_generate : for i in 0 to NBIT-1 generate
       UFD : DFF
-            port map( D(i), CK, RESET, Q(i));
+            port map( D => D(i), 
+                      CK => CK, 
+                      RESET => RESET, 
+                      ENABLE => ENABLE, 
+                      Q => Q(i));
     end generate Register_generate;
 end structural;
 

@@ -27,7 +27,7 @@ architecture behavioural of tb_fetch_unit is
   port(to_IR : IN std_logic_vector(numbit-1 downto 0);
        clk : IN std_logic;
        rst : IN std_logic;
-       enable:  IN std_logic;
+       EN1:  IN std_logic;
        to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
        npc_out : OUT std_logic_vector(numbit-1 downto 0);
        instr_reg_out : OUT std_logic_vector(numbit-1 downto 0);
@@ -40,7 +40,7 @@ architecture behavioural of tb_fetch_unit is
     port map(to_IR => TB_TO_IR,
              clk => TB_CLOCK,
              rst => TB_RESET,
-             enable => TB_EN_PC,
+             EN1 => TB_EN_PC,
              to_IRAM => TB_TO_IRAM,
              npc_out => TB_NPC_OUT,
              instr_reg_out => TB_INSTRUCTION_REG_OUT,
