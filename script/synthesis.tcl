@@ -21,9 +21,9 @@ suppress_message VER-130
 
 ####################################################################
 #Name				:analyze_directory
-#Description 		:design_compiler tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for synthesis.
+#Description 			:design_compiler tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for synthesis.
 #Arguments			:main_directory(optional): name of the main directory containing files to be analyzed (default is current directory ./).
-#					:file_extension(optional): extension of the files to be analyzed (vhdl or verilog) (default is vhdl).
+#				:file_extension(optional): extension of the files to be analyzed (vhdl or verilog) (default is vhdl).
 #Outputs			:none		
 ####################################################################
 proc analyze_directory {{main_directory "./"} {file_extension "vhdl"}} {
@@ -43,14 +43,14 @@ proc analyze_directory {{main_directory "./"} {file_extension "vhdl"}} {
 
 ####################################################################
 #Name				:synthesize_dual_vth
-#Description 		:design_compiler tcl script to perform a duoble voltage threshold synthesis.
+#Description 			:design_compiler tcl script to perform a duoble voltage threshold synthesis.
 #Arguments			:top_entity (optional): name of the top level entity to be synthesized (default is dlx).
-#					:time_constraint (optional): maximum delay in nanoseconds between inputs and outputs (default is 2 ns).
-#					:low_Vt_Library (optional): low threshold voltage library (default is CORE65LPLVT).
-#					:high_Vt_Library (optional): high threshold voltage library (default is CORE65LPHVT).
+#				:time_constraint (optional): maximum delay in nanoseconds between inputs and outputs (default is 2 ns).
+#				:low_Vt_Library (optional): low threshold voltage library (default is CORE65LPLVT).
+#				:high_Vt_Library (optional): high threshold voltage library (default is CORE65LPHVT).
 #Outputs			:postsynthesis netlist
-#					:sdc file
-#					:reports for timing, power, area, threshold voltage group and clock gating		
+#				:sdc file
+#				:reports for timing, power, area, threshold voltage group and clock gating		
 ####################################################################
 proc synthesize_dual_vth {{top_entity "dlx"} {time_constraint 2} {low_Vth_Library "CORE65LPLVT"} {high_Vth_Library "CORE65LPHVT"}} {
 	
@@ -111,13 +111,13 @@ proc synthesize_dual_vth {{top_entity "dlx"} {time_constraint 2} {low_Vth_Librar
 
 ####################################################################
 #Name				:synthesize
-#Description 		:design_compiler tcl script to perform a standard synthesis.
+#Description 			:design_compiler tcl script to perform a standard synthesis.
 #Arguments			:top_entity (optional): name of the top level entity to be synthesized (default is dlx).
-#					:time_constraint (optional): maximum delay in nanoseconds between inputs and outputs (default is 2 ns).
-#					:wire_load_model (optional): name of the wire load model (default is 5K_hvratio_1_4).
+#				:time_constraint (optional): maximum delay in nanoseconds between inputs and outputs (default is 2 ns).
+#				:wire_load_model (optional): name of the wire load model (default is 5K_hvratio_1_4).
 #Outputs			:postsynthesis netlist
-#					:sdc file
-#					:reports for timing, power, area and clock gating		
+#				:sdc file
+#				:reports for timing, power, area and clock gating		
 ####################################################################
 proc synthesize {{top_entity "dlx"} {time_constraint 2} {wire_load_model "5K_hvratio_1_4"}} {
 
