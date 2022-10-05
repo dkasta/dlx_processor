@@ -1,21 +1,21 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use WORK.utils.all;
+use WORK.globals.all;
 
 entity wrf is
     generic(
          numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
          numBit_data: integer := NumBitData; -- numero di bit dei registri
+         windowsbit: integer:=2;
          numreg_inlocout: integer:=8; --number of register in each block in local out
-         numreg_global: integer:=8 --number of register in the global block
+         numreg_global: integer:=8; --number of register in the global block
         num_windows: integer:= 4); --number of total windows
     port( 
         
         -- to external
         clk: 		IN std_logic;
         rst: 	    IN std_logic;
-        en: 	    IN std_logic;
         rd1: 		IN std_logic;
         rd2: 		IN std_logic;
         WR: 		IN std_logic;
@@ -34,8 +34,8 @@ entity wrf is
         --SPILL:      OUT std_logic; -- PUSH towards memory
 
         -- TO MEMORY
-        out_mem:  OUT std_logic_vector(NBIT_DATA - 1 downto 0);
-        in_mem:  IN std_logic_vector(NBIT_DATA - 1 downto 0)
+        out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
+        in_mem:  IN std_logic_vector(numBit_data - 1 downto 0)
 
     );
 end wrf;
@@ -103,7 +103,7 @@ generic(
 	     ); 
     port(
         add_read:   in std_logic_vector(numBit_address-1 downto 0);
-        out_reg:    in std_logic_vector(numBit_data-1 downto 0); 
+        out_reg:    out std_logic_vector(numBit_data-1 downto 0); 
         in_reg:     in std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0) 
     );
 end component;
@@ -117,7 +117,7 @@ component register_generic is
 end component;
 signal curr_cwp,next_cwp,curr_swp,next_swp: std_logic_vector(windowsbit-1 downto 0); 
 signal address_mem_s: std_logic_vector(2*numreg_inlocout-1 downto 0); 
-signal enable_regs: std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0)
+signal enable_regs: std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0);
 signal tot_regs: std_logic_vector(numBit_data*2*numreg_inlocout*num_windows-1 downto 0); 
 signal global_reg: std_logic_vector(numBit_data*numreg_global-1 downto 0);
 signal swp_en_s: std_logic; --TODO capire come fare enable 1 from memory 0 from input
@@ -135,10 +135,10 @@ muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBit
         port map(add_read=>ADD_RD1,out_reg=>out_reg_1,in_reg=>input_mux_rd);
 muxout2: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
         port map(add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd);
-next_cwp: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_cwp,nex=>next_cwp,sel=>sel_cwp);
-cwp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_cwp,CK=>clk,EN=>'1',RESET=>rst,Q:next_cwp);
-next_swp: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_swp,nex=>next_swp,sel=>sel_swp);
-swp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_swp,CK=>clk,EN=>'1',RESET=>rst,Q:next_swp);
+next_cwp_m: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_cwp,nex=>next_cwp,sel=>sel_cwp);
+cwp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>next_cwp);
+next_swp_m: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_swp,nex=>next_swp,sel=>sel_swp);
+swp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_swp,CK=>clk,EN=>'1',RESET=>rst,Q=>next_swp);
 --TODO
 swp_en_s<='0';
 sel_cwp<="00";
