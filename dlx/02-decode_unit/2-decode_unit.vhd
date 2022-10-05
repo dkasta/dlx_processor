@@ -10,6 +10,8 @@ entity decode_unit is
        	   	write_enable: 		    in std_logic;
             rd1_enable:           in std_logic;
             rd2_enable:           in std_logic;
+            call:                 in std_logic; --call to a subroutine
+            ret:                  in std_logic; --return to a subroutine
             EN2:                  in std_logic;
             in_IR:    			      in std_logic_vector(numbit-1 downto 0);
        	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
@@ -58,9 +60,8 @@ architecture structural of decode_unit is
               out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
               out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
 
-              -- Other I/O not important for now
-              --CALL:       IN std_logic;
-              --RET:        IN std_logic;
+              call:       IN std_logic;
+              ret:        IN std_logic;
               --FILL:       OUT std_logic; -- POP towards memory
               --SPILL:      OUT std_logic; -- PUSH towards memory
 
@@ -132,7 +133,7 @@ architecture structural of decode_unit is
   --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
   RF: wrf
     generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,windowsbit=>2,numreg_inlocout=>8, numreg_global=>8,num_windows=> 4)
-    port( clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,in_mem=>inmem);
+    port(call=>call,ret=>ret,clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,in_mem=>inmem);
   
     REG_A : REGISTER_GENERIC
   generic map(numbit)
