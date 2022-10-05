@@ -119,7 +119,6 @@ signal curr_cwp,next_cwp,curr_swp,next_swp: std_logic_vector(windowsbit-1 downto
 signal address_mem_s: std_logic_vector(2*numreg_inlocout-1 downto 0); 
 signal enable_regs: std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0);
 signal tot_regs: std_logic_vector(numBit_data*2*numreg_inlocout*num_windows-1 downto 0); 
-signal global_reg: std_logic_vector(numBit_data*numreg_global-1 downto 0);
 signal swp_en_s: std_logic; --TODO capire come fare enable 1 from memory 0 from input
 signal input_mux_rd: std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0);
 signal sel_cwp,sel_swp:std_logic_vector(1 downto 0);--TODO
@@ -128,7 +127,7 @@ begin
 dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> 2,numreg_global=>8,numreg_inlocout=>8,num_windows=> 4)
         port map(clk=>clk,rst=>rst,wr=>wr,rw1=>rw1,cwp=>curr_cwp,swp=>curr_swp,address_mem=>address_mem_s,enable_reg=>enable_regs);
 phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global=>8,numreg_inlocout=>8,num_windows=> 4)	         
-        port map(  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>global_reg,swp_en=>swp_en_s);
+        port map(  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>swp_en_s);
 sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>8,windowsbit=>2,num_windows=> 4)
         port map(tot_reg=>tot_regs,curr_win=>curr_cwp,out_reg=>input_mux_rd(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto numBit_data*numreg_global ));
 muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
