@@ -64,6 +64,7 @@ architecture structural of datapath is
 
   signal rdoutwbsignal : std_logic_vector(4 downto 0);
   signal wbstageoutsignal : std_logic_vector(numbit - 1 downto 0);
+  signal enable_PC_signal : std_logic;
 
   signal aluforwardingonesignal : std_logic;
   signal aluforwardingtwosignal : std_logic;
@@ -74,10 +75,10 @@ architecture structural of datapath is
 
   component fetch_unit
   generic( numbit : integer := BIT_RISC);
-  port(   program_counter: in std_logic_vector(numbit-1 downto 0);
-       	  to_IR:		       in std_logic_vector(numbit-1 downto 0);
+  port(   to_IR:		       in std_logic_vector(numbit-1 downto 0);
        	  clk:			       in std_logic;
        	  rst:	 	  	     in std_logic;
+          enable_PC        in std_logic;
        	  to_IRAM:     	   out std_logic_vector(numbit - 1 downto 0);
        	  npc_out:		     out std_logic_vector(numbit-1 downto 0);
        	  instr_reg_out:   out std_logic_vector(numbit-1 downto 0);
@@ -187,10 +188,10 @@ end component;
 
     FETCH : FETCH_STAGE
     generic map(numbit)
-    port map(program_counter => npcoutbpusignal, 
-             to_IR => to_ir, 
+    port map(to_IR => to_ir, 
              clk => clk, 
              rst => reset, 
+             enable_PC => enable_PC_signal,
              to_IRAM => to_iram, 
              npc_out => npcoutifsignal, 
              instr_reg_out => iroutsignal, 
