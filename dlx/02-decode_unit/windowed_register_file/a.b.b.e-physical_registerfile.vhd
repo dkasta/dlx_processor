@@ -43,13 +43,13 @@ architecture structural of physical_register_file is
     GLOBAL_BLOCK: for i in 0 to numreg_global-1 generate
       GLOB_REG:  register_generic generic map(NBIT=>numBit_data) port map(D=>Data_in1,CK=>clk,EN=>en(i),RESET=>rst,Q=>Data_out_global((i+1)*numBit_data-1 downto i*numBit_data));
     end generate GLOBAL_BLOCK;
-    MUX_REG: for i in numreg_global to ((numreg_global + (numreg_inlocout*2)*num_windows)-1) generate
+    MUX: for i in 0 to num_windows-1 generate
       --generate of the mux for the input and local block, generate it each time there is a new block input
-        MUX: if((i-numreg_global)mod 2*numreg_inlocout = 0) generate
-          MUX_I: MUX21_GENERIC generic map( NBIT=>numBit_data) port map(A=>Data_in1,B=>Data_in2,SEL=>swp_en,Y=>bus_data_register((i-numreg_global)/2*numreg_inlocout));
-        end generate MUX;
+          MUX_I: MUX21_GENERIC generic map( NBIT=>numBit_data) port map(A=>Data_in1,B=>Data_in2,SEL=>swp_en,Y=>bus_data_register(i));
+    end generate MUX;
+    REG: for i in 0 to 2*numreg_inlocout*num_windows-1 generate
       -- generate each register for the physical register file
-        REG: register_generic generic map(NBIT=>numBit_data) port map(D=>bus_data_register((i-numreg_global)/2*numreg_inlocout),CK=>clk,EN=>en(i),RESET=>rst,Q=>Data_out_reg((i-numreg_global+1)*numBit_data-1 downto (i-numreg_global)*numBit_data));
-    end generate MUX_REG;
+       REG_I:register_generic generic map(NBIT=>numBit_data) port map(D=>bus_data_register(i/(2*numreg_inlocout)),CK=>clk,EN=>en(i+numreg_global),RESET=>rst,Q=>Data_out_reg(numBit_data*(i+1)-1 downto numBit_data*i));
+    end generate REG;
 	
    end structural;

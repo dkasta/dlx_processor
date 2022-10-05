@@ -14,11 +14,11 @@ begin
     process(curr,sel)
     begin
         case sel is
-            when "01" => if(curr = (others=>'1')) then 
+            when "01" => if(curr = (windowsbit-1 downto 0 =>'0')) then 
                             nex<=(others=>'0');
                          else nex<= curr+1; --curr+1 
                          end if;
-            when "10" => if(curr = (others=>'0')) then 
+            when "10" => if(curr = (windowsbit-1 downto 0 =>'0')) then 
                             nex<=(others=>'1');
                          else nex<= curr-1; --curr-1 
                          end if;
