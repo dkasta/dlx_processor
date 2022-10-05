@@ -9,7 +9,7 @@ set asm_root "../../assembly"
 
 ########################################################################################################################################
 #Name			:compile_directory
-#Description 	:questaSim tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for later simulation.
+#Description 		:questaSim tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for later simulation.
 #Arguments		:main_directory(optional)			- name of the main directory containing files to be analyzed (default).
 #				:file_extension(optional)   		- extension of the files to be analyzed (vhdl or verilog) (default is vhdl).
 #Outputs		:none		
@@ -28,7 +28,7 @@ proc compile_directory {{main_directory "./"} {file_extension "vhd"}} {
 
 ########################################################################################################################################
 #Name			:simulate_alu
-#Description 	:questaSim tcl script to to test the dlx with custom .asm files. It converts the incoming assembly test file into the corrispondent .mem file.
+#Description 		:questaSim tcl script to to test the dlx with custom .asm files. It converts the incoming assembly test file into the corrispondent .mem file.
 #Arguments		:asm_file (optional): name of the .asm file to be converted in .mem file by the dlxasm (default is example.asm).
 #				:run_time (optional): duration time of the simulation (default is 100 ns).
 #Outputs		:none		
