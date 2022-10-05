@@ -132,7 +132,8 @@ architecture structural of decode_unit is
   RF: wrf
     generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,windowsbit=>2,numreg_inlocout=>8, numreg_global=>8,num_windows=> 4)
     port( clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,in_mem=>inmem);
-  REG_A : REGISTER_GENERIC
+  
+    REG_A : REGISTER_GENERIC
   generic map(numbit)
   port map( D => RF_ONE_OUT,
             CK => clk,
