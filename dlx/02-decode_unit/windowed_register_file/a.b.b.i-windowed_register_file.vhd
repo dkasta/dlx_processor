@@ -26,14 +26,11 @@ entity wrf is
         --RAM_READY:  IN std_logic;
         out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
 	    out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-
-        -- Other I/O
-        --CALL:       IN std_logic;
-        --RET:        IN std_logic;
+        call:       IN std_logic; -- 1 if there is a call to another subroutine
+        ret:        IN std_logic; --1 if there is a retur to another subroutine
         --FILL:       OUT std_logic; -- POP towards memory
         --SPILL:      OUT std_logic; -- PUSH towards memory
-
-        -- TO MEMORY
+                -- TO MEMORY
         out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
         in_mem:  IN std_logic_vector(numBit_data - 1 downto 0)
 
@@ -123,6 +120,7 @@ signal tot_regs: std_logic_vector(numBit_data*2*numreg_inlocout*num_windows-1 do
 signal swp_en_s: std_logic; --TODO capire come fare enable 1 from memory 0 from input
 signal input_mux_rd: std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0);
 signal sel_cwp,sel_swp:std_logic_vector(1 downto 0);--TODO
+signal done_spill,done_fill: std_logic;
 begin
 
 dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> 2,numreg_global=>8,numreg_inlocout=>8,num_windows=> 4)
@@ -131,16 +129,30 @@ phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global
         port map(  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>swp_en_s);
 sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>8,windowsbit=>2,num_windows=> 4)
         port map(tot_reg=>tot_regs,curr_win=>curr_cwp,out_reg=>input_mux_rd(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto numBit_data*numreg_global ));
-muxout1: mux_out generic map(en=>rd1_enable,numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
-        port map(add_read=>ADD_RD1,out_reg=>out_reg_1,in_reg=>input_mux_rd);
-muxout2: mux_out generic map(en=>rd2_enable,numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
-        port map(add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd);
+muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
+        port map(en=>rd1,add_read=>ADD_RD1,out_reg=>out_reg_1,in_reg=>input_mux_rd);
+muxout2: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
+        port map(en=>rd2,add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd);
 next_cwp_m: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_cwp,nex=>next_cwp,sel=>sel_cwp);
-cwp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>next_cwp);
+cwp: register_generic generic map (NBIT => windowsbit) port map(D=>next_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_cwp);
 next_swp_m: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_swp,nex=>next_swp,sel=>sel_swp);
 swp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_swp,CK=>clk,EN=>'1',RESET=>rst,Q=>next_swp);
 --TODO
 swp_en_s<='0';
-sel_cwp<="00";
+done_fill<='0';
+done_spill<='0';
+--00 or 11 in the cwp/swp needs to be stable, 01 when there is a call curr+1, 10 when there is a return curr-1
+change_cwp: process(call,ret,curr_cwp,curr_swp,done_fill,done_spill)
+            begin
+                if((call='1' and to_integer(unsigned(curr_cwp))+2/=to_integer(unsigned(curr_swp))) or done_spill='1') then 
+                -- se viene chiamata una nuova subroutine e c'è spazio nel registro oppure lo spill è stato fatto allora cwp può incrementare
+                    sel_cwp<="01";
+                elsif((ret='1' and curr_cwp/=curr_swp) or done_fill='1') then 
+                -- se c'è un return nelle subroutine e i registri sono già caricati nel registro o sono già stati ristabiliti allora diminuisci il cwp
+                    sel_cwp<="10"; 
+                else 
+                    sel_cwp<="00";          
+                end if;
+            end process; 
 sel_swp<="00";
 end structural;
