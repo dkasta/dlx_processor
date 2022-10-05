@@ -11,6 +11,7 @@ generic(
          numreg_global: integer:=8 --number of register in the global block
 	     ); 
     port(
+        en:         in std_logic;
         add_read:   in std_logic_vector(numBit_address-1 downto 0);
         out_reg:    out std_logic_vector(numBit_data-1 downto 0); 
         in_reg:     in std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0) 
@@ -33,9 +34,11 @@ begin
         end loop;
     end process;
     --select register
-    process(add_read)
+    process(add_read,en)
     begin
-        out_reg<=reg(to_integer(unsigned(add_read)));
+        if(en='1')then
+            out_reg<=reg(to_integer(unsigned(add_read)));
+        end if;
     end process;
 
 end beh;
