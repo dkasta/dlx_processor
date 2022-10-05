@@ -10,6 +10,7 @@ entity decode_unit is
        	   	write_enable: 		    in std_logic;
             rd1_enable:           in std_logic;
             rd2_enable:           in std_logic;
+            EN2:                  in std_logic;
             in_IR:    			      in std_logic_vector(numbit-1 downto 0);
        	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
@@ -31,21 +32,7 @@ architecture structural of decode_unit is
 
 
 
-     --component register_file
-     --  generic(numBit_data:        integer := NumBitData;
-	   --       numBit_address:     integer := NumBitAddress;
-	   --       numBit_registers:   integer := NumBitRegisterFile);
-     --  port(   CK:	             in std_logic;
-     --         Reset:            in std_logic;
-     --          Write_enable:     in std_logic;
-     --          Write_address:    in std_logic_vector(numBit_address-1 downto 0);
-     --          Read_one_address: in std_logic_vector(numBit_address-1 downto 0);
-     --          Read_two_address: in std_logic_vector(numBit_address-1 downto 0);
-     --          Data_in:          in std_logic_vector(numBit_data-1 downto 0);
-     --          Data_one_out:     out std_logic_vector(numBit_data-1 downto 0);
-     --          Data_two_out:     out std_logic_vector(numBit_data-1 downto 0));
-     --end component;
-     entity wrf is
+     component wrf is
           generic(
               numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
               numBit_data: integer := NumBitData; -- numero di bit dei registri
@@ -80,16 +67,16 @@ architecture structural of decode_unit is
               in_mem:  IN std_logic_vector(numBit_data - 1 downto 0)
 
           );
-      end wrf;
+      end component;
 
       component register_generic is
         generic (NBIT : integer := Bit_Register);
-            port(   D:     in std_logic_vector(NBIT-1 downto 0);
-                    CK:    in std_logic;
-                    EN:    in std_logic;
-                    RESET: in std_logic;
-                    Q:     out std_logic_vector(NBIT-1 downto 0));
-      end ;
+            port(   D:      in std_logic_vector(NBIT-1 downto 0);
+                    CK:     in std_logic;
+                    RESET:  in std_logic;
+                    ENABLE: in std_logic;
+                    Q:      out std_logic_vector(NBIT-1 downto 0));
+      end component;
 
      component SIGN_EXTENTION
        port(   D: in std_logic_vector(15 downto 0);
@@ -150,7 +137,7 @@ architecture structural of decode_unit is
   port map( D => RF_ONE_OUT,
             CK => clk,
             RESET => rst, 
-            ENABLE => EN2, 
+            ENABLE => rd1_enable, 
             Q => A_REG_OUT);
 
   REG_B : REGISTER_GENERIC
@@ -158,7 +145,7 @@ architecture structural of decode_unit is
   port map( D => RF_TWO_OUT,
             CK => clk,
             RESET => rst, 
-            ENABLE => EN2,
+            ENABLE => rd2_enable,
             Q => B_REG_OUT);
 
   IMMREG : REGISTER_GENERIC
