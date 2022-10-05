@@ -7,9 +7,10 @@ entity decode_unit is
   generic( numbit: integer := BIT_RISC);
   	 port( 	clk: 			            in std_logic;
            	rst: 			            in std_logic;
-       	   	write_enable: 		    in std_logic;
-            rd1_enable            in std_logic;
-            rd2_enable            in std_logic;
+       	   	write_enable: 		    in std_logic; -- Enable write port
+            rd1_enable:           in std_logic; -- Enable read port 1
+            rd2_enable:           in std_logic; -- Enable read port 2
+            EN2:                  in std_logic; -- Enable Register file and Pipeline registers
             in_IR:    			      in std_logic_vector(numbit-1 downto 0);
        	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
@@ -48,10 +49,11 @@ architecture structural of decode_unit is
 
      component register_generic
        generic(NBIT:  integer := Bit_Register);
-  	  port( D:    in std_logic_vector(NBIT-1 downto 0);
-       	    CK:   in std_logic;
-       	    ESET: in std_logic;
-     	      Q:    out std_logic_vector(NBIT-1 downto 0));
+  	  port( D:      in std_logic_vector(NBIT-1 downto 0);
+       	    CK:     in std_logic;
+       	    RESET:  in std_logic;
+            ENABLE: in std_logic;
+     	      Q:      out std_logic_vector(NBIT-1 downto 0));
      end component;
 
      component SIGN_EXTENTION
@@ -100,7 +102,8 @@ architecture structural of decode_unit is
   begin
 
   SIGN_REG : SIGN_EXTENTION
-  port map(in_IR(15 downto 0),sign_extention_signal);
+  port map( D => in_IR(15 downto 0),
+            Q => sign_extention_signal);
 
   RF : REGISTER_FILE
   generic map(numbit,5,numbit)
@@ -108,28 +111,48 @@ architecture structural of decode_unit is
 
   REG_A : REGISTER_GENERIC
   generic map(numbit)
-  port map(RF_ONE_OUT,clk,rst,A_REG_OUT);
+  port map( D => RF_ONE_OUT,
+            CK => clk,
+            RESET => rst, 
+            ENABLE => EN2, 
+            Q => A_REG_OUT);
 
   REG_B : REGISTER_GENERIC
   generic map(numbit)
-  port map(RF_TWO_OUT,clk,rst,B_REG_OUT);
+  port map( D => RF_TWO_OUT,
+            CK => clk,
+            RESET => rst, 
+            ENABLE => EN2,
+            Q => B_REG_OUT);
 
   IMMREG : REGISTER_GENERIC
   generic map(numbit)
-  port map(sign_extention_signal,clk,rst,IMM_REG_OUT);
+  port map( D => sign_extention_signal,
+            CK => clk,
+            RESET => rst, 
+            ENABLE => EN2,
+            Q => IMM_REG_OUT);
 
   npc_latch_out <= NPC_IN;
 
   NPC_REG : REGISTER_GENERIC
   generic map(numbit)
-  port map(npc_latch_out,clk,rst,NPC_OUT);
+  port map( D => npc_latch_out,
+            CK => clk,
+            RESET => rst, 
+            ENABLE => EN2,
+            Q => NPC_OUT);
 
   RDMUX_MUX : RDMUX
   port map(in_IR(15 downto 11),in_IR(20 downto 16),in_IR(31 downto 26),rdmux_out);
 
   RD_REG : REGISTER_GENERIC
   generic map(5)
-  port map(rdmux_out,clk,rst,RD_OUT);
+  port map( D => rdmux_out,
+            CK => clk,
+            RESET => rst, 
+            ENABLE => EN2,
+            Q => RD_OUT);
 
   HAZARD : HAZARD_DETECTION
   port map(clk,rst,instr_fetched(31 downto 26),instr_fetched(20 downto 16),instr_fetched(15 downto 11),instr_fetched(25 downto 21),instr_fetched(20 downto 16),alu_forwarding_one,mem_forwarding_one,alu_forwarding_two,mem_forwarding_two,open);
