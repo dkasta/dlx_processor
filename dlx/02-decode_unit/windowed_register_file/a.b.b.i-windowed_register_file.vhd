@@ -102,6 +102,7 @@ generic(
          numreg_global: integer:=8 --number of register in the global block
 	     ); 
     port(
+        en:         in std_logic;
         add_read:   in std_logic_vector(numBit_address-1 downto 0);
         out_reg:    out std_logic_vector(numBit_data-1 downto 0); 
         in_reg:     in std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0) 
@@ -130,9 +131,9 @@ phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global
         port map(  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>swp_en_s);
 sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>8,windowsbit=>2,num_windows=> 4)
         port map(tot_reg=>tot_regs,curr_win=>curr_cwp,out_reg=>input_mux_rd(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto numBit_data*numreg_global ));
-muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
+muxout1: mux_out generic map(en=>rd1_enable,numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
         port map(add_read=>ADD_RD1,out_reg=>out_reg_1,in_reg=>input_mux_rd);
-muxout2: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
+muxout2: mux_out generic map(en=>rd2_enable,numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>8,numreg_global=>8 ) 
         port map(add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd);
 next_cwp_m: cwp_swp generic map(windowsbit=>2) port map (curr=>curr_cwp,nex=>next_cwp,sel=>sel_cwp);
 cwp: register_generic generic map (NBIT => windowsbit) port map(D=>curr_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>next_cwp);
