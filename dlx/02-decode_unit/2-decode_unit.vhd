@@ -25,6 +25,8 @@ entity decode_unit is
        	   	alu_forwarding_one:   out std_logic;
     		    mem_forwarding_one:   out std_logic;
        		  alu_forwarding_two:   out std_logic;
+            outmem:               out std_logic_vector(31 downto 0); --to dram wrf
+            inmem:                in std_logic_vector(31 downto 0); --from dram wrf
        	  	mem_forwarding_two:   out std_logic);
 end decode_unit;
 
@@ -125,7 +127,6 @@ architecture structural of decode_unit is
 
   SIGN_REG : SIGN_EXTENTION
   port map(in_IR(15 downto 0),sign_extention_signal);
-  signal outmem,inmem: std_logic_vector(31 downto 0);
   --RF : REGISTER_FILE
   --generic map(numbit,5,numbit)
   --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
