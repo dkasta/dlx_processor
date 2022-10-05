@@ -7,14 +7,10 @@ entity decode_unit is
   generic( numbit: integer := BIT_RISC);
   	 port( 	clk: 			            in std_logic;
            	rst: 			            in std_logic;
-<<<<<<< HEAD
        	   	write_enable: 		    in std_logic; -- Enable write port
             rd1_enable:           in std_logic; -- Enable read port 1
             rd2_enable:           in std_logic; -- Enable read port 2
             EN2:                  in std_logic; -- Enable Register file and Pipeline registers
-=======
-       	   	write_enable: 		    in std_logic;
->>>>>>> 7ac472e5cfe7a044ff5c31ad68e2e557f09a73ff
             in_IR:    			      in std_logic_vector(numbit-1 downto 0);
        	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
