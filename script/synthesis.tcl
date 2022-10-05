@@ -41,7 +41,7 @@ proc analyze_directory {{main_directory "./"} {file_extension "vhdl"}} {
 }
 
 
-####################################################################
+########################################################################################################################################
 #Name				:synthesize_dual_vth
 #Description 			:design_compiler tcl script to perform a duoble voltage threshold synthesis.
 #Arguments			:top_entity (optional): name of the top level entity to be synthesized (default is dlx).
@@ -51,7 +51,7 @@ proc analyze_directory {{main_directory "./"} {file_extension "vhdl"}} {
 #Outputs			:postsynthesis netlist
 #				:sdc file
 #				:reports for timing, power, area, threshold voltage group and clock gating		
-####################################################################
+########################################################################################################################################
 proc synthesize_dual_vth {{top_entity "dlx"} {time_constraint 2} {low_Vth_Library "CORE65LPLVT"} {high_Vth_Library "CORE65LPHVT"}} {
 	
 	# Create folders
@@ -109,7 +109,7 @@ proc synthesize_dual_vth {{top_entity "dlx"} {time_constraint 2} {low_Vth_Librar
 }
 
 
-####################################################################
+########################################################################################################################################
 #Name				:synthesize
 #Description 			:design_compiler tcl script to perform a standard synthesis.
 #Arguments			:top_entity (optional): name of the top level entity to be synthesized (default is dlx).
@@ -118,7 +118,7 @@ proc synthesize_dual_vth {{top_entity "dlx"} {time_constraint 2} {low_Vth_Librar
 #Outputs			:postsynthesis netlist
 #				:sdc file
 #				:reports for timing, power, area and clock gating		
-####################################################################
+########################################################################################################################################
 proc synthesize {{top_entity "dlx"} {time_constraint 2} {wire_load_model "5K_hvratio_1_4"}} {
 
 	# Create folders
