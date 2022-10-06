@@ -4,12 +4,12 @@ use ieee.numeric_std.all;
 use WORK.globals.all;
 
 
-entity sign_extender is
+entity SIGN_EXTENTION is
     port (data_in : in std_logic_vector(BIT_RISC_no_ext-1 downto 0);
           data_out : out std_logic_vector(BIT_RISC-1 downto 0));
-end sign_extender;
+end SIGN_EXTENTION;
 
-architecture BEHAVIOURAL of sign_extender is
+architecture BEHAVIOURAL of SIGN_EXTENTION is
 begin
 
     proc: process(data_in)
