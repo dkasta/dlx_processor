@@ -14,7 +14,7 @@ begin
     process(curr,sel)
     begin
         case sel is
-            when "01" => if(curr = (windowsbit-1 downto 0 =>'0')) then 
+            when "01" => if(curr = (windowsbit-1 downto 0 =>'1')) then 
                             nex<=(others=>'0');
                          else nex<= curr+1; --curr+1 
                          end if;
