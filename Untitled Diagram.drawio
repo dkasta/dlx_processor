@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-06T17:46:09.189Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="HToNhGSrhvzb9JYLawwY" version="20.4.0" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2022-10-06T19:41:49.287Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="kctkPd7GeUKWFCFHiQQI" version="20.4.0" type="github" pages="3">
   <diagram id="4a7-2WE8xKxB6OBSDGvC" name="Fetch Unit">
-    <mxGraphModel dx="1225" dy="826" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1546" dy="991" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -699,10 +699,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="utCcnjPkZvuDGFTa14uh-122" value="A_REG_OUT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
-          <mxGeometry x="750" y="450" width="60" height="20" as="geometry" />
+          <mxGeometry x="750" y="447.5" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="utCcnjPkZvuDGFTa14uh-123" value="B_REG_OUT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
-          <mxGeometry x="740" y="543.75" width="50" height="20" as="geometry" />
+          <mxGeometry x="750" y="543.75" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="utCcnjPkZvuDGFTa14uh-124" value="RD_OUT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
           <mxGeometry x="740" y="650" width="60" height="20" as="geometry" />
