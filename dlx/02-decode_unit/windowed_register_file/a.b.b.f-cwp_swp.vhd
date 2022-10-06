@@ -4,7 +4,7 @@ use IEEE.std_logic_unsigned.all;
 use IEEE.numeric_std.all;
 use WORK.globals.all;
 entity cwp_swp is
-generic(windowsbit: integer:=2); -- bit of input of each port of the mux
+generic(windowsbit: integer:=Windows_Bit); -- bit of input of each port of the mux
     port(curr: in std_logic_vector(windowsbit-1 downto 0);
          nex: out std_logic_vector(windowsbit-1 downto 0);
          sel: in std_logic_vector(1 downto 0));

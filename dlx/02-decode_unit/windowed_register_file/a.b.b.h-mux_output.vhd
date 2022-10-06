@@ -7,8 +7,8 @@ entity mux_out is
 generic(
          numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
          numBit_data: integer := NumBitData; -- numero di bit dei registri
-         numreg_inlocout: integer:=8; --number of register in each block in local out
-         numreg_global: integer:=8 --number of register in the global block
+         numreg_inlocout: integer:=Numreg_IN_LOC_OUT; --number of register in each block in local out
+         numreg_global: integer:=Numreg_g --number of register in the global block
 	     ); 
     port(
         en:         in std_logic;

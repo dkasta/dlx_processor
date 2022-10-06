@@ -7,9 +7,10 @@ use WORK.globals.all;
 
 entity physical_register_file is
   generic( numBit_data: integer := NumBitData; -- numero di bit dei registri
-	         numreg_global: integer:=8; --number of register in the global block
-           numreg_inlocout: integer:=8; --number of register in each block in local out
-	         num_windows: integer:= 4); --number of total windows
+	          windowsbit: integer:=Windows_Bit;
+            numreg_inlocout: integer:=Numreg_IN_LOC_OUT; --number of register in each block in local out
+            numreg_global: integer:=Numreg_g; --number of register in the global block
+            num_windows: integer:= tot_windows); --number of total windows
 	         
   port (  clk:              in std_logic;
           rst:              in std_logic;
@@ -18,7 +19,7 @@ entity physical_register_file is
           Data_in2:         in std_logic_vector(numBit_data-1 downto 0); --data from the memory
           Data_out_reg:	    out std_logic_vector(numBit_data*2*numreg_inlocout*num_windows-1 downto 0); 
           Data_out_global:  out std_logic_vector(numBit_data*numreg_global-1 downto 0);
-          swp_en:           in std_logic); --enable for the mux (choose if the data come from the memory or the cu)
+          swp_en:           in std_logic_vector(windowsbit-1 downto 0)); --enable for the mux (choose if the data come from the memory or the cu)
 end physical_register_file;
 
 architecture structural of physical_register_file is
@@ -45,7 +46,7 @@ architecture structural of physical_register_file is
     end generate GLOBAL_BLOCK;
     MUX: for i in 0 to num_windows-1 generate
       --generate of the mux for the input and local block, generate it each time there is a new block input
-          MUX_I: MUX21_GENERIC generic map( NBIT=>numBit_data) port map(A=>Data_in1,B=>Data_in2,SEL=>swp_en,Y=>bus_data_register(i));
+          MUX_I: MUX21_GENERIC generic map( NBIT=>numBit_data) port map(A=>Data_in1,B=>Data_in2,SEL=>(to_integer(unsigned(swp_en))= i? 1,0),Y=>bus_data_register(i));
     end generate MUX;
     REG: for i in 0 to 2*numreg_inlocout*num_windows-1 generate
       -- generate each register for the physical register file

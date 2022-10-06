@@ -5,9 +5,9 @@ use IEEE.numeric_std.all;
 use WORK.globals.all;
 entity sel_block is
 generic( numBit_data: integer := NumBitData; -- numero di bit dei registri
-         numreg_inlocout: integer:=8; --number of register in each block in local out
-         windowsbit: integer:=2; 
-	     num_windows: integer:= 4); --number of total windows
+          windowsbit: integer:=Windows_Bit;
+         numreg_inlocout: integer:=Numreg_IN_LOC_OUT; --number of register in each block in local out
+	     num_windows: integer:= tot_windows); --number of total windows
     port(
         tot_reg:    in std_logic_vector(numBit_data*2*numreg_inlocout*num_windows-1 downto 0); -- all 0 first register (first windows)
         curr_win:   in std_logic_vector(windowsbit-1 downto 0);

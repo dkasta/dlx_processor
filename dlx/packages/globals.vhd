@@ -27,6 +27,10 @@ package globals is
 	constant NumBitData : integer := 32;
 	--constant NumBitRegisterFile : integer := 32;
 	constant NumBitAddress : integer := 5;
+	constant Windows_Bit: integer:= 2;
+	constant Numreg_IN_LOC_OUT: integer:=8;
+	constant Numreg_g: integer:=8;
+	constant tot_windows: integer:=4;
 	------------adder/sub----------------------
 	constant NumBitAdderSub : integer := 32;
 	-------------p4 adder----------------------
