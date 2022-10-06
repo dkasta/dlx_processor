@@ -15,6 +15,10 @@ architecture COMPOR of encoder is
 begin
 	process(sel)
 	begin
+        if(sel = (others => '0'))then
+            s   <=(others => '0');	  
+        else  
         S<=(to_integer(unsigned(sel)) =>'1', others=>'0');
+        end if;
 	end process;
 end COMPOR;
