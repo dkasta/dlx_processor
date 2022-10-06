@@ -10,7 +10,7 @@ set asm_root "../../assembly"
 ########################################################################################################################################
 #Name			:compile_directory
 #Description 		:questaSim tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for later simulation.
-#Arguments		:main_directory(optional): name of the main directory containing files to be analyzed (default).
+#Arguments		:main_directory(optional): name of the main directory containing files to be analyzed (default is \.).
 #			:file_extension(optional): extension of the files to be analyzed (vhdl or verilog) (default is vhdl).
 #Outputs		:none		
 ########################################################################################################################################
