@@ -37,40 +37,46 @@ architecture structural of decode_unit is
 
 
      component wrf is
-          generic(
-              numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
-              numBit_data: integer := NumBitData; -- numero di bit dei registri
-              windowsbit: integer:=2;
-              numreg_inlocout: integer:=8; --number of register in each block in local out
-              numreg_global: integer:=8; --number of register in the global block
-              num_windows: integer:= 4); --number of total windows
-          port( 
-              
-              -- to external
-              clk: 		IN std_logic;
-              rst: 	    IN std_logic;
-              rd1: 		IN std_logic;
-              rd2: 		IN std_logic;
-              WR: 		IN std_logic;
-              rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
-              ADD_RD1: 	IN std_logic_vector(numBit_address - 1 downto 0);
-              ADD_RD2: 	IN std_logic_vector(numBit_address - 1 downto 0);
-              DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
-              --RAM_READY:  IN std_logic;
-              out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-              out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+        generic(
+            numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
+            numBit_data: integer := NumBitData; -- numero di bit dei registri
+            windowsbit: integer:=Windows_Bit;
+            numreg_inlocout: integer:=Numreg_IN_LOC_OUT; --number of register in each block in local out
+            numreg_global: integer:=Numreg_g; --number of register in the global block
+            num_windows: integer:= tot_windows); --number of total windows
+        port( 
+            
+            -- to external
+            clk: 		IN std_logic;
+            rst: 	    IN std_logic;
 
-              call:       IN std_logic;
-              ret:        IN std_logic;
-              --FILL:       OUT std_logic; -- POP towards memory
-              --SPILL:      OUT std_logic; -- PUSH towards memory
+            --control signals
 
-              -- TO MEMORY
-              out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
-              in_mem:  IN std_logic_vector(numBit_data - 1 downto 0)
+            rd1: 		    IN std_logic;
+            rd2: 		    IN std_logic;
+            WR: 		    IN std_logic;
+            call:           IN std_logic; -- 1 if there is a call to another subroutine
+            ret:            IN std_logic; --1 if there is a retur to another subroutine
+            done_fill_cu:   IN std_logic;
+            done_spill_cu:  IN std_logic;
+            --address and data
 
-          );
-      end component;
+            rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
+            ADD_RD1: 	IN std_logic_vector(numBit_address - 1 downto 0);
+            ADD_RD2: 	IN std_logic_vector(numBit_address - 1 downto 0);
+            DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
+            out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+          out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+
+            -- for MEMORY
+            pop_mem:    OUT std_logic;
+            push_mem:   OUT std_logic;
+            out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
+            in_mem:  IN std_logic_vector(numBit_data - 1 downto 0);
+            RAM_READY:  IN std_logic;
+
+        );
+    end component;
 
       component register_generic is
         generic (NBIT : integer := Bit_Register);
@@ -123,7 +129,7 @@ architecture structural of decode_unit is
   signal RF_TWO_OUT : std_logic_vector(numbit-1 downto 0);
   signal rdmux_out : std_logic_vector(4 downto 0);
   signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
-
+  signal done_fill,done_spill,pop,push,ramr: std_logic
   begin
 
   SIGN_REG : SIGN_EXTENTION
@@ -132,9 +138,9 @@ architecture structural of decode_unit is
   --generic map(numbit,5,numbit)
   --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
   RF: wrf
-    generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,windowsbit=>2,numreg_inlocout=>8, numreg_global=>8,num_windows=> 4)
-    port(call=>call,ret=>ret,clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,in_mem=>inmem);
-  
+    generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,windowsbit=>Windows_Bit,numreg_inlocout=>Numreg_IN_LOC_OUT, numreg_global=>Numreg_g,num_windows=>  tot_windows))
+    port(call=>call,done_fill_cu=>done_fill,done_spill_cu=>done_spill,ret=>ret,clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,pop_mem=>pop,push_mem=>push,RAM_READY=>ramr,in_mem=>inmem);
+
     REG_A : REGISTER_GENERIC
   generic map(numbit)
   port map( D => RF_ONE_OUT,
