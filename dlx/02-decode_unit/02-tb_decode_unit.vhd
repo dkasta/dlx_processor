@@ -57,7 +57,7 @@ architecture behavioural of tb_decode_unit is
               NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
               A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
               B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
-              IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
+              IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0)
               --alu_forwarding_one:   out std_logic;
               --mem_forwarding_one:   out std_logic;
               --alu_forwarding_two:   out std_logic;
@@ -88,7 +88,7 @@ architecture behavioural of tb_decode_unit is
               NPC_OUT => NPC_OUT,
               A_REG_OUT => A_REG_OUT,
               B_REG_OUT => B_REG_OUT,
-              IMM_REG_OUT => IMM_REG_OUT,
+              IMM_REG_OUT => IMM_REG_OUT
               --alu_forwarding_one => ,
               --mem_forwarding_one => ,
               --alu_forwarding_two => ,
