@@ -18,17 +18,17 @@ entity address_counter is
     );
 end address_counter;
 
-architecture struct of address_generator is
+architecture struct of address_counter is
 
     signal curr_addr: std_logic_vector(N-1 downto 0);
     signal next_addr: std_logic_vector(N-1 downto 0);
 
 begin
 
-    process(curr_addr, enable)
+    process(curr_addr, en)
     begin
-        if (enable = '1' or (to_integer(unsigned(curr_addr)) < (N-1 downto 0=>'1'))) then
-            next_addr <= std_logic_vector(unsigned(curr_addr))+1);
+        if (en = '1' or (curr_addr /= (N-1 downto 0=>'1'))) then
+            next_addr <= std_logic_vector(unsigned(curr_addr)+1);
         end if;
 
     end process;
@@ -48,7 +48,7 @@ begin
     addr <= curr_addr;
     process(curr_addr)
     begin
-        if (to_integer(unsigned(curr_addr)) < (N-1 downto 0=>'1')) then
+        if (curr_addr /= (N-1 downto 0=>'1')) then
             occupied<='1';
             done<='0';
         else

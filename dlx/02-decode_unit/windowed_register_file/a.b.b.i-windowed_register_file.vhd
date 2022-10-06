@@ -7,10 +7,10 @@ entity wrf is
     generic(
          numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
          numBit_data: integer := NumBitData; -- numero di bit dei registri
-         windowsbit: integer:=Windows_Bit;
-         numreg_inlocout: integer:=Numreg_IN_LOC_OUT; --number of register in each block in local out
-         numreg_global: integer:=Numreg_g; --number of register in the global block
-        num_windows: integer:= tot_windows); --number of total windows
+         windowsbit: integer := Windows_Bit;
+         numreg_inlocout: integer := Numreg_IN_LOC_OUT; --number of register in each block in local out
+         numreg_global: integer := Numreg_g; --number of register in the global block
+        num_windows: integer := tot_windows); --number of total windows
     port( 
         
         -- to external
@@ -24,8 +24,8 @@ entity wrf is
         WR: 		    IN std_logic;
         call:           IN std_logic; -- 1 if there is a call to another subroutine
         ret:            IN std_logic; --1 if there is a retur to another subroutine
-        done_fill_cu:   IN std_logic;
-        done_spill_cu:  IN std_logic;
+        done_fill_cu:   out std_logic;
+        done_spill_cu:  out std_logic;
         --address and data
 
         rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
@@ -40,7 +40,7 @@ entity wrf is
         push_mem:   OUT std_logic;
         out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
         in_mem:  IN std_logic_vector(numBit_data - 1 downto 0);
-        RAM_READY:  IN std_logic;
+        RAM_READY:  IN std_logic
 
     );
 end wrf;
@@ -132,8 +132,9 @@ architecture structural of wrf is
             ready:  in std_logic;
             done:       out std_logic;
             occupied:    out std_logic;
-            address_mem: out std_logic_vector(2*numreg_inlocout-1 downto 0); 
+            address_mem: out std_logic_vector(2*numreg_inlocout-1 downto 0)
         );
+        end component;
     component address_counter is
         generic(
             N:          integer := numBit_address
@@ -147,7 +148,6 @@ architecture structural of wrf is
             occupied:    out std_logic;
             addr:       out std_logic_vector(N-1 downto 0)
         );
-    end component;
     end component;
     signal curr_cwp,next_cwp,curr_swp,next_swp,pop_and_swp: std_logic_vector(windowsbit-1 downto 0); 
     signal address_mem_s: std_logic_vector(2*numreg_inlocout-1 downto 0); 
@@ -175,8 +175,8 @@ architecture structural of wrf is
     cwp: register_generic generic map (NBIT => windowsbit) port map(D=>next_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_cwp);
     next_swp_m: cwp_swp generic map(windowsbit=>windowsbit) port map (curr=>curr_swp,nex=>next_swp,sel=>sel_swp);
     swp: register_generic generic map (NBIT => windowsbit) port map(D=>next_swp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_swp);
-    fill_generator: fill_enable_generator generic port(numreg_inlocout=>numreg_inlocout)
-        port(clk=>clk,rst=>rst,en=>pop,ready=>RAM_READY,done=>done_fill,occupied=>pop_not_finish,address_mem=>address_mem_s);
+    fill_generator: fill_enable_generator generic map(numreg_inlocout=>numreg_inlocout)
+        port map(clk=>clk,rst=>rst,en=>pop,ready=>RAM_READY,done=>done_fill,occupied=>pop_not_finish,address_mem=>address_mem_s);
     sel_spill: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)
             port map(tot_reg=>tot_regs,curr_win=>curr_swp,out_reg=>spill_regs);
     mux_spill: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>0 ) 
@@ -212,11 +212,25 @@ architecture structural of wrf is
     pop_and_swp<=curr_swp and (windowsbit-1 downto 0 => pop);
 
     --mantain the enable for the enable_generator
-    start_pop<=ret and (curr_cwp = curr_swp? '1', '0');
+    process(curr_cwp,curr_swp,ret)
+    begin
+        if(curr_cwp = curr_swp) then
+            start_pop<=ret and '1';
+        else
+            start_pop<='0';
+        end if;
+    end process;
     pop<=pop_not_finish or start_pop;
 
     -- push enable for the address counter
-    start_push<=call and (unsigned(curr_cwp)-unsigned(curr_swp) = "10"? '1','0');
+    process(curr_swp,curr_swp,call)
+    begin
+        if(unsigned(curr_cwp)- unsigned(curr_swp) = "10") then
+            start_push<=ret and '1';
+        else
+            start_push<='0';
+        end if;
+    end process;
     push<=push_not_finish or start_push;
     --to wrf_cu and mem
     done_fill_cu<=done_fill;

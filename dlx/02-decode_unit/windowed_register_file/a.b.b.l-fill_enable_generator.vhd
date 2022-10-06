@@ -14,21 +14,21 @@ entity fill_enable_generator is
         ready:  in std_logic;
         done:       out std_logic;
         occupied:    out std_logic;
-        address_mem: out std_logic_vector(2*numreg_inlocout-1 downto 0); 
+        address_mem: out std_logic_vector(2*numreg_inlocout-1 downto 0)
     );
 end fill_enable_generator;
 
-architecture beh of enable_generator is
+architecture beh of fill_enable_generator is
 
     signal curr_addr: std_logic_vector(2*numreg_inlocout-1 downto 0); 
     signal next_addr: std_logic_vector(2*numreg_inlocout-1 downto 0); 
 
 begin
 
-    process(curr_addr, enable)
+    process(curr_addr, en)
     begin
     --if enable is 1 to start and until the first enable is reached
-        if (enable = '1' or (curr_addr(0) = '0')) then
+        if (en = '1' or (curr_addr(0) = '0')) then
             next_addr <=curr_addr(0) & curr_addr(2*numreg_inlocout-1 downto 1) ;
         end if;
 
@@ -39,7 +39,7 @@ begin
         if (rising_edge(clk)) then
             if (rst = '1') then
                 curr_addr <= '1' & (2*numreg_inlocout-1 downto 1 =>'0');
-            elsif (ram_ready = '1') then
+            elsif (ready = '1') then
                 curr_addr <= next_addr;
             end if;
         end if;
