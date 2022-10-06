@@ -1,6 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use wotk.globals.all;
+use work.globals.all;
 use work.myTypes.all;
 
 entity decode_unit is
@@ -28,7 +28,7 @@ entity decode_unit is
     		    --mem_forwarding_one:   out std_logic;
        		  --alu_forwarding_two:   out std_logic;
             outmem:               out std_logic_vector(31 downto 0); --to dram wrf
-            inmem:                in std_logic_vector(31 downto 0); --from dram wrf
+            inmem:                in std_logic_vector(31 downto 0) --from dram wrf
        	  	--mem_forwarding_two:   out std_logic
             );
 end decode_unit;
@@ -58,8 +58,8 @@ architecture structural of decode_unit is
             WR: 		    IN std_logic;
             call:           IN std_logic; -- 1 if there is a call to another subroutine
             ret:            IN std_logic; --1 if there is a retur to another subroutine
-            done_fill_cu:   IN std_logic;
-            done_spill_cu:  IN std_logic;
+            done_fill_cu:   OUT std_logic;
+            done_spill_cu:  OUT std_logic;
             --address and data
 
             rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
@@ -74,7 +74,7 @@ architecture structural of decode_unit is
             push_mem:   OUT std_logic;
             out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
             in_mem:  IN std_logic_vector(numBit_data - 1 downto 0);
-            RAM_READY:  IN std_logic;
+            RAM_READY:  IN std_logic
 
         );
     end component;
@@ -130,7 +130,12 @@ architecture structural of decode_unit is
   signal RF_TWO_OUT : std_logic_vector(numbit-1 downto 0);
   signal rdmux_out : std_logic_vector(4 downto 0);
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
-  signal done_fill,done_spill,pop,push,ramr: std_logic
+  signal done_fill : std_logic;
+  signal done_spill: std_logic; 
+  signal pop: std_logic; 
+  signal push: std_logic;
+  signal ramr: std_logic;
+
   begin
 
   SIGN_REG : SIGN_EXTENTION
@@ -147,7 +152,7 @@ architecture structural of decode_unit is
                  numreg_inlocout => Numreg_IN_LOC_OUT, 
                  numreg_global => Numreg_g,
                  num_windows=>  tot_windows)
-    port( call => call,
+    port map( call => call,
           done_fill_cu => done_fill,
           done_spill_cu => done_spill,
           ret => ret,
