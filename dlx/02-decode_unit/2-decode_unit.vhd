@@ -18,18 +18,19 @@ entity decode_unit is
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
-       	   	NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
+       	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
        	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
-       	   	alu_forwarding_one:   out std_logic;
-    		    mem_forwarding_one:   out std_logic;
-       		  alu_forwarding_two:   out std_logic;
+       	   	--alu_forwarding_one:   out std_logic;
+    		    --mem_forwarding_one:   out std_logic;
+       		  --alu_forwarding_two:   out std_logic;
             outmem:               out std_logic_vector(31 downto 0); --to dram wrf
             inmem:                in std_logic_vector(31 downto 0); --from dram wrf
-       	  	mem_forwarding_two:   out std_logic);
+       	  	--mem_forwarding_two:   out std_logic
+            );
 end decode_unit;
 
 architecture structural of decode_unit is
@@ -66,7 +67,7 @@ architecture structural of decode_unit is
             ADD_RD2: 	IN std_logic_vector(numBit_address - 1 downto 0);
             DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
             out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-          out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+            out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
 
             -- for MEMORY
             pop_mem:    OUT std_logic;
@@ -99,36 +100,36 @@ architecture structural of decode_unit is
                rd_out:    out std_logic_vector(4 downto 0));
      end component;
 
-     component HAZARD_DETECTION
-       port(   clk:                in std_logic;
-               reset:              in std_logic;
-               OPCODE:             in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
-               RD_REG_IN_ITYPE:    in std_logic_vector(4 downto 0);
-               RD_REG_IN_RTYPE:    in std_logic_vector(4 downto 0);
-               RS1_REG_IN:         in std_logic_vector(4 downto 0);
-               RS2_REG_IN:         in std_logic_vector(4 downto 0);
-               alu_forwarding_one: out std_logic;
-               mem_forwarding_one: out std_logic;
-               alu_forwarding_two: out std_logic;
-               mem_forwarding_two: out std_logic;
-               RD_OUT:             out std_logic_vector(4 downto 0));
-     end component;
+     --component HAZARD_DETECTION
+     --  port(   clk:                in std_logic;
+     --          reset:              in std_logic;
+     --          OPCODE:             in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+     --          RD_REG_IN_ITYPE:    in std_logic_vector(4 downto 0);
+     --          RD_REG_IN_RTYPE:    in std_logic_vector(4 downto 0);
+     --          RS1_REG_IN:         in std_logic_vector(4 downto 0);
+     --          RS2_REG_IN:         in std_logic_vector(4 downto 0);
+     --          alu_forwarding_one: out std_logic;
+     --          mem_forwarding_one: out std_logic;
+     --          alu_forwarding_two: out std_logic;
+     --          mem_forwarding_two: out std_logic;
+     --          RD_OUT:             out std_logic_vector(4 downto 0));
+     --end component;
 
-     component BRANCHDECISIONUNIT
-       port(   OPCODE:       in std_logic_vector(5 downto 0);
-               JOFFSET_IN:   in std_logic_vector(25 downto 0);
-               BOFFSET_IN:   in std_logic_vector(15 downto 0);
-               NPC_IN:       in std_logic_vector(31 downto 0);
-               REG1_IN:      in std_logic_vector(31 downto 0);
-               REG2_IN:      in std_logic_vector(31 downto 0);
-               NPC_OUT:      out std_logic_vector(31 downto 0));
-     end component;
+     --component BRANCHDECISIONUNIT
+     --  port(   OPCODE:       in std_logic_vector(5 downto 0);
+     --          JOFFSET_IN:   in std_logic_vector(25 downto 0);
+     --          BOFFSET_IN:   in std_logic_vector(15 downto 0);
+     --          NPC_IN:       in std_logic_vector(31 downto 0);
+     --          REG1_IN:      in std_logic_vector(31 downto 0);
+     --          REG2_IN:      in std_logic_vector(31 downto 0);
+     --          NPC_OUT:      out std_logic_vector(31 downto 0));
+     --end component;
 
   signal sign_extention_signal : std_logic_vector(31 downto 0);
   signal RF_ONE_OUT : std_logic_vector(numbit-1 downto 0);
   signal RF_TWO_OUT : std_logic_vector(numbit-1 downto 0);
   signal rdmux_out : std_logic_vector(4 downto 0);
-  signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
+  --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
   signal done_fill,done_spill,pop,push,ramr: std_logic
   begin
 
@@ -137,16 +138,45 @@ architecture structural of decode_unit is
   --RF : REGISTER_FILE
   --generic map(numbit,5,numbit)
   --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
+  
+  
   RF: wrf
-    generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,windowsbit=>Windows_Bit,numreg_inlocout=>Numreg_IN_LOC_OUT, numreg_global=>Numreg_g,num_windows=>  tot_windows))
-    port(call=>call,done_fill_cu=>done_fill,done_spill_cu=>done_spill,ret=>ret,clk=>clk,rst=>rst,rd1=>rd1_enable,rd2=>rd2_enable,WR=>write_enable,rw1=>RD_IN,ADD_RD1=>in_IR(25 downto 21),ADD_RD2=>in_IR(20 downto 16),DATAIN=>WB_STAGE_IN,out_reg_1=>RF_ONE_OUT,out_reg_2=>RF_TWO_OUT,out_mem=>outmem,pop_mem=>pop,push_mem=>push,RAM_READY=>ramr,in_mem=>inmem);
+    generic map( numBit_address => NumBitAddress,
+                 numBit_data => NumBitData,
+                 windowsbit => Windows_Bit,
+                 numreg_inlocout => Numreg_IN_LOC_OUT, 
+                 numreg_global => Numreg_g,
+                 num_windows=>  tot_windows)
+    port( call => call,
+          done_fill_cu => done_fill,
+          done_spill_cu => done_spill,
+          ret => ret,
+          clk => clk,
+          rst => rst,
+          rd1 => rd1_enable,
+          rd2 => rd2_enable,
+          WR => write_enable,
+          rw1 => RD_IN,
+          ADD_RD1 => in_IR(25 downto 21),
+          ADD_RD2 => in_IR(20 downto 16),
+          DATAIN => WB_STAGE_IN,
+          out_reg_1 => RF_ONE_OUT,
+          out_reg_2 => RF_TWO_OUT,
+          out_mem => outmem,
+          pop_mem => pop,
+          push_mem => push,
+          RAM_READY => ramr,
+          in_mem => inmem
+          );
 
-    REG_A : REGISTER_GENERIC
+  
+  
+  REG_A : REGISTER_GENERIC
   generic map(numbit)
   port map( D => RF_ONE_OUT,
             CK => clk,
             RESET => rst, 
-            ENABLE => rd1_enable, 
+            ENABLE => EN2, 
             Q => A_REG_OUT);
 
   REG_B : REGISTER_GENERIC
@@ -154,7 +184,7 @@ architecture structural of decode_unit is
   port map( D => RF_TWO_OUT,
             CK => clk,
             RESET => rst, 
-            ENABLE => rd2_enable,
+            ENABLE => EN2,
             Q => B_REG_OUT);
 
   IMMREG : REGISTER_GENERIC
@@ -165,18 +195,21 @@ architecture structural of decode_unit is
             ENABLE => EN2,
             Q => IMM_REG_OUT);
 
-  npc_latch_out <= NPC_IN;
+  --npc_latch_out <= NPC_IN;
 
   NPC_REG : REGISTER_GENERIC
   generic map(numbit)
-  port map( D => npc_latch_out,
+  port map( D => NPC_IN,
             CK => clk,
             RESET => rst, 
             ENABLE => EN2,
             Q => NPC_OUT);
 
   RDMUX_MUX : RDMUX
-  port map(in_IR(15 downto 11),in_IR(20 downto 16),in_IR(31 downto 26),rdmux_out);
+  port map( rtype_in => in_IR(15 downto 11),
+            itype_in => in_IR(20 downto 16),
+            opcode_in => in_IR(31 downto 26),
+            rd_out => rdmux_out);
 
   RD_REG : REGISTER_GENERIC
   generic map(5)
@@ -186,10 +219,10 @@ architecture structural of decode_unit is
             ENABLE => EN2,
             Q => RD_OUT);
 
-  HAZARD : HAZARD_DETECTION
-  port map(clk,rst,instr_fetched(31 downto 26),instr_fetched(20 downto 16),instr_fetched(15 downto 11),instr_fetched(25 downto 21),instr_fetched(20 downto 16),alu_forwarding_one,mem_forwarding_one,alu_forwarding_two,mem_forwarding_two,open);
+  --HAZARD : HAZARD_DETECTION
+  --port map(clk,rst,instr_fetched(31 downto 26),instr_fetched(20 downto 16),instr_fetched(15 downto 11),instr_fetched(25 downto 21),instr_fetched(20 downto 16),alu_forwarding_one,mem_forwarding_one,alu_forwarding_two,mem_forwarding_two,open);
 
-  BRANCHUNIT : BRANCHDECISIONUNIT
-  port map(in_IR(31 downto 26),in_IR(25 downto 0),in_IR(15 downto 0),npc_latch_out,RF_ONE_OUT,RF_TWO_OUT,NPC_OUT_BPU);
+  --BRANCHUNIT : BRANCHDECISIONUNIT
+  --port map(in_IR(31 downto 26),in_IR(25 downto 0),in_IR(15 downto 0),npc_latch_out,RF_ONE_OUT,RF_TWO_OUT,NPC_OUT_BPU);
 
 end structural;
