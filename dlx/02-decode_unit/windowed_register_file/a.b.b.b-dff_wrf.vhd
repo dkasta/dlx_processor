@@ -2,15 +2,15 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity DFF is
+entity DFF_wrf is
 	Port (	D :		in	std_logic;
 		EN:	in std_logic;
 			CK :	in	std_logic;
 			RESET :	in	std_logic;
 			Q :		out	std_logic);
-end DFF;
+end DFF_wrf;
 
-architecture behavioral of DFF is 				
+architecture behavioral of DFF_wrf is 				
 	begin
 		Process_synch : process(CK,RESET)
 						begin

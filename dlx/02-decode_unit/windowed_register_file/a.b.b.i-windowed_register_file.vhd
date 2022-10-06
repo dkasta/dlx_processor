@@ -113,7 +113,7 @@ architecture structural of wrf is
             in_reg:     in std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0) 
         );
     end component;
-    component register_generic is
+    component register_generic_wrf is
     generic (NBIT : integer := Bit_Register);
         port(   D:     in std_logic_vector(NBIT-1 downto 0);
                 CK:    in std_logic;
@@ -172,9 +172,9 @@ architecture structural of wrf is
     muxout2: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>numreg_global ) 
             port map(en=>rd2,add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd);
     next_cwp_m: cwp_swp generic map(windowsbit=>windowsbit) port map (curr=>curr_cwp,nex=>next_cwp,sel=>sel_cwp);
-    cwp: register_generic generic map (NBIT => windowsbit) port map(D=>next_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_cwp);
+    cwp: register_generic_wrf generic map (NBIT => windowsbit) port map(D=>next_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_cwp);
     next_swp_m: cwp_swp generic map(windowsbit=>windowsbit) port map (curr=>curr_swp,nex=>next_swp,sel=>sel_swp);
-    swp: register_generic generic map (NBIT => windowsbit) port map(D=>next_swp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_swp);
+    swp: register_generic_wrf generic map (NBIT => windowsbit) port map(D=>next_swp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_swp);
     fill_generator: fill_enable_generator generic map(numreg_inlocout=>numreg_inlocout)
         port map(clk=>clk,rst=>rst,en=>pop,ready=>RAM_READY,done=>done_fill,occupied=>pop_not_finish,address_mem=>address_mem_s);
     sel_spill: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)

@@ -23,7 +23,7 @@ entity physical_register_file is
 end physical_register_file;
 
 architecture structural of physical_register_file is
-  component register_generic is
+  component register_generic_wrf is
   generic (NBIT : integer := Bit_Register);
       port(   D:     in std_logic_vector(NBIT-1 downto 0);
               CK:    in std_logic;
@@ -50,7 +50,7 @@ architecture structural of physical_register_file is
   signal real_enable: std_logic_vector(num_windows-1 downto 0);
   begin
     GLOBAL_BLOCK: for i in 0 to numreg_global-1 generate
-      GLOB_REG:  register_generic generic map(NBIT=>numBit_data) port map(D=>Data_in1,CK=>clk,EN=>en(i),RESET=>rst,Q=>Data_out_global((i+1)*numBit_data-1 downto i*numBit_data));
+      GLOB_REG:  register_generic_wrf generic map(NBIT=>numBit_data) port map(D=>Data_in1,CK=>clk,EN=>en(i),RESET=>rst,Q=>Data_out_global((i+1)*numBit_data-1 downto i*numBit_data));
     end generate GLOBAL_BLOCK;
     MUX: for i in 0 to num_windows-1 generate
       --generate of the mux for the input and local block, generate it each time there is a new block input
@@ -58,7 +58,7 @@ architecture structural of physical_register_file is
     end generate MUX;
     REG: for i in 0 to 2*numreg_inlocout*num_windows-1 generate
       -- generate each register for the physical register file
-       REG_I:register_generic generic map(NBIT=>numBit_data) port map(D=>bus_data_register(i/(2*numreg_inlocout)),CK=>clk,EN=>en(i+numreg_global),RESET=>rst,Q=>Data_out_reg(numBit_data*(i+1)-1 downto numBit_data*i));
+       REG_I:register_generic_wrf generic map(NBIT=>numBit_data) port map(D=>bus_data_register(i/(2*numreg_inlocout)),CK=>clk,EN=>en(i+numreg_global),RESET=>rst,Q=>Data_out_reg(numBit_data*(i+1)-1 downto numBit_data*i));
     end generate REG;
     ENCODER1: encoder generic map(N=>windowsbit) port map(sel=>swp_en,S=>real_enable);
    end structural;

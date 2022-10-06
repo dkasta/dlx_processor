@@ -5,18 +5,18 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.globals.all;
 
-entity register_generic is
+entity register_generic_wrf is
   generic (NBIT : integer := Bit_Register);
       port(   D:     in std_logic_vector(NBIT-1 downto 0);
               CK:    in std_logic;
 	            EN:    in std_logic;
               RESET: in std_logic;
               Q:     out std_logic_vector(NBIT-1 downto 0));
-end register_generic;
+end register_generic_wrf;
 
-architecture structural of register_generic is
+architecture structural of register_generic_wrf is
 
-  component DFF is
+  component DFF_wrf is
   port (	D:      in	std_logic;
 		en:	in std_logic;
 		      CK:	    in	std_logic;
@@ -26,7 +26,7 @@ architecture structural of register_generic is
 
   begin
     Register_generate : for i in 0 to NBIT-1 generate
-      UFD : DFF
+      UFD : DFF_wrf
             port map( D=>D(i),en=>EN, CK=>CK, RESET=>RESET, Q=>Q(i));
     end generate Register_generate;
 end structural;
