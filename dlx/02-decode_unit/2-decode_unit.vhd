@@ -89,8 +89,8 @@ architecture structural of decode_unit is
       end component;
 
      component SIGN_EXTENTION
-       port(   D: in std_logic_vector(15 downto 0);
-               Q: out std_logic_vector(31 downto 0));
+       port(   data_in: in std_logic_vector(15 downto 0);
+               data_out: out std_logic_vector(31 downto 0));
      end component;
 
      component RDMUX
@@ -139,7 +139,8 @@ architecture structural of decode_unit is
   begin
 
   SIGN_REG : SIGN_EXTENTION
-  port map(in_IR(15 downto 0),sign_extention_signal);
+  port map( data_in => in_IR(15 downto 0),
+            data_out => sign_extention_signal);
   --RF : REGISTER_FILE
   --generic map(numbit,5,numbit)
   --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
