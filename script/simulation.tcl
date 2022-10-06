@@ -10,7 +10,7 @@ set asm_root "../../assembly"
 ########################################################################################################################################
 #Name			:compile_directory
 #Description 		:questaSim tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for later simulation.
-#Arguments		:main_directory(optional): name of the main directory containing files to be analyzed (default).
+#Arguments		:main_directory(optional): name of the main directory containing files to be analyzed (default is \.).
 #			:file_extension(optional): extension of the files to be analyzed (vhdl or verilog) (default is vhdl).
 #Outputs		:none		
 ########################################################################################################################################
@@ -27,9 +27,9 @@ proc compile_directory {{main_directory "./"} {file_extension "vhd"}} {
 }
 
 ########################################################################################################################################
-#Name			:simulate_alu
+#Name			:simulate_dlx
 #Description 		:questaSim tcl script to to test the dlx with custom .asm files. It converts the incoming assembly test file into the corrispondent .mem file.
-#Arguments		:asm_file (optional): name of the .asm file to be converted in .mem file by the dlxasm (default is example.asm).
+#Arguments		:asm_file (optional): name of the .asm file to be converted in .mem file by the dlxasm (default is test.asm).
 #			:run_time (optional): duration time of the simulation (default is 100 ns).
 #Outputs		:none		
 ########################################################################################################################################
@@ -37,7 +37,7 @@ proc compile_directory {{main_directory "./"} {file_extension "vhd"}} {
 #copy the asm file in the same folder as this script
 #call this procedeure as for ex simulate_alu testAllInstr.asm
 #Possibly permission error by the conv2memory, give execution permission to it
-proc simulate_alu {{asm_file "test.asm"} {run_time 100}} {
+proc simulate_dlx {{asm_file "test.asm"} {run_time 100}} {
 
 	global sim_root asm_root
 
