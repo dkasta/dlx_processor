@@ -151,7 +151,7 @@ architecture structural of wrf is
     end component;
     signal curr_cwp,next_cwp,curr_swp,next_swp,pop_and_swp: std_logic_vector(windowsbit-1 downto 0); 
     signal address_mem_s: std_logic_vector(2*numreg_inlocout-1 downto 0); 
-    signal spill_regs: std_logic_vector(3*numreg_inlocout-1 downto 0); 
+    signal spill_regs: std_logic_vector(numBit_data*3*numreg_inlocout-1 downto 0); 
     signal enable_regs: std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0);
     signal tot_regs: std_logic_vector(numBit_data*2*numreg_inlocout*num_windows-1 downto 0); 
     signal input_mux_rd: std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0);
