@@ -71,7 +71,7 @@ begin
                     enable_reg(numreg_global+2*numreg_inlocout*num_windows-1 downto numreg_global)<=(numreg_inlocout+(2*numreg_inlocout*(num_windows-1))-1 downto 0 => '0')&decoder_choose((3*numreg_inlocout+numreg_global)-1 downto 2*numreg_inlocout+numreg_global);
 
                 end if;
-            elsif(swp /= (windowsbit-1 downto 0 =>'0')) 
+            elsif(swp /= (windowsbit-1 downto 0 =>'0')) then
             --fill operation
                     enable_reg(numreg_global+2*numreg_inlocout*num_windows-1 downto numreg_global)<=((num_windows - 1 - to_integer(unsigned(swp))-1)*2*numreg_inlocout-1 downto 0 =>'0')&(address_mem & (2*(to_integer(unsigned(swp))-1)*numreg_inlocout-1 downto 0 => '0'));
                     --i -> devo aggiungere 2*i*numreg_inlocout zeri  e (num_windows-1-i)*2*numreg_inlocout alla "fine"
