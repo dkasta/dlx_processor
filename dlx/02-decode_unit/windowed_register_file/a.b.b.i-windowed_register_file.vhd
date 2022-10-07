@@ -34,9 +34,6 @@ entity wrf is
         DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
         out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
 	    out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-P1: out std_logic_vector(numBit_data-1 downto 0);
-P2: out std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0);
-P3: out std_logic_vector(windowsbit-1 downto 0); 
         -- for MEMORY
         pop_mem:    OUT std_logic;
         push_mem:   OUT std_logic;
@@ -74,7 +71,6 @@ architecture structural of wrf is
                 
     port (  clk:              in std_logic;
             rst:              in std_logic;
- P1: out std_logic_vector(numBit_data-1 downto 0);
             en:               in std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0); --enable for all the registers
             Data_in1:         in std_logic_vector(numBit_data-1 downto 0); --data from the cu
             Data_in2:         in std_logic_vector(numBit_data-1 downto 0); --data from the memory
@@ -163,8 +159,7 @@ architecture structural of wrf is
     signal pop,push,pop_not_finish,start_pop,push_not_finish,start_push: std_logic;
     signal address_spill: std_logic_vector(numBit_address-1 downto 0);
     begin
-P2<= enable_regs;
-P3<=curr_cwp;
+
     dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> windowsbit,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)
             port map(clk=>clk,rst=>rst,wr=>wr,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable_reg=>enable_regs);
     phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)	         
