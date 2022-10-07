@@ -74,39 +74,48 @@ architecture structural of datapath is
   signal npcoutbpusignal : std_logic_vector(numbit - 1 downto 0);
 
   component fetch_unit
-  generic( numbit : integer := BIT_RISC);
-  port(   to_IR:		       in std_logic_vector(numbit-1 downto 0);
-       	  clk:			       in std_logic;
-       	  rst:	 	  	     in std_logic;
-          enable_PC        in std_logic;
-       	  to_IRAM:     	   out std_logic_vector(numbit - 1 downto 0);
-       	  npc_out:		     out std_logic_vector(numbit-1 downto 0);
-       	  instr_reg_out:   out std_logic_vector(numbit-1 downto 0);
-       	  instr_fetched:   out std_logic_vector(numbit-1 downto 0));
-  end component;
+    generic(numbit : integer := I_SIZE);
+    port(to_IR :         IN std_logic_vector(numbit-1 downto 0);
+         clk :           IN std_logic;
+         rst :           IN std_logic;
+         EN1:            IN std_logic;
+         to_IRAM :       OUT std_logic_vector(numbit - 1 downto 0);
+         npc_out :       OUT std_logic_vector(numbit-1 downto 0);
+         instr_reg_out : OUT std_logic_vector(numbit-1 downto 0);
+         instr_fetched:  OUT std_logic_vector(numbit-1 downto 0));
+    end component;
 
-component decode_unit is
-  generic( numbit: integer := BIT_RISC);
-  	 port( clk:                in std_logic;
-           rst: 			         in std_logic;
-       	   write_enable:   	   in std_logic;
-           in_IR:    		       in std_logic_vector(numbit-1 downto 0);
-       	   WB_STAGE_IN: 	     in std_logic_vector(numbit-1 downto 0);
-       	   NPC_IN: 	           in std_logic_vector(numbit-1 downto 0);
-           RD_IN: 		         in std_logic_vector(4 downto 0);
-       	   instr_fetched:      in std_logic_vector(BIT_RISC - 1 downto 0);
-       	   NPC_OUT_BPU: 	     out std_logic_vector(numbit - 1 downto 0);
-       	   RD_OUT: 	           out std_logic_vector(4 downto 0);
-       	   NPC_OUT: 	         out std_logic_vector(numbit-1 downto 0);
-       	   A_REG_OUT: 	       out std_logic_vector(numbit-1 downto 0);
-       	   B_REG_OUT: 	       out std_logic_vector(numbit-1 downto 0);
-       	   IMM_REG_OUT:	       out std_logic_vector(numbit-1 downto 0);
-       	   alu_forwarding_one: out std_logic;
-    	     mem_forwarding_one: out std_logic;
-       	   alu_forwarding_two: out std_logic;
-       	   mem_forwarding_two: out std_logic);
-end component;
+    component decode_unit 
+      generic( numbit: integer := BIT_RISC);
+         port( 	clk: 			            in std_logic;
+                rst: 			            in std_logic;
+                write_enable: 		    in std_logic;
+                rd1_enable:           in std_logic;
+                rd2_enable:           in std_logic;
+                call:                 in std_logic; --call to a subroutine
+                ret:                  in std_logic; --return to a subroutine
+                EN2:                  in std_logic;
+                in_IR:    			      in std_logic_vector(numbit-1 downto 0);
+                WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
+                NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
+                RD_IN: 			          in std_logic_vector(4 downto 0);
+                instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
+                inmem:                in std_logic_vector(31 downto 0); --from dram wrf
+                outmem:               out std_logic_vector(31 downto 0); --to dram wrf
+                --NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
+                RD_OUT: 			        out std_logic_vector(4 downto 0);
+                NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
+                A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
+                B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
+                IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0)
+                --alu_forwarding_one:   out std_logic;
+                --mem_forwarding_one:   out std_logic;
+                --alu_forwarding_two:   out std_logic;
+                --mem_forwarding_two:   out std_logic
+                );
+    end component;
 
+    
   component execution_unit
   generic( numbit: integer := BIT_RISC);
   port(    clk:                   in std_logic;
