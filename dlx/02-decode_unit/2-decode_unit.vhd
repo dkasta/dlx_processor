@@ -35,7 +35,20 @@ end decode_unit;
 
 architecture structural of decode_unit is
 
-
+  component REGISTER_FILE
+    generic (numBit_data : integer := NumBitData;
+             numBit_address : integer := NumBitAddress;
+             numBit_registers : integer := NumBitRegisterFile);
+    port (CK :	IN std_logic;
+          Reset : IN std_logic;
+          Write_enable : IN std_logic;
+          Write_address : IN std_logic_vector(numBit_address-1 downto 0);
+           Read_one_address :	IN std_logic_vector(numBit_address-1 downto 0);
+           Read_two_address : IN std_logic_vector(numBit_address-1 downto 0);
+           Data_in : IN std_logic_vector(numBit_data-1 downto 0);
+          Data_one_out :	OUT std_logic_vector(numBit_data-1 downto 0);
+           Data_two_out :	OUT std_logic_vector(numBit_data-1 downto 0));
+    end component;
 
      component wrf is
         generic(
@@ -141,12 +154,12 @@ architecture structural of decode_unit is
   SIGN_REG : SIGN_EXTENTION
   port map( data_in => in_IR(15 downto 0),
             data_out => sign_extention_signal);
-  --RF : REGISTER_FILE
-  --generic map(numbit,5,numbit)
-  --port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
+  RF : REGISTER_FILE
+  generic map(numbit,5,numbit)
+  port map(clk,rst,write_enable,RD_IN,in_IR(25 downto 21),in_IR(20 downto 16),WB_STAGE_IN,RF_ONE_OUT,RF_TWO_OUT);
   
   
-  RF: wrf
+/*   RF: wrf
     generic map( numBit_address => NumBitAddress,
                  numBit_data => NumBitData,
                  windowsbit => Windows_Bit,
@@ -174,7 +187,7 @@ architecture structural of decode_unit is
           RAM_READY => ramr,
           in_mem => inmem
           );
-
+ */
   
   
   REG_A : REGISTER_GENERIC

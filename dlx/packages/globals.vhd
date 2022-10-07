@@ -25,7 +25,7 @@ package globals is
 	constant NumBitMemoryCells : integer := 32;
 	-------------register file-----------------
 	constant NumBitData : integer := 32;
-	--constant NumBitRegisterFile : integer := 32;
+	constant NumBitRegisterFile : integer := 32;
 	constant NumBitAddress : integer := 5;
 	constant Windows_Bit: integer:= 2;
 	constant Numreg_IN_LOC_OUT: integer:=8;
