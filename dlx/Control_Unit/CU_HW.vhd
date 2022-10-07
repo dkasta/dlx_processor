@@ -1,163 +1,212 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
 use work.myTypes.all;
-use ieee.numeric_std.all;
 
-entity CU_HW is
-  generic (
-    MICROCODE_MEM_SIZE :     integer := 15;  -- Microcode Memory Size
-    FUNC_SIZE          :     integer := 11;  -- Func Field Size for R-Type Ops
-    OP_CODE_SIZE       :     integer := 6;  -- Op Code Size
-    CW_SIZE            :     integer := 11);  -- Control Word Size
-  port (
-    Clk                : in  std_logic;  -- Clock
-    Rst                : in  std_logic;  -- Reset:Active-Low
-    -- From Instruction Register
-    OPCODE 		: in  std_logic_vector(OP_CODE_SIZE - 1 downto 0);
-    FUNC   		: in  std_logic_vector(FUNC_SIZE - 1 downto 0); 
-    
-    -- ID Control Signals
-    RF1_EN      : out std_logic;  -- Read port 1 Enable
-    RF2_EN      : out std_logic;  -- Read port 2 Enable
-    EN_1    	: out std_logic;  -- En pipe stage 1
+entity CU_HARDWIRED is
+       port (-- ID Control Signals
+             -- EX Control Signal
+             MUXA_CONTROL    : OUT std_logic;    -- MUX-A Sel
+             MUXB_CONTROL    : OUT std_logic;    -- MUX-B Sel
+             ALU_OPCODE      : OUT std_logic_vector(ALU_OPC_SIZE - 1 downto 0); -- ALU Operation Code
+             -- MEM Control Signals
+             DRAM_WE         : OUT std_logic;    -- Data RAM Write Enable
+             DRAM_RE         : OUT std_logic;    -- Data RAM Read Enable
+             -- WB Control Signals
+             WB_MUX_SEL      : OUT std_logic;    -- Write Back MUX Sel
+             JAL_SEL         : OUT std_logic;
+             RF_WE           : OUT std_logic;    -- Register File Write Enable
+             -- INPUTS
+             OPCODE : IN  std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+             FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
+             Clk : IN std_logic;
+             Rst : IN std_logic);                  -- Active high
+end CU_HARDWIRED;
 
-    -- EX Control Signals
-    MUXA_SEL           : out std_logic;  -- MUX-A Sel
-    MUXB_SEL           : out std_logic;  -- MUX-B Sel
-    EN_2	       : out std_logic;  -- En pipe stage 2
-    -- ALU Operation Code
-    ALU_OPCODE         : out std_logic_vector(ALU_OP_SIZE downto 0);
+architecture BEHAVIORAL of CU_HARDWIRED is
 
-    -- MEM Control Signals
-    WM	 	       : out std_logic;  -- Data RAM Write Enable
-    EN_3               : out std_logic;  -- En pipe stage 3
-    RM  	       : out std_logic;  -- Data RAM Write Enable    
-    S3	               : out std_logic;  -- Write Back MUX Sel
-    WF1	               : out std_logic);  -- Register File Write Enable
-
-end CU_HW;
-
-architecture behavioural of CU_HW is
-
+  --if bits in mem_array are (others => '0') it means that either the instruction
+  --is not implemented or is a NTYPE_NOP
   type mem_array is array (integer range 0 to MICROCODE_MEM_SIZE - 1) of std_logic_vector(CW_SIZE - 1 downto 0);
-  signal cw_mem : mem_array := ("11110100111", -- R type 
-                                "01100100111", -- ADDI1
-                                "01100100111", -- SUBI1
-                                "01100100111", -- ANDI1
-                                "01100100111", -- ORI1
-                                "01100100111", -- S_REG1
-                                "01100110111", -- L_MEM1
-				                "01100100111", -- MOV
-				                "10111100111", -- ADDI2
-			                    "10111100111", -- SUBI2
-			                    "10111100111", -- ANDI2
-			                    "10111100111", -- ORI2
-			                    "10111100111", -- S_REG2
-			                    "10111101100", --S_MEM2  
-	                            "10111110111"  --L_MEM2   
-							); -- some instruction assume that a regigster containing all 0 is present.
-                                
-  signal cw   	: std_logic_vector(CW_SIZE - 1 downto 0); 	-- full control word read from cw_mem
-  signal cw1 	: std_logic_vector(CW_SIZE -1 downto 0); 	-- first stage ,all(11) CW signals
-  signal cw2 	: std_logic_vector(CW_SIZE - 1 - 3 downto 0); 	-- second stage, 8 lsb CW signals
-  signal cw3 	: std_logic_vector(CW_SIZE - 1 - 6 downto 0); 	-- third stage, 5 lsb CW signals
+  signal cw_mem_rtype : mem_array := ("00000000000",
+      						                    "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "10000000110",     --RTYPE_SLL
+                                      "00000000000",
+                                      "10000100110",     --RTYPE_SRL
+                                      "00000000000",     --RTYPE_SRA                   --not implemented
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",
+                                      "10001000110",     --RTYPE_ADD
+                                      "00000000000",     --RTYPE_ADDU  not implemented
+                                      "10001100110",     --RTYPE_SUB
+                                      "00000000000",     --RTYPE_SUBU  not implemented
+                                      "10010000110",     --RTYPE_AND
+                                      "10010100110",     --RTYPE_OR
+                                      "10011000110",     --RTYPE_XOR
+                                      "00000000000",
+                                      "10011100110",     --RTYPE_SEQ
+                                      "10100000110",     --RTYPE_SNE
+                                      "10100100110",     --RTYPE_SLT
+                                      "10101000110",     --RTYPE_SGT
+                                      "10101100110",     --RTYPE_SLE
+                                      "10110000110",     --RTYPE_SGE
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",     --RTYPE_MOVI2S                --not implemented
+                                      "00000000000",     --RTYPE_MOVS2I                --not implemented
+                                      "00000000000",     --RTYPE_MOVF                  --not implemented
+                                      "00000000000",     --RTYPE_MOVD                  --not implemented
+                                      "00000000000",     --RTYPE_MOVFP2I               --not implemented
+                                      "00000000000",     --RTYPE_MOVI2FP               --not implemented
+                                      "00000000000",     --RTYPE_MOVI2T                --not implemented
+                                      "00000000000",     --RTYPE_MOVT2I                --not implemented
+                                      "00000000000",
+                                      "00000000000",
+                                      "00000000000",     --RTYPE_SLTU                  --not implemented
+                                      "00000000000",     --RTYPE_SGTU                  --not implemented
+                                      "00000000000",     --RTYPE_SLEU                  --not implemented
+                                      "00000000000"      --RTYPE_SGEU                  --not implemented
+                                      );
 
-  signal aluOpcode_i	: std_logic_vector(ALU_OP_SIZE downto 0)	:= NOP_op; 
-  signal aluOpcode1	: std_logic_vector(ALU_OP_SIZE downto 0) 	:= NOP_op;
-  signal aluOpcode2	: std_logic_vector(ALU_OP_SIZE downto 0) 	:= NOP_op;
+signal cw_mem_itype : mem_array := ("00000000000",     --START NOT R_TYPE
+                                    "00000000000",
+                                    "00110100000",     --JTYPE_J                     --implemented in the branch prediction unit
+                                    "00111000111",     --JTYPE_JAL                   --not implemented
+                                    "00110100000",     --ITYPE_BEQZ                  --implemented in the branch prediction unit
+                                    "00110100000",     --ITYPE_BNEZ                  --implemented in the branch prediction unit
+                                    "00000000000",     --ITYPE_BFPT                  --not implemented
+                                    "00000000000",     --ITYPE_BFPF                  --not implemented
+                                    "11001000110",     --ITYPE_ADD
+                                    "00000000000",     --ITYPE_ADDU                  --not implemented
+                                    "11001100110",     --ITYPE_SUB
+                                    "00000000000",     --ITYPE_SUBU                  --not implemented
+                                    "11010000110",     --ITYPE_AND
+                                    "11010100110",     --ITYPE_OR
+                                    "11011000110",     --ITYPE_XOR
+                                    "00000000000",     --ITYPE_LH                    --not implemented
+                                    "00000000000",     --ITYPE_RFE                   --not implemented
+                                    "00000000000",     --ITYPE_TRAP                  --not implemented
+                                    "00110100000",     --JTYPE_JR                    --implemented in the branch prediction unit
+                                    "00111000111",     --JTYPE_JALR                  --implemented in the branch prediction unit
+                                    "11000000110",     --ITYPE_SLL
+                                    "00110100000",     --NTYPE_NOP
+                                    "11000100110",     --ITYPE_SRL
+                                    "00000000000",     --ITYPE_SRA                   --not implemented
+                                    "11011100110",     --ITYPE_SEQ
+                                    "11100000110",     --ITYPE_SNE
+                                    "11100100110",     --ITYPE_SLT
+                                    "11101000110",     --ITYPE_SGT
+                                    "11101100110",     --ITYPE_SLE
+                                    "11110000110",     --ITYPE_SGE
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",     --ITYPE_LB                    --not implemented
+                                    "00000000000",     --ITYPE_LH                    --not implemented
+                                    "00000000000",
+                                    "11001001010",     --ITYPE_LW
+                                    "00000000000",     --ITYPE_LBU                   --not implemented
+                                    "00000000000",     --ITYPE_LHU                   --not implemented
+                                    "00000000000",     --ITYPE_LF                    --not implemented
+                                    "00000000000",     --ITYPE_LD                    --not implemented
+                                    "00000000000",     --ITYPE_SB                    --not implemented
+                                    "00000000000",     --ITYPE_SH                    --not implemented
+                                    "00000000000",
+                                    "11001010000",     --ITYPE_SW
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",     --ITYPE_SF                    --not implemented
+                                    "00000000000",     --ITYPE_SD                    --not implemented
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",
+                                    "00000000000",     --NTYPE_ITLB                  --not implemented
+                                    "00000000000",
+                                    "00000000000",     --ITYPE_SLTU                  --not implemented
+                                    "00000000000",     --ITYPE_SGTU                  --not implemented
+                                    "00000000000",     --ITYPE_SLEU                  --not implemented
+                                    "00000000000"      --ITYPE_SGEU                  --not implemented
+                                    );
 
+  signal cw : std_logic_vector(CW_SIZE - 1 downto 0); -- full control word read from cw_mem
 
- 
-begin  
+  -- control word is shifted to the correct stage
+  --signal cw1 : std_logic_vector(CW_SIZE - 1 downto 0);                        -- decode stage
+  signal cw2 : std_logic_vector(CW_SIZE - 1 downto 0);                        -- execution stage
+  signal cw3 : std_logic_vector(CW_SIZE - 1 - 1 - ALU_OPC_SIZE downto 0);     -- memory stage
+  signal cw4 : std_logic_vector(CW_SIZE - 1 - 1 - ALU_OPC_SIZE - 2 downto 0); -- write back stage
 
-  cw <= cw_mem(to_integer(unsigned(OPCODE)));
+begin
 
-  	-- stage one control signals
-  RF1_EN      <= cw1(CW_SIZE - 1);
-  RF2_EN      <= cw1(CW_SIZE - 2);
-  EN_1        <= cw1(CW_SIZE - 3);
-	-- stage two control signals
-  MUXA_SEL    <= cw2(CW_SIZE - 4);
-  MUXB_SEL    <= cw2(CW_SIZE - 5);
-  EN_2        <= cw2(CW_SIZE - 6);
-	-- stage three control signals
-  RM          <= cw3(CW_SIZE - 7);
-  WM	      <= cw3(CW_SIZE - 8);
-  EN_3        <= cw3(CW_SIZE - 9);
-  S3	      <= cw3(CW_SIZE - 10);
-  WF1         <= cw3(CW_SIZE - 11);
-	-- stage four control signals
-  RM          <= cw3(CW_SIZE - 7);
-  WM	      <= cw3(CW_SIZE - 8);
-  EN_3        <= cw3(CW_SIZE - 9);
-  S3	      <= cw3(CW_SIZE - 10);
-  WF1         <= cw3(CW_SIZE - 11);
-    	-- stage five control signals
-  RM          <= cw3(CW_SIZE - 7);
-  WM	      <= cw3(CW_SIZE - 8);
-  EN_3        <= cw3(CW_SIZE - 9);
-  S3	      <= cw3(CW_SIZE - 10);
-  WF1         <= cw3(CW_SIZE - 11);
+  -- stage one control signals
 
-  -- purpose: Pipelining of control word and  ALU OpCode
-  -- type   : sequential
-  -- inputs : 
-  -- outputs: Alu_opcode, cw
+  -- stage two control signals
+  MUXA_CONTROL <= cw2(CW_SIZE - 1);
+  MUXB_CONTROL <= cw2(CW_SIZE - 2);
+  ALU_OPCODE <= cw2(CW_SIZE - 3 downto CW_SIZE - 3 - ALU_OPC_SIZE + 1);
+
+  -- stage three control signals
+  DRAM_WE <= cw3(CW_SIZE - 3 - ALU_OPC_SIZE);
+  DRAM_RE <= cw3(CW_SIZE - 4 - ALU_OPC_SIZE);
+
+  --stage four control singals
+  WB_MUX_SEL <= cw4(CW_SIZE - 5 - ALU_OPC_SIZE);
+  RF_WE <= cw4(CW_SIZE - 6 - ALU_OPC_SIZE);
+  JAL_SEL <= cw4(CW_SIZE - 7 - ALU_OPC_SIZE);
+
+	process(OPCODE, FUNC) --COMBINATIONAL PROCESS, calculates the address of the next microcode to execute given its OPCODE and FUNC.
+	begin
+		if (OPCODE = RTYPE) then
+			cw <= cw_mem_rtype(conv_integer(FUNC)); --(opcode = 0 for rtype)->(FUNC+OPCODE)->FUNC directly points to RTYPE addresses in memory
+		else
+			cw <= cw_mem_itype(conv_integer(OPCODE));
+		end if;
+	end process;
+
+  --3D = 61
+  -- process to pipeline control words
   CW_PIPE: process (Clk, Rst)
   begin  -- process Clk
-    if Rst = '0' then                   -- asynchronous reset (active low)
-      cw1 <= (others => '0');
+    if Rst = '1' then                   -- asynchronous reset (active high)
+      --cw1 <= (others => '0');
       cw2 <= (others => '0');
       cw3 <= (others => '0');
-
-      aluOpcode1 <= NOP_op;
-      aluOpcode2 <= NOP_op;
+      cw4 <= (others => '0');
     elsif Clk'event and Clk = '1' then  -- rising clock edge
-      cw1 <= cw;
-      cw2 <= cw1(CW_SIZE - 1 - 3 downto 0);
-      cw3 <= cw2(CW_SIZE - 1 - 6 downto 0);
-
-      aluOpcode1 <= aluOpcode_i;
-      aluOpcode2 <= aluOpcode1;
+      --cw1 <= cw;
+      cw2 <= cw;
+      cw3 <= cw2(CW_SIZE - 1 - ALU_OPC_SIZE - 1 downto 0);
+      cw4 <= cw3(CW_SIZE - 1 - 2 - ALU_OPC_SIZE - 1 downto 0);
     end if;
   end process CW_PIPE;
 
-ALU_OPCODE <= aluOpcode2;
-
-  -- purpose: Generation of ALU OpCode
-  -- type   : combinational
-  -- inputs : IR_i
-  -- outputs: aluOpcode
-   ALU_OP_CODE_P : process (opcode, func)
-   begin  -- process ALU_OP_CODE_P
-	case to_integer(unsigned(opcode)) is
-	        -- case of R type requires analysis of FUNC
-		when 0 =>
-			case to_integer(unsigned(func)) is
-				when 1 => aluOpcode_i <= ADD_op; -- ADD_R
-				when 2 => aluOpcode_i <= SUB_op; -- SUB_R
-				when 3 => aluOpcode_i <= AND_op; -- AND_R
-				when 4 => aluOpcode_i <= OR_op;  -- OR_R
-				when others => aluOpcode_i <= NOP_op;
-			end case;
-		when 1  => aluOpcode_i <= ADD_op;  --ADDI1
-		when 2  => aluOpcode_i <= SUB_op;  --SUBI1
-		when 3  => aluOpcode_i <= AND_op;  --ANDI1
-		when 4  => aluOpcode_i <= OR_op;   -- ORI1
-		when 5  => aluOpcode_i <= ADD_op;  -- SREG1
-		when 6  => aluOpcode_i <= ADD_op;  -- L_MEM1
-		when 7  => aluOpcode_i <= ADD_Op;  -- MOV
-		when 8  => aluOpcode_i <= ADD_op;  -- ADDI2
-		when 9  => aluOpcode_i <= SUB_op;  -- SUBI2
-		when 10 => aluOpcode_i <= AND_op;  -- ANDI2
-		when 11 => aluOpcode_i <= OR_op;   -- ORI2
-		when 12 => aluOpcode_i <= ADD_op;  -- SREG2
-		when 13 => aluOpcode_i <= ADD_op;  -- S_MEM1
-		when 14 => aluOpcode_i <= ADD_op;  -- L_MEM2
-		when others => aluOpcode_i <= NOP_op;
-	 end case;
-	end process ALU_OP_CODE_P;
-
-
-end behavioural;
+end BEHAVIORAL;
