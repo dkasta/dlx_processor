@@ -49,5 +49,5 @@ begin
     --finish when the first enable is performed and the memory is ready
     done <= curr_addr(0) and ready;
     --until the first enable is reached the generator is occupied
-    occupied <= not curr_addr(0);
+    occupied <= curr_addr(0);
 end beh;

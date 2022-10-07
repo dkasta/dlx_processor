@@ -48,12 +48,15 @@ begin
     addr <= curr_addr;
     process(curr_addr)
     begin
-        if (curr_addr /= (N-1 downto 0=>'1')) then
+        if (en='1' and unsigned(curr_addr) < (N-1 downto 0=>'1')) then
             occupied<='1';
-            done<='0';
         else
             occupied<='0';
+        end if;
+        if(unsigned(curr_addr) = (N-1 downto 0=>'1') and ready='1') then
             done<='1';
+        else
+            done<='0';
         end if;
     end process;
 end struct;
