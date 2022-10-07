@@ -34,7 +34,9 @@ entity wrf is
         DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
         out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
 	    out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-
+P1: out std_logic_vector(numBit_data-1 downto 0);
+P2: out std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0);
+P3: out std_logic_vector(windowsbit-1 downto 0); 
         -- for MEMORY
         pop_mem:    OUT std_logic;
         push_mem:   OUT std_logic;
@@ -72,6 +74,7 @@ architecture structural of wrf is
                 
     port (  clk:              in std_logic;
             rst:              in std_logic;
+ P1: out std_logic_vector(numBit_data-1 downto 0);
             en:               in std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0); --enable for all the registers
             Data_in1:         in std_logic_vector(numBit_data-1 downto 0); --data from the cu
             Data_in2:         in std_logic_vector(numBit_data-1 downto 0); --data from the memory
@@ -160,11 +163,12 @@ architecture structural of wrf is
     signal pop,push,pop_not_finish,start_pop,push_not_finish,start_push: std_logic;
     signal address_spill: std_logic_vector(numBit_address-1 downto 0);
     begin
-
+P2<= enable_regs;
+P3<=curr_cwp;
     dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> windowsbit,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)
             port map(clk=>clk,rst=>rst,wr=>wr,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable_reg=>enable_regs);
     phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)	         
-            port map(  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>pop_and_swp);
+            port map(P1=>P1,  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>pop_and_swp);
     sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)
             port map(tot_reg=>tot_regs,curr_win=>curr_cwp,out_reg=>input_mux_rd(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto numBit_data*numreg_global ));
     muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>numreg_global ) 
@@ -212,9 +216,9 @@ architecture structural of wrf is
     pop_and_swp<=curr_swp and (windowsbit-1 downto 0 => pop);
 
     --mantain the enable for the enable_generator
-    process(curr_cwp,curr_swp,ret)
+    process(ret)
     begin
-        if(curr_cwp = curr_swp) then
+        if( unsigned(curr_cwp) = unsigned(curr_swp)-1) then
             start_pop<=ret and '1';
         else
             start_pop<='0';
