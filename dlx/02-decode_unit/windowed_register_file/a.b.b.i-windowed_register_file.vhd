@@ -163,7 +163,7 @@ architecture structural of wrf is
     dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> windowsbit,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)
             port map(clk=>clk,rst=>rst,wr=>wr,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable_reg=>enable_regs);
     phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)	         
-            port map(P1=>P1,  clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>pop_and_swp);
+            port map(clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>pop_and_swp);
     sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)
             port map(tot_reg=>tot_regs,curr_win=>curr_cwp,out_reg=>input_mux_rd(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto numBit_data*numreg_global ));
     muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>numreg_global ) 
