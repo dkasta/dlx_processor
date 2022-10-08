@@ -17,7 +17,7 @@ architecture behavioural of tb_decode_unit is
   signal RD2_ENABLE : std_logic := '1';
   signal CALL : std_logic := '0';
   signal RET : std_logic := '0';
-  signal EN2_signal : std_logic := '1';
+  signal EN2 : std_logic := '1';
   signal IR_IN  : std_logic_vector(NBIT-1 downto 0) := (others => '0');  --RTYPE ADD RS1 1 RS2 2 RD 3
   signal A_REG_OUT :  std_logic_vector(NBIT-1 downto 0);
   signal B_REG_OUT :  std_logic_vector(NBIT-1 downto 0);
@@ -75,7 +75,7 @@ architecture behavioural of tb_decode_unit is
               rd2_enable => RD2_ENABLE,
               call => CALL,
               ret => RET,
-              EN2 => EN2_signal,
+              EN2 => EN2,
               in_IR => IR_IN,
               WB_STAGE_IN => WB_STAGE_IN,
               NPC_IN => NPC_IN,
