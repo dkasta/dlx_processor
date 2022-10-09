@@ -5,11 +5,11 @@ use work.globals.all;
 
 entity fetch_unit is
   generic( numbit : integer := BIT_RISC);
-  port(   to_IR:		       in std_logic_vector(numbit-1 downto 0);
-       	  clk:			       in std_logic;
+  port(   clk:			       in std_logic;
        	  rst:	 	  	     in std_logic;
           EN1:             in std_logic;
-       	  to_IRAM:     	   out std_logic_vector(numbit - 1 downto 0);
+          to_IR:		       in std_logic_vector(numbit-1 downto 0);
+          to_IRAM:     	   out std_logic_vector(numbit - 1 downto 0);
        	  npc_out:		     out std_logic_vector(numbit-1 downto 0);
        	  instr_reg_out:   out std_logic_vector(numbit-1 downto 0);
        	  instr_fetched:   out std_logic_vector(numbit-1 downto 0));
