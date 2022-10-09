@@ -9,11 +9,11 @@ entity datapath is
   generic( numbit: integer := RISC_BIT);
   port(    clk:                   in std_logic;
            reset:                 in std_logic;
-           ------------------------------------
+           ------------------------------------------------------------------
            -- IF input
            EN1:                   in std_logic;
-           to_IR:                 in std_logic_vector(numbit - 1 downto 0);
-           -------------------------------------
+           to_IR:                 in std_logic_vector(numbit - 1 downto 0); -- In from IRAM
+           ------------------------------------------------------------------
            -- ID input
            write_enable:          in std_logic;
            rd1_enable:            in std_logic;
@@ -21,27 +21,31 @@ entity datapath is
            call:                  in std_logic;
            ret:                   in std_logic;
            EN2:                   in std_logic;
-           ------------------------------------
+           ------------------------------------------------------------------
+           -- EXE input
            mux_one_control:       in std_logic;
            mux_two_control:       in std_logic;
            alu_control:           in std_logic_vector(3 downto 0);
            to_mem_stage_reg:      in std_logic_vector(numbit - 1 downto 0);
            wb_control:            in std_logic;
            jal_sel:               in std_logic;
-           ------------------------------------
+           ------------------------------------------------------------------
            -- IF output
-           to_IRAM:               out std_logic_vector(numbit - 1 downto 0);
+           to_IRAM:               out std_logic_vector(numbit - 1 downto 0); -- To IRAM
            npc_out_if:            out std_logic_vector(numbit - 1 downto 0);
            instruction_fetched:   out std_logic_vector(numbit - 1 downto 0);
            ir_out:                out std_logic_vector(numbit - 1 downto 0);
 
-           ----------------------------------------
-           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0);
-           rd_out_id:             out std_logic_vector(4 downto 0);
+           ------------------------------------------------------------------
+           -- ID output
            npc_out_id:            out std_logic_vector(numbit - 1 downto 0);
            a_reg_out:             out std_logic_vector(numbit - 1 downto 0);
            b_reg_out:             out std_logic_vector(numbit - 1 downto 0);
            imm_reg_out:           out std_logic_vector(numbit - 1 downto 0);
+           rd_out_id:             out std_logic_vector(4 downto 0);
+           ------------------------------------------------------------------
+           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0);
+           
            alu_out:               out std_logic_vector(numbit - 1 downto 0);
            rd_out_ex:             out std_logic_vector(4 downto 0);
            b_reg_out_ex:          out std_logic_vector(numbit - 1 downto 0);
@@ -64,12 +68,14 @@ architecture structural of datapath is
   signal iroutsignal : std_logic_vector(numbit - 1 downto 0);
   signal npcoutifsignal : std_logic_vector(numbit - 1 downto 0);
 
+  signal rdinidsignal : std_logic_vector(4 downto 0);
   signal rdoutidsignal : std_logic_vector(4 downto 0);
   signal npcoutidsignal : std_logic_vector(numbit - 1 downto 0);
   signal aregsignal : std_logic_vector(numbit - 1 downto 0);
   signal bregsignal : std_logic_vector(numbit - 1 downto 0);
   signal immregsignal : std_logic_vector(numbit - 1 downto 0);
-
+  signal inmemsignal : std_logic_vector(numbit - 1 downto 0);
+  signal outmemsignal : std_logic_vector(numbit - 1 downto 0); 
   signal rdoutexsignal : std_logic_vector(4 downto 0);
   signal aluoutsignal : std_logic_vector(numbit - 1 downto 0);
 
@@ -182,12 +188,14 @@ architecture structural of datapath is
     instruction_fetched <= instrfetchedsigal;
     npc_out_if <= npcoutifsignal;
     ir_out <= iroutsignal;
+    
     --ID signals
     rd_out_id <= rdoutidsignal;
     npc_out_id <= npcoutidsignal;
     a_reg_out <= aregsignal;
     b_reg_out <= bregsignal;
     imm_reg_out <= immregsignal;
+
     --EX signals
     rd_out_ex <= rdoutexsignal;
     alu_out <= aluoutsignal;
@@ -232,17 +240,17 @@ architecture structural of datapath is
               ret => ret,
               EN2 => EN2,
               in_IR => iroutsignal,
-              WB_STAGE_IN => ,
+              WB_STAGE_IN => wbstageoutsignal,
               NPC_IN => npcoutifsignal,
-              RD_IN => ,
-              instr_fetched => ,
-              RD_OUT => ,
-              NPC_OUT => ,
-              A_REG_OUT => ,
-              B_REG_OUT => ,
-              IMM_REG_OUT => ,
-              outmem => ,
-              inmem => );
+              RD_IN => rdinidsignal,
+              instr_fetched => instrfetchedsigal,
+              RD_OUT => rdoutidsignal,
+              NPC_OUT => npcoutidsignal,
+              A_REG_OUT => aregsignal,
+              B_REG_OUT => bregsignal,
+              IMM_REG_OUT => immregsignal,
+              inmem => inmemsignal,
+              outmem => outmemsignal);
 
     --EXECUTE : EXECUTION_STAGE
     --generic map(numbit)
