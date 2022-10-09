@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-10-09T09:42:35.107Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="3Biqabj2PLGXuTq8mJdW" version="20.4.0" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2022-10-09T10:40:20.597Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="MViYv9kz1NKCP3Lbewvv" version="20.4.0" type="github" pages="3">
   <diagram id="4a7-2WE8xKxB6OBSDGvC" name="Fetch Unit">
-    <mxGraphModel dx="1578" dy="1008" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1297" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -524,7 +524,7 @@
         <mxCell id="utCcnjPkZvuDGFTa14uh-77" value="WB_STAGE_IN" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
           <mxGeometry x="420" y="450" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="utCcnjPkZvuDGFTa14uh-80" value="write_address" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
+        <mxCell id="utCcnjPkZvuDGFTa14uh-80" value="rw1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
           <mxGeometry x="500" y="470" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="utCcnjPkZvuDGFTa14uh-81" value="RD_IN" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=6;" parent="1" vertex="1">
