@@ -34,7 +34,9 @@ architecture behavioural of tb_decode_unit is
   signal INSTRUCTION_FETCHED : std_logic_vector(NBIT - 1 downto 0);
   signal INMEM : std_logic_vector(NBIT - 1 downto 0);
   signal OUTMEM : std_logic_vector(NBIT - 1 downto 0);
-
+  signal rega_addr: std_logic_vector(4 downto 0);
+  signal regb_addr: std_logic_vector(4 downto 0);
+  
   component decode_unit 
     generic( numbit: integer := BIT_RISC);
        port( 	clk: 			            in std_logic;
@@ -95,14 +97,15 @@ architecture behavioural of tb_decode_unit is
               --mem_forwarding_two => ,
               );
 
-    IR_IN <= "00100000000000010000000001100100" after 3 ns, "00101000001000010000000000001010" after 5 ns, "00100000011000110000000000001010" after 7 ns, "00000000011000010010000000100000" after 9 ns, "00010100001000001111111111110000" after 11 ns, "00001011111111111111111111111100" after 13 ns;
+    IR_IN <= "00000000010000110000100000100000" after 3 ns, "00101000001000010000000000001010" after 5 ns, "00100000011000110000000000001010" after 7 ns, "00000000011000010010000000100000" after 9 ns, "00010100001000001111111111110000" after 11 ns, "00001011111111111111111111111100" after 13 ns;
     NPC_IN <= "00000000000000000000000000000100" after 3 ns, "00000000000000000000000000001000" after 5 ns, "00000000000000000000000000001100" after 7 ns, "00000000000000000000000000010000" after 9 ns, "00000000000000000000000000010100" after 11 ns, "00000000000000000000000000011000" after 13 ns;
 
     WB_STAGE_IN <= (others => '1') after 8 ns;
     RD_IN <= "00001" after 8 ns;
 
     RESET <= '0' after 3 ns;
-
+    rega_addr <= IR_IN(20 downto 16);
+    regb_addr <= IR_IN(15 downto 11);
     PCLOCK : process(TB_CLOCK)
     begin
       TB_CLOCK <= not(TB_CLOCK) after 1 ns;
