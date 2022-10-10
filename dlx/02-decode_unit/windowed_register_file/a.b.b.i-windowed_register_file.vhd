@@ -54,11 +54,12 @@ architecture structural of wrf is
         port(clk:   in std_logic;
             rst:   in std_logic;
             wr:    in std_logic;
+            push:  in std_logic;
             rw1:   in std_logic_vector(numBit_address-1 downto 0); --selection signal for the decoder
             cwp:   in std_logic_vector(windowsbit-1 downto 0); 
             swp:   in std_logic_vector(windowsbit-1 downto 0);
             address_mem: in std_logic_vector(2*numreg_inlocout-1 downto 0); 
-            enable_reg: out std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0) --enable for all the registers
+            enable: out std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0) --enable for all the registers
 
             );
     end component;
@@ -136,7 +137,8 @@ architecture structural of wrf is
         end component;
     component address_counter is
         generic(
-            N:          integer := numBit_address
+            N:          integer := numBit_address;
+            num_inlocout:   integer := Numreg_in_loc_out
         );
         port(
             clk:        in std_logic;
@@ -159,9 +161,8 @@ architecture structural of wrf is
     signal pop,push,pop_not_finish,start_pop,push_not_finish,start_push: std_logic;
     signal address_spill: std_logic_vector(numBit_address-1 downto 0);
     begin
-
     dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> windowsbit,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)
-            port map(clk=>clk,rst=>rst,wr=>wr,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable_reg=>enable_regs);
+            port map(clk=>clk,rst=>rst,wr=>wr,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable=>enable_regs,push=>push);
     phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)	         
             port map(clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>pop_and_swp);
     sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)
@@ -180,16 +181,17 @@ architecture structural of wrf is
             port map(tot_reg=>tot_regs,curr_win=>curr_swp,out_reg=>spill_regs);
     mux_spill: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>0 ) 
             port map(en=>push,add_read=>address_spill,out_reg=>out_mem,in_reg=>spill_regs);
-    spill: address_counter generic map(N=>numBit_address)
+    spill: address_counter generic map(N=>numBit_address, num_inlocout=>numreg_inlocout)
             port map(clk=>clk,rst=>rst,en=>push,ready=>ram_ready,done=>done_spill,occupied=>push_not_finish,addr=>address_spill);
 
     --00 or 11 in the cwp/swp needs to be stable, 01 when there is a call curr+1, 10 when there is a return curr-1
-    change_cwp: process(call,ret,curr_cwp,curr_swp,done_fill,done_spill)
+    change_cwp: process(call,ret,done_fill,done_spill)
                 begin
-                    if((call='1' and to_integer(unsigned(curr_cwp))+2/=to_integer(unsigned(curr_swp))) or done_spill='1') then 
+                    if((call='1' and (to_integer(unsigned(curr_cwp))+2)mod num_windows /= to_integer(unsigned(curr_swp))) or done_spill='1') then 
                     -- se viene chiamata una nuova subroutine e c'è spazio nel registro oppure lo spill è stato fatto allora cwp può incrementare
+                    --si aspetta che venga fatto lo spill per aggiornare cwp
                         sel_cwp<="01";
-                    elsif((ret='1' and curr_cwp/=curr_swp) or done_fill='1') then 
+                    elsif((ret='1' and curr_cwp/=curr_swp)) then 
                     -- se c'è un return nelle subroutine e i registri sono già caricati nel registro o sono già stati ristabiliti allora diminuisci il cwp
                         sel_cwp<="10"; 
                     else 
@@ -213,21 +215,20 @@ architecture structural of wrf is
     --mantain the enable for the enable_generator
     process(ret)
     begin
-        if( unsigned(curr_cwp) = unsigned(curr_swp)-1) then
-            start_pop<=ret and '1';
+        if(unsigned(curr_swp) > 0) then
+            start_pop<=ret;
         else
             start_pop<='0';
         end if;
     end process;
     pop<=pop_not_finish or start_pop;
-
-    -- push enable for the address counter
-    process(curr_swp,curr_swp,call)
+    --start the push
+    process(call)
     begin
-        if(unsigned(curr_cwp)- unsigned(curr_swp) = "10") then
-            start_push<=ret and '1';
+        if(abs(TO_INTEGER(unsigned(curr_cwp))- TO_INTEGER(unsigned(curr_swp)))<2) then
+            start_push <='0';
         else
-            start_push<='0';
+            start_push<=call;
         end if;
     end process;
     push<=push_not_finish or start_push;

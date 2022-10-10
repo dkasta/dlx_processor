@@ -1,4 +1,4 @@
--- positive edge triggered flip flop D with syncronous reset
+--- positive edge triggered flip flop D with syncronous reset
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -23,4 +23,7 @@ architecture behavioral of DFF_wrf is
 	  					end if;
 				end process;
 end behavioral;
+
+
+
 

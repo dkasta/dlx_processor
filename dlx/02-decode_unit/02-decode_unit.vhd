@@ -4,7 +4,9 @@ use work.globals.all;
 use work.myTypes.all;
 
 entity decode_unit is
-  generic( numbit: integer := BIT_RISC);
+  generic( numbit: integer := BIT_RISC;
+           numbitdata: integer :=NumBitMemoryWord;
+           numaddr: integer := NumMemBitAddress);
   	 port( 	clk: 			            in std_logic;
            	rst: 			            in std_logic;
        	   	write_enable: 		    in std_logic;
@@ -27,8 +29,11 @@ entity decode_unit is
        	   	--alu_forwarding_one:   out std_logic;
     		    --mem_forwarding_one:   out std_logic;
        		  --alu_forwarding_two:   out std_logic;
-            outmem:               out std_logic_vector(31 downto 0); --to dram wrf
-            inmem:                in std_logic_vector(31 downto 0) --from dram wrf
+            outmem:               out std_logic_vector(numbitdata-1 downto 0); --to dmem
+            inmem:                in std_logic_vector(numbitdata-1 downto 0) --from dmem
+            addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
+            rd_mem:               out std_logic;
+            wr_mem:               out std_logic;
        	  	--mem_forwarding_two:   out std_logic
             );
 end decode_unit;
@@ -49,6 +54,24 @@ architecture structural of decode_unit is
 --           Data_one_out :	OUT std_logic_vector(numBit_data-1 downto 0);
 --           Data_two_out :	OUT std_logic_vector(numBit_data-1 downto 0));
 --    end component;
+      component wrf_fsm is
+            generic(  NBIT : integer := NumBitMemoryWord;
+                      NADDR : integer :=  NumMemBitAddress );
+          port( clk:          in std_logic;
+                rst:          in std_logic;
+                push:         in std_logic;
+                done_fill:    in std_logic;
+                done_spill:   in std_logic;
+                pop:          in std_logic;
+                ram_ready:    in std_logic;
+                address:      out std_logic_vector(NADDR-1 downto 0);
+                register_in:  in std_logic_vector(Nbit-1 downto 0);
+                register_out: out std_logic_vector(Nbit-1 downto 0);
+                datamem_in:   in std_logic_vector(Nbit-1 downto 0);
+                datamem_out:  out std_logic_vector(Nbit-1 downto 0);
+                read:         out std_logic;
+                write:        out std_logic);
+      component wrf_fsm;
 
       component wrf is
         generic(
@@ -143,11 +166,14 @@ architecture structural of decode_unit is
   signal RF_TWO_OUT : std_logic_vector(numbit-1 downto 0);
   signal rdmux_out : std_logic_vector(4 downto 0);
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
+
+  --for wrf
   signal done_fill : std_logic;
   signal done_spill: std_logic; 
   signal pop: std_logic; 
   signal push: std_logic;
   signal ramr: std_logic;
+  signal reg_in,reg_out: std_logic_vector(numbitdata-1 downto 0);
 
   begin
 
@@ -190,13 +216,30 @@ architecture structural of decode_unit is
           DATAIN => WB_STAGE_IN,
           out_reg_1 => RF_ONE_OUT,
           out_reg_2 => RF_TWO_OUT,
-          out_mem => outmem,
+          out_mem => reg_in,
           pop_mem => pop,
           push_mem => push,
           RAM_READY => ramr,
-          in_mem => inmem
+          in_mem => reg_out
           );
- 
+  WRF_CU: wrf_fsm
+      generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress);
+    port( clk=>clk,
+          rst=>rst,
+          push=>push,
+          done_fill=>done_fill,
+          done_spill=>done_spill,
+          pop=>pop,
+          ram_ready=>ramr,
+          address=>address_mem,
+          register_in=>reg_in,
+          register_out=>reg_out,
+          datamem_in=>inmem,
+          datamem_out=>outmem,
+          read=>rd_mem,
+          write=>wr_mem);
+end wr;
+
   
   
   REG_A : REGISTER_GENERIC
