@@ -74,8 +74,7 @@ architecture structural of datapath is
   signal aregsignal : std_logic_vector(numbit - 1 downto 0);
   signal bregsignal : std_logic_vector(numbit - 1 downto 0);
   signal immregsignal : std_logic_vector(numbit - 1 downto 0);
-  signal inmemsignal : std_logic_vector(numbit - 1 downto 0);
-  signal outmemsignal : std_logic_vector(numbit - 1 downto 0); 
+
   signal rdoutexsignal : std_logic_vector(4 downto 0);
   signal aluoutsignal : std_logic_vector(numbit - 1 downto 0);
 
@@ -94,6 +93,15 @@ architecture structural of datapath is
 
   signal npcoutbpusignal : std_logic_vector(numbit - 1 downto 0);
 
+
+--signal for dram
+  signal inmemsignal : std_logic_vector(numbit - 1 downto 0);
+  signal outmemsignal : std_logic_vector(numbit - 1 downto 0); 
+  signal addressmemsignal: std_logic_vector(numbit-1 downto 0); 
+  signal rd_memsignal:     std_logic;
+  signal wr_memsignal:  std_logic;
+  signal ram_ready: std_logic;
+
   component fetch_unit
     generic(numbit : integer := I_SIZE);
     port(to_IR : IN std_logic_vector(numbit-1 downto 0);
@@ -106,35 +114,42 @@ architecture structural of datapath is
          instr_fetched:   OUT std_logic_vector(numbit-1 downto 0));
     end component;
 
-    component decode_unit 
-      generic( numbit: integer := BIT_RISC);
-         port( 	clk: 			            in std_logic;
-                rst: 			            in std_logic;
-                write_enable: 		    in std_logic;
-                rd1_enable:           in std_logic;
-                rd2_enable:           in std_logic;
-                call:                 in std_logic; --call to a subroutine
-                ret:                  in std_logic; --return to a subroutine
-                EN2:                  in std_logic;
-                in_IR:    			      in std_logic_vector(numbit-1 downto 0);
-                WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
-                NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
-                RD_IN: 			          in std_logic_vector(4 downto 0);
-                instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
-                inmem:                in std_logic_vector(31 downto 0); --from dram wrf
-                outmem:               out std_logic_vector(31 downto 0); --to dram wrf
-                --NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
-                RD_OUT: 			        out std_logic_vector(4 downto 0);
-                NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
-                A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
-                B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
-                IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0)
-                --alu_forwarding_one:   out std_logic;
-                --mem_forwarding_one:   out std_logic;
-                --alu_forwarding_two:   out std_logic;
-                --mem_forwarding_two:   out std_logic
-                );
-    end component;
+component decode_unit is
+  generic( numbit: integer := BIT_RISC;
+           numbitdata: integer :=NumBitMemoryWord;
+           numaddr: integer := NumMemBitAddress);
+  	 port( 	clk: 			            in std_logic;
+           	rst: 			            in std_logic;
+       	   	write_enable: 		    in std_logic;
+            rd1_enable:           in std_logic;
+            rd2_enable:           in std_logic;
+            call:                 in std_logic; --call to a subroutine
+            ret:                  in std_logic; --return to a subroutine
+            EN2:                  in std_logic;
+            in_IR:    			      in std_logic_vector(numbit-1 downto 0);
+       	   	WB_STAGE_IN: 		      in std_logic_vector(numbit-1 downto 0);
+       	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
+           	RD_IN: 			          in std_logic_vector(4 downto 0);
+       	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
+       	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
+       	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
+       	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
+       	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
+       	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
+       	   	IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
+       	   	--alu_forwarding_one:   out std_logic;
+    		    --mem_forwarding_one:   out std_logic;
+       		  --alu_forwarding_two:   out std_logic;
+            outmem:               out std_logic_vector(numbitdata-1 downto 0); --to dmem
+            inmem:                in std_logic_vector(numbitdata-1 downto 0) --from dmem
+            addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
+            rd_mem:               out std_logic;
+            wr_mem:               out std_logic;
+            ramr:                 in std_logic;
+       	  	--mem_forwarding_two:   out std_logic
+            );
+end component;
+
 
     
 --  component execution_unit
@@ -229,8 +244,10 @@ architecture structural of datapath is
              instr_reg_out => iroutsignal, 
              instr_fetched => instrfetchedsigal);
 
-    DECODE : DECODE_STAGE
-    generic map(numbit)
+    DECODE : decode_unit
+    generic map( numbit=>numbit,
+           numbitdata=>numbit,
+           numaddr=>numbit)
     port map( clk => clk, 
               rst => reset, 
               write_enable => write_enable, 
@@ -250,7 +267,13 @@ architecture structural of datapath is
               B_REG_OUT => bregsignal,
               IMM_REG_OUT => immregsignal,
               inmem => inmemsignal,
-              outmem => outmemsignal);
+              outmem => outmemsignal,
+              addressmem=>addressmemsignal,
+              rd_mem=>rd_memsignal,
+              wr_mem=>wr_memsignal,
+              ramr=>ram_ready
+            );
+end decode_unit;
 
     --EXECUTE : EXECUTION_STAGE
     --generic map(numbit)

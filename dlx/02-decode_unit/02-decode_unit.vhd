@@ -34,6 +34,7 @@ entity decode_unit is
             addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
+            ramr:                 in std_logic;
        	  	--mem_forwarding_two:   out std_logic
             );
 end decode_unit;
@@ -167,12 +168,11 @@ architecture structural of decode_unit is
   signal rdmux_out : std_logic_vector(4 downto 0);
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
 
-  --for wrf
+  --signal for connecting wrf to wrf_fsm
   signal done_fill : std_logic;
   signal done_spill: std_logic; 
   signal pop: std_logic; 
   signal push: std_logic;
-  signal ramr: std_logic;
   signal reg_in,reg_out: std_logic_vector(numbitdata-1 downto 0);
 
   begin

@@ -60,18 +60,18 @@ architecture structural of DLX is
   end component;
 
   -- Data Ram
-  component DRAM
+ component DRAM is
   generic(NBIT : integer := NumBitMemoryWord;
-          NCELL : integer := NumBitMemoryCells);
+          NADDR : integer :=  NumMemBitAddress);
   port(clk : IN std_logic;
-       address : IN std_logic_vector(NBIT-1 downto 0);
+       address : IN std_logic_vector(NADDR-1 downto 0);
        data_in : IN std_logic_vector(NBIT-1 downto 0);
        write_enable : IN std_logic;
        read_enable : IN std_logic;
        reset : IN std_logic;
        data_out : OUT std_logic_vector(NBIT-1 downto 0);
        address_error : OUT std_logic);
-  end component;
+end component;
 
   -- Datapath
   component DATAPATH
