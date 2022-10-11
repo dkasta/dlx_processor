@@ -20,6 +20,7 @@ entity decode_unit is
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
+            imm_mux_control       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
@@ -35,6 +36,7 @@ entity decode_unit is
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
+            NPC_branch_jump_out   out std_logic_vector(numbit-1 downto 0);
        	  	--mem_forwarding_two:   out std_logic
             );
 end decode_unit;
@@ -137,6 +139,17 @@ architecture structural of decode_unit is
                rd_out:    out std_logic_vector(4 downto 0));
      end component;
 
+     component MUX21_GENERIC 
+      generic( NBIT : integer := Bit_Mux21);
+      port(    A:   in std_logic_vector(NBIT-1 downto 0);
+               B:   in std_logic_vector(NBIT-1 downto 0);
+               SEL: in std_logic;
+               Y:   out std_logic_vector(NBIT-1 downto 0));
+     end component;
+
+     component COMPARATOR 
+      generic ();
+      port();
      --component HAZARD_DETECTION
      --  port(   clk:                in std_logic;
      --          reset:              in std_logic;
@@ -162,10 +175,13 @@ architecture structural of decode_unit is
      --          NPC_OUT:      out std_logic_vector(31 downto 0));
      --end component;
 
-  signal sign_extention_signal : std_logic_vector(31 downto 0);
+  signal sign_extention_16 : std_logic_vector(31 downto 0);
+  signal sign_extention_26 : std_logic_vector(31 downto 0);
   signal RF_ONE_OUT : std_logic_vector(numbit-1 downto 0);
   signal RF_TWO_OUT : std_logic_vector(numbit-1 downto 0);
   signal rdmux_out : std_logic_vector(4 downto 0);
+  signal imm_mux_out : std_logic_vector(numbit-1 downto 0);
+  signal sign_extention_mux_out: std_logic_vector(numbit-1 downto 0);
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
 
   --signal for connecting wrf to wrf_fsm
@@ -177,9 +193,20 @@ architecture structural of decode_unit is
 
   begin
 
-  SIGN_REG : SIGN_EXTENTION
+  SIGN_REG_16 : SIGN_EXTENTION
   port map( data_in => in_IR(15 downto 0),
-            data_out => sign_extention_signal);
+            data_out => sign_extention_16);
+  
+  SIGN_REG_26 : SIGN_EXTENTION
+  port map( data_in => in_IR(25 downto 0),
+            data_out => sign_extention_26);
+  
+  IMM_MUX : MUX21_GENERIC
+  generic map(numbit)
+  port map ( A => sign_extention_16, 
+             B => sign_extention_26, 
+             SEL => imm_mux_control, 
+             Y => sign_extention_mux_out);
   
   --RF : REGISTER_FILE
   --generic map(numbit,5,numbit)
@@ -260,7 +287,7 @@ end wr;
 
   IMMREG : REGISTER_GENERIC
   generic map(numbit)
-  port map( D => sign_extention_signal,
+  port map( D => sign_extention_mux_out,
             CK => clk,
             RESET => rst, 
             ENABLE => EN2,
@@ -289,6 +316,10 @@ end wr;
             RESET => rst, 
             ENABLE => EN2,
             Q => RD_OUT);
+
+
+  NPC_branch_jump_out <= NPC_IN + sign_extention_mux_out;
+
 
   --HAZARD : HAZARD_DETECTION
   --port map(clk,rst,instr_fetched(31 downto 26),instr_fetched(20 downto 16),instr_fetched(15 downto 11),instr_fetched(25 downto 21),instr_fetched(20 downto 16),alu_forwarding_one,mem_forwarding_one,alu_forwarding_two,mem_forwarding_two,open);
