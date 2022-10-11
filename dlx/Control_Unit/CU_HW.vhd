@@ -21,7 +21,9 @@ entity CU_HARDWIRED is
              OPCODE : IN  std_logic_vector(OP_CODE_SIZE - 1 downto 0);
              FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
              Clk : IN std_logic;
-             Rst : IN std_logic);                  -- Active high
+             Rst : IN std_logic;
+             FLUSH : IN std_logic);                  -- Active high
+              
 end CU_HARDWIRED;
 
 architecture BEHAVIORAL of CU_HARDWIRED is
@@ -204,9 +206,11 @@ begin
     elsif Clk'event and Clk = '1' then  -- rising clock edge
       --cw1 <= cw;
       cw2 <= cw;
-      cw3 <= cw2(CW_SIZE - 1 - ALU_OPC_SIZE - 1 downto 0);
-      cw4 <= cw3(CW_SIZE - 1 - 2 - ALU_OPC_SIZE - 1 downto 0);
+      cw3 <= cw2(CW_SIZE - 1 - ALU_OPC_SIZE - 1 downto 0); -- 5 downto 0    MEM and WB
+      cw4 <= cw3(CW_SIZE - 1 - 2 - ALU_OPC_SIZE - 1 downto 0);  -- 3 downto 0  WB
     end if;
   end process CW_PIPE;
 
 end BEHAVIORAL;
+
+
