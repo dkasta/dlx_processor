@@ -6,13 +6,17 @@ entity memory_unit is
   generic( numbit: integer := BIT_RISC);
   port(    alu_in:            in std_logic_vector(numbit - 1 downto 0);
            rd_reg_in:         in std_logic_vector(4 downto 0);
+           b_reg_in:          in std_logic_vector(numbit - 1 downto 0);
            reset:             in std_logic;
            clk:               in std_logic;
-           mux_mem_control    in std_logic;
+           mux_mem_control:   in std_logic;
+           EN4:               in std_logic;
            to_mem_stage_reg:  in std_logic_vector(numbit - 1 downto 0);
+           alu_out:           out std_logic_vector(numbit - 1 downto 0);
            rd_reg_out:        out std_logic_vector(4 downto 0);
-           memory_stage_out:  out std_logic_vector(numbit-1 downto 0);
-           alu_out:           out std_logic_vector(numbit - 1 downto 0));
+           b_reg_out:         out std_logic_vector(numbit-1 downto 0);
+           DRAM_addr:         out std_logic_vector(numbit-1 downto 0);
+           );
 end memory_unit;
 
 architecture structural of memory_unit is

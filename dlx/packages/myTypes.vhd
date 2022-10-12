@@ -34,6 +34,7 @@ package myTypes is
     constant ITYPE_ADDI: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001000"; -- i, 0x08 ---> 00 1000
     constant ITYPE_ANDI: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001100"; -- i, 0x0C
     constant ITYPE_BEQZ: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000100"; -- b, 0x04
+    constant ITYPE_BNEZ: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000101"; -- b, 0x05
     constant ITYPE_LW:	 std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "100011"; -- l, 0x23	
     constant ITYPE_ORI:	 std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001101"; -- i, 0x0D	
     constant ITYPE_SGEI: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "011101"; -- i, 0x1D
@@ -46,7 +47,6 @@ package myTypes is
 	constant ITYPE_XORI: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "001110"; -- i, 0x0E
 
 -- J-Type instruction -> OPCODE field
-	constant JTYPE_BNEZ:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000101"; -- b, 0x05
 	constant JTYPE_J:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000010"; -- j, 0x02
 	constant JTYPE_JAL:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000011"; -- j, 0x03
 

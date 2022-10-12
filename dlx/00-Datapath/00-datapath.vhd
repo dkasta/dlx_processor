@@ -26,6 +26,9 @@ entity datapath is
            mux_one_control:       in std_logic;
            mux_two_control:       in std_logic;
            alu_control:           in std_logic_vector(3 downto 0);
+           EN3                    in std_logic;
+           -----------------------------------------------------------------
+           
            to_mem_stage_reg:      in std_logic_vector(numbit - 1 downto 0);
            wb_control:            in std_logic;
            jal_sel:               in std_logic;
@@ -44,16 +47,17 @@ entity datapath is
            imm_reg_out:           out std_logic_vector(numbit - 1 downto 0);
            rd_out_id:             out std_logic_vector(4 downto 0);
            ------------------------------------------------------------------
-           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0);
-           
+           -- EXE output
            alu_out:               out std_logic_vector(numbit - 1 downto 0);
-           rd_out_ex:             out std_logic_vector(4 downto 0);
            b_reg_out_ex:          out std_logic_vector(numbit - 1 downto 0);
+           rd_out_ex:             out std_logic_vector(4 downto 0);
+           ------------------------------------------------------------------
            rd_out_mem:            out std_logic_vector(4 downto 0);
            memory_stage_out:      out std_logic_vector(numbit - 1 downto 0);
            alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_wb:             out std_logic_vector(4 downto 0);
+           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0);
            alu_forwarding_one:    out std_logic;
            mem_forwarding_one:    out std_logic;
            alu_forwarding_two:    out std_logic;
@@ -92,8 +96,10 @@ architecture structural of datapath is
   signal memforwardingtwosignal : std_logic;
 
   signal npcoutbpusignal : std_logic_vector(numbit - 1 downto 0);
-
-
+  signal NPC_branch_jump_signal: std_logic_vector(numbit - 1 downto 0);
+  signal comparator_out_to_mux_signal: std_logic;
+  signal b_reg_out_signal: std_logic_vector(numbit - 1 downto 0);
+  
 --signal for dram
   signal inmemsignal : std_logic_vector(numbit - 1 downto 0);
   signal outmemsignal : std_logic_vector(numbit - 1 downto 0); 
@@ -108,6 +114,8 @@ architecture structural of datapath is
          clk : IN std_logic;
          rst : IN std_logic;
          EN1:  IN std_logic;
+         comparator_to_mux: in std_logic;
+         NPC_branch_jump    in std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
          npc_out : OUT std_logic_vector(numbit-1 downto 0);
          instr_reg_out : OUT std_logic_vector(numbit-1 downto 0);
@@ -146,46 +154,47 @@ component decode_unit is
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
+            NPC_branch_jump       out std_logic_vector(numbit-1 downto 0);
+            comparator_out        out std_logic;
        	  	--mem_forwarding_two:   out std_logic
             );
 end component;
 
 
     
---  component execution_unit
---  generic( numbit: integer := BIT_RISC);
---  port(    clk:                   in std_logic;
---           reset:                 in std_logic;
---           alu_forwarding_one:    in std_logic;
---           mem_forwarding_one:    in std_logic;
---           alu_forwarding_two:    in std_logic;
---           mem_forwarding_two:    in std_logic;
---           alu_forwarding_value:  in std_logic_vector(numbit - 1 downto 0);
---           mem_forwarding_value:  in std_logic_vector(numbit - 1 downto 0);
---           npc_in:                in std_logic_vector(numbit-1 downto 0);
---           a_reg_in:              in std_logic_vector(numbit-1 downto 0);
---           b_reg_in:              in std_logic_vector(numbit-1 downto 0);
---           imm_reg_in:            in std_logic_vector(numbit-1 downto 0);
---           rd_reg_in:             in std_logic_vector(4 downto 0);
---           mux_one_control:       in std_logic;
---           mux_two_control:       in std_logic;
---           alu_control:           in std_logic_vector(3 downto 0);
---           execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
---           b_reg_out:             out std_logic_vector(numbit-1 downto 0);
---           rd_reg_out:            out std_logic_vector(4 downto 0));
---  end component;
+component execution_unit
+  generic( numbit: integer := BIT_RISC);
+  port(    clk:                   in std_logic;
+           reset:                 in std_logic;
+           npc_in:                in std_logic_vector(numbit-1 downto 0);
+           a_reg_in:              in std_logic_vector(numbit-1 downto 0);
+           b_reg_in:              in std_logic_vector(numbit-1 downto 0);
+           imm_reg_in:            in std_logic_vector(numbit-1 downto 0);
+           rd_reg_in:             in std_logic_vector(4 downto 0);
+           mux_one_control:       in std_logic;
+           mux_two_control:       in std_logic;
+           alu_control:           in std_logic_vector(3 downto 0);
+           EN3:                   in std_logic;
+           execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
+           b_reg_out:             out std_logic_vector(numbit-1 downto 0);
+           rd_reg_out:            out std_logic_vector(4 downto 0));
+ end component;
 
-  --component memory_unit
-  --generic( numbit: integer := BIT_RISC);
-  --port(    alu_in:            in std_logic_vector(numbit - 1 downto 0);
-  --         rd_reg_in:         in std_logic_vector(4 downto 0);
-  --         reset:             in std_logic;
-  --         clk:               in std_logic;
-  --         to_mem_stage_reg:  in std_logic_vector(numbit - 1 downto 0);
-  --         rd_reg_out:        out std_logic_vector(4 downto 0);
-  --         memory_stage_out:  out std_logic_vector(numbit-1 downto 0);
-  --         alu_out:           out std_logic_vector(numbit - 1 downto 0));
-  --end component;
+component memory_unit
+generic( numbit: integer := BIT_RISC);
+port(   alu_in:            in std_logic_vector(numbit - 1 downto 0);
+        rd_reg_in:         in std_logic_vector(4 downto 0);
+        b_reg_in:          in std_logic_vector(numbit - 1 downto 0);
+        reset:             in std_logic;
+        clk:               in std_logic;
+        mux_mem_control:   in std_logic;
+        EN4:               in std_logic;
+        to_mem_stage_reg:  in std_logic_vector(numbit - 1 downto 0);
+        alu_out:           out std_logic_vector(numbit - 1 downto 0);
+        rd_reg_out:        out std_logic_vector(4 downto 0);
+        b_reg_out:         out std_logic_vector(numbit-1 downto 0);
+        DRAM_addr:         out std_logic_vector(numbit-1 downto 0););
+end component;
 
   --component write_back_unit
   --generic( N: integer := BIT_RISC);
@@ -238,6 +247,8 @@ end component;
     port map(clk => clk, 
              rst => reset, 
              EN1 => EN1,
+             comparator_out_to_mux => comparator_out_to_mux_signal,
+             NPC_branch_jump => NPC_branch_jump_signal,
              to_IR => to_IR,
              to_IRAM => to_IRAM, 
              npc_out => npcoutifsignal, 
@@ -271,18 +282,31 @@ end component;
               addressmem=>addressmemsignal,
               rd_mem=>rd_memsignal,
               wr_mem=>wr_memsignal,
-              ramr=>ram_ready
+              ramr=>ram_ready,
+              NPC_branch_jump => NPC_branch_jump_signal,
+              comparator_out => comparator_out_to_mux_signal 
             );
 end decode_unit;
 
-    --EXECUTE : EXECUTION_STAGE
-    --generic map(numbit)
-    --port map(aluforwardingonesignal, memforwardingonesignal, aluforwardingtwosignal, memforwardingtwosignal, aluoutsignal, aluoutmemsignal, npcoutidsignal, aregsignal,
-    -- bregsignal, immregsignal, rdoutidsignal, mux_one_control, mux_two_control, alu_control, clk, reset, aluoutsignal, b_reg_out_ex, rdoutexsignal);
+EXECUTE : EXECUTION_STAGE
+generic map(numbit)
+port map( clk => clk,
+          reset => reset,
+          npc_in => npcoutidsignal,
+          a_reg_in => aregsignal,
+          b_reg_in => bregsignal,
+          imm_reg_in => immregsignal,
+          rd_reg_in => rdoutidsignal,
+          mux_one_control => mux_one_control,
+          mux_two_control => mux_two_control,
+          alu_control => alu_control,
+          execution_stage_out => aluoutsignal,
+          b_reg_out => b_reg_out_signal,
+          rd_reg_out => rdoutexsignal);
 
---    MEMORY : MEMORY_STAGE
---    generic map(numbit)
---    port map(aluoutsignal, rdoutexsignal, reset, clk, to_mem_stage_reg, rdoutmemsignal, memstageoutsignal, aluoutmemsignal);
+MEMORY : MEMORY_STAGE
+generic map(numbit)
+port map();
 
 --    WRITEBACK : WRITE_BACK_STAGE
 --    generic map(numbit)

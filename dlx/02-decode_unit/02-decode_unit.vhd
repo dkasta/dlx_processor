@@ -36,7 +36,8 @@ entity decode_unit is
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
-            NPC_branch_jump_out   out std_logic_vector(numbit-1 downto 0);
+            NPC_branch_jump       out std_logic_vector(numbit-1 downto 0);
+            comparator_out        out std_logic;
        	  	--mem_forwarding_two:   out std_logic
             );
 end decode_unit;
@@ -148,8 +149,11 @@ architecture structural of decode_unit is
      end component;
 
      component COMPARATOR 
-      generic ();
-      port();
+      generic ( NBIT : integer := Bit_Register;
+                OPCODE_SIZE : integer := OP_CODE_SIZE);
+      port( opcode_in : in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+            data_in :   in std_logic_vector(NBIT-1 downto 0);
+            data_out :  out std_logic);
      --component HAZARD_DETECTION
      --  port(   clk:                in std_logic;
      --          reset:              in std_logic;
@@ -182,6 +186,7 @@ architecture structural of decode_unit is
   signal rdmux_out : std_logic_vector(4 downto 0);
   signal imm_mux_out : std_logic_vector(numbit-1 downto 0);
   signal sign_extention_mux_out: std_logic_vector(numbit-1 downto 0);
+  signal signal_comparator_out : std_logic;
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
 
   --signal for connecting wrf to wrf_fsm
@@ -207,7 +212,14 @@ architecture structural of decode_unit is
              B => sign_extention_26, 
              SEL => imm_mux_control, 
              Y => sign_extention_mux_out);
+
+  COMP : COMPARATOR
+  generic map (numbit, OP_CODE_SIZE)
+  port map ( opcode_in => in_IR(31 downto 26), 
+             data_in => RF_ONE_OUT,
+             data_out => signal_comparator_out);
   
+  comparator_out <= signal_comparator_out;
   --RF : REGISTER_FILE
   --generic map(numbit,5,numbit)
   --port map( clk => clk,
@@ -318,7 +330,7 @@ end wr;
             Q => RD_OUT);
 
 
-  NPC_branch_jump_out <= NPC_IN + sign_extention_mux_out;
+  NPC_branch_jump <= NPC_IN + sign_extention_mux_out;
 
 
   --HAZARD : HAZARD_DETECTION

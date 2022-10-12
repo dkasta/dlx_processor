@@ -7,12 +7,6 @@ entity execution_unit is
   generic( numbit: integer := BIT_RISC);
   port(    clk:                   in std_logic;
            reset:                 in std_logic;
-           --alu_forwarding_one:    in std_logic;
-           --mem_forwarding_one:    in std_logic;
-           --alu_forwarding_two:    in std_logic;
-           --mem_forwarding_two:    in std_logic;
-           --alu_forwarding_value:  in std_logic_vector(numbit - 1 downto 0);
-           --mem_forwarding_value:  in std_logic_vector(numbit - 1 downto 0);
            npc_in:                in std_logic_vector(numbit-1 downto 0);
            a_reg_in:              in std_logic_vector(numbit-1 downto 0);
            b_reg_in:              in std_logic_vector(numbit-1 downto 0);
@@ -21,6 +15,7 @@ entity execution_unit is
            mux_one_control:       in std_logic;
            mux_two_control:       in std_logic;
            alu_control:           in aluOp;
+           EN3:                   in std_logic;
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
            rd_reg_out:            out std_logic_vector(4 downto 0));
