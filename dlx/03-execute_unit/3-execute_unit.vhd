@@ -61,19 +61,17 @@ architecture structural of execution_unit is
 
     MUX_ONE_RF : MUX21_GENERIC
     generic map(numbit)
-    port map(npc_in,a_reg_in,mux_one_control,mux_one_out_rf);
-
-    --MUX_ONE_MEM : MUX21_GENERIC
-    --generic map(numbit)
-    --port map(mux_one_out_rf,mem_forwarding_value,mem_forwarding_one,mux_one_out_mem_forwarding);
-
---    MUX_ONE_ALU : MUX21_GENERIC
---    generic map(numbit)
---    port map(mux_one_out_mem_forwarding,alu_forwarding_value,alu_forwarding_one,mux_one_out_alu_forwarding);
+    port map( A => npc_in,
+              B => a_reg_in,
+              SEL => mux_one_control,
+              Y => mux_one_out_rf);
 
     MUX_TWO_RF : MUX21_GENERIC
     generic map(numbit)
-    port map(b_reg_in,imm_reg_in,mux_two_control,mux_two_out_rf);
+    port map( A => b_reg_in,
+              B => imm_reg_in,
+              SEL => mux_two_control,
+              Y => mux_two_out_rf);
 
 --    MUX_TWO_MEM : MUX21_GENERIC
 --    generic map(numbit)
@@ -82,20 +80,42 @@ architecture structural of execution_unit is
 --    MUX_TWO_ALU : MUX21_GENERIC
 --    generic map(numbit)
 --    port map(mux_two_out_mem_forwarding,alu_forwarding_value,alu_forwarding_two,mux_two_out_alu_forwarding);
+operand_A : in std_logic_vector(NumBitALU-1 downto 0);
+        operand_B : in std_logic_vector(NumBitALU-1 downto 0);
+        type_alu_operation : in aluOp;
+        output : out std_logic_vector(NumBitALU-1 downto 0);
+        cout : out std_logic
+
 
     ALU_comp : ALU
-    port map(mux_one_out_alu_forwarding, mux_two_out_alu_forwarding, alu_control, alu_out, s_cout);
+    port map( operand_A => mux_one_out_rf,
+              operand_B => mux_two_out_rf, 
+              type_alu_operation => alu_control, 
+              output => alu_out, 
+              cout => s_cout);
 
     REG1 : REGISTER_GENERIC
     generic map(numbit)
-    port map(alu_out,clk,reset,execution_stage_out);
+    port map( D => alu_out,
+              CK => clk,
+              RESET => reset,
+              ENABLE => EN3,
+              Q => execution_stage_out);
 
     REG2 : REGISTER_GENERIC
     generic map(numbit)
-    port map(b_reg_in,clk,reset,b_reg_out);
+    port map( D => b_reg_in,
+              CK => clk,
+              RESET => reset,
+              ENABLE => EN3,
+              Q => b_reg_out);
 
     REG3 : REGISTER_GENERIC
     generic map(5)
-    port map(rd_reg_in,clk,reset,rd_reg_out);
+    port map( D => rd_reg_in,
+              CK => clk,
+              RESET => reset,
+              ENABLE => EN3, 
+              Q => rd_reg_out);
 
 end structural;

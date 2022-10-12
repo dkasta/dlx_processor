@@ -28,10 +28,12 @@ entity datapath is
            alu_control:           in std_logic_vector(3 downto 0);
            EN3                    in std_logic;
            -----------------------------------------------------------------
-           
-           to_mem_stage_reg:      in std_logic_vector(numbit - 1 downto 0);
-           wb_control:            in std_logic;
-           jal_sel:               in std_logic;
+           -- MEM input
+           mux_mem_control:       in std_logic;
+           DRAM_to_mux:           in std_logic_vector(numbit - 1 downto 0);
+           ------------------------------------------------------------------
+           -- WB input 
+           mux_wb_control:        in std_logic;
            ------------------------------------------------------------------
            -- IF output
            to_IRAM:               out std_logic_vector(numbit - 1 downto 0); -- To IRAM
@@ -52,18 +54,16 @@ entity datapath is
            b_reg_out_ex:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_ex:             out std_logic_vector(4 downto 0);
            ------------------------------------------------------------------
-           rd_out_mem:            out std_logic_vector(4 downto 0);
-           memory_stage_out:      out std_logic_vector(numbit - 1 downto 0);
+           --MEM output
+           DRAM_addr:             out std_logic_vector(4 downto 0);
+           DRAM_data_in           out std_logic_vector(numbit - 1 downto 0);
            alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
+
+           memory_stage_out:      out std_logic_vector(numbit - 1 downto 0);
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_wb:             out std_logic_vector(4 downto 0);
            npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0);
-           alu_forwarding_one:    out std_logic;
-           mem_forwarding_one:    out std_logic;
-           alu_forwarding_two:    out std_logic;
-           mem_forwarding_two:    out std_logic;
-           alu_forwarding_value:  out std_logic_vector(numbit - 1 downto 0);
-           mem_forwarding_value:  out std_logic_vector(numbit - 1 downto 0));
+           );
 end datapath;
 
 architecture structural of datapath is
@@ -189,23 +189,22 @@ port(   alu_in:            in std_logic_vector(numbit - 1 downto 0);
         clk:               in std_logic;
         mux_mem_control:   in std_logic;
         EN4:               in std_logic;
-        to_mem_stage_reg:  in std_logic_vector(numbit - 1 downto 0);
+        DRAM_to_mux:       in std_logic_vector(numbit - 1 downto 0);
         alu_out:           out std_logic_vector(numbit - 1 downto 0);
         rd_reg_out:        out std_logic_vector(4 downto 0);
         b_reg_out:         out std_logic_vector(numbit-1 downto 0);
         DRAM_addr:         out std_logic_vector(numbit-1 downto 0););
 end component;
 
-  --component write_back_unit
-  --generic( N: integer := BIT_RISC);
-  --port(    LMD:     in std_logic_vector(N-1 downto 0);
-  --         ALUOUT:  in std_logic_vector(N-1 downto 0);
-  --         RD_IN:   in std_logic_vector(4 downto 0);
-  --         CONTROL: in std_logic;
-  --         JAL_SEL: in std_logic;
-  --         RD_OUT:  out std_logic_vector(4 downto 0);
-  --         WB_OUT:  out std_logic_vector(N-1 downto 0));
-  --end component;
+component write_back_unit
+generic( N: integer := BIT_RISC);
+port(    LMD:     in std_logic_vector(N-1 downto 0);
+         ALUOUT:  in std_logic_vector(N-1 downto 0);
+         RD_IN:   in std_logic_vector(4 downto 0);
+         CONTROL: in std_logic;
+         RD_OUT:  out std_logic_vector(4 downto 0);
+         WB_OUT:  out std_logic_vector(N-1 downto 0));
+end component;
 
   begin
     --IF signals
@@ -300,17 +299,33 @@ port map( clk => clk,
           mux_one_control => mux_one_control,
           mux_two_control => mux_two_control,
           alu_control => alu_control,
+          EN3 => EN3,
           execution_stage_out => aluoutsignal,
           b_reg_out => b_reg_out_signal,
           rd_reg_out => rdoutexsignal);
 
 MEMORY : MEMORY_STAGE
 generic map(numbit)
-port map();
+port map( alu_in => aluoutsignal,
+          rd_reg_in => rdoutexsignal,
+          b_reg_in => b_reg_out_signal,
+          reset => reset,
+          clk => clk,
+          mux_mem_control => mux_mem_control,
+          EN4 => EN4,
+          DRAM_to_mux => DRAM_to_mux,
+          alu_out => aluoutmemsignal,
+          rd_reg_out => rdoutmemsignal,
+          b_reg_out => DRAM_data_in,
+          DRAM_addr => DRAM_addr);
 
---    WRITEBACK : WRITE_BACK_STAGE
---    generic map(numbit)
---    port map(memstageoutsignal, aluoutmemsignal, rdoutmemsignal, wb_control, jal_sel, rdoutwbsignal, wbstageoutsignal);
+WRITEBACK : WRITE_BACK_STAGE
+generic map(numbit)
+port map( LMD => aluoutmemsignal,
+          ALUOUT => aluoutmemsignal,
+          mux_wb_control => mux_wb_control,
+          RD_OUT => rdinidsignal,
+          WB_OUT => wbstageoutsignal);
 
 end structural;
 
