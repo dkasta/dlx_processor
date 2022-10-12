@@ -8,11 +8,37 @@ package myTypes is
     constant OP_CODE_SIZE : integer :=  6;                                              -- OPCODE field size
     constant FUNC_SIZE    : integer :=  11;                                             -- FUNC field size
     constant MICROCODE_MEM_SIZE : integer := 62;                                        -- size of each memory
-    constant ALU_OPC_SIZE : integer := 4;                                               -- size of alu control signals
-    constant CW_SIZE : integer := 7 + ALU_OPC_SIZE;                                     -- cw final size
+    constant ALU_OPC_SIZE : integer := 5;                                               -- size of alu control signals
+    constant CW_SIZE : integer := 17 + ALU_OPC_SIZE;                                     -- cw final size
 
-    type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP);
-
+    type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP, LLIOP);
+    
+    constant NOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00000";
+    constant ADDOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00001";
+    constant SUBOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00010";
+    constant MULOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00011";
+    constant ANDOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00100";
+    constant NANDOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00101";
+    constant OROP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00110";
+    constant NOROP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00111";
+    constant XOROP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01000";
+    constant XNOROP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01001";
+    constant SLLOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01010";
+    constant SRLOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01011";
+    constant SRAOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01100";
+    constant GTOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01101";
+    constant GETOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01110";
+    constant LTOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "01111";
+    constant LETOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10000";
+    constant EQOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10001";
+    constant NEQOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10010";
+    constant GTUOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10011";
+    constant GETUOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10100";
+    constant LTUOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10101";
+    constant LETUOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10110";
+    constant LHIOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "10111";
+    constant LLIOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "11000";
+    
 
 -- R-Type instruction -> OPCODE field
     constant RTYPE : std_logic_vector(OP_CODE_SIZE - 1 downto 0) :=  "000000";          -- for ADD, SUB, AND, OR register-to-register operation
@@ -49,6 +75,8 @@ package myTypes is
 -- J-Type instruction -> OPCODE field
 	constant JTYPE_J:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000010"; -- j, 0x02
 	constant JTYPE_JAL:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000011"; -- j, 0x03
+    constant JTYPE_CALL: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "111110";
+    constant JTYPE_RET: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "111111";
 
 
 

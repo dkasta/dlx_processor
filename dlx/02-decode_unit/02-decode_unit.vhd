@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.globals.all;
 use work.myTypes.all;
+use IEEE.numeric_std.all;
 
 entity decode_unit is
   generic( numbit: integer := BIT_RISC;
@@ -330,7 +331,7 @@ end wr;
             Q => RD_OUT);
 
 
-  NPC_branch_jump <= NPC_IN + sign_extention_mux_out;
+  NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));
 
 
   --HAZARD : HAZARD_DETECTION

@@ -62,7 +62,8 @@ entity datapath is
            memory_stage_out:      out std_logic_vector(numbit - 1 downto 0);
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_wb:             out std_logic_vector(4 downto 0);
-           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0);
+           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0)
+           FLUSH                  out std_logic;
            );
 end datapath;
 
@@ -114,7 +115,7 @@ architecture structural of datapath is
          clk : IN std_logic;
          rst : IN std_logic;
          EN1:  IN std_logic;
-         comparator_to_mux: in std_logic;
+         comparator_out_to_mux: in std_logic;
          NPC_branch_jump    in std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
          npc_out : OUT std_logic_vector(numbit-1 downto 0);
@@ -253,6 +254,8 @@ end component;
              npc_out => npcoutifsignal, 
              instr_reg_out => iroutsignal, 
              instr_fetched => instrfetchedsigal);
+
+    FLUSH <= comparator_out_to_mux_signal;
 
     DECODE : decode_unit
     generic map( numbit=>numbit,

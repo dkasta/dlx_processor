@@ -16,20 +16,24 @@ end COMPARATOR;
 architecture BEHAVIOURAL of COMPARATOR is
 begin
 
-    proc: process(opcpde_in, data_in)
+    proc: process(opcode_in, data_in)
         begin
             if (opcode_in = ITYPE_BEQZ) then 
-                if (data_in = '0') then
+                if (data_in = (NBIT - 1 downto 0 => '0') ) then
                     data_out <= '1';
                 else
                     data_out <= '0';
                 end if;
             elsif (opcode_in = ITYPE_BNEZ) then 
-                if (data_in /= '0') then
+                if (data_in /= (NBIT - 1 downto 0 => '0')) then
                     data_out <= '1';
                 else
                     data_out <= '0';
                 end if;
+            elsif (opcode_in = JTYPE_J) then 
+                data_out <= '1';
+            elsif (opcode_in = JTYPE_JAL) then 
+                data_out <= '1';
             else
                 data_out <= '0';
             end if;
