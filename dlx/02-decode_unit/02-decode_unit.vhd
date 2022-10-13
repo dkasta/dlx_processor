@@ -22,6 +22,7 @@ entity decode_unit is
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
             imm_mux_control       in std_logic;
+            jal_mux_control       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
@@ -188,6 +189,9 @@ architecture structural of decode_unit is
   signal imm_mux_out : std_logic_vector(numbit-1 downto 0);
   signal sign_extention_mux_out: std_logic_vector(numbit-1 downto 0);
   signal signal_comparator_out : std_logic;
+  signal RF_write_address : std_logic_vector(4 downto 0);
+  signal REGA_read_address : std_logic_vector(4 downto 0);
+
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
 
   --signal for connecting wrf to wrf_fsm
@@ -250,8 +254,8 @@ architecture structural of decode_unit is
           rd1 => rd1_enable,
           rd2 => rd2_enable,
           WR => write_enable,
-          rw1 => RD_IN,
-          ADD_RD1 => in_IR(25 downto 21),
+          rw1 => RF_write_address,
+          ADD_RD1 => REGA_read_address,
           ADD_RD2 => in_IR(20 downto 16),
           DATAIN => WB_STAGE_IN,
           out_reg_1 => RF_ONE_OUT,
@@ -262,6 +266,7 @@ architecture structural of decode_unit is
           RAM_READY => ramr,
           in_mem => reg_out
           );
+
   WRF_CU: wrf_fsm
       generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress);
     port( clk=>clk,
@@ -280,7 +285,19 @@ architecture structural of decode_unit is
           write=>wr_mem);
 end wr;
 
-  
+  DATA_IN_MUX : MUX21_GENERIC
+  generic map(5)
+  port map ( A => "11111", 
+             B => RD_IN, 
+             SEL => jal_mux_control, 
+             Y => RF_write_address);
+
+ REGA_MUX : MUX21_GENERIC
+ generic map(5)
+ port map ( A => "11111", 
+            B => in_IR(25 downto 21), 
+            SEL => ret, 
+            Y => REGA_read_address);
   
   REG_A : REGISTER_GENERIC
   generic map(numbit)

@@ -35,7 +35,6 @@ entity CU_HARDWIRED is
              FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
              Clk : IN std_logic;
              Rst : IN std_logic;
-             WB_write_enable: OUT std_logic;
              FLUSH : IN std_logic);                  -- Active high
               
 end CU_HARDWIRED;

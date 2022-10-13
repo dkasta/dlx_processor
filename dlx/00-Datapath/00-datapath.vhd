@@ -15,11 +15,13 @@ entity datapath is
            to_IR:                 in std_logic_vector(numbit - 1 downto 0); -- In from IRAM
            ------------------------------------------------------------------
            -- ID input
+           jal_mux_control        in std_logic;
            write_enable:          in std_logic;
            rd1_enable:            in std_logic;
            rd2_enable:            in std_logic;
            call:                  in std_logic;
            ret:                   in std_logic;
+           imm_mux_control        in std_logic;
            EN2:                   in std_logic;
            ------------------------------------------------------------------
            -- EXE input
@@ -59,10 +61,7 @@ entity datapath is
            DRAM_data_in           out std_logic_vector(numbit - 1 downto 0);
            alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
 
-           memory_stage_out:      out std_logic_vector(numbit - 1 downto 0);
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
-           rd_out_wb:             out std_logic_vector(4 downto 0);
-           npc_out_bpu:           out std_logic_vector(numbit - 1 downto 0)
            FLUSH                  out std_logic;
            );
 end datapath;
@@ -140,6 +139,8 @@ component decode_unit is
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
+            imm_mux_control       in std_logic;
+            jal_mux_control       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
@@ -225,22 +226,11 @@ end component;
     alu_out <= aluoutsignal;
     --MEM signals
     rd_out_mem <= rdoutmemsignal;
-    memory_stage_out <= memstageoutsignal;
     alu_out_mem <= aluoutmemsignal;
     --WB signals
-    rd_out_wb <= rdoutwbsignal;
     wb_stage_out <= wbstageoutsignal;
 
 
-    npc_out_bpu <= npcoutbpusignal;
-
-    alu_forwarding_one <= aluforwardingonesignal;
-    mem_forwarding_one <= memforwardingonesignal;
-    alu_forwarding_two <= aluforwardingtwosignal;
-    mem_forwarding_two <= memforwardingtwosignal;
-
-    alu_forwarding_value <= aluoutsignal;
-    mem_forwarding_value <= aluoutmemsignal;
 
     FETCH : FETCH_STAGE
     generic map(numbit)
@@ -274,6 +264,8 @@ end component;
               NPC_IN => npcoutifsignal,
               RD_IN => rdinidsignal,
               instr_fetched => instrfetchedsigal,
+              imm_mux_control => imm_mux_control,
+              jal_mux_control => jal_mux_control,
               RD_OUT => rdoutidsignal,
               NPC_OUT => npcoutidsignal,
               A_REG_OUT => aregsignal,
@@ -288,7 +280,6 @@ end component;
               NPC_branch_jump => NPC_branch_jump_signal,
               comparator_out => comparator_out_to_mux_signal 
             );
-end decode_unit;
 
 EXECUTE : EXECUTION_STAGE
 generic map(numbit)
