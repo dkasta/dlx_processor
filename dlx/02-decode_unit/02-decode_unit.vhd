@@ -276,7 +276,7 @@ architecture structural of decode_unit is
           done_spill=>done_spill,
           pop=>pop,
           ram_ready=>ramr,
-          address=>address_mem,
+          address=>addressmem,
           register_in=>reg_in,
           register_out=>reg_out,
           datamem_in=>inmem,
