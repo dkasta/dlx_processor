@@ -14,22 +14,40 @@ entity DLX is
   port( clk : IN std_logic;
         reset : IN std_logic;
         EN1: IN std_logic;
-        npc_out_if_signal : OUT std_logic_vector(RISC_BIT - 1 downto 0);
-        instruction_fetched_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        ir_out_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        npc_out_id_signal: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        a_reg_out_signal: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        b_reg_out_signal: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        imm_reg_out_signal: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        rd_out_id_signal: OUT  std_logic_vector(4 downto 0);
-        alu_out_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        b_reg_out_ex_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        rd_out_ex_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        alu_out_mem_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        rd_out_ex_signal : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        npc_out_if : OUT std_logic_vector(RISC_BIT - 1 downto 0);
+        instruction_fetched : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        ir_out : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        npc_out_id: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        a_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        b_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        imm_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        rd_out_id: OUT  std_logic_vector(4 downto 0);
+        alu_out : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        b_reg_out_ex : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        rd_out_ex : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        alu_out_mem : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        wb_stage_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
         );
 end DLX;
 
+
+npc_out_if <= npc_out_if_signal;
+instruction_fetched <= instruction_fetched_signal;
+ir_out <= ir_out_signal;
+npc_out_id <= npc_out_id_signal,
+a_reg_out <= a_reg_out_signal,
+b_reg_out <= b_reg_out_signal,
+imm_reg_out <= imm_reg_out_signal,
+rd_out_id <= rd_out_id_signal,
+------------------------------------------------------------------
+-- EXE output
+alu_out <= alu_out_signal;
+b_reg_out_ex <= b_reg_out_ex_signal;
+rd_out_ex <= rd_out_ex_signal;
+------------------------------------------------------------------
+--MEM output
+alu_out_mem <= alu_out_mem_signal;
+wb_stage_out <= wb_stage_out_signal;
 
 architecture structural of DLX is
 
@@ -137,9 +155,9 @@ architecture structural of DLX is
             EN3      : OUT std_logic;
               
             -- MEM Control Signals
-            DRAM_write_enable         : OUT std_logic;    -- Data RAM Write Enable
-            DRAM_read_enable         : OUT std_logic;    -- Data RAM Read Enable
-            mux_mem_control      : OUT std_logic;
+            DRAM_write_enable : OUT std_logic;    -- Data RAM Write Enable
+            DRAM_read_enable : OUT std_logic;    -- Data RAM Read Enable
+            mux_mem_control : OUT std_logic;
             EN4      : OUT std_logic;
              
             -- WB Control Signals
