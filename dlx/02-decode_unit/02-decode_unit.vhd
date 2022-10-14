@@ -21,26 +21,23 @@ entity decode_unit is
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
-            imm_mux_control       in std_logic;
-            jal_mux_control       in std_logic;
+            imm_mux_control:       in std_logic;
+            jal_mux_control:       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
        	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
-       	   	--alu_forwarding_one:   out std_logic;
-    		    --mem_forwarding_one:   out std_logic;
-       		  --alu_forwarding_two:   out std_logic;
             outmem:               out std_logic_vector(numbitdata-1 downto 0); --to dmem
             inmem:                in std_logic_vector(numbitdata-1 downto 0) --from dmem
             addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
-            NPC_branch_jump       out std_logic_vector(numbit-1 downto 0);
-            comparator_out        out std_logic;
-       	  	--mem_forwarding_two:   out std_logic
+            NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
+            comparator_out:        out std_logic;
+            RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0);
             );
 end decode_unit;
 
@@ -266,6 +263,8 @@ architecture structural of decode_unit is
           RAM_READY => ramr,
           in_mem => reg_out
           );
+
+  RF_ONE_OUT_ID <= RF_ONE_OUT;
 
   WRF_CU: wrf_fsm
       generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress);
