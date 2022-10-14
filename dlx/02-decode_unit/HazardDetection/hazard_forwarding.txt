@@ -1,0 +1,106 @@
+hazard
+\\register 1
+\\LW r1,(0)r3  IF ID EX  MEM  MEM WB op2
+\\add r5,r1,r4	IF ID  NOP  NOP EX  MEM WB op1
+register 2
+LW r1,(0)r3  IF ID EX  MEM  MEM WB op2
+add r5,r4,r1	IF ID  NOP  NOP EX  MEM WB op1
+\\REGISTER R1
+\\LW r1,(0)r3  IF	ID EX MEM MEM WB op2
+\\LW r2,(0)r1  	IF ID NOP NOP EX  MEM MEM WB op1
+
+forwarding
+alu-alu
+
+\\register r1   
+\\add R1,R2,R3 IF ID EX MEM WB -source opcode 2
+\\add R2,R1,R3	IF ID EX  MEM WB  -dest ALU FORWARDING opcode1
+\\register r2 
+\\add R2,R1,R3 IF ID EX MEM WB -source
+\\add R1,R3,r2	IF ID EX  MEM WB  -dest ALU FORWARDING
+\\register r1 
+\\add R1,R2,R3 IF ID EX MEM WB -source oopcode3
+\\add r4,r5,r6    IF ID EX  MEM WB opcode2
+\\add R2,R1,R3	   IF ID   EX  MEM WB  -dest mem FORWARDING opcode1
+\\register r2
+\\add R2,R1,R3 IF ID EX MEM WB -source op3
+\\add,r4,r5,r6    IF ID EX  MEM WB op2
+\\add R3,R1,R2	   IF ID   EX  MEM WB  -dest mem FORWARDING op1
+
+alu-alu immediate
+
+\\register r1    
+\\add R1,R2,R3 IF ID EX MEM WB -source
+\\add R2,R1,3	IF ID EX  MEM WB  -dest ALU FORWARDING
+\\register r1 
+\\add R1,R2,R3 IF ID EX MEM WB -source
+\\add r4,r5,r6    IF ID EX  MEM WB
+\\add R2,R1,3	   IF ID   EX  MEM WB  -dest mem FORWARDING
+
+alu-iinstr
+
+\\register r1	
+\\add R1,R2,R3 IF ID EX MEM WB -source opcode 2
+\\lw  R2,R1(0)	IF ID EX  MEM  mem WB  -dest ALU FORWARDING opcode1
+\\register r1
+\\add R1,R2,R3 IF ID EX MEM WB -source op3
+\\add r4,r5,r6    IF ID EX  MEM WB op2
+\\lw  R2,R1(0)	   IF ID   EX  MEM  mem WB  -dest mem FORWARDING op1
+
+
+alu immediate-alu
+\\register r1   
+\\add R1,R2,3  IF ID EX MEM WB -source opcode2
+\\add R2,R1,R3	IF ID EX  MEM WB  -dest ALU FORWARDING
+\\register r2 
+\\add R2,R1,12 IF ID EX MEM WB -source
+\\add R1,R3,r2	IF ID EX  MEM WB  -dest ALU FORWARDING
+\\register r1 
+\\add R1,R2,12 IF ID EX MEM WB -source
+\\add r4,r5,r6    IF ID EX  MEM WB
+\\add R2,R1,R3	   IF ID   EX  MEM WB  -dest mem FORWARDING
+\\register r2
+\\add R2,R1,12 IF ID EX MEM WB -source
+\\add,r4,r5,r6    IF ID EX  MEM WB
+\\add R3,R1,R2	   IF ID   EX  MEM WB  -dest mem FORWARDING
+
+alu immediate- alu immediate
+
+\\register r1   
+\\add R1,R2,3  IF ID EX MEM WB -source
+\\add R2,R1,12	IF ID EX  MEM WB  -dest ALU FORWARDING
+\\register r1 
+\\add R1,R2,12 IF ID EX MEM WB -source
+\\add r4,r5,r6    IF ID EX  MEM WB
+\\add R2,R1,3	   IF ID   EX  MEM WB  -dest mem FORWARDING
+
+alu immediate- iinstr
+\\register r1	
+\\add R1,R2,12 IF ID EX MEM WB -source
+\\lw  R2,R1(0)	IF ID EX  MEM  mem WB  -dest ALU FORWARDING
+\\register r1
+\\add R1,R2,12 IF ID EX MEM WB -source
+\\add r4,r5,r6    IF ID EX  MEM WB
+\\lw  R2,R1(0)	   IF ID   EX  MEM  mem WB  -dest mem FORWARDING
+
+iinstr-alu
+
+\\register r1
+\\LW r1,r2(0)  IF ID EX MEM MEM WB op3
+\\add r4,r5,r6	IF ID EX  EX  MEM WB op2
+\\add r2,r1,r3	   IF ID  ID  EX  MEM WB --mem forwarding op1
+\\register r2
+\\LW r2,r1(0)  IF ID EX MEM MEM WB
+\\add r4,r5,r6	IF ID EX  EX  MEM WB
+\\add r1,r3,r2	   IF ID  ID  EX  MEM WB --mem forwarding
+
+iinstr-iinstr
+\\LW r1,r2(0)  IF ID EX MEM MEM WB
+\\alu r3,r4,r5    IF ID EX  EX  MEM WB
+\\LW r2,r1(0)   	   IF ID  ID  EX MEM MEM WB --MEM FORWARDING
+
+iinstr-alu immediate
+register r1
+\\LW r1,r2(0)  IF ID EX MEM MEM WB
+\\add r4,r5,r6	IF ID EX  EX  MEM WB
+\\add r2,r1,3	   IF ID  ID  EX  MEM WB --mem forwarding
