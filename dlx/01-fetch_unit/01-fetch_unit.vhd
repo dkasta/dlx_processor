@@ -5,20 +5,23 @@ use work.globals.all;
 
 entity fetch_unit is
   generic( numbit : integer := BIT_RISC);
-  port(   clk:			       in std_logic;
-       	  rst:	 	  	     in std_logic;
-          EN1:             in std_logic;
-          to_IR:		       in std_logic_vector(numbit-1 downto 0);
-          to_IRAM:     	   out std_logic_vector(numbit - 1 downto 0);
-       	  npc_out:		     out std_logic_vector(numbit-1 downto 0);
-       	  instr_reg_out:   out std_logic_vector(numbit-1 downto 0);
-       	  instr_fetched:   out std_logic_vector(numbit-1 downto 0));
+  port(   clk:			         in std_logic;
+       	  rst:	 	  	       in std_logic;
+          EN1:               in std_logic;
+          to_IR:		         in std_logic_vector(numbit-1 downto 0);
+          comparator_out_to_mux: in std_logic;
+          NPC_branch_jump    in std_logic_vector(numbit-1 downto 0);
+          to_IRAM:     	     out std_logic_vector(numbit - 1 downto 0);
+       	  npc_out:		       out std_logic_vector(numbit-1 downto 0);
+       	  instr_reg_out:     out std_logic_vector(numbit-1 downto 0);
+       	  instr_fetched:     out std_logic_vector(numbit-1 downto 0));
 end fetch_unit;
 
 architecture behavioural of fetch_unit is
   
   signal pc_reg_out : std_logic_vector( numbit-1 downto 0);
   signal pc_adder_out : std_logic_vector( numbit-1 downto 0) := (others => '0');
+  signal pc_mux_out : std_logic_vector( numbit-1 downto 0) := (others => '0');
   signal tomem : std_logic_vector( numbit - 1 downto 0) := (others => '0');
   signal to_IR_signal : std_logic_vector( numbit - 1 downto 0) := (others => '0');
   signal instr_fetched_signal : std_logic_vector( numbit - 1 downto 0) := (others => '0');
@@ -41,6 +44,14 @@ component register_generic
          PC_out : OUT std_logic_vector(NBIT-1 downto 0));
   end component;
 
+  component MUX21_GENERIC 
+    generic( NBIT : integer := Bit_Mux21);
+    port(    A:   in std_logic_vector(NBIT-1 downto 0);
+             B:   in std_logic_vector(NBIT-1 downto 0);
+             SEL: in std_logic;
+             Y:   out std_logic_vector(NBIT-1 downto 0));
+   end component;
+
   -----------------------------------------------------------
   component IRAM is
     generic(RAM_DEPTH : integer := RAM_DEPTH;
@@ -60,7 +71,7 @@ component register_generic
     generic map (numbit)
            port map (clk => clk, 
                      reset => rst, 
-                     PC_in => pc_adder_out, 
+                     PC_in => pc_mux_out, 
                      enable => EN1, 
                      PC_out => pc_reg_out); 
 
@@ -71,6 +82,14 @@ component register_generic
       end if;
     end process;
 
+    -- SEL = 1, B is selected
+    MUX_PC : MUX21_GENERIC
+    generic map(numbit)
+      port map ( A => pc_adder_out, 
+                 B => NPC_branch_jump, 
+                 SEL => comparator_out_to_mux, 
+                 Y => pc_mux_out);
+    
     
     NPC : register_generic
    	 	  generic map( numbit)

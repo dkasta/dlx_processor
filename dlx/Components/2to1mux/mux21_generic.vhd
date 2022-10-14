@@ -2,6 +2,8 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use WORK.globals.all;
 
+
+-- SEL = 0 for A, SEL = 1 for B
 entity MUX21_GENERIC is
   generic( NBIT : integer := Bit_Mux21);
   port(    A:   in std_logic_vector(NBIT-1 downto 0);

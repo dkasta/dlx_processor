@@ -6,13 +6,12 @@ use WORK.globals.all;
 
 entity write_back_unit is
   generic( N: integer := BIT_RISC);
-  port(    LMD:     in std_logic_vector(N-1 downto 0);
-           ALUOUT:  in std_logic_vector(N-1 downto 0);
-           RD_IN:   in std_logic_vector(4 downto 0);
-           CONTROL: in std_logic;
-           JAL_SEL: in std_logic;
-           RD_OUT:  out std_logic_vector(4 downto 0);
-           WB_OUT:  out std_logic_vector(N-1 downto 0));
+  port(    LMD:            in std_logic_vector(N-1 downto 0);
+           ALUOUT:         in std_logic_vector(N-1 downto 0);
+           RD_IN:          in std_logic_vector(4 downto 0);
+           mux_wb_control: in std_logic;
+           RD_OUT:         out std_logic_vector(4 downto 0);
+           WB_OUT:         out std_logic_vector(N-1 downto 0));
 end write_back_unit;
 
 architecture structural of write_back_unit is
@@ -29,15 +28,14 @@ architecture structural of write_back_unit is
   signal jal_mux_out : std_logic_vector(4 downto 0);
 
   begin
-    UMUX : MUX21_GENERIC
+    MUX_WB : MUX21_GENERIC
     generic map(BIT_RISC)
-    port map(LMD,ALUOUT,CONTROL,mux_out);
+    port map( LMD => LMD,
+              ALUOUT => ALUOUT,
+              mux_wb_control => mux_wb_control,
+              RD_OUT => RD_OUT,
+              WB_OUT => WB_OUT);
 
-    WB_OUT <= mux_out;
-
-
-
-    RD_OUT <= jal_mux_out;
 
 end structural;
 

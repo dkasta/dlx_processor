@@ -1,4 +1,4 @@
-myloop:
+   myloop:
 
 addi r1, r0, 4
 lw r2, 4(r1)

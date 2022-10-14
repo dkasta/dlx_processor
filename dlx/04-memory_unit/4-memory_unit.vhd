@@ -6,13 +6,17 @@ entity memory_unit is
   generic( numbit: integer := BIT_RISC);
   port(    alu_in:            in std_logic_vector(numbit - 1 downto 0);
            rd_reg_in:         in std_logic_vector(4 downto 0);
+           b_reg_in:          in std_logic_vector(numbit - 1 downto 0);
            reset:             in std_logic;
            clk:               in std_logic;
-           mux_mem_control    in std_logic;
-           to_mem_stage_reg:  in std_logic_vector(numbit - 1 downto 0);
+           mux_mem_control:   in std_logic;
+           EN4:               in std_logic;
+           DRAM_to_mux:       in std_logic_vector(numbit - 1 downto 0);
+           alu_out:           out std_logic_vector(numbit - 1 downto 0);
            rd_reg_out:        out std_logic_vector(4 downto 0);
-           memory_stage_out:  out std_logic_vector(numbit-1 downto 0);
-           alu_out:           out std_logic_vector(numbit - 1 downto 0));
+           b_reg_out:         out std_logic_vector(numbit-1 downto 0);
+           DRAM_addr:         out std_logic_vector(numbit-1 downto 0);
+           );
 end memory_unit;
 
 architecture structural of memory_unit is
@@ -22,6 +26,7 @@ architecture structural of memory_unit is
     port(    D:     in std_logic_vector(NBIT-1 downto 0);
              CK:    in std_logic;
              RESET: in std_logic;
+             ENABLE:in std_logic;
              Q:     out std_logic_vector(NBIT-1 downto 0));
   end component;
 
@@ -35,23 +40,37 @@ architecture structural of memory_unit is
 
   signal mux_out : std_logic_vector(numbit-1 downto 0);
   signal alu_mux_out : std_logic_vector(numbit-1 downto 0);
-
+  signal b_reg_in_signal: std_logic_vector(numbit-1 downto 0);
 
   begin
 
     MUX_MEM : MUX21_GENERIC
     generic map(numbit)
-    port map(alu_in,to_mem_stage_reg,mux_mem_control,mux_out);
+    port map( A => alu_in,
+              B => DRAM_to_mux,
+              SEL => mux_mem_control,
+              Y => mux_out);
+    
+    
+    REGALU : REGISTER_GENERIC
+    generic map(numbit)
+    port map( D => mux_out,
+              CK => clk,
+              RESET => reset,
+              ENABLE => EN4,
+              Q => alu_mux_out);
 
     RDREG : REGISTER_GENERIC
     generic map(5)
-    port map(rd_reg_in,clk,reset,rd_reg_out);
+    port map( D => rd_reg_in,
+              CK => clk,
+              RESET => reset,
+              ENABLE => EN4,
+              Q => rd_reg_out);
 
-    memory_stage_out <= to_mem_stage_reg;
+    b_reg_in <= b_reg_in_signal;
+    b_reg_out <= b_reg_in_signal;
 
-    REGALU : REGISTER_GENERIC
-    generic map(numbit)
-    port map(mux_out,clk,reset,alu_mux_out);
 
 end structural;
 

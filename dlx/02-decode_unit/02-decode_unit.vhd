@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.globals.all;
 use work.myTypes.all;
+use IEEE.numeric_std.all;
 
 entity decode_unit is
   generic( numbit: integer := BIT_RISC;
@@ -20,6 +21,8 @@ entity decode_unit is
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
+            imm_mux_control       in std_logic;
+            jal_mux_control       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
@@ -35,6 +38,8 @@ entity decode_unit is
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
+            NPC_branch_jump       out std_logic_vector(numbit-1 downto 0);
+            comparator_out        out std_logic;
        	  	--mem_forwarding_two:   out std_logic
             );
 end decode_unit;
@@ -137,6 +142,20 @@ architecture structural of decode_unit is
                rd_out:    out std_logic_vector(4 downto 0));
      end component;
 
+     component MUX21_GENERIC 
+      generic( NBIT : integer := Bit_Mux21);
+      port(    A:   in std_logic_vector(NBIT-1 downto 0);
+               B:   in std_logic_vector(NBIT-1 downto 0);
+               SEL: in std_logic;
+               Y:   out std_logic_vector(NBIT-1 downto 0));
+     end component;
+
+     component COMPARATOR 
+      generic ( NBIT : integer := Bit_Register;
+                OPCODE_SIZE : integer := OP_CODE_SIZE);
+      port( opcode_in : in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+            data_in :   in std_logic_vector(NBIT-1 downto 0);
+            data_out :  out std_logic);
      --component HAZARD_DETECTION
      --  port(   clk:                in std_logic;
      --          reset:              in std_logic;
@@ -162,10 +181,17 @@ architecture structural of decode_unit is
      --          NPC_OUT:      out std_logic_vector(31 downto 0));
      --end component;
 
-  signal sign_extention_signal : std_logic_vector(31 downto 0);
+  signal sign_extention_16 : std_logic_vector(31 downto 0);
+  signal sign_extention_26 : std_logic_vector(31 downto 0);
   signal RF_ONE_OUT : std_logic_vector(numbit-1 downto 0);
   signal RF_TWO_OUT : std_logic_vector(numbit-1 downto 0);
   signal rdmux_out : std_logic_vector(4 downto 0);
+  signal imm_mux_out : std_logic_vector(numbit-1 downto 0);
+  signal sign_extention_mux_out: std_logic_vector(numbit-1 downto 0);
+  signal signal_comparator_out : std_logic;
+  signal RF_write_address : std_logic_vector(4 downto 0);
+  signal REGA_read_address : std_logic_vector(4 downto 0);
+
   --signal npc_latch_out : std_logic_vector(numbit-1 downto 0);
 
   --signal for connecting wrf to wrf_fsm
@@ -177,10 +203,28 @@ architecture structural of decode_unit is
 
   begin
 
-  SIGN_REG : SIGN_EXTENTION
+  SIGN_REG_16 : SIGN_EXTENTION
   port map( data_in => in_IR(15 downto 0),
-            data_out => sign_extention_signal);
+            data_out => sign_extention_16);
   
+  SIGN_REG_26 : SIGN_EXTENTION
+  port map( data_in => in_IR(25 downto 0),
+            data_out => sign_extention_26);
+  
+  IMM_MUX : MUX21_GENERIC
+  generic map(numbit)
+  port map ( A => sign_extention_16, 
+             B => sign_extention_26, 
+             SEL => imm_mux_control, 
+             Y => sign_extention_mux_out);
+
+  COMP : COMPARATOR
+  generic map (numbit, OP_CODE_SIZE)
+  port map ( opcode_in => in_IR(31 downto 26), 
+             data_in => RF_ONE_OUT,
+             data_out => signal_comparator_out);
+  
+  comparator_out <= signal_comparator_out;
   --RF : REGISTER_FILE
   --generic map(numbit,5,numbit)
   --port map( clk => clk,
@@ -210,8 +254,8 @@ architecture structural of decode_unit is
           rd1 => rd1_enable,
           rd2 => rd2_enable,
           WR => write_enable,
-          rw1 => RD_IN,
-          ADD_RD1 => in_IR(25 downto 21),
+          rw1 => RF_write_address,
+          ADD_RD1 => REGA_read_address,
           ADD_RD2 => in_IR(20 downto 16),
           DATAIN => WB_STAGE_IN,
           out_reg_1 => RF_ONE_OUT,
@@ -222,6 +266,7 @@ architecture structural of decode_unit is
           RAM_READY => ramr,
           in_mem => reg_out
           );
+
   WRF_CU: wrf_fsm
       generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress);
     port( clk=>clk,
@@ -240,7 +285,19 @@ architecture structural of decode_unit is
           write=>wr_mem);
 end wr;
 
-  
+  DATA_IN_MUX : MUX21_GENERIC
+  generic map(5)
+  port map ( A => "11111", 
+             B => RD_IN, 
+             SEL => jal_mux_control, 
+             Y => RF_write_address);
+
+ REGA_MUX : MUX21_GENERIC
+ generic map(5)
+ port map ( A => "11111", 
+            B => in_IR(25 downto 21), 
+            SEL => ret, 
+            Y => REGA_read_address);
   
   REG_A : REGISTER_GENERIC
   generic map(numbit)
@@ -260,7 +317,7 @@ end wr;
 
   IMMREG : REGISTER_GENERIC
   generic map(numbit)
-  port map( D => sign_extention_signal,
+  port map( D => sign_extention_mux_out,
             CK => clk,
             RESET => rst, 
             ENABLE => EN2,
@@ -289,6 +346,10 @@ end wr;
             RESET => rst, 
             ENABLE => EN2,
             Q => RD_OUT);
+
+
+  NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));
+
 
   --HAZARD : HAZARD_DETECTION
   --port map(clk,rst,instr_fetched(31 downto 26),instr_fetched(20 downto 16),instr_fetched(15 downto 11),instr_fetched(25 downto 21),instr_fetched(20 downto 16),alu_forwarding_one,mem_forwarding_one,alu_forwarding_two,mem_forwarding_two,open);
