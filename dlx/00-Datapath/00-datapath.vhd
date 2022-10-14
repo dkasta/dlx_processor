@@ -173,7 +173,7 @@ component execution_unit
            rd_reg_in:             in std_logic_vector(4 downto 0);
            mux_one_control:       in std_logic;
            mux_two_control:       in std_logic;
-           alu_control:           in std_logic_vector(3 downto 0);
+           alu_control:           in std_logic_vector(4 downto 0);
            EN3:                   in std_logic;
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
