@@ -4,12 +4,12 @@ use ieee.numeric_std.all;
 use WORK.globals.all;
 
 
-entity SIGN_EXTENTION is
+entity SIGN_EXTENTION_26BIT is
     port (data_in : in std_logic_vector(25 downto 0);
           data_out : out std_logic_vector(BIT_RISC-1 downto 0));
-end SIGN_EXTENTION;
+end SIGN_EXTENTION_26BIT;
 
-architecture BEHAVIOURAL of SIGN_EXTENTION is
+architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT is
 begin
 
     proc: process(data_in)

@@ -36,7 +36,7 @@ entity decode_unit is
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
             NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
-            comparator_out:        out std_logic;
+            comparator_out:        out std_logic_vector(1 downto 0);
             RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0)
             );
 end decode_unit;
@@ -153,12 +153,12 @@ architecture structural of decode_unit is
                Y:   out std_logic_vector(NBIT-1 downto 0));
      end component;
 
-     component COMPARATOR 
+     component COMPARATORDU 
       generic ( NBIT : integer := Bit_Register;
                 OPCODE_SIZE : integer := OP_CODE_SIZE);
-      port( opcode_in : in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+      port( opcode_in : in std_logic_vector(OPCODE_SIZE - 1 downto 0);
             data_in :   in std_logic_vector(NBIT-1 downto 0);
-            data_out :  out std_logic);
+            data_out :  out std_logic_vector(1 downto 0));
      end component;
      --component HAZARD_DETECTION
      --  port(   clk:                in std_logic;
@@ -192,7 +192,7 @@ architecture structural of decode_unit is
   signal rdmux_out : std_logic_vector(4 downto 0);
   signal imm_mux_out : std_logic_vector(numbit-1 downto 0);
   signal sign_extention_mux_out: std_logic_vector(numbit-1 downto 0);
-  signal signal_comparator_out : std_logic;
+  signal signal_comparator_out : std_logic_vector(1 downto 0);
   signal RF_write_address : std_logic_vector(4 downto 0);
   signal REGA_read_address : std_logic_vector(4 downto 0);
 
@@ -222,7 +222,7 @@ architecture structural of decode_unit is
              SEL => imm_mux_control, 
              Y => sign_extention_mux_out);
 
-  COMP : COMPARATOR
+  COMP : COMPARATORDU
   generic map (numbit, OP_CODE_SIZE)
   port map ( opcode_in => in_IR(31 downto 26), 
              data_in => RF_ONE_OUT,
