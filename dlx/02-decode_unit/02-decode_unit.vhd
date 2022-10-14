@@ -127,10 +127,16 @@ architecture structural of decode_unit is
                     Q:      out std_logic_vector(NBIT-1 downto 0));
       end component;
 
-     component SIGN_EXTENTION
+     component SIGN_EXTENTION_16BIT
        port(   data_in: in std_logic_vector(15 downto 0);
                data_out: out std_logic_vector(31 downto 0));
      end component;
+
+     
+     component SIGN_EXTENTION_26BIT
+      port(   data_in: in std_logic_vector(25 downto 0);
+              data_out: out std_logic_vector(31 downto 0));
+    end component;
 
      component RDMUX
        port(   rtype_in:  in std_logic_vector(4 downto 0);
@@ -201,11 +207,11 @@ architecture structural of decode_unit is
 
   begin
 
-  SIGN_REG_16 : SIGN_EXTENTION
+  SIGN_REG_16 : SIGN_EXTENTION_16BIT
   port map( data_in => in_IR(15 downto 0),
             data_out => sign_extention_16);
   
-  SIGN_REG_26 : SIGN_EXTENTION
+  SIGN_REG_26 : SIGN_EXTENTION_26BIT
   port map( data_in => in_IR(25 downto 0),
             data_out => sign_extention_26);
   
@@ -276,14 +282,13 @@ architecture structural of decode_unit is
           done_spill=>done_spill,
           pop=>pop,
           ram_ready=>ramr,
-          address=>address_mem,
+          address=>addressmem,
           register_in=>reg_in,
           register_out=>reg_out,
           datamem_in=>inmem,
           datamem_out=>outmem,
           read=>rd_mem,
           write=>wr_mem);
-end wr;
 
   DATA_IN_MUX : MUX21_GENERIC
   generic map(5)
