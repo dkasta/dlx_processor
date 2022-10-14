@@ -114,8 +114,9 @@ architecture structural of datapath is
          clk : IN std_logic;
          rst : IN std_logic;
          EN1:  IN std_logic;
-         comparator_out_to_mux: in std_logic;
-         NPC_branch_jump    in std_logic_vector(numbit-1 downto 0);
+         comparator_out_to_mux: IN std_logic;
+         NPC_branch_jump:    IN std_logic_vector(numbit-1 downto 0);
+         RF_ONE_OUT_IF:        OUT std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
          npc_out : OUT std_logic_vector(numbit-1 downto 0);
          instr_reg_out : OUT std_logic_vector(numbit-1 downto 0);
@@ -147,9 +148,6 @@ component decode_unit is
        	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
-       	   	--alu_forwarding_one:   out std_logic;
-    		    --mem_forwarding_one:   out std_logic;
-       		  --alu_forwarding_two:   out std_logic;
             outmem:               out std_logic_vector(numbitdata-1 downto 0); --to dmem
             inmem:                in std_logic_vector(numbitdata-1 downto 0) --from dmem
             addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
@@ -158,7 +156,7 @@ component decode_unit is
             ramr:                 in std_logic;
             NPC_branch_jump       out std_logic_vector(numbit-1 downto 0);
             comparator_out        out std_logic;
-       	  	--mem_forwarding_two:   out std_logic
+            RF_ONE_OUT_ID:        OUT std_logic_vector(numbit-1 downto 0);
             );
 end component;
 
