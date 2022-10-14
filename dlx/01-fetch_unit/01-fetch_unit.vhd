@@ -11,7 +11,7 @@ entity fetch_unit is
           to_IR:		             in std_logic_vector(numbit-1 downto 0);
           comparator_out_to_mux: in std_logic_vector(1 downto 0);
           RF_ONE_OUT_IF:         in std_logic_vector(numbit-1 downto 0);
-          NPC_branch_jump        in std_logic_vector(numbit-1 downto 0);
+          NPC_branch_jump:        in std_logic_vector(numbit-1 downto 0);
           to_IRAM:     	         out std_logic_vector(numbit - 1 downto 0);
        	  npc_out:		           out std_logic_vector(numbit-1 downto 0);
        	  instr_reg_out:         out std_logic_vector(numbit-1 downto 0);

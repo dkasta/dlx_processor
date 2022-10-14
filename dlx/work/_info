@@ -9,25 +9,1324 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/Pk/Desktop/dlx_project/dlx
+Eaddress_counter
+Z1 w1665420029
+Z2 DPx4 work 7 globals 0 22 3BTZ4YeZNnN?;Ul30>A7>1
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 34
+R0
+Z6 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd
+Z7 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd
+l0
+L14 1
+V]:NbdCO8:f>PiX_eC5[l;3
+!s100 :=bI=:@R9DU<2:lBe9bo]1
+Z8 OL;C;2021.2;73
+32
+Z9 !s110 1665744844
+!i10b 1
+Z10 !s108 1665744844.000000
+Z11 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd|
+Z12 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd|
+!i113 0
+Z13 o-work work
+Z14 tExplicit 1 CvgOpt 0
+Astruct
+R2
+R3
+R4
+R5
+DEx4 work 15 address_counter 0 22 ]:NbdCO8:f>PiX_eC5[l;3
+!i122 34
+l36
+L30 48
+V5EW]?]GdJBob]0iVA:P?:2
+!s100 ]KS[WdIKILdWPT>MGkBhN3
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 0
+R13
+R14
+Ccfg_iram_behavioral
+eIRAM
+abehavioural
+DAx4 work 4 iram 11 behavioural 22 d6fgSN;``A5NCmfBEz;6N0
+R2
+Z15 DPx4 work 7 mytypes 0 22 cV=Hhi4QJkFJ@;eh[>zEV1
+Z16 DPx4 ieee 16 std_logic_textio 0 22 8]8<fKiYoHe;_IDO3kmNH2
+Z17 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+R4
+R5
+Z18 DEx4 work 4 iram 0 22 b8NT]NjXIOQS]KKPa9BbP2
+!i122 14
+Z19 w1664890954
+R0
+Z20 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd
+Z21 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd
+l0
+L82 1
+VXZRn9DEO^4[@]Qh0Jl=C;0
+!s100 FUQkE8IAd9e[YjXI0L6_Q1
+R8
+32
+Z22 !s110 1665744717
+!i10b 0
+Z23 !s108 1665744717.000000
+Z24 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd|
+Z25 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd|
+!i113 0
+R13
+R14
+Ecomparator
+Z26 w1665741792
+R15
+Z27 DPx4 work 7 globals 0 22 GP>bb25@kEO]5PMe`^1d[0
+R3
+R4
+R5
+!i122 7
+R0
+Z28 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
+Z29 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
+l0
+L8 1
+Vi]O0<UcfmR?gfhjhjj1Hf3
+!s100 K@L4i>l<NDkn7cFG^8o2Q2
+R8
+32
+Z30 !s110 1665742434
+!i10b 1
+Z31 !s108 1665742434.000000
+Z32 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
+Z33 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
+!i113 0
+R13
+R14
+Abehavioural
+R15
+R27
+R3
+R4
+R5
+DEx4 work 10 comparator 0 22 i]O0<UcfmR?gfhjhjj1Hf3
+!i122 7
+l17
+L16 27
+V54n=5OdOX=A?oCDYlMJiV1
+!s100 6ZCk=?8No4TR`m_mKO9g>3
+R8
+32
+R30
+!i10b 1
+R31
+R32
+R33
+!i113 0
+R13
+R14
+Ecwp_swp
+Z34 w1665084955
+R2
+R3
+R17
+Z35 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R4
+R5
+!i122 29
+R0
+Z36 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd
+Z37 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd
+l0
+L6 1
+V6bZM8aFE1KbdTYIOEEKnE3
+!s100 hLzPTT>h<eE?Z`L5N=Ymi3
+R8
+32
+Z38 !s110 1665744843
+!i10b 1
+Z39 !s108 1665744843.000000
+Z40 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd|
+Z41 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd|
+!i113 0
+R13
+R14
+Abeh
+R2
+R3
+R17
+R35
+R4
+R5
+DEx4 work 7 cwp_swp 0 22 6bZM8aFE1KbdTYIOEEKnE3
+!i122 29
+l13
+L12 17
+V3ha[7a:XTH^<E8nmPP[Z93
+!s100 oZV^gQ351Yj>Ah<e10>2H1
+R8
+32
+R38
+!i10b 1
+R39
+R40
+R41
+!i113 0
+R13
+R14
+Edecode_unit
+w1665745081
+R3
+R15
+R2
+R4
+R5
+!i122 41
+R0
+8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd
+FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd
+l0
+L7 1
+VjP8[:5?2>0SSb5_FHfld@2
+!s100 ijJaU?LTL^TKBN5kd]MPH1
+R8
+32
+!s110 1665745083
+!i10b 1
+!s108 1665745083.000000
+!s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd|
+!s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd|
+!i113 0
+R13
+R14
+Edecoder
+R1
+R2
+R3
+R17
+R35
+R4
+R5
+!i122 27
+R0
+Z42 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd
+Z43 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd
+l0
+L6 1
+VNJ6zGYl8h0C_`3C=OfCZE1
+!s100 ^i3?Q_32;VC6m1cJVKGWk3
+R8
+32
+R38
+!i10b 1
+R39
+Z44 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd|
+Z45 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd|
+!i113 0
+R13
+R14
+Adataflow
+R2
+R3
+R17
+R35
+R4
+R5
+DEx4 work 7 decoder 0 22 NJ6zGYl8h0C_`3C=OfCZE1
+!i122 27
+l29
+L25 71
+VRBYNIb^kkmZ4aXk>cWR^C3
+!s100 POJOl]0e@b`bU8<L:ObYE3
+R8
+32
+R38
+!i10b 1
+R39
+R44
+R45
+!i113 0
+R13
+R14
+Edff
+Z46 w1664962028
+R4
+R5
+!i122 18
+R0
+Z47 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd
+Z48 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd
+l0
+L5 1
+Vjh;;bS]]]RR2gNUzzmz[b0
+!s100 <RXOD2:<UmYAC<F[7>NT80
+R8
+32
+Z49 !s110 1665744774
+!i10b 1
+Z50 !s108 1665744774.000000
+Z51 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd|
+Z52 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R4
+R5
+DEx4 work 3 dff 0 22 jh;;bS]]]RR2gNUzzmz[b0
+!i122 18
+l14
+L13 17
+V=D^^S8FoCe=<D;gCgla_>0
+!s100 Q_eEBN6nm;i^_Noa8M?Wi0
+R8
+32
+R49
+!i10b 1
+R50
+R51
+R52
+!i113 0
+R13
+R14
+Edff_wrf
+R1
+R4
+R5
+!i122 26
+R0
+Z53 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd
+Z54 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd
+l0
+L5 1
+VmTK>I48a?mbVQnUIKVEB90
+!s100 Ho9LY0PolO?a6<^OfZV5S3
+R8
+32
+R38
+!i10b 1
+R39
+Z55 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd|
+Z56 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R4
+R5
+DEx4 work 7 dff_wrf 0 22 mTK>I48a?mbVQnUIKVEB90
+!i122 26
+l14
+L13 13
+Vi;TUC9D>JYoZdDfPK:G;20
+!s100 @FRhE2KCe_aE96@Rm_86P1
+R8
+32
+R38
+!i10b 1
+R39
+R55
+R56
+!i113 0
+R13
+R14
+Edram
+Z57 w1665742609
+R2
+R3
+R4
+R5
+!i122 12
+R0
+Z58 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd
+Z59 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd
+l0
+L7 1
+V1K0HH^IPWY<C>]m0TRW2T1
+!s100 7bKG3@gUTY2`THLfleF]Y3
+R8
+32
+Z60 !s110 1665743763
+!i10b 1
+Z61 !s108 1665743763.000000
+Z62 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd|
+Z63 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 4 dram 0 22 1K0HH^IPWY<C>]m0TRW2T1
+!i122 12
+l24
+L20 32
+VCj6W9kXgnK[[MQ06dBaE@1
+!s100 :c_BIbmQC_KiA0JeZP]`X3
+R8
+32
+R60
+!i10b 1
+R61
+R62
+R63
+!i113 0
+R13
+R14
+Eencoder
+R34
+R2
+R3
+R17
+R35
+R4
+R5
+!i122 35
+R0
+Z64 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd
+Z65 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd
+l0
+L7 1
+V2E1QbNY]aO5^U9GRn:TG80
+!s100 MmkbL0G<>bEnlT[kV3GOf0
+R8
+32
+R9
+!i10b 1
+R10
+Z66 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd|
+Z67 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd|
+!i113 0
+R13
+R14
+Acompor
+R2
+R3
+R17
+R35
+R4
+R5
+DEx4 work 7 encoder 0 22 2E1QbNY]aO5^U9GRn:TG80
+!i122 35
+l15
+L14 11
+VSSY:lJMVJdYzz3coKIMC90
+!s100 N<n]MmXOkCE=jTU``VKE53
+R8
+32
+R9
+!i10b 1
+R10
+R66
+R67
+!i113 0
+R13
+R14
+Efetch_unit
+Z68 w1665744810
+R2
+R3
+R4
+R5
+!i122 21
+R0
+Z69 8C:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd
+Z70 FC:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd
+l0
+L6 1
+VH;oPde_g`_T49Wk=E^QAP1
+!s100 5XlF<M]inci2^G4gNMba_0
+R8
+32
+Z71 !s110 1665744815
+!i10b 1
+Z72 !s108 1665744815.000000
+Z73 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd|
+Z74 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd|
+!i113 0
+R13
+R14
+Abehavioural
+R2
+R3
+R4
+R5
+DEx4 work 10 fetch_unit 0 22 H;oPde_g`_T49Wk=E^QAP1
+!i122 21
+l68
+L21 116
+V`C:Y@M:LC6ACaBjSnUVli1
+!s100 <ml:mUkehmTRbcmB81XV:3
+R8
+32
+R71
+!i10b 1
+R72
+R73
+R74
+!i113 0
+R13
+R14
+Efill_enable_generator
+R1
+R2
+R3
+R4
+R5
+!i122 33
+R0
+Z75 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd
+Z76 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd
+l0
+L6 1
+VggzmgA@d_hZUnU<2GANPH2
+!s100 G`2n=0Did6OZK7<1G_<IP2
+R8
+32
+R9
+!i10b 1
+R10
+Z77 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd|
+Z78 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd|
+!i113 0
+R13
+R14
+Abeh
+R2
+R3
+R4
+R5
+DEx4 work 21 fill_enable_generator 0 22 ggzmgA@d_hZUnU<2GANPH2
+!i122 33
+l27
+L21 54
+Veh0X;F=UzVio@^WPgHPdj1
+!s100 >T=1G_HzY8EJc=9UoU1=Q2
+R8
+32
+R9
+!i10b 1
+R10
+R77
+R78
+!i113 0
+R13
+R14
 Pglobals
-DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 0
-w1665420029
+R4
+R5
+!i122 11
+w1665743737
 R0
 8C:/Users/Pk/Desktop/dlx_project/dlx/packages/globals.vhd
 FC:/Users/Pk/Desktop/dlx_project/dlx/packages/globals.vhd
 l0
 L4 1
-VGP>bb25@kEO]5PMe`^1d[0
-!s100 3aUNdIAlD94Yl3GiQBmDC3
-OL;C;2021.2;73
+V3BTZ4YeZNnN?;Ul30>A7>1
+!s100 `X>6gXWRE]h=CQ2d^c3TR3
+R8
 32
-!s110 1665741846
+!s110 1665743756
 !i10b 1
-!s108 1665741845.000000
+!s108 1665743756.000000
 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/packages/globals.vhd|
 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/packages/globals.vhd|
 !i113 0
-o-work work
-tExplicit 1 CvgOpt 0
+R13
+R14
+Eiram
+R19
+R2
+R15
+R16
+R17
+R4
+R5
+!i122 14
+R0
+R20
+R21
+l0
+L17 1
+Vb8NT]NjXIOQS]KKPa9BbP2
+!s100 UNWUWbQBOGfozMano=VU:0
+R8
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 0
+R13
+R14
+Abehavioural
+R2
+R15
+R16
+R17
+R4
+R5
+R18
+!i122 14
+l35
+L26 55
+Vd6fgSN;``A5NCmfBEz;6N0
+!s100 :<P[7K:H_6;F`508E0ZEf3
+R8
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 0
+R13
+R14
+Eiv
+Z79 w1664299485
+R2
+R4
+R5
+!i122 22
+R0
+Z80 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd
+Z81 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd
+l0
+L5 1
+V@h=d^<4lJXakhZVIz<lo@0
+!s100 P009><E:>I];I2bnLD8VP3
+R8
+32
+Z82 !s110 1665744832
+!i10b 1
+Z83 !s108 1665744832.000000
+Z84 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd|
+Z85 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R2
+R4
+R5
+DEx4 work 2 iv 0 22 @h=d^<4lJXakhZVIz<lo@0
+!i122 22
+l11
+Z86 L10 4
+Vm2kN<B`Wef=@5Y`Vd43oL0
+!s100 X6AmzoW=FfIjCBU:nngM;3
+R8
+32
+R82
+!i10b 1
+R83
+R84
+R85
+!i113 0
+R13
+R14
+Eivx
+R79
+R27
+R4
+R5
+!i122 2
+R0
+Z87 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/inverter.vhd
+Z88 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/inverter.vhd
+l0
+L5 1
+VHdRnWQ9<:=jbcS8Q<TeP72
+!s100 ;>ZS:QWai6c2NU1`jC5nc0
+R8
+32
+Z89 !s110 1665742391
+!i10b 1
+Z90 !s108 1665742391.000000
+Z91 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/inverter.vhd|
+Z92 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/inverter.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R27
+R4
+R5
+DEx4 work 3 ivx 0 22 HdRnWQ9<:=jbcS8Q<TeP72
+!i122 2
+l11
+R86
+VmE@L;bd[RoKWPEiRFPc2O0
+!s100 5[8gnYVMKTVJ@3=M1DkO>0
+R8
+32
+R89
+!i10b 1
+R90
+R91
+R92
+!i113 0
+R13
+R14
+Emux21_generic
+R79
+R2
+R4
+R5
+!i122 23
+R0
+Z93 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd
+Z94 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd
+l0
+L5 1
+V`F2Mg?zzJ0Ii4>3]^z]WN0
+!s100 Oz6J0aWdYokaIZGFC5nfT0
+R8
+32
+R82
+!i10b 1
+R83
+Z95 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd|
+Z96 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd|
+!i113 0
+R13
+R14
+Astructural
+R2
+R4
+R5
+DEx4 work 13 mux21_generic 0 22 `F2Mg?zzJ0Ii4>3]^z]WN0
+!i122 23
+l30
+L13 31
+VW5N:S_e78FULTJX1RPB8X3
+!s100 nhJ?>OKGX08A3=Zc^DajG1
+R8
+32
+R82
+!i10b 1
+R83
+R95
+R96
+!i113 0
+R13
+R14
+Emux31_generic
+Z97 w1665742421
+R27
+R4
+R5
+!i122 6
+R0
+Z98 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd
+Z99 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd
+l0
+L5 1
+VThj;83@nHF9QoX3C=f<IY2
+!s100 Gc?FdQCSU0dBgh@d1mLej1
+R8
+32
+Z100 !s110 1665742423
+!i10b 1
+Z101 !s108 1665742423.000000
+Z102 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd|
+Z103 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd|
+!i113 0
+R13
+R14
+Abehavioural
+R27
+R4
+R5
+DEx4 work 13 mux31_generic 0 22 Thj;83@nHF9QoX3C=f<IY2
+!i122 6
+l16
+L14 13
+VKm5XmDj[g:gdYZMGJ^ZCi1
+!s100 4=V:882WJ55:UOH6gHKV32
+R8
+32
+R100
+!i10b 1
+R101
+R102
+R103
+!i113 0
+R13
+R14
+Emux_out
+R1
+R2
+R3
+R17
+R35
+R4
+R5
+!i122 31
+R0
+Z104 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd
+Z105 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd
+l0
+L6 1
+VS3ETjS;@HdnmF6S26<hRc2
+!s100 F3FNhbQ?CB3K7O5h=mz142
+R8
+32
+R9
+!i10b 1
+R10
+Z106 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd|
+Z107 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd|
+!i113 0
+R13
+R14
+Abeh
+R2
+R3
+R17
+R35
+R4
+R5
+DEx4 work 7 mux_out 0 22 S3ETjS;@HdnmF6S26<hRc2
+!i122 31
+l24
+L20 25
+Ve2J9^T4=S57cP9eiSn]i@0
+!s100 K>87m2@LDE<<;LXIQziPU3
+R8
+32
+R9
+!i10b 1
+R10
+R106
+R107
+!i113 0
+R13
+R14
+Pmytypes
+R2
+R4
+R5
+!i122 13
+w1665742375
+R0
+8C:/Users/Pk/Desktop/dlx_project/dlx/packages/myTypes.vhd
+FC:/Users/Pk/Desktop/dlx_project/dlx/packages/myTypes.vhd
+l0
+L5 1
+VcV=Hhi4QJkFJ@;eh[>zEV1
+!s100 DWhAckd4`RA6^:3_gzbM?2
+R8
+32
+!s110 1665744706
+!i10b 1
+!s108 1665744706.000000
+!s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/packages/myTypes.vhd|
+!s107 C:/Users/Pk/Desktop/dlx_project/dlx/packages/myTypes.vhd|
+!i113 0
+R13
+R14
+Enand2
+R79
+R27
+R4
+R5
+!i122 4
+R0
+Z108 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd
+Z109 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd
+l0
+L5 1
+VOaA1@Wi1oTUjEbFa>c4Ck1
+!s100 1`c8hhkb]7X3_KD481bLK1
+R8
+32
+R89
+!i10b 1
+R90
+Z110 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd|
+Z111 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R27
+R4
+R5
+DEx4 work 5 nand2 0 22 OaA1@Wi1oTUjEbFa>c4Ck1
+!i122 4
+l12
+Z112 L11 4
+VMHb@5f40@5h]@1faoP`]Z2
+!s100 ZjWU4e8gZX;DfPZ?[1K^O2
+R8
+32
+R89
+!i10b 1
+R90
+R110
+R111
+!i113 0
+R13
+R14
+End2
+R79
+R2
+R4
+R5
+!i122 24
+R0
+Z113 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
+Z114 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
+l0
+L5 1
+VcDj`f?@oTD;dWR>CKT?Da3
+!s100 _TRZTBZ?P?kLe4ON7S;MX0
+R8
+32
+R82
+!i10b 1
+R83
+Z115 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd|
+Z116 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R2
+R4
+R5
+DEx4 work 3 nd2 0 22 cDj`f?@oTD;dWR>CKT?Da3
+!i122 24
+l12
+R112
+VAJX?`9cT>K4Oj@A6Ji02J2
+!s100 ;:cOI^1Zm368:@HWkAOcc2
+R8
+32
+R82
+!i10b 1
+R83
+R115
+R116
+!i113 0
+R13
+R14
+Epc
+Z117 w1664872558
+R2
+R3
+R4
+R5
+!i122 15
+R0
+Z118 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd
+Z119 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd
+l0
+L6 1
+VaT_HQ4z7KCF_9hj^20E[_0
+!s100 YN;[<Dzf[3gXC>JgIUcU73
+R8
+32
+Z120 !s110 1665744729
+!i10b 1
+Z121 !s108 1665744728.000000
+Z122 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd|
+Z123 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd|
+!i113 0
+R13
+R14
+Abehavioural
+R2
+R3
+R4
+R5
+DEx4 work 2 pc 0 22 aT_HQ4z7KCF_9hj^20E[_0
+!i122 15
+l18
+L15 21
+VNZlDBiUUPUSCZfWNz5_<61
+!s100 ];gKBmbiBTcX5=DY@fj6H2
+R8
+32
+R120
+!i10b 1
+R121
+R122
+R123
+!i113 0
+R13
+R14
+Ephysical_register_file
+R1
+R2
+R3
+R17
+R35
+R4
+R5
+!i122 28
+R0
+Z124 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd
+Z125 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd
+l0
+L9 1
+VzBk=;zMQ900m3MIiEUN9B2
+!s100 `iJ[hd^j57[77d_d5bPPT2
+R8
+32
+R38
+!i10b 1
+R39
+Z126 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd|
+Z127 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd|
+!i113 0
+R13
+R14
+Astructural
+R2
+R3
+R17
+R35
+R4
+R5
+DEx4 work 22 physical_register_file 0 22 zBk=;zMQ900m3MIiEUN9B2
+!i122 28
+l53
+L26 42
+VI]93bXgcLM_?<z@`SBNn21
+!s100 9ekfWcjG`42SD2:7eXN]g0
+R8
+32
+R38
+!i10b 1
+R39
+R126
+R127
+!i113 0
+R13
+R14
+Erdmux
+Z128 w1665744756
+R2
+R15
+R4
+R5
+!i122 17
+R0
+Z129 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd
+Z130 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd
+l0
+L10 1
+V9U`LM=RQZV8zUj:RekZB;2
+!s100 >o^`QjYeiEAD^Kfg4?aF[2
+R8
+32
+Z131 !s110 1665744765
+!i10b 1
+Z132 !s108 1665744765.000000
+Z133 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd|
+Z134 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R2
+R15
+R4
+R5
+DEx4 work 5 rdmux 0 22 9U`LM=RQZV8zUj:RekZB;2
+!i122 17
+l18
+L17 11
+VmGn^FTT3PTK]l60z9OKY53
+!s100 do_XJoc;NLWlChMLn8DXK0
+R8
+32
+R131
+!i10b 1
+R132
+R133
+R134
+!i113 0
+R13
+R14
+Eregister_generic
+Z135 w1664962545
+R2
+R4
+R5
+!i122 19
+R0
+Z136 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd
+Z137 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd
+l0
+L8 1
+VAPVXfQ`?eVo>k@Uiz9McA3
+!s100 ABjkBdXfTk0d`d4fY=n4@2
+R8
+32
+R49
+!i10b 1
+R50
+Z138 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd|
+Z139 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd|
+!i113 0
+R13
+R14
+Astructural
+R2
+R4
+R5
+DEx4 work 16 register_generic 0 22 APVXfQ`?eVo>k@Uiz9McA3
+!i122 19
+l27
+L17 20
+V<VL>61h0?Y^R=[3?`IXQK0
+!s100 n8]ljSHd5g4DV6ii1FKYO0
+R8
+32
+R49
+!i10b 1
+R50
+R138
+R139
+!i113 0
+R13
+R14
+Eregister_generic_wrf
+Z140 w1665074895
+R2
+R4
+R5
+!i122 25
+R0
+Z141 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd
+Z142 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd
+l0
+L8 1
+VUckJ?RzP;oF^]EGkOBcK^1
+!s100 l]29N=FWf6<i:eHz0^7PK3
+R8
+32
+R38
+!i10b 1
+R39
+Z143 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd|
+Z144 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd|
+!i113 0
+R13
+R14
+Astructural
+R2
+R4
+R5
+DEx4 work 20 register_generic_wrf 0 22 UckJ?RzP;oF^]EGkOBcK^1
+!i122 25
+l27
+L17 16
+VZ;<O4KR]EdaPkGOm1DbkJ1
+!s100 CR6VkRRjmK2TB84YLo3GK3
+R8
+32
+R38
+!i10b 1
+R39
+R143
+R144
+!i113 0
+R13
+R14
+Ese_tb
+Z145 w1664639852
+R2
+R3
+R4
+R5
+!i122 20
+R0
+Z146 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd
+Z147 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd
+l0
+L6 1
+VBCc]aaB>8YhPkGGG8kM7D1
+!s100 g3E]LX?8e6k3Qf5XKFzc>1
+R8
+32
+Z148 !s110 1665744778
+!i10b 1
+Z149 !s108 1665744778.000000
+Z150 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd|
+Z151 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd|
+!i113 0
+R13
+R14
+Atest
+R2
+R3
+R4
+R5
+DEx4 work 5 se_tb 0 22 BCc]aaB>8YhPkGGG8kM7D1
+!i122 20
+l19
+L9 28
+Vh=9:fe8[diPXJTb]l>7XD3
+!s100 zR9`KX@O:?oDj]:G=M95Z0
+R8
+32
+R148
+!i10b 1
+R149
+R150
+R151
+!i113 0
+R13
+R14
+Esel_block
+Z152 w1665068393
+R2
+R3
+R17
+R35
+R4
+R5
+!i122 30
+R0
+Z153 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd
+Z154 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd
+l0
+L6 1
+V7=Ia1z^cJSF;AP]CfN6Xk2
+!s100 g]PD_kl@L8OakS;>WU84D2
+R8
+32
+R9
+!i10b 1
+R39
+Z155 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd|
+Z156 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd|
+!i113 0
+R13
+R14
+Abeh
+R2
+R3
+R17
+R35
+R4
+R5
+DEx4 work 9 sel_block 0 22 7=Ia1z^cJSF;AP]CfN6Xk2
+!i122 30
+l18
+L17 18
+VnIeTJnkmI3cQck4Xjkd:c1
+!s100 CYf@f]A5LGGR_0Ma>2K`G0
+R8
+32
+R9
+!i10b 1
+R39
+R155
+R156
+!i113 0
+R13
+R14
+Ewrf
+R1
+R2
+R3
+R4
+R5
+!i122 32
+R0
+Z157 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd
+Z158 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd
+l0
+L6 1
+VMS>g5ddZFoUX?Jh5:3N4^0
+!s100 bmHdL[=N@S:HgCHi0GgQG3
+R8
+32
+R9
+!i10b 1
+R10
+Z159 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd|
+Z160 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd|
+!i113 0
+R13
+R14
+Astructural
+R2
+R3
+R4
+R5
+DEx4 work 3 wrf 0 22 MS>g5ddZFoUX?Jh5:3N4^0
+!i122 32
+l163
+L46 196
+VU_a=nH91m2Sd]ngHDFYIR2
+!s100 HY6EoiKPo5Fb@lfN@DSP`3
+R8
+32
+R9
+!i10b 1
+R10
+R159
+R160
+!i113 0
+R13
+R14
+Ewrf_fsm
+R1
+R2
+R3
+R4
+R5
+!i122 36
+R0
+Z161 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd
+Z162 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd
+l0
+L7 1
+VAWVfacVeKUedb9>1]U??:3
+!s100 Xjjec9cc3R5f4oKQCNb=93
+R8
+32
+Z163 !s110 1665744845
+!i10b 1
+R10
+Z164 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd|
+Z165 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd|
+!i113 0
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 7 wrf_fsm 0 22 AWVfacVeKUedb9>1]U??:3
+!i122 36
+l31
+L26 68
+V4i1LDOSQ]Qdg>8D`[X7;B3
+!s100 ^>jCJ@XT`Gg<Vh8COdg_N2
+R8
+32
+R163
+!i10b 1
+R10
+R164
+R165
+!i113 0
+R13
+R14

@@ -30,14 +30,14 @@ entity decode_unit is
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
             outmem:               out std_logic_vector(numbitdata-1 downto 0); --to dmem
-            inmem:                in std_logic_vector(numbitdata-1 downto 0) --from dmem
+            inmem:                in std_logic_vector(numbitdata-1 downto 0); --from dmem
             addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
             NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
             comparator_out:        out std_logic;
-            RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0);
+            RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0)
             );
 end decode_unit;
 
@@ -57,7 +57,7 @@ architecture structural of decode_unit is
 --           Data_one_out :	OUT std_logic_vector(numBit_data-1 downto 0);
 --           Data_two_out :	OUT std_logic_vector(numBit_data-1 downto 0));
 --    end component;
-      component wrf_fsm is
+      component wrf_fsm 
             generic(  NBIT : integer := NumBitMemoryWord;
                       NADDR : integer :=  NumMemBitAddress );
           port( clk:          in std_logic;
@@ -74,9 +74,9 @@ architecture structural of decode_unit is
                 datamem_out:  out std_logic_vector(Nbit-1 downto 0);
                 read:         out std_logic;
                 write:        out std_logic);
-      component wrf_fsm;
+      end component;
 
-      component wrf is
+      component wrf
         generic(
             numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
             numBit_data: integer := NumBitData; -- numero di bit dei registri
@@ -153,6 +153,7 @@ architecture structural of decode_unit is
       port( opcode_in : in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
             data_in :   in std_logic_vector(NBIT-1 downto 0);
             data_out :  out std_logic);
+     end component;
      --component HAZARD_DETECTION
      --  port(   clk:                in std_logic;
      --          reset:              in std_logic;
@@ -267,8 +268,8 @@ architecture structural of decode_unit is
   RF_ONE_OUT_ID <= RF_ONE_OUT;
 
   WRF_CU: wrf_fsm
-      generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress);
-    port( clk=>clk,
+      generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress)
+    port map( clk=>clk,
           rst=>rst,
           push=>push,
           done_fill=>done_fill,

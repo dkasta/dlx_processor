@@ -20,7 +20,7 @@ architecture BEHAVIORAL of RDMUX is
     begin
       if(opcode_in <= RTYPE) then
         rd_out <= rtype_in;
-      elsif (opcode_in = ITYPE_ADDI) or (opcode_in = ITYPE_ANDI) or (opcode_in = ITYPE_LW) or (opcode_in = ITYPE_ORI) or (opcode_in = ITYPE_SGEI) or (opcode_in = ITYPE_SLEI) or (opcode_in = ITYPE_SLLI) or (opcode_in = ITYPE_SNEI) or (opcode_in = ITYPE_SRLI) or (opcode_in = ITYPE_SUBI) or (opcode_in = ITYPE_SW) or (opcode_in = ITYPE_XORI)
+      elsif (opcode_in = ITYPE_ADDI) or (opcode_in = ITYPE_ANDI) or (opcode_in = ITYPE_LW) or (opcode_in = ITYPE_ORI) or (opcode_in = ITYPE_SGEI) or (opcode_in = ITYPE_SLEI) or (opcode_in = ITYPE_SLLI) or (opcode_in = ITYPE_SNEI) or (opcode_in = ITYPE_SRLI) or (opcode_in = ITYPE_SUBI) or (opcode_in = ITYPE_SW) or (opcode_in = ITYPE_XORI) then
         rd_out <= itype_in;
       end if;
     end process;

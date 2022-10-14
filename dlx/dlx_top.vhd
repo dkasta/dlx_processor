@@ -254,7 +254,7 @@ begin  -- DLX
     DRAM_I : DRAM
     generic map(RISC_BIT, RISC_BIT)
     port map(clk => clk,
-             address => DRAM_addr_signal, 
+             address => DRAM_addr_signal(NumMemBitAddress - 1 downto 0), 
              data_in => DRAM_data_in_signal, 
              write_enable => DRAM_write_enable_signal, 
              read_enable => DRAM_read_enable_signal, 

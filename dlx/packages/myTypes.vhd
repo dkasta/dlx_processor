@@ -75,8 +75,8 @@ package myTypes is
 -- J-Type instruction -> OPCODE field
 	constant JTYPE_J:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000010"; -- j, 0x02
 	constant JTYPE_JAL:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000011"; -- j, 0x03
-    constant JTYPE_CALL: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "111110";
-    constant JTYPE_RET: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "111111";
+    constant JTYPE_CALL: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "111110";
+    constant JTYPE_RET: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "111111";
 
 
 

@@ -22,7 +22,7 @@ package globals is
 	constant BIT_RISC : integer := 32;
 	-------------memory------------------------
 	constant NumBitMemoryWord : integer := 32;
-	constant NumMemBitAddress : integer := 32;
+	constant NumMemBitAddress : integer := 10;
 	-------------register file-----------------
 	constant NumBitData : integer := 32;
 	--constant NumBitRegisterFile : integer := 32;

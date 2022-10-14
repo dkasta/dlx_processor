@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use WORK.globals.all;
 
 entity MUX31_GENERIC is
 generic( NBIT : integer := BIT_RISC);
@@ -19,7 +20,7 @@ begin
     when "00" => Y <= A ;
     when "01" => Y <= B ;
     when "10" => Y <= C ;
-    when others => Y <= (others => '0'); ;
+    when others => Y <= (others => '0');
   end case;
 end process THREETOONEMUX;
 end behavioural;
