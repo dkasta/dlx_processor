@@ -55,14 +55,14 @@ component register_generic
           Y      : out std_logic_vector(NBIT-1 downto 0));
     end component;
   -----------------------------------------------------------
-  component IRAM is
-    generic(RAM_DEPTH : integer := RAM_DEPTH;
-            I_SIZE : integer := I_SIZE);
-    port(Rst  : in  std_logic;
-         enable : in std_logic;
-         Addr : in  std_logic_vector(I_SIZE - 1 downto 0);
-         Dout : out std_logic_vector(I_SIZE - 1 downto 0));
-  end component;
+--  component IRAM is
+--    generic(RAM_DEPTH : integer := RAM_DEPTH;
+--            I_SIZE : integer := I_SIZE);
+--    port(Rst  : in  std_logic;
+--         enable : in std_logic;
+--         Addr : in  std_logic_vector(I_SIZE - 1 downto 0);
+--         Dout : out std_logic_vector(I_SIZE - 1 downto 0));
+--  end component;
   -----------------------------------------------------------
 
   begin
@@ -116,12 +116,12 @@ component register_generic
     tomem <= pc_reg_out;
     instr_fetched <= instr_fetched_signal;
 ---------------------------------------------------------------------------------
-    C_IRAM : IRAM
-    generic map(RAM_DEPTH,NBIT)
-      port map(Rst => rst,
-               enable => EN1,
-               Addr => tomem,
-               Dout => instr_fetched_signal);
+--    C_IRAM : IRAM
+--    generic map(RAM_DEPTH,NBIT)
+--      port map(Rst => rst,
+--               enable => EN1,
+--               Addr => tomem,
+--               Dout => instr_fetched_signal);
 ---------------------------------------------------------------------------------
 
     --process to check if a forbidden memory address is being accessed

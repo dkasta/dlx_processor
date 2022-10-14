@@ -17,7 +17,7 @@ end write_back_unit;
 architecture structural of write_back_unit is
 
   component MUX21_GENERIC
-  generic( NBIT: integer := NumBitMux21);
+  generic( NBIT: integer := Bit_Mux21);
   port(    A:   in std_logic_vector(NBIT-1 downto 0);
            B:   in std_logic_vector(NBIT-1 downto 0);
            SEL: in std_logic;
@@ -30,12 +30,12 @@ architecture structural of write_back_unit is
   begin
     MUX_WB : MUX21_GENERIC
     generic map(BIT_RISC)
-    port map( LMD => LMD,
-              ALUOUT => ALUOUT,
-              mux_wb_control => mux_wb_control,
-              RD_OUT => RD_OUT,
-              WB_OUT => WB_OUT);
+    port map( A => LMD,
+              B => ALUOUT,
+              SEL => mux_wb_control,
+              Y => WB_OUT);
 
+RD_OUT <= RD_IN;
 
 end structural;
 

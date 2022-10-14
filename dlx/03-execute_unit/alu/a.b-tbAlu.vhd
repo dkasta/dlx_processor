@@ -11,7 +11,7 @@ end TB_ALU;
 
 architecture TEST of TB_ALU is
 
-	signal s_type_alu_operation: aluOp;
+	signal s_type_alu_operation: std_logic_vector(ALU_OPC_SIZE-1 downto 0);
 	signal s_operand_A: std_logic_vector(NumBitALU-1 downto 0);
 	signal s_operand_B: std_logic_vector(NumBitALU-1 downto 0);
 	signal s_output: std_logic_vector(NumBitALU-1 downto 0);
@@ -19,7 +19,7 @@ architecture TEST of TB_ALU is
 	component alu
         port (operand_A : in std_logic_vector(NumBitALU-1 downto 0);
               operand_B : in std_logic_vector(NumBitALU-1 downto 0);
-              type_alu_operation : in aluOp;
+              type_alu_operation : in std_logic_vector(ALU_OPC_SIZE-1 downto 0);
               output : out std_logic_vector(NumBitALU-1 downto 0);
               cout : out std_logic);
 	end component;

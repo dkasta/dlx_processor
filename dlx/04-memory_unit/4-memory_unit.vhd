@@ -15,7 +15,7 @@ entity memory_unit is
            alu_out:           out std_logic_vector(numbit - 1 downto 0);
            rd_reg_out:        out std_logic_vector(4 downto 0);
            b_reg_out:         out std_logic_vector(numbit-1 downto 0);
-           DRAM_addr:         out std_logic_vector(numbit-1 downto 0);
+           DRAM_addr:         out std_logic_vector(numbit-1 downto 0)
            );
 end memory_unit;
 
@@ -41,7 +41,7 @@ architecture structural of memory_unit is
   signal mux_out : std_logic_vector(numbit-1 downto 0);
   signal alu_mux_out : std_logic_vector(numbit-1 downto 0);
   signal b_reg_in_signal: std_logic_vector(numbit-1 downto 0);
-
+  signal alu_in_signal: std_logic_vector(numbit-1 downto 0);
   begin
 
     MUX_MEM : MUX21_GENERIC
@@ -68,9 +68,11 @@ architecture structural of memory_unit is
               ENABLE => EN4,
               Q => rd_reg_out);
 
-    b_reg_in <= b_reg_in_signal;
+    b_reg_in_signal <= b_reg_in;
     b_reg_out <= b_reg_in_signal;
-
+    
+    alu_in_signal <= alu_in;
+    DRAM_addr <= alu_in_signal;
 
 end structural;
 

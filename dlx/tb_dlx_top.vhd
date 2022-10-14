@@ -14,19 +14,19 @@ architecture behavioural of tb_dlx_top is
     signal clk: std_logic := '0';
     signal reset: std_logic := '1';
     signal EN1: std_logic := '0';
-    signal npc_out_if : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal instruction_fetched : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal ir_out : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal npc_out_id : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal a_reg_out : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal b_reg_out : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal imm_reg_out : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal rd_out_id : std_logic_vector(RISC_BIT-1 downto 0);
-    signal alu_out : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal b_reg_out_ex : std_logic_vector(RISC_BIT - 1 downto 0);
+    signal npc_out_if : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal instruction_fetched : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal ir_out : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal npc_out_id : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal a_reg_out : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal b_reg_out : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal imm_reg_out : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal rd_out_id : std_logic_vector(4 downto 0);
+    signal alu_out : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal b_reg_out_ex : std_logic_vector(BIT_RISC - 1 downto 0);
     signal rd_out_ex : std_logic_vector(4 downto 0);
-    signal alu_out_mem : std_logic_vector(RISC_BIT - 1 downto 0);
-    signal wb_stage_out : std_logic_vector(RISC_BIT - 1 downto 0);
+    signal alu_out_mem : std_logic_vector(BIT_RISC - 1 downto 0);
+    signal wb_stage_out : std_logic_vector(BIT_RISC - 1 downto 0);
     
 
     component DLX
@@ -35,19 +35,19 @@ architecture behavioural of tb_dlx_top is
     port( clk : IN std_logic;
           reset : IN std_logic;
           EN1: IN std_logic;
-          npc_out_if : OUT std_logic_vector(RISC_BIT - 1 downto 0);
-          instruction_fetched : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          ir_out : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          npc_out_id: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          a_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          b_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          imm_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+          npc_out_if : OUT std_logic_vector(BIT_RISC - 1 downto 0);
+          instruction_fetched : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          ir_out : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          npc_out_id: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          a_reg_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          b_reg_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          imm_reg_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
           rd_out_id: OUT  std_logic_vector(4 downto 0);
-          alu_out : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          b_reg_out_ex : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          rd_out_ex : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          alu_out_mem : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-          wb_stage_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0); );
+          alu_out : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          b_reg_out_ex : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          rd_out_ex : OUT  std_logic_vector(4 downto 0);
+          alu_out_mem : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          wb_stage_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0));
     end component;
 
 begin
@@ -70,7 +70,7 @@ begin
             b_reg_out_ex => b_reg_out_ex,
             rd_out_ex => rd_out_ex,
             alu_out_mem => alu_out_mem,
-            wb_stage_out => );
+            wb_stage_out => wb_stage_out);
 
   PCLOCK : process(clk)
 	begin
@@ -83,10 +83,4 @@ begin
 
 end behavioural;
 
-configuration CFG_TB_DLX of tb_dlx_top  is
-	for behavioural
-    for U1 : DLX
-      use configuration WORK.CFG_DLX;
-    end for;
-	end for;
-end CFG_TB_DLX;
+ 

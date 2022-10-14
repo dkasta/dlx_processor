@@ -14,40 +14,23 @@ entity DLX is
   port( clk : IN std_logic;
         reset : IN std_logic;
         EN1: IN std_logic;
-        npc_out_if : OUT std_logic_vector(RISC_BIT - 1 downto 0);
-        instruction_fetched : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        ir_out : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        npc_out_id: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        a_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        b_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        imm_reg_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        npc_out_if : OUT std_logic_vector(BIT_RISC - 1 downto 0);
+        instruction_fetched : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        ir_out : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        npc_out_id: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        a_reg_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        b_reg_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        imm_reg_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
         rd_out_id: OUT  std_logic_vector(4 downto 0);
-        alu_out : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        b_reg_out_ex : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        rd_out_ex : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        alu_out_mem : OUT  std_logic_vector(RISC_BIT - 1 downto 0);
-        wb_stage_out: OUT  std_logic_vector(RISC_BIT - 1 downto 0);
+        alu_out : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        b_reg_out_ex : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        rd_out_ex : OUT  std_logic_vector(4 downto 0);
+        alu_out_mem : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        wb_stage_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0)
         );
 end DLX;
 
 
-npc_out_if <= npc_out_if_signal;
-instruction_fetched <= instruction_fetched_signal;
-ir_out <= ir_out_signal;
-npc_out_id <= npc_out_id_signal,
-a_reg_out <= a_reg_out_signal,
-b_reg_out <= b_reg_out_signal,
-imm_reg_out <= imm_reg_out_signal,
-rd_out_id <= rd_out_id_signal,
-------------------------------------------------------------------
--- EXE output
-alu_out <= alu_out_signal;
-b_reg_out_ex <= b_reg_out_ex_signal;
-rd_out_ex <= rd_out_ex_signal;
-------------------------------------------------------------------
---MEM output
-alu_out_mem <= alu_out_mem_signal;
-wb_stage_out <= wb_stage_out_signal;
 
 architecture structural of DLX is
 
@@ -78,7 +61,7 @@ architecture structural of DLX is
 
   -- Datapath
   component datapath
-      generic( numbit: integer := RISC_BIT);
+      generic( numbit: integer := BIT_RISC);
       port(    clk:                   in std_logic;
                reset:                 in std_logic;
                ------------------------------------------------------------------
@@ -87,23 +70,24 @@ architecture structural of DLX is
                to_IR:                 in std_logic_vector(numbit - 1 downto 0); -- In from IRAM
                ------------------------------------------------------------------
                -- ID input
-               jal_mux_control        in std_logic;
+               jal_mux_control:        in std_logic;
                write_enable:          in std_logic;
                rd1_enable:            in std_logic;
                rd2_enable:            in std_logic;
                call:                  in std_logic;
                ret:                   in std_logic;
-               imm_mux_control        in std_logic;
+               imm_mux_control:        in std_logic;
                EN2:                   in std_logic;
                ------------------------------------------------------------------
                -- EXE input
                mux_one_control:       in std_logic;
                mux_two_control:       in std_logic;
-               alu_control:           in std_logic_vector(3 downto 0);
-               EN3                    in std_logic;
+               alu_control:           in std_logic_vector(4 downto 0);
+               EN3:                    in std_logic;
                -----------------------------------------------------------------
                -- MEM input
                mux_mem_control:       in std_logic;
+               EN4:       in std_logic;
                DRAM_to_mux:           in std_logic_vector(numbit - 1 downto 0);
                ------------------------------------------------------------------
                -- WB input 
@@ -129,11 +113,11 @@ architecture structural of DLX is
                rd_out_ex:             out std_logic_vector(4 downto 0);
                ------------------------------------------------------------------
                --MEM output
-               DRAM_addr:             out std_logic_vector(4 downto 0);
-               DRAM_data_in           out std_logic_vector(numbit - 1 downto 0);
+               DRAM_addr:             out std_logic_vector(numbit-1 downto 0);
+               DRAM_data_in:           out std_logic_vector(numbit - 1 downto 0);
                alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
                wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
-               FLUSH                  out std_logic;
+               FLUSH:                  out std_logic_vector(1 downto 0)
                );
     end component;
 
@@ -168,7 +152,7 @@ architecture structural of DLX is
             FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
             Clk : IN std_logic;
             Rst : IN std_logic;
-            FLUSH : IN std_logic);                 
+            FLUSH : IN std_logic_vector(1 downto 0));                 
              
 end component;
 
@@ -179,16 +163,16 @@ end component;
   ----------------------------------------------------------------
 
   -- IRAM Bus signals
-  signal toiramfrompc : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal toirfromiram : std_logic_vector(RISC_BIT - 1 downto 0);
+  signal toiramfrompc : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal toirfromiram : std_logic_vector(BIT_RISC - 1 downto 0);
 
   -- DRAM Bus signals
   signal DRAM_write_enable_signal : std_logic;
   signal DRAM_read_enable_signal : std_logic;
-  signal DRAM_addr_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal DRAM_data_in_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal DRAM_to_mux_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-
+  signal DRAM_addr_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal DRAM_data_in_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal DRAM_to_mux_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal address_error_signal : std_logic;
   -- Control Unit Bus signals
   signal jal_mux_control_signal : std_logic;
   signal write_enable_signal : std_logic;
@@ -205,33 +189,32 @@ end component;
   signal mux_mem_control_signal : std_logic;
   signal EN4_signal : std_logic;
   signal mux_wb_control_signal : std_logic;
-  signal FLUSH_signal : std_logic;
+  signal FLUSH_signal : std_logic_vector(1 downto 0);
   
  
 
-  signal npc_out_if_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal instruction_fetched_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal ir_out_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal npc_out_id_signal: std_logic_vector(RISC_BIT - 1 downto 0);
-  signal a_reg_out_signal: std_logic_vector(RISC_BIT - 1 downto 0);
-  signal b_reg_out_signal: std_logic_vector(RISC_BIT - 1 downto 0);
-  signal imm_reg_out_signal: std_logic_vector(RISC_BIT - 1 downto 0);
+  signal npc_out_if_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal instruction_fetched_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal ir_out_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal npc_out_id_signal: std_logic_vector(BIT_RISC - 1 downto 0);
+  signal a_reg_out_signal: std_logic_vector(BIT_RISC - 1 downto 0);
+  signal b_reg_out_signal: std_logic_vector(BIT_RISC - 1 downto 0);
+  signal imm_reg_out_signal: std_logic_vector(BIT_RISC - 1 downto 0);
   signal rd_out_id_signal: std_logic_vector(4 downto 0);
-  signal alu_out_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal b_reg_out_ex_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal rd_out_ex_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal alu_out_mem_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-  signal rd_out_ex_signal : std_logic_vector(RISC_BIT - 1 downto 0);
-
+  signal alu_out_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal b_reg_out_ex_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal rd_out_ex_signal : std_logic_vector(4 downto 0);
+  signal alu_out_mem_signal : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal wb_stage_out_signal : std_logic_vector(BIT_RISC -1 downto 0);
 begin  -- DLX
       npc_out_if <= npc_out_if_signal;
       instruction_fetched <= instruction_fetched_signal;
       ir_out <= ir_out_signal;
-      npc_out_id <= npc_out_id_signal,
-      a_reg_out <= a_reg_out_signal,
-      b_reg_out <= b_reg_out_signal,
-      imm_reg_out <= imm_reg_out_signal,
-      rd_out_id <= rd_out_id_signal,
+      npc_out_id <= npc_out_id_signal;
+      a_reg_out <= a_reg_out_signal;
+      b_reg_out <= b_reg_out_signal;
+      imm_reg_out <= imm_reg_out_signal;
+      rd_out_id <= rd_out_id_signal;
       ------------------------------------------------------------------
       -- EXE output
       alu_out <= alu_out_signal;
@@ -252,7 +235,7 @@ begin  -- DLX
              Dout => toirfromiram);
 
     DRAM_I : DRAM
-    generic map(RISC_BIT, RISC_BIT)
+    generic map(BIT_RISC, BIT_RISC)
     port map(clk => clk,
              address => DRAM_addr_signal(NumMemBitAddress - 1 downto 0), 
              data_in => DRAM_data_in_signal, 
@@ -292,7 +275,7 @@ begin  -- DLX
 
 
     DATAPATH_I : DATAPATH
-    generic map(RISC_BIT)
+    generic map(BIT_RISC)
     port map(   clk => clk,
                 reset => reset,
                 -- IF input
@@ -314,6 +297,7 @@ begin  -- DLX
                 EN3 => EN3_signal,
                 -- MEM input
                 mux_mem_control => mux_mem_control_signal,
+                EN4 => EN4_signal,
                 DRAM_to_mux => DRAM_to_mux_signal,
                 -- WB input 
                 mux_wb_control => mux_wb_control_signal,

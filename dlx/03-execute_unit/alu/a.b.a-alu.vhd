@@ -10,7 +10,7 @@ use work.myTypes.all;
 entity alu is
   port (operand_A : in std_logic_vector(NumBitALU-1 downto 0);
         operand_B : in std_logic_vector(NumBitALU-1 downto 0);
-        type_alu_operation : in aluOp;
+        type_alu_operation : in std_logic_vector(ALU_OPC_SIZE-1 downto 0); 
         output : out std_logic_vector(NumBitALU-1 downto 0);
         cout : out std_logic);
 end alu;
@@ -71,7 +71,7 @@ architecture behaviour of alu is
  	     less_equal_then: in std_logic;
 	     equal: in std_logic;
 	     not_equal: in std_logic;
-	     selection: in aluOp;
+	     selection: in std_logic_vector(ALU_OPC_SIZE-1 downto 0);
 	     output_mux: out std_logic_vector (NumBitALU-1 downto 0));
     end component;
 
