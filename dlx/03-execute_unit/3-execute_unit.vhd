@@ -14,7 +14,7 @@ entity execution_unit is
            rd_reg_in:             in std_logic_vector(4 downto 0);
            mux_one_control:       in std_logic;
            mux_two_control:       in std_logic;
-           alu_control:           in aluOp;
+           alu_control:           in std_logic_vector(4 downto 0);
            EN3:                   in std_logic;
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
@@ -43,7 +43,7 @@ architecture structural of execution_unit is
   component ALU
   port (operand_A : in std_logic_vector(NumBitALU-1 downto 0);
         operand_B : in std_logic_vector(NumBitALU-1 downto 0);
-        type_alu_operation : in aluOp;
+        type_alu_operation : in std_logic_vector(ALU_OPC_SIZE-1 downto 0);
         output : out std_logic_vector(NumBitALU-1 downto 0);
         cout : out std_logic);  
   end component;  
@@ -80,11 +80,7 @@ architecture structural of execution_unit is
 --    MUX_TWO_ALU : MUX21_GENERIC
 --    generic map(numbit)
 --    port map(mux_two_out_mem_forwarding,alu_forwarding_value,alu_forwarding_two,mux_two_out_alu_forwarding);
-operand_A : in std_logic_vector(NumBitALU-1 downto 0);
-        operand_B : in std_logic_vector(NumBitALU-1 downto 0);
-        type_alu_operation : in aluOp;
-        output : out std_logic_vector(NumBitALU-1 downto 0);
-        cout : out std_logic
+
 
 
     ALU_comp : ALU

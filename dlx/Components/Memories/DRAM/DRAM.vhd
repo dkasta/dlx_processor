@@ -48,4 +48,4 @@ architecture BEHAVIORAL of DRAM is
         end if;
       end if;
    end process;
-
+  end BEHAVIORAL;

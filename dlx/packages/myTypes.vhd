@@ -7,11 +7,11 @@ package myTypes is
 -- Control unit input sizes
     constant OP_CODE_SIZE : integer :=  6;                                              -- OPCODE field size
     constant FUNC_SIZE    : integer :=  11;                                             -- FUNC field size
-    constant MICROCODE_MEM_SIZE : integer := 62;                                        -- size of each memory
+    constant MICROCODE_MEM_SIZE : integer := 68;                                        -- size of each memory
     constant ALU_OPC_SIZE : integer := 5;                                               -- size of alu control signals
     constant CW_SIZE : integer := 17 + ALU_OPC_SIZE;                                     -- cw final size
 
-    type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP, LLIOP);
+    --type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP, LLIOP);
     
     constant NOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00000";
     constant ADDOP: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "00001";
@@ -75,8 +75,8 @@ package myTypes is
 -- J-Type instruction -> OPCODE field
 	constant JTYPE_J:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000010"; -- j, 0x02
 	constant JTYPE_JAL:	std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "000011"; -- j, 0x03
-    constant JTYPE_CALL: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "111110";
-    constant JTYPE_RET: std_logic_vector(ALU_OPC_SIZE - 1 downto 0) := "111111";
+    constant JTYPE_CALL: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "111110";
+    constant JTYPE_RET: std_logic_vector(OP_CODE_SIZE - 1 downto 0) := "111111";
 
 
 

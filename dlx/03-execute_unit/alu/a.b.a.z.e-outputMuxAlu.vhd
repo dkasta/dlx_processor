@@ -17,7 +17,7 @@ entity mux_alu is
  	     less_equal_then: in std_logic;
 	     equal: in std_logic;
 	     not_equal: in std_logic;
-	     selection: in aluOp;
+	     selection: in std_logic_vector(ALU_OPC_SIZE-1 downto 0);
 	     output_mux: out std_logic_vector (31 downto 0));
 end mux_alu;
 
