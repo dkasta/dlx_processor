@@ -62,7 +62,7 @@ entity datapath is
            alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
 
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
-           FLUSH                  out std_logic;
+           FLUSH                  out std_logic_vector (1 downto 0);
            );
 end datapath;
 
@@ -97,7 +97,7 @@ architecture structural of datapath is
 
   signal npcoutbpusignal : std_logic_vector(numbit - 1 downto 0);
   signal NPC_branch_jump_signal: std_logic_vector(numbit - 1 downto 0);
-  signal comparator_out_to_mux_signal: std_logic;
+  signal comparator_out_to_mux_signal: std_logic_vector(1 downto 0);
   signal b_reg_out_signal: std_logic_vector(numbit - 1 downto 0);
   
 --signal for dram
@@ -114,7 +114,7 @@ architecture structural of datapath is
          clk : IN std_logic;
          rst : IN std_logic;
          EN1:  IN std_logic;
-         comparator_out_to_mux: IN std_logic;
+         comparator_out_to_mux: IN std_logic_vector(1 downto 0);
          NPC_branch_jump:    IN std_logic_vector(numbit-1 downto 0);
          RF_ONE_OUT_IF:        OUT std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
@@ -155,7 +155,7 @@ component decode_unit is
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
             NPC_branch_jump       out std_logic_vector(numbit-1 downto 0);
-            comparator_out        out std_logic;
+            comparator_out        out std_logic_vector(1 downto 0);
             RF_ONE_OUT_ID:        OUT std_logic_vector(numbit-1 downto 0);
             );
 end component;
