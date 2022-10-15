@@ -11,7 +11,7 @@ entity fill_enable_generator is
         clk:        in std_logic;
         rst:        in std_logic;
         en:         in std_logic;
-        ready:  in std_logic;
+        ready:      in std_logic;
         done:       out std_logic;
         occupied:    out std_logic;
         address_mem: out std_logic_vector(2*numreg_inlocout-1 downto 0)
