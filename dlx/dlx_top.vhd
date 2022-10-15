@@ -206,6 +206,8 @@ end component;
   signal rd_out_ex_signal : std_logic_vector(4 downto 0);
   signal alu_out_mem_signal : std_logic_vector(BIT_RISC - 1 downto 0);
   signal wb_stage_out_signal : std_logic_vector(BIT_RISC -1 downto 0);
+  --testing
+  signal address_tmp: std_logic_vector(NumMemBitAddress - 1 downto 0);
 begin  -- DLX
       npc_out_if <= npc_out_if_signal;
       instruction_fetched <= instruction_fetched_signal;
@@ -224,7 +226,7 @@ begin  -- DLX
       --MEM output
       alu_out_mem <= alu_out_mem_signal;
       wb_stage_out <= wb_stage_out_signal;
-      
+      address_tmp<=DRAM_addr_signal(NumMemBitAddress - 1 downto 0)
 
 
     IRAM_I : IRAM
@@ -237,7 +239,7 @@ begin  -- DLX
     DRAM_I : DRAM
     generic map(BIT_RISC, BIT_RISC)
     port map(clk => clk,
-             address => DRAM_addr_signal(NumMemBitAddress - 1 downto 0), 
+             address => address_tmp, 
              data_in => DRAM_data_in_signal, 
              write_enable => DRAM_write_enable_signal, 
              read_enable => DRAM_read_enable_signal, 
