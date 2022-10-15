@@ -1,6 +1,7 @@
 --connect all the datapath components to achieve the final datapath structure
 --explanation for the datapth is found on the report.pdf
 
+
 library ieee;
 use ieee.std_logic_1164.all;
 use WORK.globals.all;
