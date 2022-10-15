@@ -26,7 +26,7 @@ architecture behavioural of tb_decode_unit is
   signal NPC_IN :  std_logic_vector(NBIT-1 downto 0) := "00000000000000000000000000000000";
   signal RD_IN : std_logic_vector(4 downto 0) := "00000";
   signal RD_OUT : std_logic_vector(4 downto 0);
-  signal alu_forwarding_one : std_logic;
+  signal alu_forwarding_one : std_logic;z
   signal mem_forwarding_one : std_logic;
   signal alu_forwarding_two : std_logic;
   signal mem_forwarding_two : std_logic;
