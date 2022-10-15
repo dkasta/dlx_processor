@@ -59,7 +59,7 @@ entity datapath is
            rd_out_ex:             out std_logic_vector(4 downto 0);
            ------------------------------------------------------------------
            --MEM output
-           DRAM_addr:             out std_logic_vector(4 downto 0);
+           DRAM_addr:             out std_logic_vector(numbit - 1 downto 0);
            DRAM_data_in:           out std_logic_vector(numbit - 1 downto 0);
            alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
 
@@ -117,7 +117,7 @@ architecture structural of datapath is
          EN1:  IN std_logic;
          comparator_out_to_mux: IN std_logic_vector(1 downto 0);
          NPC_branch_jump:    IN std_logic_vector(numbit-1 downto 0);
-         RF_ONE_OUT_IF:        OUT std_logic_vector(numbit-1 downto 0);
+         RF_ONE_OUT_IF:  IN std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
          npc_out : OUT std_logic_vector(numbit-1 downto 0);
          instr_reg_out : OUT std_logic_vector(numbit-1 downto 0);

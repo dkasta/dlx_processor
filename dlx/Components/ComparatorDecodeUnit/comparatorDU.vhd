@@ -5,15 +5,15 @@ use WORK.globals.all;
 use work.myTypes.all;
 
 
-entity COMPARATOR is
+entity COMPARATORDU is
     generic ( NBIT : integer := Bit_Register;
               OPCODE_SIZE : integer := OP_CODE_SIZE);
-        port ( opcode_in : in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+        port ( opcode_in : in std_logic_vector(OPCODE_SIZE - 1 downto 0);
             data_in : in std_logic_vector(NBIT-1 downto 0);
             data_out : out std_logic_vector(1 downto 0));
-end COMPARATOR;
+end COMPARATORDU;
 
-architecture BEHAVIOURAL of COMPARATOR is
+architecture BEHAVIOURAL of COMPARATORDU is
 begin
 
     proc: process(opcode_in, data_in)
