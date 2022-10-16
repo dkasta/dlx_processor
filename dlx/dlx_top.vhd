@@ -26,7 +26,9 @@ entity DLX is
         b_reg_out_ex : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
         rd_out_ex : OUT  std_logic_vector(4 downto 0);
         alu_out_mem : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
-        wb_stage_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0)
+        wb_stage_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+        rd_out_wb:   out std_logic_vector(4 downto 0)
+
         );
 end DLX;
 
@@ -117,6 +119,7 @@ architecture structural of DLX is
                DRAM_data_in:           out std_logic_vector(numbit - 1 downto 0);
                alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
                wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
+               rd_out_wb:             out std_logic_vector(4 downto 0);
                FLUSH:                  out std_logic_vector(1 downto 0)
                );
     end component;
@@ -206,6 +209,7 @@ end component;
   signal rd_out_ex_signal : std_logic_vector(4 downto 0);
   signal alu_out_mem_signal : std_logic_vector(BIT_RISC - 1 downto 0);
   signal wb_stage_out_signal : std_logic_vector(BIT_RISC -1 downto 0);
+  signal rd_out_wb_signal : std_logic_vector(4 downto 0);
   --testing
 begin  -- DLX
       npc_out_if <= npc_out_if_signal;
@@ -224,7 +228,10 @@ begin  -- DLX
       ------------------------------------------------------------------
       --MEM output
       alu_out_mem <= alu_out_mem_signal;
+      
+      --WB output
       wb_stage_out <= wb_stage_out_signal;
+      rd_out_wb <= rd_out_wb_signal;
 
 
     IRAM_I : IRAM
@@ -321,6 +328,7 @@ begin  -- DLX
                 DRAM_data_in => DRAM_data_in_signal,
                 alu_out_mem => alu_out_mem_signal,
                 wb_stage_out => wb_stage_out_signal,
+                rd_out_wb => rd_out_wb_signal,
                 FLUSH => FLUSH_signal);
                 
 end structural;

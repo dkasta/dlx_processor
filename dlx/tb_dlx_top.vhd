@@ -26,7 +26,7 @@ architecture behavioural of tb_dlx_top is
     signal rd_out_ex_signal : std_logic_vector(4 downto 0);
     signal alu_out_mem_signal : std_logic_vector(BIT_RISC - 1 downto 0);
     signal wb_stage_out_signal : std_logic_vector(BIT_RISC - 1 downto 0);
-    
+    signal rd_out_wb_signal : std_logic_vector(4 downto 0);
 
     component DLX
     generic(IR_SIZE      : integer := 32;       -- Instruction Register Size
@@ -46,7 +46,9 @@ architecture behavioural of tb_dlx_top is
           b_reg_out_ex : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
           rd_out_ex : OUT  std_logic_vector(4 downto 0);
           alu_out_mem : OUT  std_logic_vector(BIT_RISC - 1 downto 0);
-          wb_stage_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0));
+          wb_stage_out: OUT  std_logic_vector(BIT_RISC - 1 downto 0);
+          rd_out_wb:   out std_logic_vector(4 downto 0)
+          );
     end component;
 
 begin
@@ -69,6 +71,7 @@ begin
             b_reg_out_ex => b_reg_out_ex_signal,
             rd_out_ex => rd_out_ex_signal,
             alu_out_mem => alu_out_mem_signal,
+            rd_out_wb => rd_out_wb_signal,
             wb_stage_out => wb_stage_out_signal);
 
   PCLOCK : process(clk)
@@ -77,7 +80,7 @@ begin
 	end process;
 
 	reset <= '0' after 3 ns;
-  EN1 <= '1' after 10 ns;
+  EN1 <= '1' after 9 ns;
 
 
 end behavioural;

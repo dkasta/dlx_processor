@@ -28,64 +28,61 @@ R0
 cModel Technology
 Z1 dC:/Users/Pk/Desktop/dlx_project/dlx
 T_opt
-!s110 1665828741
-V31MULD;D[aOSoMcze:>D31
-04 11 5 work third_level behav 1
-=1-3497f6719450-634a8784-31c-2ec0
-!s124 OEM10U1 
+!s110 1665954131
+V@938azKN9TJ=ljhUljThk0
+Z2 04 10 11 work tb_dlx_top behavioural 1
+=1-000ae431a4f1-634c7153-7906b-508a
 o-quiet -auto_acc_if_foreign -work work
-Z2 tCvgOpt 0
+Z3 tCvgOpt 0
 n@_opt
-Z3 OL;O;2021.2;73
-R1
+OL;O;10.7c;67
 T_opt1
 !s110 1665847416
 V1Af:adPV`1M:A3^F8^dE<3
-Z4 04 10 11 work tb_dlx_top behavioural 1
-=1-3497f6719450-634ad077-1b2-3338
-Z5 !s124 OEM10X5050 
-Z6 o-quiet -auto_acc_if_foreign -work work -suppress 14408
 R2
-n@_opt1
+=1-3497f6719450-634ad077-1b2-3338
+Z4 !s124 OEM10X5050 
+Z5 o-quiet -auto_acc_if_foreign -work work -suppress 14408
 R3
+n@_opt1
+Z6 OL;O;2021.2;73
 R1
 T_opt2
 !s110 1665851966
 V4WXDHI>d@Hm=<mok0XiXT1
-R4
-=1-3497f6719450-634ae23d-208-2bc8
-R5
-R6
 R2
-n@_opt2
+=1-3497f6719450-634ae23d-208-2bc8
+R4
+R5
 R3
+n@_opt2
+R6
 R1
 Eadder_sub
-Z7 w1664639852
+Z7 w1665855237
 Z8 DPx4 work 7 globals 0 22 GP>bb25@kEO]5PMe`^1d[0
 Z9 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z10 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z11 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z12 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z13 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 608
-R1
-Z14 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd
-Z15 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd
+Z14 d/home/ms22.21/dlxTest/dlx
+Z15 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd
+Z16 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd
 l0
-L8 1
+L8
 V6i]QEX3ea=]gGWTMFGiI21
 !s100 [LJGhZHGQdMOc<zG22L?@1
-Z16 OL;C;2021.2;73
+Z17 OL;C;10.7c;67
 32
-Z17 !s110 1665830255
+Z18 !s110 1665952961
 !i10b 1
-Z18 !s108 1665830255.000000
-Z19 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd|
-Z20 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd|
+Z19 !s108 1665952961.000000
+Z20 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a-alu.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.l-G.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd|
+Z21 !s107 /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.l-G.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd|/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a-alu.vhd|
 !i113 0
-Z21 o-work work
-Z22 tExplicit 1 CvgOpt 0
+Z22 o-work work
+Z23 tExplicit 1 CvgOpt 0
 Astruct
 R8
 R9
@@ -94,57 +91,54 @@ R11
 R12
 R13
 DEx4 work 9 adder_sub 0 22 6i]QEX3ea=]gGWTMFGiI21
-!i122 608
 l40
-L18 28
+L18
 VST57afnL90]nSM[NT?IRO2
 !s100 LEJ>D9?KTWj2efj2eOk371
-R16
-32
 R17
-!i10b 1
+32
 R18
+!i10b 1
 R19
 R20
-!i113 0
 R21
+!i113 0
 R22
+R23
 Eaddress_counter
-Z23 w1665420029
+R7
 R8
 R9
 R12
 R13
-!i122 583
-R1
-Z24 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd
-Z25 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd
+R14
+Z24 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd
+Z25 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd
 l0
-L14 1
+L14
 V]:NbdCO8:f>PiX_eC5[l;3
 !s100 :=bI=:@R9DU<2:lBe9bo]1
-R16
+R17
 32
-Z26 !s110 1665830195
+Z26 !s110 1665952942
 !i10b 1
-Z27 !s108 1665830195.000000
-Z28 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd|
-Z29 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd|
+Z27 !s108 1665952942.000000
+Z28 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd|
+Z29 !s107 /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd|
 !i113 0
-R21
 R22
+R23
 Astruct
 R8
 R9
 R12
 R13
 DEx4 work 15 address_counter 0 22 ]:NbdCO8:f>PiX_eC5[l;3
-!i122 583
 l36
-L30 48
+L30
 V5EW]?]GdJBob]0iVA:P?:2
 !s100 ]KS[WdIKILdWPT>MGkBhN3
-R16
+R17
 32
 R26
 !i10b 1
@@ -152,37 +146,36 @@ R27
 R28
 R29
 !i113 0
-R21
 R22
+R23
 Ealu
-Z30 w1665755381
-Z31 DPx4 work 7 mytypes 0 22 4?=^4[9NCOJN6jld=l]z@0
+R7
+Z30 DPx4 work 7 mytypes 0 22 a7jYSDZ>`MTYHR`UFo_4_3
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 619
-R1
-Z32 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a-alu.vhd
-Z33 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a-alu.vhd
+R14
+Z31 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a-alu.vhd
+Z32 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a-alu.vhd
 l0
-Z34 L10 1
+L10
 Vzz71Ih0]lF8]e0lX@bPP_0
 !s100 2ZAbH2a:P?<SJ@FmPO@BT0
-R16
+R17
 32
-Z35 !s110 1665830259
+R18
 !i10b 1
-Z36 !s108 1665830258.000000
-Z37 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a-alu.vhd|
-Z38 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a-alu.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehaviour
-R31
+R30
 R8
 R9
 R10
@@ -190,21 +183,20 @@ R11
 R12
 R13
 DEx4 work 3 alu 0 22 zz71Ih0]lF8]e0lX@bPP_0
-!i122 619
 l106
-L18 279
+L18
 V7T]dETnMgBD6Y6F_A<XP51
 !s100 k0;TOgo8T]W02UVm_K?fD3
-R16
+R17
 32
-R35
+R18
 !i10b 1
-R36
-R37
-R38
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ebooth_mul
 R7
 R9
@@ -212,24 +204,23 @@ R10
 R11
 R12
 R13
-!i122 611
-R1
-Z39 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd
-Z40 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd
+R14
+Z33 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd
+Z34 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd
 l0
-L6 1
+L6
 V2Z=MciLk05_NzI10MP7912
 !s100 hM5i]NKNhX6I`MkL5mhk02
-R16
+R17
 32
-Z41 !s110 1665830256
+R18
 !i10b 1
-Z42 !s108 1665830256.000000
-Z43 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd|
-Z44 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Aarch
 R9
 R10
@@ -237,188 +228,180 @@ R11
 R12
 R13
 DEx4 work 9 booth_mul 0 22 2Z=MciLk05_NzI10MP7912
-!i122 611
 l49
-L14 63
+L14
 Vg9I@NdVDHfCYL9BT@U6J70
 !s100 k`UJP:T<B2ESPZjXAAjO00
-R16
+R17
 32
-R41
+R18
 !i10b 1
-R42
-R43
-R44
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ebuf
 R7
 R10
 R11
 R12
 R13
-!i122 595
-R1
-Z45 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd
-Z46 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd
+R14
+Z35 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd
+Z36 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd
 l0
-L5 1
+L5
 VBLK1NQJTL62V8>Ec1N;DI1
 !s100 BW1bmAJ74J3a?n7A;>nlI1
-R16
+R17
 32
-Z47 !s110 1665830251
+R18
 !i10b 1
-Z48 !s108 1665830251.000000
-Z49 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd|
-Z50 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R10
 R11
 R12
 R13
 DEx4 work 3 buf 0 22 BLK1NQJTL62V8>Ec1N;DI1
-!i122 595
 l12
-Z51 L11 4
+L11
 V?`2ET6MIfdJT`Cm;bO?H01
 !s100 _Iz^ZKGJjDPg2<k2UL:Q71
-R16
+R17
 32
-R47
+R18
 !i10b 1
-R48
-R49
-R50
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ebuf1
 R7
 R10
 R11
 R12
 R13
-!i122 596
-R1
-Z52 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd
-Z53 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd
+R14
+Z37 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd
+Z38 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd
 l0
-L5 1
+L5
 VgEAEJKVZ]k4oMa11<:Ek;1
 !s100 1dMgSKTi9LQ4AWReB8ec72
-R16
+R17
 32
-R47
+R18
 !i10b 1
-R48
-Z54 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd|
-Z55 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R10
 R11
 R12
 R13
 DEx4 work 4 buf1 0 22 gEAEJKVZ]k4oMa11<:Ek;1
-!i122 596
 l11
-Z56 L10 4
+L10
 VFV;D;`0_ECLhUHdJA8TIS3
 !s100 [3[a`XSKO@FcJMGY?DWVE0
-R16
+R17
 32
-R47
+R18
 !i10b 1
-R48
-R54
-R55
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ecarry_generator
 R7
-Z57 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
+Z39 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
 R10
 R11
 R12
 R13
-!i122 604
-R1
-Z58 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd
-Z59 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd
+R14
+Z40 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd
+Z41 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd
 l0
-L6 1
+L6
 V<i^oP4JZhYk`TSm@9o=N=1
 !s100 =o4K_744[Ha?WlbDKk>S;1
-R16
+R17
 32
-Z60 !s110 1665830254
+R18
 !i10b 1
-Z61 !s108 1665830254.000000
-Z62 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd|
-Z63 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
-R57
+R39
 R10
 R11
 R12
 R13
 DEx4 work 15 carry_generator 0 22 <i^oP4JZhYk`TSm@9o=N=1
-!i122 604
 l58
-L16 95
+L16
 VN_hUXcD133IQE9C?6i]YI3
 !s100 nj^c1>1n2JdQCkkdV4_ZA2
-R16
+R17
 32
-R60
+R18
 !i10b 1
-R61
-R62
-R63
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ccfg_iram_behavioral
 eIRAM
 abehavioural
-DAx4 work 4 iram 11 behavioural 22 d6fgSN;``A5NCmfBEz;6N0
+DAx4 work 4 iram 11 behavioural 22 odM87YmYU85`K2[1mgC`a0
 R8
-R31
-Z64 DPx4 ieee 16 std_logic_textio 0 22 8]8<fKiYoHe;_IDO3kmNH2
+R30
+Z42 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R10
 R12
 R13
-Z65 DEx4 work 4 iram 0 22 b8NT]NjXIOQS]KKPa9BbP2
-!i122 556
-Z66 w1665745152
-R1
-Z67 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd
-Z68 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd
+Z43 DEx4 work 4 iram 0 22 b8NT]NjXIOQS]KKPa9BbP2
+Z44 w1665929796
+R14
+Z45 8/home/ms22.21/dlxTest/dlx/Components/Memories/IRAM/IRAM.vhd
+Z46 F/home/ms22.21/dlxTest/dlx/Components/Memories/IRAM/IRAM.vhd
 l0
-L82 1
+L82
 VXZRn9DEO^4[@]Qh0Jl=C;0
 !s100 FUQkE8IAd9e[YjXI0L6_Q1
-R16
+R17
 32
-Z69 !s110 1665830020
+Z47 !s110 1665952893
 !i10b 0
-Z70 !s108 1665830020.000000
-Z71 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd|
-Z72 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/IRAM/IRAM.vhd|
+Z48 !s108 1665952893.000000
+Z49 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/Memories/IRAM/IRAM.vhd|
+Z50 !s107 /home/ms22.21/dlxTest/dlx/Components/Memories/IRAM/IRAM.vhd|
 !i113 0
-R21
 R22
+R23
 Ecomparator
 R7
 R9
@@ -426,24 +409,23 @@ R10
 R11
 R12
 R13
-!i122 616
-R1
-Z73 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd
-Z74 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd
+R14
+Z51 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd
+Z52 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd
 l0
-L7 1
+L7
 VMC1:DcmF_mF2FfKTHQRiz3
 !s100 H>[ea4S>ZDOeSR`_T3YPU2
-R16
+R17
 32
-Z75 !s110 1665830258
+R18
 !i10b 1
-R36
-Z76 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd|
-Z77 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehav
 R9
 R10
@@ -451,213 +433,206 @@ R11
 R12
 R13
 DEx4 work 10 comparator 0 22 MC1:DcmF_mF2FfKTHQRiz3
-!i122 616
 l28
-L24 18
+L24
 V:oHWJCHI5e==lbZEBn_o72
 !s100 JHEzanf>e9@UDX@Za4ROe0
-R16
+R17
 32
-R75
+R18
 !i10b 1
-R36
-R76
-R77
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioural
-R31
-Z78 DPx4 work 7 globals 0 22 3BTZ4YeZNnN?;Ul30>A7>1
+Z53 DPx4 work 7 mytypes 0 22 4?=^4[9NCOJN6jld=l]z@0
+Z54 DPx4 work 7 globals 0 22 3BTZ4YeZNnN?;Ul30>A7>1
 R9
 R12
 R13
 DEx4 work 10 comparator 0 22 zKTNK9R6^hecgRJNKdI;G3
 !i122 434
 l17
-Z79 L16 27
+L16 27
 V54n=5OdOX=A?oCDYlMJiV1
 !s100 6ZCk=?8No4TR`m_mKO9g>3
-R16
+Z55 OL;C;2021.2;73
 32
 !s110 1665766965
 !i10b 1
 !s108 1665766965.000000
-Z80 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
-Z81 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
+!s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
+!s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
 !i113 0
-R21
 R22
-Z82 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
+R23
+FC:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
 w1665766956
-Z83 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
+8C:/Users/Pk/Desktop/dlx_project/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
+R1
 Ecomparatordu
-Z84 w1665767034
-R31
+R7
+R30
 R8
 R9
 R12
 R13
-!i122 563
-R1
-R83
-R82
+R14
+Z56 8/home/ms22.21/dlxTest/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
+Z57 F/home/ms22.21/dlxTest/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
 l0
-L8 1
+L8
 V1=kaMgEf^^5Cf6YIE@O5k2
 !s100 ZcA1WH4Hj`g_IcKdcCIk=0
-R16
+R17
 32
-Z85 !s110 1665830063
+Z58 !s110 1665952880
 !i10b 1
-Z86 !s108 1665830063.000000
-R80
-R81
+Z59 !s108 1665952880.000000
+Z60 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
+Z61 !s107 /home/ms22.21/dlxTest/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
-R31
+R30
 R8
 R9
 R12
 R13
 DEx4 work 12 comparatordu 0 22 1=kaMgEf^^5Cf6YIE@O5k2
-!i122 563
 l17
-R79
+L16
 V9;J4R3kE9Ez_P`G8j[zb52
 !s100 1H25_12K7?F5Q@?3`];TK1
-R16
+R17
 32
-R85
+R58
 !i10b 1
-R86
-R80
-R81
+R59
+R60
+R61
 !i113 0
-R21
 R22
+R23
 Ecsblock
 R7
 R10
 R11
 R12
 R13
-!i122 599
-R1
-Z87 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd
-Z88 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd
+R14
+Z62 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd
+Z63 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd
 l0
-L5 1
+L5
 V@OKNmP2?UmlLPe2]mU_Tg2
 !s100 ZUDVJ?`6O@Y@JG2[UZZNM1
-R16
+R17
 32
-Z89 !s110 1665830252
+R18
 !i10b 1
-Z90 !s108 1665830252.000000
-Z91 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd|
-Z92 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R10
 R11
 R12
 R13
 DEx4 work 7 csblock 0 22 @OKNmP2?UmlLPe2]mU_Tg2
-!i122 599
 l32
-L13 26
+L13
 V`4L0W_QhlR?ggN;964^L83
 !s100 8Xmfh4TA6V3ZHYU??ojOz0
-R16
+R17
 32
-R89
+R18
 !i10b 1
-R90
-R91
-R92
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ecu_hardwired
-Z93 w1665763792
+Z64 w1665952859
 R8
-R31
+R30
 R10
 R11
 R12
 R13
-!i122 586
-R1
-Z94 8C:/Users/Pk/Desktop/dlx_project/dlx/Control_Unit/CU_HW.vhd
-Z95 FC:/Users/Pk/Desktop/dlx_project/dlx/Control_Unit/CU_HW.vhd
+R14
+Z65 8/home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
+Z66 F/home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
 l0
-L7 1
+L7
 VS@ZZRR5GjhLamBPR;PE[?3
 !s100 8[4ZI?a]ZTLJNH_6KMW1`0
-R16
+R17
 32
-Z96 !s110 1665830222
+Z67 !s110 1665952862
 !i10b 1
-Z97 !s108 1665830222.000000
-Z98 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Control_Unit/CU_HW.vhd|
-Z99 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Control_Unit/CU_HW.vhd|
+Z68 !s108 1665952862.000000
+Z69 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd|
+Z70 !s107 /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R8
-R31
+R30
 R10
 R11
 R12
 R13
 DEx4 work 12 cu_hardwired 0 22 S@ZZRR5GjhLamBPR;PE[?3
-!i122 586
 l196
-L42 215
-V;l[`S]B753bQH<nbD6l>V1
-!s100 oFnf2;6K5VN<zKGi_@R2X1
-R16
+L42
+Vod`:eS]9]XOJLjig92[F50
+!s100 N9BM1R=YLnjA68;JSYeAd0
+R17
 32
-R96
+R67
 !i10b 1
-R97
-R98
-R99
+R68
+R69
+R70
 !i113 0
-R21
 R22
+R23
 Ecwp_swp
-Z100 w1665084955
+R7
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 578
-R1
-Z101 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd
-Z102 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd
+R14
+Z71 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd
+Z72 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd
 l0
-L6 1
+L6
 V6bZM8aFE1KbdTYIOEEKnE3
 !s100 hLzPTT>h<eE?Z`L5N=Ymi3
-R16
+R17
 32
-Z103 !s110 1665830194
+R26
 !i10b 1
-Z104 !s108 1665830194.000000
-Z105 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd|
-Z106 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Abeh
 R8
 R9
@@ -666,139 +641,133 @@ R11
 R12
 R13
 DEx4 work 7 cwp_swp 0 22 6bZM8aFE1KbdTYIOEEKnE3
-!i122 578
 l13
-L12 17
+L12
 V3ha[7a:XTH^<E8nmPP[Z93
 !s100 oZV^gQ351Yj>Ah<e10>2H1
-R16
+R17
 32
-R103
+R26
 !i10b 1
-R104
-R105
-R106
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Edatapath
-Z107 w1665829582
-R31
+Z73 w1665953822
+R30
 R8
 R12
 R13
-!i122 568
-R1
-Z108 8C:/Users/Pk/Desktop/dlx_project/dlx/00-Datapath/00-datapath.vhd
-Z109 FC:/Users/Pk/Desktop/dlx_project/dlx/00-Datapath/00-datapath.vhd
+R14
+Z74 8/home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+Z75 F/home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
 l0
-L9 1
-V9i=15Sg3RCM=C[FCz@o>=2
-!s100 =WdFme57<oSb[SUCnm9z[0
-R16
+L10
+VX;MITz=Bz5oilg?bFH[aN1
+!s100 fVfcCAl=UPW45eJB4B8bX3
+R17
 32
-Z110 !s110 1665830156
+Z76 !s110 1665954092
 !i10b 1
-Z111 !s108 1665830156.000000
-Z112 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/00-Datapath/00-datapath.vhd|
-Z113 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/00-Datapath/00-datapath.vhd|
+Z77 !s108 1665954092.000000
+Z78 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd|
+Z79 !s107 /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
-R31
+R30
 R8
 R12
 R13
-DEx4 work 8 datapath 0 22 9i=15Sg3RCM=C[FCz@o>=2
-!i122 568
-l210
-L71 255
-VN[>63H`Ob^mSQdW2M>bg20
-!s100 ;3k>:W=ADz9QjUc]@e8@?0
-R16
+DEx4 work 8 datapath 0 22 X;MITz=Bz5oilg?bFH[aN1
+l212
+L73
+VZ@SNM_Z_6]0ZC^TaZTRGE2
+!s100 a=zHzf3<OG>]:1k_^L6QQ0
+R17
 32
-R110
+R76
 !i10b 1
-R111
-R112
-R113
+R77
+R78
+R79
 !i113 0
-R21
 R22
+R23
 Edecode_unit
-Z114 w1665767175
+R7
 R9
-R31
+R30
 R8
 R12
 R13
-!i122 588
-R1
-Z115 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd
-Z116 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd
+R14
+Z80 8/home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd
+Z81 F/home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd
 l0
-L7 1
+L7
 V7;Rd5EN3jD@MWAni72G[e3
 !s100 SBdUn6FP<@POgJC1k2Zm72
-R16
+R17
 32
-Z117 !s110 1665830238
+Z82 !s110 1665952951
 !i10b 1
-Z118 !s108 1665830238.000000
-Z119 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd|
-Z120 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/02-decode_unit.vhd|
+Z83 !s108 1665952951.000000
+Z84 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd|
+Z85 !s107 /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
 R9
-R31
+R30
 R8
 R12
 R13
 DEx4 work 11 decode_unit 0 22 7;Rd5EN3jD@MWAni72G[e3
-!i122 588
 l208
-L44 322
+L44
 VJTjJgS>U@e`AEZlzBjWI40
 !s100 G9h_ZhGNSXmPWgUIQ8SW90
-R16
+R17
 32
-R117
+R82
 !i10b 1
-R118
-R119
-R120
+R83
+R84
+R85
 !i113 0
-R21
 R22
-Edecoder
 R23
+Edecoder
+R7
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 576
-R1
-Z121 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd
-Z122 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd
+R14
+Z86 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd
+Z87 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd
 l0
-L6 1
+L6
 VNJ6zGYl8h0C_`3C=OfCZE1
 !s100 ^i3?Q_32;VC6m1cJVKGWk3
-R16
+R17
 32
-Z123 !s110 1665830193
+R26
 !i10b 1
-Z124 !s108 1665830193.000000
-Z125 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd|
-Z126 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Adataflow
 R8
 R9
@@ -807,219 +776,209 @@ R11
 R12
 R13
 DEx4 work 7 decoder 0 22 NJ6zGYl8h0C_`3C=OfCZE1
-!i122 576
 l29
-L25 71
+L25
 VRBYNIb^kkmZ4aXk>cWR^C3
 !s100 POJOl]0e@b`bU8<L:ObYE3
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-R125
-R126
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Edff
-Z127 w1664962028
+R7
 R12
 R13
-!i122 559
-R1
-Z128 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd
-Z129 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd
+R14
+Z88 8/home/ms22.21/dlxTest/dlx/Components/Registers/dff.vhd
+Z89 F/home/ms22.21/dlxTest/dlx/Components/Registers/dff.vhd
 l0
-L5 1
+L5
 Vjh;;bS]]]RR2gNUzzmz[b0
 !s100 <RXOD2:<UmYAC<F[7>NT80
-R16
+R17
 32
-Z130 !s110 1665830034
+Z90 !s110 1665952917
 !i10b 1
-Z131 !s108 1665830034.000000
-Z132 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd|
-Z133 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/dff.vhd|
+Z91 !s108 1665952917.000000
+Z92 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/Registers/dff.vhd|
+Z93 !s107 /home/ms22.21/dlxTest/dlx/Components/Registers/dff.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R12
 R13
 DEx4 work 3 dff 0 22 jh;;bS]]]RR2gNUzzmz[b0
-!i122 559
 l14
-L13 17
+L13
 V=D^^S8FoCe=<D;gCgla_>0
 !s100 Q_eEBN6nm;i^_Noa8M?Wi0
-R16
+R17
 32
-R130
+R90
 !i10b 1
-R131
-R132
-R133
+R91
+R92
+R93
 !i113 0
-R21
 R22
-Edff_wrf
 R23
+Edff_wrf
+R7
 R12
 R13
-!i122 575
-R1
-Z134 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd
-Z135 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd
+R14
+Z94 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd
+Z95 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd
 l0
-L5 1
+L5
 VmTK>I48a?mbVQnUIKVEB90
 !s100 Ho9LY0PolO?a6<^OfZV5S3
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-Z136 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd|
-Z137 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R12
 R13
 DEx4 work 7 dff_wrf 0 22 mTK>I48a?mbVQnUIKVEB90
-!i122 575
 l14
-L13 13
+L13
 Vi;TUC9D>JYoZdDfPK:G;20
 !s100 @FRhE2KCe_aE96@Rm_86P1
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-R136
-R137
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Edlx
-Z138 w1665847054
+Z96 w1665954116
 R8
-R31
+R30
 R12
 R13
-!i122 627
-R1
-Z139 8C:/Users/Pk/Desktop/dlx_project/dlx/dlx_top.vhd
-Z140 FC:/Users/Pk/Desktop/dlx_project/dlx/dlx_top.vhd
+R14
+Z97 8/home/ms22.21/dlxTest/dlx/dlx_top.vhd
+Z98 F/home/ms22.21/dlxTest/dlx/dlx_top.vhd
 l0
-L11 1
-VXlX1eSlWCgDV4MV3nXEmN1
-!s100 A:hQif:^ghL`hHHG0E3oP1
-R16
+L11
+V^IR;?AFkASiNW0bzIRNlL2
+!s100 Xjhn7<hS=fEkg7f78cUkO3
+R17
 32
-Z141 !s110 1665847061
+Z99 !s110 1665954118
 !i10b 1
-Z142 !s108 1665847060.000000
-Z143 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/dlx_top.vhd|
-Z144 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/dlx_top.vhd|
+Z100 !s108 1665954118.000000
+Z101 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/dlx_top.vhd|
+Z102 !s107 /home/ms22.21/dlxTest/dlx/dlx_top.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
-R31
+R30
 R12
 R13
-DEx4 work 3 dlx 0 22 XlX1eSlWCgDV4MV3nXEmN1
-!i122 627
-l210
-L35 292
-V>MBEmKXA8[EhnfUfgD;lB3
-!s100 kF^<?HdMioTHG69GhYRIf0
-R16
+DEx4 work 3 dlx 0 22 ^IR;?AFkASiNW0bzIRNlL2
+l214
+L37
+VWARGHISozoaJcLm441:6U0
+!s100 d>_EJaKncajCY2[JYD^iK1
+R17
 32
-R141
+R99
 !i10b 1
-R142
-R143
-R144
+R100
+R101
+R102
 !i113 0
-R21
 R22
+R23
 Edram
-Z145 w1665829896
+R7
 R8
 R9
 R12
 R13
-!i122 551
-R1
-Z146 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd
-Z147 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd
+R14
+Z103 8/home/ms22.21/dlxTest/dlx/Components/Memories/DRAM/DRAM.vhd
+Z104 F/home/ms22.21/dlxTest/dlx/Components/Memories/DRAM/DRAM.vhd
 l0
-L7 1
+L7
 V1K0HH^IPWY<C>]m0TRW2T1
 !s100 7bKG3@gUTY2`THLfleF]Y3
-R16
+R17
 32
-Z148 !s110 1665829942
+Z105 !s110 1665952890
 !i10b 1
-Z149 !s108 1665829942.000000
-Z150 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd|
-Z151 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Memories/DRAM/DRAM.vhd|
+Z106 !s108 1665952890.000000
+Z107 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/Memories/DRAM/DRAM.vhd|
+Z108 !s107 /home/ms22.21/dlxTest/dlx/Components/Memories/DRAM/DRAM.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R8
 R9
 R12
 R13
 DEx4 work 4 dram 0 22 1K0HH^IPWY<C>]m0TRW2T1
-!i122 551
 l24
-L20 34
+L20
 VJlM0hkcNUPFB^g50bbOXF0
 !s100 AH>ZVmQh_BW1cbcWHzg;T2
-R16
+R17
 32
-R148
+R105
 !i10b 1
-R149
-R150
-R151
+R106
+R107
+R108
 !i113 0
-R21
 R22
+R23
 Eencoder
-R100
+R7
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 584
-R1
-Z152 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd
-Z153 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd
+R14
+Z109 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd
+Z110 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd
 l0
-L7 1
+L7
 V2E1QbNY]aO5^U9GRn:TG80
 !s100 MmkbL0G<>bEnlT[kV3GOf0
-R16
+R17
 32
 R26
 !i10b 1
 R27
-Z154 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd|
-Z155 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd|
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Acompor
 R8
 R9
@@ -1028,197 +987,188 @@ R11
 R12
 R13
 DEx4 work 7 encoder 0 22 2E1QbNY]aO5^U9GRn:TG80
-!i122 584
 l15
-L14 11
+L14
 VSSY:lJMVJdYzz3coKIMC90
 !s100 N<n]MmXOkCE=jTU``VKE53
-R16
+R17
 32
 R26
 !i10b 1
 R27
-R154
-R155
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Eexecution_unit
-Z156 w1665846915
-R31
+R7
+R30
 R8
 R12
 R13
-!i122 624
-R1
-Z157 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/3-execute_unit.vhd
-Z158 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/3-execute_unit.vhd
+R14
+Z111 8/home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd
+Z112 F/home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd
 l0
-L6 1
+L6
 VDXiIVTD[NUQlih`YJ_T@h3
 !s100 n3mb6M>lM2jXM^<En[O=e1
-R16
+R17
 32
-Z159 !s110 1665846928
+Z113 !s110 1665952964
 !i10b 1
-Z160 !s108 1665846928.000000
-Z161 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/3-execute_unit.vhd|
-Z162 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/3-execute_unit.vhd|
+Z114 !s108 1665952964.000000
+Z115 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd|
+Z116 !s107 /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
-R31
+R30
 R8
 R12
 R13
 DEx4 work 14 execution_unit 0 22 DXiIVTD[NUQlih`YJ_T@h3
-!i122 624
 l60
-L24 94
-VDlK9@0eJ2UO4RUPngC5af0
-!s100 SX0dzbeL`S8iJimQOb[9z2
-R16
+L24
+Vi]nmo5j43g]=GW=5O:M3l0
+!s100 o=Y00B:AKLCYdBNcEdFTi1
+R17
 32
-R159
+R113
 !i10b 1
-R160
-R161
-R162
+R114
+R115
+R116
 !i113 0
-R21
 R22
+R23
 Efa
 R7
 R12
 R13
-!i122 597
-R1
-Z163 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd
-Z164 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd
+R14
+Z117 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd
+Z118 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd
 l0
-L4 1
+L4
 VIU0:JFLkRoIW_Y4XMbb>N3
 !s100 SA96M=h2Q33TZhi]8?S9M2
-R16
+R17
 32
-R89
+R18
 !i10b 1
-R90
-Z165 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd|
-Z166 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R12
 R13
 DEx4 work 2 fa 0 22 IU0:JFLkRoIW_Y4XMbb>N3
-!i122 597
 l14
-L12 7
+L12
 VA]:YSDoO<S<DTgo9i?_m;0
 !s100 =a0d7`APlQ;Mn;YGY7zHS2
-R16
+R17
 32
-R89
+R18
 !i10b 1
-R90
-R165
-R166
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Efetch_unit
-Z167 w1665765680
+Z119 w1665868308
 R8
 R9
 R12
 R13
-!i122 587
-R1
-Z168 8C:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd
-Z169 FC:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd
+R14
+Z120 8/home/ms22.21/dlxTest/dlx/01-fetch_unit/01-fetch_unit.vhd
+Z121 F/home/ms22.21/dlxTest/dlx/01-fetch_unit/01-fetch_unit.vhd
 l0
-L6 1
+L6
 VH;oPde_g`_T49Wk=E^QAP1
 !s100 5XlF<M]inci2^G4gNMba_0
-R16
+R17
 32
-Z170 !s110 1665830233
+Z122 !s110 1665952931
 !i10b 1
-Z171 !s108 1665830233.000000
-Z172 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd|
-Z173 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/01-fetch_unit/01-fetch_unit.vhd|
+Z123 !s108 1665952931.000000
+Z124 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/01-fetch_unit/01-fetch_unit.vhd|
+Z125 !s107 /home/ms22.21/dlxTest/dlx/01-fetch_unit/01-fetch_unit.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
 R8
 R9
 R12
 R13
 DEx4 work 10 fetch_unit 0 22 H;oPde_g`_T49Wk=E^QAP1
-!i122 587
 l68
-L21 116
-VD1FijT1_98n9Pe<UTeZTE3
-!s100 D_LaR8E`e_Nl@MgQeRC8B2
-R16
+L21
+Vjo8zdHe@LNi9cRMh[Y6ab0
+!s100 R:lL@T=j3;9i[j3<6zT^f3
+R17
 32
-R170
+R122
 !i10b 1
-R171
-R172
-R173
+R123
+R124
+R125
 !i113 0
-R21
 R22
+R23
 Efill_enable_generator
-Z174 w1665828518
+R7
 R8
 R9
 R12
 R13
-!i122 582
-R1
-Z175 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd
-Z176 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd
+R14
+Z126 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd
+Z127 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd
 l0
-L6 1
+L6
 VkkFfd40K0n_acMHM<b@RC0
 !s100 29CNfgEA1lSE[?I8Z9:nE3
-R16
+R17
 32
 R26
 !i10b 1
 R27
-Z177 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd|
-Z178 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd|
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Abeh
 R8
 R9
 R12
 R13
 DEx4 work 21 fill_enable_generator 0 22 kkFfd40K0n_acMHM<b@RC0
-!i122 582
 l27
-L21 54
+L21
 Veh0X;F=UzVio@^WPgHPdj1
 !s100 >T=1G_HzY8EJc=9UoU1=Q2
-R16
+R17
 32
 R26
 !i10b 1
 R27
-R177
-R178
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Efirst_level
 R7
 R9
@@ -1226,24 +1176,23 @@ R10
 R11
 R12
 R13
-!i122 612
-R1
-Z179 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd
-Z180 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd
+R14
+Z128 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd
+Z129 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd
 l0
-L7 1
+L7
 V72VW1TeoN1k4@Kge=06Ng3
 !s100 cbag3cgVmNhW<i;40F9_`1
-R16
+R17
 32
-R41
+R18
 !i10b 1
-R42
-Z181 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd|
-Z182 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehav
 R9
 R10
@@ -1251,525 +1200,502 @@ R11
 R12
 R13
 DEx4 work 11 first_level 0 22 72VW1TeoN1k4@Kge=06Ng3
-!i122 612
 l17
-L15 36
+L15
 VEQzZno^XP6WPKzD2NgBWg1
 !s100 2KD;:C9YlVJMUoiXS[hf00
-R16
+R17
 32
-R41
+R18
 !i10b 1
-R42
-R181
-R182
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Eg
 R7
 R10
 R11
 R12
 R13
-!i122 601
-R1
-Z183 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.l-G.vhd
-Z184 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.l-G.vhd
+R14
+Z130 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.l-G.vhd
+Z131 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.l-G.vhd
 l0
-L5 1
+L5
 VTn3@]oNN[PPF7P_6<AUh83
 !s100 MnUabGz?iSX?=PPA;EQai2
-R16
+R17
 32
-Z185 !s110 1665830253
+R18
 !i10b 1
-Z186 !s108 1665830253.000000
-Z187 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.l-G.vhd|
-Z188 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.l-G.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R10
 R11
 R12
 R13
 DEx4 work 1 g 0 22 Tn3@]oNN[PPF7P_6<AUh83
-!i122 601
 l12
-Z189 L11 5
+L11
 V3BA:XYOW5aYghH3^RDE>e2
 !s100 QBJeZj4UCICB]NMlJaD8<1
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R186
-R187
-R188
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Egeneric_xor
 R7
 R8
 R12
 R13
-!i122 607
-R1
-Z190 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd
-Z191 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd
+R14
+Z132 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd
+Z133 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd
 l0
-L5 1
+L5
 V^9bKg5;>QMXYCk4;@_>OH1
 !s100 _QB?<cg]7g>9IbX62n:F33
-R16
-32
 R17
+32
+R18
 !i10b 1
-R61
-Z192 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd|
-Z193 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astruct
 R8
 R12
 R13
 DEx4 work 11 generic_xor 0 22 ^9bKg5;>QMXYCk4;@_>OH1
-!i122 607
 l20
-L12 16
+L12
 V=felnHgKDMXPDkYF4eOO00
 !s100 N>9Y6[1JXC`SUEJMH0KLn3
-R16
-32
 R17
+32
+R18
 !i10b 1
-R61
-R192
-R193
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Pglobals
 R12
 R13
-Z194 w1665855237
-Z195 d/home/ms22.21/dlxTest/dlx
+R7
+R14
 8/home/ms22.21/dlxTest/dlx/packages/globals.vhd
 F/home/ms22.21/dlxTest/dlx/packages/globals.vhd
 l0
 L4
 VGP>bb25@kEO]5PMe`^1d[0
 !s100 3aUNdIAlD94Yl3GiQBmDC3
-Z196 OL;C;10.7c;67
+R17
 32
-!s110 1665867025
+!s110 1665952760
 !i10b 1
-!s108 1665867025.000000
+!s108 1665952760.000000
 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/packages/globals.vhd|
 !s107 /home/ms22.21/dlxTest/dlx/packages/globals.vhd|
 !i113 0
-R21
 R22
+R23
 Eiram
-R66
+R44
 R8
-R31
-R64
+R30
+R42
 R10
 R12
 R13
-!i122 556
-R1
-R67
-R68
+R14
+R45
+R46
 l0
-L17 1
+L17
 Vb8NT]NjXIOQS]KKPa9BbP2
 !s100 UNWUWbQBOGfozMano=VU:0
-R16
+R17
 32
-R69
+R47
 !i10b 1
-R70
-R71
-R72
+R48
+R49
+R50
 !i113 0
-R21
 R22
+R23
 Abehavioural
 R8
-R31
-R64
+R30
+R42
 R10
 R12
 R13
-R65
-!i122 556
+R43
 l35
-L26 55
-Vd6fgSN;``A5NCmfBEz;6N0
-!s100 :<P[7K:H_6;F`508E0ZEf3
-R16
+L26
+VodM87YmYU85`K2[1mgC`a0
+!s100 DeRU2DITIM3<mdYcBT>U_0
+R17
 32
-R69
+R47
 !i10b 1
-R70
-R71
-R72
+R48
+R49
+R50
 !i113 0
-R21
 R22
+R23
 Eiv
-Z197 w1664299485
+R7
 R8
 R12
 R13
-!i122 571
-R1
-Z198 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd
-Z199 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd
+R14
+Z134 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd
+Z135 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd
 l0
-L5 1
+L5
 V@h=d^<4lJXakhZVIz<lo@0
 !s100 P009><E:>I];I2bnLD8VP3
-R16
+R17
 32
-Z200 !s110 1665830184
+Z136 !s110 1665927635
 !i10b 1
-Z201 !s108 1665830184.000000
-Z202 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd|
-Z203 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd|
+Z137 !s108 1665927635.000000
+Z138 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd|
+Z139 !s107 /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R8
 R12
 R13
 DEx4 work 2 iv 0 22 @h=d^<4lJXakhZVIz<lo@0
-!i122 571
 l11
-R56
+L10
 Vm2kN<B`Wef=@5Y`Vd43oL0
 !s100 X6AmzoW=FfIjCBU:nngM;3
-R16
+R17
 32
-R200
+R136
 !i10b 1
-R201
-R202
-R203
+R137
+R138
+R139
 !i113 0
-R21
 R22
+R23
 Eivx
 R7
 R12
 R13
-!i122 590
-R1
-Z204 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd
-Z205 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd
+R14
+Z140 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd
+Z141 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd
 l0
-L4 1
+L4
 Ve[g<Gc8Z1S<EhCo`Hz@;71
 !s100 F[LHlc8E<8GUXZB@8D6oc3
-R16
+R17
 32
-Z206 !s110 1665830250
+R18
 !i10b 1
-Z207 !s108 1665830250.000000
-Z208 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd|
-Z209 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R12
 R13
 DEx4 work 3 ivx 0 22 e[g<Gc8Z1S<EhCo`Hz@;71
-!i122 590
 l12
-Z210 L11 6
+L11
 VATO<VKW8_ZQT^7CidaWV61
 !s100 VFlRl<e5V>XXIfSz]Pdzk3
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-R208
-R209
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Elogic_t2
 R7
 R12
 R13
-!i122 617
-R1
-Z211 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd
-Z212 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd
+R14
+Z142 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd
+Z143 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd
 l0
-L4 1
+L4
 VeHXI==^gSK80h13j^89i02
 !s100 @Z:KDGOQW0MVkVO<=5IYk0
-R16
+R17
 32
-R75
+R18
 !i10b 1
-R36
-Z213 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd|
-Z214 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R12
 R13
 DEx4 work 8 logic_t2 0 22 eHXI==^gSK80h13j^89i02
-!i122 617
 l30
-L11 49
+L11
 VnT_84;<f=P>NZZQf;:B6R0
 !s100 >fk_RMP21SIbF4zY]R8:30
-R16
+R17
 32
-R75
+R18
 !i10b 1
-R36
-R213
-R214
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Ememory_unit
-Z215 w1665755985
+Z144 w1665953432
 R8
 R12
 R13
-!i122 620
-R1
-Z216 8C:/Users/Pk/Desktop/dlx_project/dlx/04-memory_unit/4-memory_unit.vhd
-Z217 FC:/Users/Pk/Desktop/dlx_project/dlx/04-memory_unit/4-memory_unit.vhd
+R14
+Z145 8/home/ms22.21/dlxTest/dlx/04-memory_unit/4-memory_unit.vhd
+Z146 F/home/ms22.21/dlxTest/dlx/04-memory_unit/4-memory_unit.vhd
 l0
-L5 1
+L5
 VUL:bjW08GFn_kZQhgQAM?2
 !s100 OKzhok[[=7W:iHzRQRze;0
-R16
+R17
 32
-Z218 !s110 1665830265
+Z147 !s110 1665954087
 !i10b 1
-Z219 !s108 1665830265.000000
-Z220 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/04-memory_unit/4-memory_unit.vhd|
-Z221 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/04-memory_unit/4-memory_unit.vhd|
+Z148 !s108 1665954086.000000
+Z149 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/04-memory_unit/4-memory_unit.vhd|
+Z150 !s107 /home/ms22.21/dlxTest/dlx/04-memory_unit/4-memory_unit.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R12
 R13
 DEx4 work 11 memory_unit 0 22 UL:bjW08GFn_kZQhgQAM?2
-!i122 620
-l45
-L22 56
-V=ZLY=mP[1L01QM<S25RZf2
-!s100 WUI08M[<<3ZO6<Ol3SZ=:2
-R16
+l44
+L22
+Vz2c<dJ17PZi>;4HP]6Sc:1
+!s100 @Ac;D8bN[hP2Vaon@FLe_2
+R17
 32
-R218
+R147
 !i10b 1
-R219
-R220
-R221
+R148
+R149
+R150
 !i113 0
-R21
 R22
+R23
 Emux21
 R7
 R12
 R13
-!i122 594
-R1
-Z222 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd
-Z223 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd
+R14
+Z151 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd
+Z152 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd
 l0
-L4 1
+L4
 V=Q>6MHm4Hd7BI;?O64Uz33
 !s100 _Wj^fNamkTT3?On7Y`o]_2
-R16
+R17
 32
-R47
+R18
 !i10b 1
-R207
-Z224 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd|
-Z225 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R12
 R13
 DEx4 work 5 mux21 0 22 =Q>6MHm4Hd7BI;?O64Uz33
-!i122 594
 l28
-L12 27
+L12
 VKV_VaHX5l`b^W;zNQ9g8F1
 !s100 4EIf9@fi1H;CbI<QkEBFE0
-R16
+R17
 32
-R47
+R18
 !i10b 1
-R207
-R224
-R225
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Emux21_generic
-R197
+R7
 R8
 R12
 R13
-!i122 572
-R1
-Z226 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd
-Z227 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd
+R14
+Z153 8/home/ms22.21/dlxTest/dlx/Components/2to1mux/mux21_generic.vhd
+Z154 F/home/ms22.21/dlxTest/dlx/Components/2to1mux/mux21_generic.vhd
 l0
-L5 1
-V`F2Mg?zzJ0Ii4>3]^z]WN0
-!s100 Oz6J0aWdYokaIZGFC5nfT0
-R16
+L7
+V7[VNVGYd@b9378cgC1Afl2
+!s100 JX?zNg=aFLR9Y`nz8Se>P0
+R17
 32
-R200
+Z155 !s110 1665952869
 !i10b 1
-R201
-Z228 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd|
-Z229 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd|
+Z156 !s108 1665952869.000000
+Z157 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/2to1mux/mux21_generic.vhd|
+Z158 !s107 /home/ms22.21/dlxTest/dlx/Components/2to1mux/mux21_generic.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R12
 R13
-DEx4 work 13 mux21_generic 0 22 `F2Mg?zzJ0Ii4>3]^z]WN0
-!i122 572
-l30
-L13 31
-VW5N:S_e78FULTJX1RPB8X3
-!s100 nhJ?>OKGX08A3=Zc^DajG1
-R16
+DEx4 work 13 mux21_generic 0 22 7[VNVGYd@b9378cgC1Afl2
+l32
+L15
+V5?2P]3aZ;<a<>XAJ0:O7d1
+!s100 _86UJMJ]R19>XfW0C4cTl3
+R17
 32
-R200
+R155
 !i10b 1
-R201
-R228
-R229
+R156
+R157
+R158
 !i113 0
-R21
 R22
+R23
 Emux31_generic
-Z230 w1665742421
+R7
 R8
 R12
 R13
-!i122 564
-R1
-Z231 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd
-Z232 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd
+R14
+Z159 8/home/ms22.21/dlxTest/dlx/Components/3to1mux/mux3to1_generic.vhd
+Z160 F/home/ms22.21/dlxTest/dlx/Components/3to1mux/mux3to1_generic.vhd
 l0
-L5 1
+L5
 VThj;83@nHF9QoX3C=f<IY2
 !s100 Gc?FdQCSU0dBgh@d1mLej1
-R16
+R17
 32
-Z233 !s110 1665830092
+Z161 !s110 1665952874
 !i10b 1
-Z234 !s108 1665830092.000000
-Z235 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd|
-Z236 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/3to1mux/mux3to1_generic.vhd|
+Z162 !s108 1665952874.000000
+Z163 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/3to1mux/mux3to1_generic.vhd|
+Z164 !s107 /home/ms22.21/dlxTest/dlx/Components/3to1mux/mux3to1_generic.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
 R8
 R12
 R13
 DEx4 work 13 mux31_generic 0 22 Thj;83@nHF9QoX3C=f<IY2
-!i122 564
 l16
-L14 13
+L14
 VKm5XmDj[g:gdYZMGJ^ZCi1
 !s100 4=V:882WJ55:UOH6gHKV32
-R16
+R17
 32
-R233
+R161
 !i10b 1
-R234
-R235
-R236
+R162
+R163
+R164
 !i113 0
-R21
 R22
+R23
 Emux_alu
-Z237 w1665755482
+R7
 R8
-R31
+R30
 R9
 R10
 R11
 R12
 R13
-!i122 618
-R1
-Z238 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd
-Z239 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd
+R14
+Z165 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd
+Z166 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd
 l0
-L8 1
+L8
 V8a2N^kV<GWee<2VCgoY092
 !s100 Yf1R=Y@zW6h]HZE?]<JBY3
-R16
+R17
 32
-R75
+R18
 !i10b 1
-R36
-Z240 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd|
-Z241 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehav
 R8
-R31
+R30
 R9
 R10
 R11
 R12
 R13
 DEx4 work 7 mux_alu 0 22 8a2N^kV<GWee<2VCgoY092
-!i122 618
 l25
-L24 50
+L24
 VmEW[7CALal?SfUT=hehoz0
 !s100 i26AY4E3Dhi;FA7PDcci30
-R16
+R17
 32
-R75
+R18
 !i10b 1
-R36
-R240
-R241
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Emux_encoder_block
 R7
 R9
@@ -1777,24 +1703,23 @@ R10
 R11
 R12
 R13
-!i122 610
-R1
-Z242 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd
-Z243 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd
+R14
+Z167 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd
+Z168 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd
 l0
-L21 1
+L21
 V`22cdhNm4>U72UT4H`_`@2
 !s100 0NV_Nh_d^?_4Z5DY^P;mN1
-R16
+R17
 32
-R41
-!i10b 1
 R18
-Z244 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd|
-Z245 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd|
-!i113 0
+!i10b 1
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R9
 R10
@@ -1802,47 +1727,45 @@ R11
 R12
 R13
 DEx4 work 17 mux_encoder_block 0 22 `22cdhNm4>U72UT4H`_`@2
-!i122 610
 l34
-L32 50
+L32
 V[XeGVYgflD>LH<1OlZmc_3
 !s100 eiM[>R>l_6V]Z]QUWlY;Y0
-R16
+R17
 32
-R41
-!i10b 1
 R18
-R244
-R245
-!i113 0
+!i10b 1
+R19
+R20
 R21
+!i113 0
 R22
-Emux_out
 R23
+Emux_out
+R7
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 580
-R1
-Z246 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd
-Z247 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd
+R14
+Z169 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd
+Z170 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd
 l0
-L6 1
+L6
 VS3ETjS;@HdnmF6S26<hRc2
 !s100 F3FNhbQ?CB3K7O5h=mz142
-R16
+R17
 32
-R103
+R26
 !i10b 1
-R104
-Z248 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd|
-Z249 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Abeh
 R8
 R9
@@ -1851,232 +1774,221 @@ R11
 R12
 R13
 DEx4 work 7 mux_out 0 22 S3ETjS;@HdnmF6S26<hRc2
-!i122 580
 l24
-L20 25
+L20
 Ve2J9^T4=S57cP9eiSn]i@0
 !s100 K>87m2@LDE<<;LXIQziPU3
-R16
+R17
 32
-R103
+R26
 !i10b 1
-R104
-R248
-R249
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Pmytypes
 R8
 R12
 R13
-R194
-R195
+w1665952447
+R14
 8/home/ms22.21/dlxTest/dlx/packages/myTypes.vhd
 F/home/ms22.21/dlxTest/dlx/packages/myTypes.vhd
 l0
 L5
-V4?=^4[9NCOJN6jld=l]z@0
-!s100 Cg8OV@X9XSj7XWI_;PeO72
-R196
+Va7jYSDZ>`MTYHR`UFo_4_3
+!s100 n`5MV2[S<fd61aa@:1eT20
+R17
 32
-!s110 1665867028
+!s110 1665952761
 !i10b 1
-!s108 1665867028.000000
+!s108 1665952761.000000
 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/packages/myTypes.vhd|
 !s107 /home/ms22.21/dlxTest/dlx/packages/myTypes.vhd|
 !i113 0
-R21
 R22
+R23
 Enand2
 R7
 R12
 R13
-!i122 591
-R1
-Z250 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd
-Z251 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd
+R14
+Z171 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd
+Z172 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd
 l0
-L4 1
+L4
 V`MNK9zDDgEHcgcb3F7A@W1
 !s100 Yz;GXiMF]fCY]m4oLQVJR0
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-Z252 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd|
-Z253 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehevioral
 R12
 R13
 DEx4 work 5 nand2 0 22 `MNK9zDDgEHcgcb3F7A@W1
-!i122 591
 l12
-R210
+L11
 VLXKNeP8VSRgABEG[1IYY`3
 !s100 Ml_9J1?2I6@jVNEnJkV>d1
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-R252
-R253
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R8
 R12
 R13
 DEx4 work 5 nand2 0 22 OaA1@Wi1oTUjEbFa>c4Ck1
-!i122 567
 l12
-R51
+L11
 VMHb@5f40@5h]@1faoP`]Z2
 !s100 ZjWU4e8gZX;DfPZ?[1K^O2
-R16
+R17
 32
-!s110 1665830100
+!s110 1665952870
 !i10b 1
-!s108 1665830100.000000
-!s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd|
-!s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd|
+!s108 1665952870.000000
+!s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/2to1mux/nand2.vhd|
+!s107 /home/ms22.21/dlxTest/dlx/Components/2to1mux/nand2.vhd|
 !i113 0
-R21
 R22
-FC:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd
-R197
-8C:/Users/Pk/Desktop/dlx_project/dlx/Components/2to1mux/nand2.vhd
+R23
+F/home/ms22.21/dlxTest/dlx/Components/2to1mux/nand2.vhd
+8/home/ms22.21/dlxTest/dlx/Components/2to1mux/nand2.vhd
 Enand3
 R7
 R12
 R13
-!i122 592
-R1
-Z254 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd
-Z255 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd
+R14
+Z173 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd
+Z174 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd
 l0
-L4 1
+L4
 VT>UXW5Xj?CEDM_0ofANc]0
 !s100 UZR4<?l901G0zAh2mGn]11
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-Z256 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd|
-Z257 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R12
 R13
 DEx4 work 5 nand3 0 22 T>UXW5Xj?CEDM_0ofANc]0
-!i122 592
 l23
-L9 21
+L9
 V2moA>Qz_Be6QKU9mg3^Z>0
 !s100 =V4KZKFd<Z;]k88Cdk1Q00
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-R256
-R257
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Enand4
 R7
 R12
 R13
-!i122 593
-R1
-Z258 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd
-Z259 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd
+R14
+Z175 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd
+Z176 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd
 l0
-L4 1
+L4
 V4[QV7TV9_iJZ[H9_bmZgl2
 !s100 8B;34dWfLBekH3EmDF1^S0
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-Z260 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd|
-Z261 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R12
 R13
 DEx4 work 5 nand4 0 22 4[QV7TV9_iJZ[H9_bmZgl2
-!i122 593
 l22
-L9 22
+L9
 Ve<FToocda1KQ5kz0`B0kI3
 !s100 F4?eO8m=jZD;[?eYhTi6W1
-R16
+R17
 32
-R206
+R18
 !i10b 1
-R207
-R260
-R261
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 End2
-R197
+R7
 R8
 R12
 R13
-!i122 573
-R1
-Z262 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
-Z263 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
+R14
+Z177 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
+Z178 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
 l0
-L5 1
+L5
 VcDj`f?@oTD;dWR>CKT?Da3
 !s100 _TRZTBZ?P?kLe4ON7S;MX0
-R16
+R17
 32
-R200
+Z179 !s110 1665927636
 !i10b 1
-R201
-Z264 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd|
-Z265 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd|
+Z180 !s108 1665927636.000000
+Z181 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd|
+Z182 !s107 /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R8
 R12
 R13
 DEx4 work 3 nd2 0 22 cDj`f?@oTD;dWR>CKT?Da3
-!i122 573
 l12
-R51
+L11
 VAJX?`9cT>K4Oj@A6Ji02J2
 !s100 ;:cOI^1Zm368:@HWkAOcc2
-R16
+R17
 32
-R200
+R179
 !i10b 1
-R201
-R264
-R265
+R180
+R181
+R182
 !i113 0
-R21
 R22
+R23
 Ep4_adder
 R7
 R8
@@ -2084,24 +1996,23 @@ R10
 R11
 R12
 R13
-!i122 605
-R1
-Z266 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd
-Z267 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd
+R14
+Z183 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd
+Z184 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd
 l0
-L6 1
+L6
 Vd?4YQOA@K`Bm4DCFXl4NE1
 !s100 TNj2nUEV[j[ZmPXc[am>h2
-R16
+R17
 32
-R60
+R18
 !i10b 1
-R61
-Z268 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd|
-Z269 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R8
 R10
@@ -2109,180 +2020,172 @@ R11
 R12
 R13
 DEx4 work 8 p4_adder 0 22 d?4YQOA@K`Bm4DCFXl4NE1
-!i122 605
 l40
-L16 33
+L16
 VCK1GkZ89dl[5CZ<AP;G=d0
 !s100 7_RGYFo5UenJ[Vkl;TKRR3
-R16
+R17
 32
-R60
+R18
 !i10b 1
-R61
-R268
-R269
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Epc
-Z270 w1664872558
+R7
 R8
 R9
 R12
 R13
-!i122 562
-R1
-Z271 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd
-Z272 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd
+R14
+Z185 8/home/ms22.21/dlxTest/dlx/Components/ProgramCounter/PC.vhd
+Z186 F/home/ms22.21/dlxTest/dlx/Components/ProgramCounter/PC.vhd
 l0
-L6 1
+L6
 VaT_HQ4z7KCF_9hj^20E[_0
 !s100 YN;[<Dzf[3gXC>JgIUcU73
-R16
+R17
 32
-Z273 !s110 1665830053
+Z187 !s110 1665952907
 !i10b 1
-Z274 !s108 1665830053.000000
-Z275 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd|
-Z276 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/ProgramCounter/PC.vhd|
+Z188 !s108 1665952906.000000
+Z189 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/ProgramCounter/PC.vhd|
+Z190 !s107 /home/ms22.21/dlxTest/dlx/Components/ProgramCounter/PC.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
 R8
 R9
 R12
 R13
 DEx4 work 2 pc 0 22 aT_HQ4z7KCF_9hj^20E[_0
-!i122 562
 l18
-L15 21
+L15
 VNZlDBiUUPUSCZfWNz5_<61
 !s100 ];gKBmbiBTcX5=DY@fj6H2
-R16
+R17
 32
-R273
+R187
 !i10b 1
-R274
-R275
-R276
+R188
+R189
+R190
 !i113 0
-R21
 R22
+R23
 Epg
 R7
 R9
 R12
 R13
-!i122 602
-R1
-Z277 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd
-Z278 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd
+R14
+Z191 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd
+Z192 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd
 l0
-L5 1
+L5
 Vik6Fb8XHn5iF]C:;M12=h1
 !s100 f9Go=F<4mVUC^i4I[LG]60
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R186
-Z279 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd|
-Z280 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R9
 R12
 R13
 DEx4 work 2 pg 0 22 ik6Fb8XHn5iF]C:;M12=h1
-!i122 602
 l12
-L11 7
+L11
 V1Wo`>:6]lfU^U7@1XSACC0
 !s100 A]Y6cgj0IG2G2`lEKM`mM3
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R186
-R279
-R280
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Epgnet
 R7
 R10
 R11
 R12
 R13
-!i122 603
-R1
-Z281 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd
-Z282 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd
+R14
+Z193 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd
+Z194 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd
 l0
-L5 1
+L5
 VRZDlUL>F`1EkRQem@8``T3
 !s100 z;R;A_M_S8iXVCOPEPJeX1
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R186
-Z283 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd|
-Z284 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R10
 R11
 R12
 R13
 DEx4 work 5 pgnet 0 22 RZDlUL>F`1EkRQem@8``T3
-!i122 603
 l12
-R189
+L11
 VgHzn7IS><fTGPce5n[AMN3
 !s100 gfh_AAjEHFIEM8XGUMa`[0
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R186
-R283
-R284
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
-Ephysical_register_file
 R23
+Ephysical_register_file
+R7
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 577
-R1
-Z285 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd
-Z286 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd
+R14
+Z195 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd
+Z196 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd
 l0
-L9 1
+L9
 VzBk=;zMQ900m3MIiEUN9B2
 !s100 `iJ[hd^j57[77d_d5bPPT2
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-Z287 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd|
-Z288 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R9
@@ -2291,21 +2194,20 @@ R11
 R12
 R13
 DEx4 work 22 physical_register_file 0 22 zBk=;zMQ900m3MIiEUN9B2
-!i122 577
 l53
-L26 42
+L26
 VI]93bXgcLM_?<z@`SBNn21
 !s100 9ekfWcjG`42SD2:7eXN]g0
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-R287
-R288
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Erca
 R7
 R8
@@ -2313,24 +2215,23 @@ R10
 R11
 R12
 R13
-!i122 598
-R1
-Z289 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd
-Z290 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd
+R14
+Z197 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd
+Z198 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd
 l0
-L6 1
+L6
 Vmnk3LH`ac_FkL=lAXGh683
 !s100 _]<cm5i95]HU?1C:YA]c32
-R16
+R17
 32
-R89
+R18
 !i10b 1
-R90
-Z291 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd|
-Z292 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R8
 R10
@@ -2338,21 +2239,20 @@ R11
 R12
 R13
 DEx4 work 3 rca 0 22 mnk3LH`ac_FkL=lAXGh683
-!i122 598
 l27
-L14 23
+L14
 V7_fNgUK9nzR8e7Fd12QZz2
 !s100 2K^c[Zfl7FHnWdUNV0:Nk1
-R16
+R17
 32
-R89
+R18
 !i10b 1
-R90
-R291
-R292
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Erca_booth
 R7
 R9
@@ -2360,24 +2260,23 @@ R10
 R11
 R12
 R13
-!i122 609
-R1
-Z293 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd
-Z294 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd
+R14
+Z199 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd
+Z200 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd
 l0
-L6 1
+L6
 VaKge6YD<iSPM]lokV1:O[3
 !s100 8V=Qi[NnnCJSdj1G:Tf^_3
-R16
-32
 R17
-!i10b 1
+32
 R18
-Z295 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd|
-Z296 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd|
-!i113 0
+!i10b 1
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehavioral
 R9
 R10
@@ -2385,197 +2284,188 @@ R11
 R12
 R13
 DEx4 work 9 rca_booth 0 22 aKge6YD<iSPM]lokV1:O[3
-!i122 609
 l22
-L18 11
+L18
 V1ROh0nZ]h:e[^Hk>WLd^c1
 !s100 U5mc20K:QK?Wk62KmR]nO0
-R16
-32
 R17
-!i10b 1
+32
 R18
-R295
-R296
-!i113 0
+!i10b 1
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Erdmux
-Z297 w1665744756
+R7
 R8
-R31
+R30
 R12
 R13
-!i122 561
-R1
-Z298 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd
-Z299 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd
+R14
+Z201 8/home/ms22.21/dlxTest/dlx/Components/RdMux/RdMux.vhd
+Z202 F/home/ms22.21/dlxTest/dlx/Components/RdMux/RdMux.vhd
 l0
-R34
+L10
 V9U`LM=RQZV8zUj:RekZB;2
 !s100 >o^`QjYeiEAD^Kfg4?aF[2
-R16
+R17
 32
-Z300 !s110 1665830047
+Z203 !s110 1665952910
 !i10b 1
-Z301 !s108 1665830047.000000
-Z302 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd|
-Z303 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/RdMux/RdMux.vhd|
+Z204 !s108 1665952910.000000
+Z205 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/RdMux/RdMux.vhd|
+Z206 !s107 /home/ms22.21/dlxTest/dlx/Components/RdMux/RdMux.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R8
-R31
+R30
 R12
 R13
 DEx4 work 5 rdmux 0 22 9U`LM=RQZV8zUj:RekZB;2
-!i122 561
 l18
-L17 11
+L17
 VmGn^FTT3PTK]l60z9OKY53
 !s100 do_XJoc;NLWlChMLn8DXK0
-R16
+R17
 32
-R300
+R203
 !i10b 1
-R301
-R302
-R303
+R204
+R205
+R206
 !i113 0
-R21
 R22
+R23
 Eregister_generic
-Z304 w1664962545
+R7
 R8
 R12
 R13
-!i122 560
-R1
-Z305 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd
-Z306 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd
+R14
+Z207 8/home/ms22.21/dlxTest/dlx/Components/Registers/register_generic.vhd
+Z208 F/home/ms22.21/dlxTest/dlx/Components/Registers/register_generic.vhd
 l0
-L8 1
+L8
 VAPVXfQ`?eVo>k@Uiz9McA3
 !s100 ABjkBdXfTk0d`d4fY=n4@2
-R16
+R17
 32
-R130
+Z209 !s110 1665952918
 !i10b 1
-R131
-Z307 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd|
-Z308 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/Registers/register_generic.vhd|
+Z210 !s108 1665952918.000000
+Z211 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/Registers/register_generic.vhd|
+Z212 !s107 /home/ms22.21/dlxTest/dlx/Components/Registers/register_generic.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R12
 R13
 DEx4 work 16 register_generic 0 22 APVXfQ`?eVo>k@Uiz9McA3
-!i122 560
 l27
-L17 20
+L17
 V<VL>61h0?Y^R=[3?`IXQK0
 !s100 n8]ljSHd5g4DV6ii1FKYO0
-R16
+R17
 32
-R130
+R209
 !i10b 1
-R131
-R307
-R308
+R210
+R211
+R212
 !i113 0
-R21
 R22
+R23
 Eregister_generic_wrf
-Z309 w1665074895
+R7
 R8
 R12
 R13
-!i122 574
-R1
-Z310 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd
-Z311 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd
+R14
+Z213 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd
+Z214 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd
 l0
-L8 1
+L8
 VUckJ?RzP;oF^]EGkOBcK^1
 !s100 l]29N=FWf6<i:eHz0^7PK3
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-Z312 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd|
-Z313 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R12
 R13
 DEx4 work 20 register_generic_wrf 0 22 UckJ?RzP;oF^]EGkOBcK^1
-!i122 574
 l27
-L17 16
+L17
 VZ;<O4KR]EdaPkGOm1DbkJ1
 !s100 CR6VkRRjmK2TB84YLo3GK3
-R16
+R17
 32
-R123
+R26
 !i10b 1
-R124
-R312
-R313
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Ese_tb
 R7
-R78
+R8
 R9
 R12
 R13
-!i122 20
-R1
-Z314 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd
-Z315 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd
+R14
+Z215 8/home/ms22.21/dlxTest/dlx/Components/sign_extender/tb_sign_extender.vhd
+Z216 F/home/ms22.21/dlxTest/dlx/Components/sign_extender/tb_sign_extender.vhd
 l0
-L6 1
+L6
 VBCc]aaB>8YhPkGGG8kM7D1
 !s100 g3E]LX?8e6k3Qf5XKFzc>1
-R16
+R17
 32
-Z316 !s110 1665744778
+Z217 !s110 1665952924
 !i10b 1
-Z317 !s108 1665744778.000000
-Z318 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd|
-Z319 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/tb_sign_extender.vhd|
+Z218 !s108 1665952924.000000
+Z219 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/sign_extender/tb_sign_extender.vhd|
+Z220 !s107 /home/ms22.21/dlxTest/dlx/Components/sign_extender/tb_sign_extender.vhd|
 !i113 0
-R21
 R22
+R23
 Atest
-R78
+R8
 R9
 R12
 R13
 DEx4 work 5 se_tb 0 22 BCc]aaB>8YhPkGGG8kM7D1
-!i122 20
 l19
-L9 28
+L9
 Vh=9:fe8[diPXJTb]l>7XD3
 !s100 zR9`KX@O:?oDj]:G=M95Z0
-R16
+R17
 32
-R316
+R217
 !i10b 1
-R317
-R318
-R319
+R218
+R219
+R220
 !i113 0
-R21
 R22
+R23
 Esecond_level
 R7
 R9
@@ -2583,24 +2473,23 @@ R10
 R11
 R12
 R13
-!i122 613
-R1
-Z320 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd
-Z321 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd
+R14
+Z221 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd
+Z222 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd
 l0
-L7 1
+L7
 V^a]C1H<i[hXWX@H3`dnhX2
 !s100 D^;beo^F?BK6R<oO0B`DK2
-R16
+R17
 32
-Z322 !s110 1665830257
+R18
 !i10b 1
-R42
-Z323 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd|
-Z324 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehav
 R9
 R10
@@ -2608,47 +2497,45 @@ R11
 R12
 R13
 DEx4 work 12 second_level 0 22 ^a]C1H<i[hXWX@H3`dnhX2
-!i122 613
 l17
-L15 24
+L15
 VJK3HJzDc;5ODODKRSIPf^3
 !s100 9`OcC?N;:AON2k?MC9DZz2
-R16
+R17
 32
-R322
+R18
 !i10b 1
-R42
-R323
-R324
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Esel_block
-Z325 w1665068393
+R7
 R8
 R9
 R10
 R11
 R12
 R13
-!i122 579
-R1
-Z326 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd
-Z327 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd
+R14
+Z223 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd
+Z224 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd
 l0
-L6 1
+L6
 V7=Ia1z^cJSF;AP]CfN6Xk2
 !s100 g]PD_kl@L8OakS;>WU84D2
-R16
+R17
 32
-R103
+R26
 !i10b 1
-R104
-Z328 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd|
-Z329 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Abeh
 R8
 R9
@@ -2657,21 +2544,20 @@ R11
 R12
 R13
 DEx4 work 9 sel_block 0 22 7=Ia1z^cJSF;AP]CfN6Xk2
-!i122 579
 l18
-L17 18
+L17
 VnIeTJnkmI3cQck4Xjkd:c1
 !s100 CYf@f]A5LGGR_0Ma>2K`G0
-R16
+R17
 32
-R103
+R26
 !i10b 1
-R104
-R328
-R329
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Eshifter_t2
 R7
 R9
@@ -2679,24 +2565,23 @@ R10
 R11
 R12
 R13
-!i122 615
-R1
-Z330 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd
-Z331 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd
+R14
+Z225 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd
+Z226 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd
 l0
-L19 1
+L19
 Vz5L^6mC<9;BK89X:X12od3
 !s100 73BMYmKbGhmm4_[6ThCma1
-R16
+R17
 32
-R322
+R18
 !i10b 1
-Z332 !s108 1665830257.000000
-Z333 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd|
-Z334 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astruct
 R9
 R10
@@ -2704,201 +2589,198 @@ R11
 R12
 R13
 DEx4 work 10 shifter_t2 0 22 z5L^6mC<9;BK89X:X12od3
-!i122 615
 l56
-L27 56
+L27
 VeMlUkzE`6zjZL?JUaGfg:0
 !s100 c1I^b_Q:nTEKQ_?XZH^aK0
-R16
+R17
 32
-R322
+R18
 !i10b 1
-R332
-R333
-R334
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Esign_extention
-Z335 w1665075191
-R78
+Z227 w1665075191
+R54
 R9
 R12
 R13
 !i122 491
 R1
-Z336 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd
-Z337 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd
+Z228 8C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd
+Z229 FC:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd
 l0
 L7 1
 VMEkWCGQVJL^^]9Xkm^_6m2
 !s100 D]TaHXWcofTQ4O>n@T4>02
-R16
+R55
 32
-Z338 !s110 1665767320
+Z230 !s110 1665767320
 !i10b 1
-Z339 !s108 1665767320.000000
-Z340 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd|
-Z341 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd|
+Z231 !s108 1665767320.000000
+Z232 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd|
+Z233 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/Components/sign_extender/sign_extender16.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
-R78
+R54
 R9
 R12
 R13
 DEx4 work 14 sign_extention 0 22 MEkWCGQVJL^^]9Xkm^_6m2
 !i122 491
 l13
-Z342 L12 9
+L12 9
 V8TeO?RWUkSPjRBbKBKJTd0
 !s100 UR;:]n_KP`fKGQX`F3V7W2
-R16
+R55
 32
-R338
+R230
 !i10b 1
-R339
-R340
-R341
+R231
+R232
+R233
 !i113 0
-R21
 R22
+R23
 Esign_extention_16bit
-R194
+R7
 R8
 R9
 R12
 R13
-R195
-Z343 8/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd
-Z344 F/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd
+R14
+Z234 8/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd
+Z235 F/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd
 l0
 L7
 VC0]G@=HBW:A:h=XC8_bPk2
 !s100 T@m0IMmf]>nnZ:PlRBTPP0
-R196
+R17
 32
-Z345 !s110 1665867063
+Z236 !s110 1665952923
 !i10b 1
-Z346 !s108 1665867063.000000
-Z347 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd|
-!s107 /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd|
+Z237 !s108 1665952923.000000
+Z238 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd|
+Z239 !s107 /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
 R8
 R9
 R12
 R13
-Z348 DEx4 work 20 sign_extention_16bit 0 22 C0]G@=HBW:A:h=XC8_bPk2
+DEx4 work 20 sign_extention_16bit 0 22 C0]G@=HBW:A:h=XC8_bPk2
 l13
 L12
-Z349 V0TC0[MRl?lW5Y3B:>2YD;0
-Z350 !s100 KM^iGNVgjj?3fDGf_ga6O1
-R196
+V0TC0[MRl?lW5Y3B:>2YD;0
+!s100 KM^iGNVgjj?3fDGf_ga6O1
+R17
 32
-R345
+R236
 !i10b 1
-R346
-R347
-Z351 !s107 /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd|
+R237
+R238
+R239
 !i113 0
-R21
 R22
+R23
 Esign_extention_26bit
-R194
+R7
 R8
 R9
 R12
 R13
-R195
-Z352 8/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd
-Z353 F/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd
+R14
+Z240 8/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd
+Z241 F/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd
 l0
 L7
 VE8o;P:<Sm2nZdD85YO4Nh1
 !s100 2[Va7iWdfGe_;RFhPlFTV0
-R196
+R17
 32
-R345
+Z242 !s110 1665952925
 !i10b 1
-R346
-R347
-R351
+Z243 !s108 1665952925.000000
+Z244 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd|
+Z245 !s107 /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
 R8
 R9
 R12
 R13
-Z354 DEx4 work 20 sign_extention_26bit 0 22 E8o;P:<Sm2nZdD85YO4Nh1
+DEx4 work 20 sign_extention_26bit 0 22 E8o;P:<Sm2nZdD85YO4Nh1
 l13
 L12
-Z355 VefG`e9dQ6XmGP`0LRg9C21
-Z356 !s100 7>MliBSKKHEnK_H[:Ro]m1
-R196
+VefG`e9dQ6XmGP`0LRg9C21
+!s100 7>MliBSKKHEnK_H[:Ro]m1
+R17
 32
-R345
+R242
 !i10b 1
-R346
-R347
-R351
+R243
+R244
+R245
 !i113 0
-R21
 R22
+R23
 Esum_generator
 R7
 R10
 R11
 R12
 R13
-!i122 600
-R1
-Z357 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd
-Z358 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd
+R14
+Z246 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd
+Z247 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd
 l0
-L5 1
+L5
 V9H[O^3Mmd3UC]U<<PMPUR3
 !s100 f[@Y:A`OM1:mB]XZek0QH1
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R90
-Z359 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd|
-Z360 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Astructural
 R10
 R11
 R12
 R13
 DEx4 work 13 sum_generator 0 22 9H[O^3Mmd3UC]U<<PMPUR3
-!i122 600
 l22
-L14 15
+L14
 V3f7P2WY;Q9N]ALzJIooH>2
 !s100 PDCJzGkmY3]@2Y2oe`OQ<1
-R16
+R17
 32
-R185
+R18
 !i10b 1
-R90
-R359
-R360
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Etb_alu
-Z361 w1665755506
-R31
-R78
+Z248 w1665755506
+R53
+R54
 R9
 R10
 R11
@@ -2906,25 +2788,25 @@ R12
 R13
 !i122 526
 R1
-Z362 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd
-Z363 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd
+Z249 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd
+Z250 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd
 l0
 L9 1
 VFEHoTcMKn>YH7M8ViD=UR3
 !s100 5ldSm_9IQGO`JeBj9`^og3
-R16
+R55
 32
-Z364 !s110 1665767359
+Z251 !s110 1665767359
 !i10b 1
-Z365 !s108 1665767359.000000
-Z366 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd|
-Z367 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd|
+Z252 !s108 1665767359.000000
+Z253 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd|
+Z254 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b-tbAlu.vhd|
 !i113 0
-R21
 R22
+R23
 Atest
-R31
-R78
+R53
+R54
 R9
 R10
 R11
@@ -2936,61 +2818,59 @@ l27
 L12 163
 V:kLV?JO>GdVcOG8gFfWI90
 !s100 dDhVE<=<MWXQc6fZMBDNS1
-R16
+R55
 32
-R364
+R251
 !i10b 1
-R365
-R366
-R367
+R252
+R253
+R254
 !i113 0
-R21
 R22
+R23
 Etb_dlx_top
-Z368 w1665847045
-R31
+Z255 w1665954031
+R30
 R8
 R12
 R13
-!i122 628
-R1
-Z369 8C:/Users/Pk/Desktop/dlx_project/dlx/tb_dlx_top.vhd
-Z370 FC:/Users/Pk/Desktop/dlx_project/dlx/tb_dlx_top.vhd
+R14
+Z256 8/home/ms22.21/dlxTest/dlx/tb_dlx_top.vhd
+Z257 F/home/ms22.21/dlxTest/dlx/tb_dlx_top.vhd
 l0
-L7 1
+L7
 VYI_UlSEki4WJkWzI2Dmki2
 !s100 `ZJh>h2?6R]7ozEgk<cFa3
-R16
+R17
 32
-R141
+Z258 !s110 1665954121
 !i10b 1
-Z371 !s108 1665847061.000000
-Z372 !s90 -reportprogress|30|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/tb_dlx_top.vhd|
-Z373 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/tb_dlx_top.vhd|
+Z259 !s108 1665954121.000000
+Z260 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/tb_dlx_top.vhd|
+Z261 !s107 /home/ms22.21/dlxTest/dlx/tb_dlx_top.vhd|
 !i113 0
-R21
 R22
+R23
 Abehavioural
-R31
+R30
 R8
 R12
 R13
 DEx4 work 10 tb_dlx_top 0 22 YI_UlSEki4WJkWzI2Dmki2
-!i122 628
-l52
-L10 74
-VhPD0;<WzR:<:L_?Oe[2bA1
-!s100 >FT1?EA_5SJWN[@PT3NC^2
-R16
+l54
+L10
+V7IoUg>hh2?@B8`oB@VkAS0
+!s100 A[2[zQd0<J7JHHPa?MRHQ0
+R17
 32
-R141
+R258
 !i10b 1
-R371
-R372
-R373
+R259
+R260
+R261
 !i113 0
-R21
 R22
+R23
 Ethird_level
 R7
 R9
@@ -2998,24 +2878,23 @@ R10
 R11
 R12
 R13
-!i122 614
-R1
-Z374 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd
-Z375 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd
+R14
+Z262 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd
+Z263 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd
 l0
-L7 1
+L7
 Vz[8JM<mA4bJQho1B=bAG[0
 !s100 TXzAmDUF0kU2V7HJFkl3m2
-R16
+R17
 32
-R322
+R18
 !i10b 1
-R332
-Z376 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd|
-Z377 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehav
 R9
 R10
@@ -3023,192 +2902,183 @@ R11
 R12
 R13
 DEx4 work 11 third_level 0 22 z[8JM<mA4bJQho1B=bAG[0
-!i122 614
 l15
-L13 38
+L13
 VJ=6CZI6fJPD2b]X4Qe1OD2
 !s100 eWW@KMdM<XhN7F?:mJe@z3
-R16
+R17
 32
-R322
+R18
 !i10b 1
-R332
-R376
-R377
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
-Ewrf
 R23
+Ewrf
+R7
 R8
 R9
 R12
 R13
-!i122 581
-R1
-Z378 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd
-Z379 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd
+R14
+Z264 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd
+Z265 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd
 l0
-L6 1
+L6
 VMS>g5ddZFoUX?Jh5:3N4^0
 !s100 bmHdL[=N@S:HgCHi0GgQG3
-R16
+R17
 32
 R26
 !i10b 1
-R104
-Z380 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd|
-Z381 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R9
 R12
 R13
 DEx4 work 3 wrf 0 22 MS>g5ddZFoUX?Jh5:3N4^0
-!i122 581
 l163
-L46 196
+L46
 VU_a=nH91m2Sd]ngHDFYIR2
 !s100 HY6EoiKPo5Fb@lfN@DSP`3
-R16
+R17
 32
 R26
 !i10b 1
-R104
-R380
-R381
+R27
+R28
+R29
 !i113 0
-R21
 R22
-Ewrf_fsm
 R23
+Ewrf_fsm
+R7
 R8
 R9
 R12
 R13
-!i122 585
-R1
-Z382 8C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd
-Z383 FC:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd
+R14
+Z266 8/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd
+Z267 F/home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd
 l0
-L7 1
+L7
 VAWVfacVeKUedb9>1]U??:3
 !s100 Xjjec9cc3R5f4oKQCNb=93
-R16
+R17
 32
-Z384 !s110 1665830196
+R26
 !i10b 1
-Z385 !s108 1665830196.000000
-Z386 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd|
-Z387 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd|
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Abehavioral
 R8
 R9
 R12
 R13
 DEx4 work 7 wrf_fsm 0 22 AWVfacVeKUedb9>1]U??:3
-!i122 585
 l31
-L26 68
+L26
 V4i1LDOSQ]Qdg>8D`[X7;B3
 !s100 ^>jCJ@XT`Gg<Vh8COdg_N2
-R16
+R17
 32
-R384
+R26
 !i10b 1
-R385
-R386
-R387
+R27
+R28
+R29
 !i113 0
-R21
 R22
+R23
 Ewrite_back_unit
-Z388 w1665756369
+R7
 R8
 R12
 R13
-!i122 621
-R1
-Z389 8C:/Users/Pk/Desktop/dlx_project/dlx/05-write_unit/5-write_back_unit.vhd
-Z390 FC:/Users/Pk/Desktop/dlx_project/dlx/05-write_unit/5-write_back_unit.vhd
+R14
+Z268 8/home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd
+Z269 F/home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd
 l0
-L7 1
+L7
 V2VP2KeE@ANNR>6]>emVN_3
 !s100 L2D84lm3WTIVcN^OR0N1z2
-R16
+R17
 32
-Z391 !s110 1665830269
+Z270 !s110 1665952972
 !i10b 1
-Z392 !s108 1665830269.000000
-Z393 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/05-write_unit/5-write_back_unit.vhd|
-Z394 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/05-write_unit/5-write_back_unit.vhd|
+Z271 !s108 1665952972.000000
+Z272 !s90 -reportprogress|300|-work|work|/home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd|
+Z273 !s107 /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd|
 !i113 0
-R21
 R22
+R23
 Astructural
 R8
 R12
 R13
 DEx4 work 15 write_back_unit 0 22 2VP2KeE@ANNR>6]>emVN_3
-!i122 621
 l30
-L17 24
+L17
 V5N0`8[kRTND1YcR1;4I[U1
 !s100 5RMVTS6Mg[Ca_Lk<DLlG<3
-R16
+R17
 32
-R391
+R270
 !i10b 1
-R392
-R393
-R394
+R271
+R272
+R273
 !i113 0
-R21
 R22
+R23
 Exor_gate
 R7
 R12
 R13
-!i122 606
-R1
-Z395 8C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd
-Z396 FC:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd
+R14
+Z274 8/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd
+Z275 F/home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd
 l0
-L4 1
+L4
 V`P9U_SO:X6=?3E@1Qk<E^0
 !s100 ]P^7fhZhRQ7_ko3bj``CU3
-R16
+R17
 32
-R60
+R18
 !i10b 1
-R61
-Z397 !s90 -reportprogress|300|-work|work|C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd|
-Z398 !s107 C:/Users/Pk/Desktop/dlx_project/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd|
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
 Abehav
 R12
 R13
 DEx4 work 8 xor_gate 0 22 `P9U_SO:X6=?3E@1Qk<E^0
-!i122 606
 l12
-L10 6
+L10
 VVQ8PSWQOR[D^[Ul0RAoe02
 !s100 V1SFgQbSD@Qlg66U<AQf:3
-R16
+R17
 32
-R60
+R18
 !i10b 1
-R61
-R397
-R398
-!i113 0
+R19
+R20
 R21
+!i113 0
 R22
+R23
