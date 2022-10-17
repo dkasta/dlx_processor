@@ -20,7 +20,7 @@ end DRAM;
 architecture BEHAVIORAL of DRAM is
   type memory is array(0 to 2**( NumMemBitAddress-1)) of std_logic_vector(NBIT-1 downto 0);
   signal data_memory : memory := (others => (others => '0')); --initialize my data memory to 0;
-
+  
   begin
     read_and_write: process (clk)
    begin

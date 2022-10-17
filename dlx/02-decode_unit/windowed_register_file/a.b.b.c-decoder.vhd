@@ -33,8 +33,9 @@ begin
         if(rst='1') then
             decoder_choose<=(OTHERS=>'0');
         elsif(rising_edge(clk)) then
-            if(wr='1') then                             
-                decoder_choose<=(to_integer(unsigned(rw1))=> '1', OTHERS=>'0');  
+            if(wr='1') then  
+                   decoder_choose<= (others => '0');
+                decoder_choose(TO_INTEGER(unsigned(rw1))) <= '1';                   
             else 
                 decoder_choose<=(OTHERS=>'0');
             end if;

@@ -1,5 +1,4 @@
 
-
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
@@ -32,6 +31,11 @@ architecture structural of physical_register_file is
               RESET: in std_logic;
               Q:     out std_logic_vector(NBIT-1 downto 0));
   end component;
+  component AND2 is
+  port(A: in std_logic_vector(NumBitData-1 downto 0);
+        B: in std_logic;
+        Y:out std_logic_vector(NumBitData-1 downto 0));
+  end component;
   component MUX21_GENERIC is
   generic( NBIT : integer := Bit_Mux21);
   port(    A:   in std_logic_vector(NBIT-1 downto 0);
@@ -50,9 +54,14 @@ architecture structural of physical_register_file is
   signal bus_data_register: bus_register;
   signal real_enable: std_logic_vector(num_windows-1 downto 0);
   signal swp: std_logic_vector(windowsbit-1 downto 0);
+  type bus_global is array(0 to numreg_global-1) of std_logic_vector(numBit_data-1 downto 0);
+  type registers_data is array(0 to 2*numreg_inlocout*num_windows-1) of std_logic_vector(numBit_data-1 downto 0);
+  signal reg_global: bus_global;
+  signal reg_data: registers_data;
   begin
     GLOBAL_BLOCK: for i in 0 to numreg_global-1 generate
-      GLOB_REG:  register_generic_wrf generic map(NBIT=>numBit_data) port map(D=>Data_in1,CK=>clk,EN=>en(i),RESET=>rst,Q=>Data_out_global((i+1)*numBit_data-1 downto i*numBit_data));
+        AND_GEN: and2 port map(A=>Data_in1,B=>en(i),Y=>reg_global(i));
+      GLOB_REG:  register_generic_wrf generic map(NBIT=>numBit_data) port map(D=>reg_global(i),CK=>clk,EN=>en(i),RESET=>rst,Q=>Data_out_global((i+1)*numBit_data-1 downto i*numBit_data));
     end generate GLOBAL_BLOCK;
     MUX: for i in 0 to num_windows-1 generate
       --generate of the mux for the input and local block, generate it each time there is a new block input
@@ -60,7 +69,8 @@ architecture structural of physical_register_file is
     end generate MUX;
     REG: for i in 0 to 2*numreg_inlocout*num_windows-1 generate
       -- generate each register for the physical register file
-       REG_I:register_generic_wrf generic map(NBIT=>numBit_data) port map(D=>bus_data_register(i/(2*numreg_inlocout)),CK=>clk,EN=>en(i+numreg_global),RESET=>rst,Q=>Data_out_reg(numBit_data*(i+1)-1 downto numBit_data*i));
+       AND_GEN: and2 port map(A=>bus_data_register(i/(2*numreg_inlocout)),B=>en(i+numreg_global),Y=>reg_data(i));
+       REG_I:register_generic_wrf generic map(NBIT=>numBit_data) port map(D=>reg_data(i),CK=>clk,EN=>en(i+numreg_global),RESET=>rst,Q=>Data_out_reg(numBit_data*(i+1)-1 downto numBit_data*i));
     end generate REG;
     swp<=std_logic_vector(unsigned(swp_en)-1) when swp_en /= (windowsbit-1 downto 0 =>'0') else (others=>'0');
     ENCODER1: encoder generic map(N=>windowsbit) port map(sel=>swp,S=>real_enable);
