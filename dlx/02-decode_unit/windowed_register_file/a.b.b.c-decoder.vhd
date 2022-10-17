@@ -28,29 +28,29 @@ signal enable_reg: std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-
 
 begin
     --decoder process 
-    process(wr,clk,rst)
-    begin
-        if(rst='1') then
-            decoder_choose<=(OTHERS=>'0');
-        elsif(rising_edge(clk)) then
-            if(wr='1') then  
-                   decoder_choose<= (others => '0');
-                decoder_choose(TO_INTEGER(unsigned(rw1))) <= '1';                   
-            else 
-                decoder_choose<=(OTHERS=>'0');
-            end if;
-        end if;                                                               
-    end process;
-	--process(rw1)
+    --process(rw1,rst,clk,wr)
     --begin
-      --  if(rst='1') then
-      --      decoder_choose<=(OTHERS=>'0');
-     --   elsif(wr='1') then
-     --              decoder_choose<= (others => '0');
-    --            decoder_choose(TO_INTEGER(unsigned(rw1))) <= '1';
-	--	else decoder_choose<=(OTHERS=>'0');
-     --   end if;                                                               
+    --    if(rst='1') then
+    --        decoder_choose<=(OTHERS=>'0');
+    --    elsif(rising_edge(clk)) then
+    --        if(wr='1') then  
+    --               decoder_choose<= (others => '0');
+    --            decoder_choose(TO_INTEGER(unsigned(rw1))) <= '1';                   
+    --        else 
+    --            decoder_choose<=(OTHERS=>'0');
+    --        end if;
+    --    end if;                                                               
     --end process;
+	process(rw1)
+    begin
+      if(rst='1') then
+            decoder_choose<=(OTHERS=>'0');
+        elsif(wr='1') then
+                   decoder_choose<= (others => '0');
+                decoder_choose(TO_INTEGER(unsigned(rw1))) <= '1';
+		else decoder_choose<=(OTHERS=>'0');
+       end if;                                                               
+    end process;
     enable<=enable_reg;
     -- enable the correct physical register
     process(decoder_choose,address_mem,swp)
