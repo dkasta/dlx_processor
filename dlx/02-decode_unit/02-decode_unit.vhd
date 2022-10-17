@@ -299,8 +299,8 @@ architecture structural of decode_unit is
 
  REGA_MUX : MUX21_GENERIC
  generic map(5)
- port map ( A => "11111", 
-            B => in_IR(25 downto 21), 
+ port map ( A => in_IR(25 downto 21), 
+            B => "11111", 
             SEL => ret, 
             Y => REGA_read_address);
   

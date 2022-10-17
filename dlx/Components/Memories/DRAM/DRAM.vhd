@@ -18,10 +18,12 @@ entity DRAM is
 end DRAM;
 
 architecture BEHAVIORAL of DRAM is
-  type memory is array(0 to 2**( NumMemBitAddress-1)) of std_logic_vector(NBIT-1 downto 0);
+  type memory is array(0 to 2**( NumMemBitAddress- 22)) of std_logic_vector(NBIT-1 downto 0);
   signal data_memory : memory := (others => (others => '0')); --initialize my data memory to 0;
   
   begin
+
+    tmp <= address(9 downto 0);
     read_and_write: process (clk)
    begin
       if rising_edge(clk) then
@@ -31,16 +33,16 @@ architecture BEHAVIORAL of DRAM is
             data_out <= (others => '0');
             address_error <= '0';
          elsif write_enable = '1' then
-           if (to_integer(unsigned(address)) < 2**NADDR) then
+           if (to_integer(unsigned(tmp)) < 2**NADDR) then
              -- Write Memory
-             data_memory(to_integer(unsigned(address))) <= data_in;
+             data_memory(to_integer(unsigned(tmp))) <= data_in;
              address_error <= '0';
            else
             address_error <= '1';
           end if;
          elsif read_enable = '1' then
-           if (to_integer(unsigned(address)) < 2**NADDR) then
-             data_out <= data_memory(to_integer(unsigned(address)));
+           if (to_integer(unsigned(tmp)) < 2**NADDR) then
+             data_out <= data_memory(to_integer(unsigned(tmp)));
              address_error <= '0';
            else
             address_error <= '1';

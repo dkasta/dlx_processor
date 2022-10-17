@@ -107,14 +107,14 @@ component register_generic
 
     IR_reg : register_generic
     	 generic map(numbit)
-    	 port map( D => instr_fetched_signal,
+    	 port map( D => to_IR_signal,
                  CK => clk,
                  RESET => rst,
                  ENABLE => EN1, 
                  Q => instr_reg_out);
 
     tomem <= pc_reg_out;
-    instr_fetched <= instr_fetched_signal;
+    instr_fetched <= to_IR_signal;
 ---------------------------------------------------------------------------------
 --    C_IRAM : IRAM
 --    generic map(RAM_DEPTH,NBIT)

@@ -1,6 +1,7 @@
 --connect all the datapath components to achieve the final datapath structure
 --explanation for the datapth is found on the report.pdf
 
+--prova modifica
 library ieee;
 use ieee.std_logic_1164.all;
 use WORK.globals.all;
@@ -62,8 +63,9 @@ entity datapath is
            DRAM_addr:             out std_logic_vector(numbit - 1 downto 0);
            DRAM_data_in:           out std_logic_vector(numbit - 1 downto 0);
            alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
-
+           --WB output
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
+           rd_out_wb:              out std_logic_vector(4 downto 0);
            FLUSH:                  out std_logic_vector (1 downto 0)
            );
 end datapath;
@@ -223,11 +225,12 @@ end component;
     --EX signals
     rd_out_ex <= rdoutexsignal;
     alu_out <= aluoutsignal;
+    b_reg_out_ex <= b_reg_out_signal;
     --MEM signals
     alu_out_mem <= aluoutmemsignal;
     --WB signals
     wb_stage_out <= wbstageoutsignal;
-
+    rd_out_wb <= rdoutwbsignal;
 
 
     FETCH : fetch_unit

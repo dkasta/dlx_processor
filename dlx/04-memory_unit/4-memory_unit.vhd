@@ -39,7 +39,6 @@ architecture structural of memory_unit is
     end component;
 
   signal mux_out : std_logic_vector(numbit-1 downto 0);
-  signal alu_mux_out : std_logic_vector(numbit-1 downto 0);
   signal b_reg_in_signal: std_logic_vector(numbit-1 downto 0);
   signal alu_in_signal: std_logic_vector(numbit-1 downto 0);
   begin
@@ -58,7 +57,7 @@ architecture structural of memory_unit is
               CK => clk,
               RESET => reset,
               ENABLE => EN4,
-              Q => alu_mux_out);
+              Q => alu_out);
 
     RDREG : REGISTER_GENERIC
     generic map(5)
