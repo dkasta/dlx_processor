@@ -65,6 +65,7 @@ architecture behaviour of alu is
 	     logical: in std_logic_vector(NumBitALU-1 downto 0);
  	     shift: in std_logic_vector(NumBitALU-1 downto 0);
 	     load_high_imm: in std_logic_vector(NumBitALU-1 downto 0);
+	     load_low_imm: in std_logic_vector(NumBitALU-1 downto 0);
 	     greater_then: in std_logic;
 	     greater_equal_then: in std_logic;
 	     less_then: in std_logic;
@@ -102,6 +103,8 @@ architecture behaviour of alu is
 
   signal s_out_lhi   : std_logic_vector(NumBitALU-1 downto 0);
   signal s_B_lhi : std_logic_vector(NumBitALU-1 downto 0);
+  signal s_out_lli   : std_logic_vector(NumBitALU-1 downto 0);
+  signal s_B_lli : std_logic_vector(NumBitALU-1 downto 0);
 
   begin
 
@@ -270,8 +273,12 @@ architecture behaviour of alu is
             
             when LHIOP =>	    
                 s_B_lhi <= operand_B;
+
+
+            when LLIOP =>	    
+                s_B_lli <= operand_B;
             
-            
+
             when NOP =>       
                 NULL;
             
@@ -284,13 +291,14 @@ architecture behaviour of alu is
 
       cout <= s_cout;
       s_out_lhi <= s_B_lhi(15 downto 0) & x"0000";
+      s_out_lli <= x"0000" & s_B_lhi(15 downto 0);
 
       adder_subtr: adder_sub generic map(NumBitP4Data) port map(s_A_add, s_B_add, s_add_or_sub, s_cout, s_out_add);
       mul: booth_mul generic map(NumBitBoothMul) port map(s_A_mul(15 downto 0), s_B_mul(15 downto 0), s_out_mul);
       logic: logic_t2 generic map(NBIT) port map(s_A_log, s_B_log, s_sel_log0, s_sel_log1, s_sel_log2, s_sel_log3, s_out_log);
       shift: shifter_t2 port map(s_A_shift, s_B_shift, s_sel_shift, s_out_shift);
       comp: comparator port map(s_cout, s_out_add, s_sign, s_gt, s_get, s_lt, s_let, s_eq, s_neq);
-      out_mux: mux_alu port map(s_out_add, s_out_mul, s_out_log, s_out_shift, s_out_lhi, s_gt, s_get, s_lt, s_let, s_eq, s_neq, type_alu_operation, output);
+      out_mux: mux_alu port map(s_out_add, s_out_mul, s_out_log, s_out_shift, s_out_lhi, s_out_lli, s_gt, s_get, s_lt, s_let, s_eq, s_neq, type_alu_operation, output);
 
 
 end behaviour;

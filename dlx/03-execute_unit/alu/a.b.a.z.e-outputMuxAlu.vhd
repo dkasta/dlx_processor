@@ -11,6 +11,7 @@ entity mux_alu is
 	     logical: in std_logic_vector(31 downto 0);
  	     shift: in std_logic_vector(31 downto 0);
 	     load_high_imm: in std_logic_vector(31 downto 0);
+	     load_low_imm: in std_logic_vector(NumBitALU-1 downto 0);
 	     greater_then: in std_logic;
 	     greater_equal_then: in std_logic;
 	     less_then: in std_logic;
@@ -24,7 +25,7 @@ end mux_alu;
 architecture behav of mux_alu is
 begin
 
- process(selection, add_or_sub, multiplication, logical, shift, load_high_imm, greater_then, greater_equal_then, less_then, less_equal_then, equal, not_equal)
+ process(selection, add_or_sub, multiplication, logical, shift, load_high_imm, load_low_imm, greater_then, greater_equal_then, less_then, less_equal_then, equal, not_equal)
 	begin
 	 case selection is
 	 
@@ -63,7 +64,10 @@ begin
 		  
 		when LHIOP =>     
 		  output_mux <= load_high_imm;
-		  
+
+		when LLIOP =>     
+		  output_mux <= load_low_imm;
+
 		when others => 
 		  output_mux <= (others => 'Z');
 		  
