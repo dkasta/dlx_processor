@@ -225,6 +225,7 @@ end component;
     --EX signals
     rd_out_ex <= rdoutexsignal;
     alu_out <= aluoutsignal;
+    b_reg_out_ex <= b_reg_out_signal;
     --MEM signals
     alu_out_mem <= aluoutmemsignal;
     --WB signals

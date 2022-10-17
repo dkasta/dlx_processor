@@ -48,12 +48,10 @@ architecture BEHAVIORAL of CU_HARDWIRED is
       						                    "000000000000000000000",
                                       "000000000000000000000",
                                       "000000000000000000000",
-                                      "111000110010101000111",     --RTYPE_SLL
+                                      "110001100101010001111",     --RTYPE_SLL
                                       "000000000000000000000",
-                                      "111000110010111000111",     --RTYPE_SRL
-                                      "111000110011001000111",     --RTYPE_SRA                   --not implemented
-                                      "000000000000000000000",
-                                      "000000000000000000000",
+                                      "110001100101110001111",     --RTYPE_SRL
+                                      "110001100110010001111",     --RTYPE_SRA                   --not implemented
                                       "000000000000000000000",
                                       "000000000000000000000",
                                       "000000000000000000000",
@@ -76,20 +74,22 @@ architecture BEHAVIORAL of CU_HARDWIRED is
                                       "000000000000000000000",
                                       "000000000000000000000",
                                       "000000000000000000000",
-                                      "111000110000011000111",     --RTYPE_ADD
+                                      "000000000000000000000",
+                                      "000000000000000000000",
+                                      "110001100000110001111",     --RTYPE_ADD
                                       "000000000000000000000",     --RTYPE_ADDU  not implemented
-                                      "111000110000101000111",     --RTYPE_SUB 011000110
+                                      "110001100001010001111",     --RTYPE_SUB 011000110
                                       "000000000000000000000",     --RTYPE_SUBU  not implemented
-                                      "111000110001001000111",     --RTYPE_AND
-                                      "111000110001101000111",     --RTYPE_OR
-                                      "111000110010001000111",     --RTYPE_XOR
+                                      "110001100010010001111",     --RTYPE_AND
+                                      "110001100011010001111",     --RTYPE_OR
+                                      "110001100100010001111",     --RTYPE_XOR
                                       "000000000000000000000",
-                                      "111000110100011000111",     --RTYPE_SEQ
-                                      "111000110100101000111",     --RTYPE_SNE
-                                      "111000110011111000111",     --RTYPE_SLT
-                                      "111000110011011000111",     --RTYPE_SGT
-                                      "111000110100001000111",     --RTYPE_SLE
-                                      "111000110011101000111",     --RTYPE_SGE
+                                      "110001101000110001111",     --RTYPE_SEQ
+                                      "110001101001010001111",     --RTYPE_SNE
+                                      "110001100111110001111",     --RTYPE_SLT
+                                      "110001100110110001111",     --RTYPE_SGT
+                                      "110001101000010001111",     --RTYPE_SLE
+                                      "110001100111010001111",     --RTYPE_SGE
                                       "000000000000000000000",
                                       "000000000000000000000",
                                       "000000000000000000000",     --RTYPE_MOVI2S                --not implemented
@@ -102,55 +102,55 @@ architecture BEHAVIORAL of CU_HARDWIRED is
                                       "000000000000000000000",     --RTYPE_MOVT2I                --not implemented
                                       "000000000000000000000",
                                       "000000000000000000000",
-                                      "111000110101011000111",     --RTYPE_SLTU                  --not implemented
-                                      "111000110100111000111",     --RTYPE_SGTU                  --not implemented
-                                      "111000110101101000111",     --RTYPE_SLEU                  --not implemented
-                                      "111000110101001000111",      --RTYPE_SGEU                  --not implemented
-                                      "111000110000111000111",       --RTYPE_MUL
-                                      "111000110001011000111",        --RTYPE_NAND
-                                      "111000110001111000111",        --RTYPE_NOR
-                                      "111000110010011000111",        --RTYPE_XNOR
-                                      "111000110101111000111",        --RTYPE_LHI
-                                      "111000110110001000111"        --RTYPE_LLI
+                                      "110001101010110001111",     --RTYPE_SLTU                  --not implemented
+                                      "110001101001110001111",     --RTYPE_SGTU                  --not implemented
+                                      "110001101011010001111",     --RTYPE_SLEU                  --not implemented
+                                      "110001101010010001111",      --RTYPE_SGEU                  --not implemented
+                                      "110001100001110001111",       --RTYPE_MUL
+                                      "110001100010110001111",        --RTYPE_NAND
+                                      "110001100011110001111",        --RTYPE_NOR
+                                      "110001100100110001111",        --RTYPE_XNOR
+                                      "110001101011110001111",        --RTYPE_LHI
+                                      "110001101100010001111"        --RTYPE_LLI
 
                                       );
 
 signal cw_mem_itype : mem_array := ("000000000000000000000",     --START NOT R_TYPE
                                     "000000000000000000000",
-                                    "100001101000000000000",     --JTYPE_J                     --implemented in the branch prediction unit
+                                    "000011010000000000001",     --JTYPE_J                     --implemented in the branch prediction unit
                                     "000001000000000000000",     --JTYPE_JAL                   --not implemented
                                     "110000000000000000000",     --ITYPE_BEQZ                  --implemented in the branch prediction unit
                                     "110000000000000000000",     --ITYPE_BNEZ                  --implemented in the branch prediction unit
                                     "000000000000000000000",     --ITYPE_BFPT                  --not implemented
                                     "000000000000000000000",     --ITYPE_BFPF                  --not implemented
-                                    "110000111000011000111",     --ITYPE_ADD
+                                    "100001110000110001111",     --ITYPE_ADD
                                     "000000000000000000000",     --ITYPE_ADDU                  --not implemented
-                                    "110000111000101000111",     --ITYPE_SUB
+                                    "100001110001010001111",     --ITYPE_SUB
                                     "000000000000000000000",     --ITYPE_SUBU                  --not implemented
-                                    "110000111001001000111",     --ITYPE_AND
-                                    "110000111001101000111",     --ITYPE_OR
-                                    "110000111010001000111",     --ITYPE_XOR
+                                    "100001110010010001111",     --ITYPE_AND
+                                    "100001110011010001111",     --ITYPE_OR
+                                    "100001110100010001111",     --ITYPE_XOR
                                     "000000000000000000000",     --ITYPE_LH                    --not implemented
                                     "000000000000000000000",     --ITYPE_RFE                   --not implemented
                                     "000000000000000000000",     --ITYPE_TRAP                  --not implemented
                                     "000000000000000000000",     --JTYPE_JR                    --implemented in the branch prediction unit
                                     "000000000000000000000",     --JTYPE_JALR                  --implemented in the branch prediction unit
-                                    "110000111010101000111",     --ITYPE_SLL
+                                    "100001110101010001111",     --ITYPE_SLL
                                     "000000100000000000000",     --NTYPE_NOP
-                                    "110000111010111000111",     --ITYPE_SRL
+                                    "100001110101110001111",     --ITYPE_SRL
                                     "000000000000000000000",     --ITYPE_SRA                   --not implemented
                                     "000000000000000000000",     --ITYPE_SEQ
-                                    "110000111100101000111",     --ITYPE_SNE
+                                    "100001111001010001111",     --ITYPE_SNE
                                     "000000000000000000000",     --ITYPE_SLT
                                     "000000000000000000000",     --ITYPE_SGT
-                                    "110000111100001000111",     --ITYPE_SLE
-                                    "110000111011101000111",     --ITYPE_SGE
+                                    "100001111000010001111",     --ITYPE_SLE
+                                    "100001110111010001111",     --ITYPE_SGE
                                     "000000000000000000000",
                                     "000000000000000000000",
                                     "000000000000000000000",     --ITYPE_LB                    --not implemented
                                     "000000000000000000000",     --ITYPE_LH                    --not implemented
                                     "000000000000000000000",
-                                    "110000111000011011111",     --ITYPE_LW         lw rD, 4(ra)
+                                    "100001110000110111111",     --ITYPE_LW         lw rD, 4(ra)
                                     "000000000000000000000",     --ITYPE_LBU                   --not implemented
                                     "000000000000000000000",     --ITYPE_LHU                   --not implemented
                                     "000000000000000000000",     --ITYPE_LF                    --not implemented
@@ -189,38 +189,38 @@ signal cw_mem_itype : mem_array := ("000000000000000000000",     --START NOT R_T
 
   -- control word is shifted to the correct stage
   signal cw2 : std_logic_vector(CW_SIZE - 1 downto 0);      -- decode stage         21   (20 downto 0)
-  signal cw3 : std_logic_vector(CW_SIZE - 7 downto 0);     -- execute stage         14   (13 downto 0)
-  signal cw4 : std_logic_vector(CW_SIZE - 7 - 8 downto 0); -- memory stage           6   (5 donwto 0)
-  signal cw5 : std_logic_vector(CW_SIZE - 7 - 8 - 4 downto 0); -- write back stage   2   (1 downto 0)
+  signal cw3 : std_logic_vector(CW_SIZE - 7 downto 0);     -- execute stage         15   (14 downto 0)
+  signal cw4 : std_logic_vector(CW_SIZE - 8 - 7 downto 0); -- memory stage           7   (6 donwto 0)
+  signal cw5 : std_logic_vector(CW_SIZE - 8 - 8 - 3 downto 0); -- write back stage   2   (1 downto 0)
 
 begin
 
   -- stage one control signals
-  jal_mux_control <= cw2(20);
-  rd1_enable <= cw2(19);
-  rd2_enable <= cw2(18);
-  call <= cw2(17);
-  ret <= cw2(16);
-  imm_mux_control <= cw2(15);
-  EN2 <= cw2(14);
+  rd1_enable <= cw2(20);
+  rd2_enable <= cw2(19);
+  call <= cw2(18);
+  ret <= cw2(17);
+  imm_mux_control <= cw2(16);
+  EN2 <= cw2(15);
   -- stage two control signals
-  mux_one_control <= cw3(13);
-  mux_two_control <= cw3(12);
-  ALU_OPCODE <= cw3(11 downto 7); -- 12 downto 8
-  EN3 <=  cw3(6);
+  mux_one_control <= cw3(14);
+  mux_two_control <= cw3(13);
+  ALU_OPCODE <= cw3(12 downto 8); -- 12 downto 8
+  EN3 <=  cw3(7);
 
 
 
   -- stage three control signals
-  DRAM_write_enable <= cw4(5);
-  DRAM_read_enable <= cw4(4);
-  mux_mem_control <= cw4(3);
-  EN4 <= cw4(2);
+  DRAM_write_enable <= cw4(6);
+  DRAM_read_enable <= cw4(5);
+  mux_mem_control <= cw4(4);
+  EN4 <= cw4(3);
 
 
   --stage four control singals
-  mux_wb_control <= cw5(1);
-  write_enable <= cw5(0);
+  mux_wb_control <= cw5(2);
+  write_enable <= cw5(1);
+  jal_mux_control <= cw5(0);
 
 	process(OPCODE, FUNC) --COMBINATIONAL PROCESS, calculates the address of the next microcode to execute given its OPCODE and FUNC.
 	begin
@@ -247,8 +247,8 @@ begin
       else
         cw2 <= cw;                                --21
         cw3 <= cw2(CW_SIZE - 7 downto 0);         --14
-        cw4 <= cw3(CW_SIZE - 7 - 8 downto 0);     --6
-        cw5 <= cw4(CW_SIZE - 7 - 8 - 4 downto 0); --2
+        cw4 <= cw3(CW_SIZE - 8 - 7 downto 0);     --6
+        cw5 <= cw4(CW_SIZE - 8 - 8 - 3 downto 0); --2
       end if;
     end if;
   end process CW_PIPE;
