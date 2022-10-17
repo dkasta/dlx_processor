@@ -41,9 +41,19 @@ begin
             end if;
         end if;                                                               
     end process;
+	--process(rw1)
+    --begin
+      --  if(rst='1') then
+      --      decoder_choose<=(OTHERS=>'0');
+     --   elsif(wr='1') then
+     --              decoder_choose<= (others => '0');
+    --            decoder_choose(TO_INTEGER(unsigned(rw1))) <= '1';
+	--	else decoder_choose<=(OTHERS=>'0');
+     --   end if;                                                               
+    --end process;
     enable<=enable_reg;
     -- enable the correct physical register
-    process(decoder_choose,address_mem,address_mem,swp)
+    process(decoder_choose,address_mem,swp)
 
     begin
     
