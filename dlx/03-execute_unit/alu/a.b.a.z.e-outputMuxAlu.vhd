@@ -11,7 +11,7 @@ entity mux_alu is
 	     logical: in std_logic_vector(31 downto 0);
  	     shift: in std_logic_vector(31 downto 0);
 	     load_high_imm: in std_logic_vector(31 downto 0);
-	     load_low_imm: in std_logic_vector(NumBitALU-1 downto 0);
+	     load_low_imm: in std_logic_vector(31 downto 0);
 	     greater_then: in std_logic;
 	     greater_equal_then: in std_logic;
 	     less_then: in std_logic;
