@@ -48,6 +48,7 @@ alu-iinstr
 \\lw  R2,R1(0)	   IF ID   EX  MEM  mem WB  -dest mem FORWARDING op1
 
 
+
 alu immediate-alu
 \\register r1   
 \\add R1,R2,3  IF ID EX MEM WB -source opcode2

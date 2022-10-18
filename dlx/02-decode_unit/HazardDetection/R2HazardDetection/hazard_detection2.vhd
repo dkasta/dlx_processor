@@ -35,7 +35,7 @@ begin
       --se è una r type o una i type salva il registro altrimenti tutti 0 (registro r0 è sempre 0) in if stage
   		if (OPCODE = RTYPE or OPCODE = ITYPE_ADDI or OPCODE = ITYPE_SUBI or OPCODE = ITYPE_ANDI or OPCODE = ITYPE_ORI or OPCODE = ITYPE_XORI or OPCODE = ITYPE_SLLI or OPCODE = ITYPE_SRLI or OPCODE = ITYPE_BEQZ or OPCODE = ITYPE_SW or OPCODE = ITYPE_SNEI or OPCODE =ITYPE_BNEZ or OPCODE = ITYPE_LW or OPCODE = ITYPE_SLEI or OPCODE = ITYPE_SGEI) then      --any non rtype opcode
   			rd_reg <= RD_REG_IN;
-            rs2_reg <= RS1_REG_IN;
+            rs2_reg <= RS2_REG_IN;
             opcode_i<=opcode;
   		else
   			rd_reg <= (others => '0');
