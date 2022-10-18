@@ -45,9 +45,9 @@ architecture TEST of TB_HAZARD_DETECTION is
 
     process
     begin
-        clk_s<='1';
-        wait for clktime/2;
         clk_s<='0';
+        wait for clktime/2;
+        clk_s<='1';
         wait for clktime/2;
     end process;
     process
@@ -60,7 +60,7 @@ architecture TEST of TB_HAZARD_DETECTION is
         --6-10 rs1 "00011"
         --11-15 rd "00001"
         --16-31 immediate "0000000000000001"
-         OPCODE_s<="000100"; 
+         OPCODE_s<="001000"; 
          RD_REG_IN_ITYPE_s<="00001";
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00011";
@@ -87,7 +87,7 @@ architecture TEST of TB_HAZARD_DETECTION is
         --6-10 rs1 "00011"
         --11-15 rd "00001"
         --16-31 immediate "0000000000000001"
-         OPCODE_s<="000100"; 
+         OPCODE_s<="001000"; 
          RD_REG_IN_ITYPE_s<="00001";
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00011";
@@ -114,7 +114,7 @@ architecture TEST of TB_HAZARD_DETECTION is
         --6-10 rs1 "00011"
         --11-15 rd "00001"
         --16-31 immediate "0000000000000001"
-         OPCODE_s<="000100"; 
+         OPCODE_s<="001000"; 
          RD_REG_IN_ITYPE_s<="00001";
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00011";
@@ -350,3 +350,5 @@ architecture TEST of TB_HAZARD_DETECTION is
         wait;
         
     end process;
+    
+end TEST;
