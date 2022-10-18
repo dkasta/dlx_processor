@@ -876,3 +876,5 @@ run 40 ns
 #    Time: 21 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 23 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/muxout2
+# End time: 14:57:33 on Oct 18,2022, Elapsed time: 17:02:49
+# Errors: 4, Warnings: 96
