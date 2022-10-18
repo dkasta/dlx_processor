@@ -85,12 +85,12 @@ begin
       end if;
     end process alu_forwarding_PROCESS;
 
-    mem_forwarding_PROCESS : process (clk, reset)
+    mem_forwarding_PROCESS : process (opcode_i,opcode_2,reset,rd_reg_2,rs1_reg)
     begin
       if reset = '1' then                  -- asynchronous reset (active high)
         mem_forwarding_one <= '0';
-      elsif (rising_edge(clk)) then                 -- rising clock edge
-        if((opcode_i=RTYPE and opcode_i=opcode_2)or(opcode_2/=NTYPE_NOP and opcode_2/=(OP_CODE_SIZE - 1 downto 0 =>'0') and opcode_i/=NTYPE_NOP and opcode_i/=(OP_CODE_SIZE - 1 downto 0 =>'0'))) then
+      else              
+        if((opcode_i=ITYPE_ADDI or opcode_i=ITYPE_ANDI or opcode_i=ITYPE_BEQZ or opcode_i=ITYPE_BNEZ or opcode_i=ITYPE_LW or opcode_i=ITYPE_ORI or opcode_i=ITYPE_SGEI or opcode_i=ITYPE_SLEI or opcode_i=ITYPE_SLLI or opcode_i=ITYPE_SNEI or opcode_i=ITYPE_SRLI or opcode_i=ITYPE_SUBI or opcode_i=ITYPE_SW or opcode_i=ITYPE_XORI or opcode_i=RTYPE)and(opcode_2=ITYPE_ADDI or opcode_2=ITYPE_ANDI or opcode_2=ITYPE_BEQZ or opcode_2=ITYPE_BNEZ or opcode_2=ITYPE_LW or opcode_2=ITYPE_ORI or opcode_2=ITYPE_SGEI or opcode_2=ITYPE_SLEI or opcode_2=ITYPE_SLLI or opcode_2=ITYPE_SNEI or opcode_2=ITYPE_SRLI or opcode_2=ITYPE_SUBI or opcode_2=ITYPE_SW or opcode_2=ITYPE_XORI or opcode_2=RTYPE)) then
             if(rd_reg_2=rs1_reg) then
                 mem_forwarding_one<='1';
             end if;
@@ -104,7 +104,7 @@ begin
     begin
       if reset = '1' then                  -- asynchronous reset (active high)
         nop_add <= '0';
-      else                -- rising clock edge op1 deve essere una i-type
+      else                
         if((opcode_1=ITYPE_BEQZ or opcode_1=ITYPE_BNEZ or opcode_1=ITYPE_LW or opcode_1=ITYPE_SW) and(opcode_i=ITYPE_ADDI or opcode_i=ITYPE_ANDI or opcode_i=ITYPE_BEQZ or opcode_i=ITYPE_BNEZ or opcode_i=ITYPE_LW or opcode_i=ITYPE_ORI or opcode_i=ITYPE_SGEI or opcode_i=ITYPE_SLEI or opcode_i=ITYPE_SLLI or opcode_i=ITYPE_SNEI or opcode_i=ITYPE_SRLI or opcode_i=ITYPE_SUBI or opcode_i=ITYPE_SW or opcode_i=ITYPE_XORI or opcode_i=RTYPE)  ) then
             if(rd_reg_1=rs1_reg) then
                 nop_add<='1';

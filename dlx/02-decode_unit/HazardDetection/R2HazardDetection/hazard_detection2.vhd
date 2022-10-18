@@ -86,20 +86,20 @@ begin
       end if;
     end process alu_forwarding_PROCESS;
 
---    mem_forwarding_PROCESS : process (clk, reset)
---    begin
---      if reset = '1' then                  -- asynchronous reset (active high)
---        mem_forwarding_two <= '0';
---      elsif (rising_edge(clk)) then                 -- rising clock edge
---        if((opcode_1=RTYPE and opcode_1=opcode_3)or(opcode_1=RTYPE and opcode_3/=RTYPE AND opcode_3/=(OP_CODE_SIZE - 1 downto 0 =>'0'))) then
---            if(rd_reg_3=rs2_reg_1) then
---                mem_forwarding_two<='1';
---            end if;
---        else
---            mem_forwarding_two<='0';
---        end if;
---      end if;
---    end process mem_forwarding_PROCESS;
+    mem_forwarding_PROCESS : process (reset,rd_reg_2,rs2_reg,opcode_i,opcode_2)
+    begin
+      if reset = '1' then                  -- asynchronous reset (active high)
+        mem_forwarding_two <= '0';
+      else                 -- rising clock edge
+        if(opcode_i=RTYPE and (opcode_2=ITYPE_ADDI or opcode_2=ITYPE_ANDI or opcode_2=ITYPE_BEQZ or opcode_2=ITYPE_BNEZ or opcode_2=ITYPE_LW or opcode_2=ITYPE_ORI or opcode_2=ITYPE_SGEI or opcode_2=ITYPE_SLEI or opcode_2=ITYPE_SLLI or opcode_2=ITYPE_SNEI or opcode_2=ITYPE_SRLI or opcode_2=ITYPE_SUBI or opcode_2=ITYPE_SW or opcode_2=ITYPE_XORI or opcode_2=RTYPE)) then
+            if(rd_reg_2=rs2_reg) then
+                mem_forwarding_two<='1';
+            end if;
+        else
+            mem_forwarding_two<='0';
+        end if;
+      end if;
+    end process mem_forwarding_PROCESS;
 
     nop_PROCESS : process (opcode_i,opcode_1,rd_reg_1,rs2_reg,reset)
     begin
