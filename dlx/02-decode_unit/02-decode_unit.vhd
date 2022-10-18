@@ -37,7 +37,10 @@ entity decode_unit is
             ramr:                 in std_logic;
             NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
             comparator_out:        out std_logic_vector(1 downto 0);
-            RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0)
+            RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0);
+            nop_add:              out std_logic;  -- It goes in Fetch and CU
+            alu_forwarding_one:   out std_logic;
+            alu_forwarding_two:   out std_logic
             );
 end decode_unit;
 
@@ -157,23 +160,26 @@ architecture structural of decode_unit is
       generic ( NBIT : integer := Bit_Register;
                 OPCODE_SIZE : integer := OP_CODE_SIZE);
       port( opcode_in : in std_logic_vector(OPCODE_SIZE - 1 downto 0);
+            nop_add : in std_logic;
             data_in :   in std_logic_vector(NBIT-1 downto 0);
             data_out :  out std_logic_vector(1 downto 0));
      end component;
-     --component HAZARD_DETECTION
-     --  port(   clk:                in std_logic;
-     --          reset:              in std_logic;
-     --          OPCODE:             in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
-     --          RD_REG_IN_ITYPE:    in std_logic_vector(4 downto 0);
-     --          RD_REG_IN_RTYPE:    in std_logic_vector(4 downto 0);
-     --          RS1_REG_IN:         in std_logic_vector(4 downto 0);
-     --          RS2_REG_IN:         in std_logic_vector(4 downto 0);
-     --          alu_forwarding_one: out std_logic;
-     --          mem_forwarding_one: out std_logic;
-     --          alu_forwarding_two: out std_logic;
-     --          mem_forwarding_two: out std_logic;
-     --          RD_OUT:             out std_logic_vector(4 downto 0));
-     --end component;
+
+     component HAZARD_DETECTION
+      port(   clk:                in std_logic;
+              reset:              in std_logic;
+              OPCODE:             in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+              RD_REG_IN_ITYPE:    in std_logic_vector(NumBitAddress-1 downto 0);                --If I-type instruction the destination register is in the Rd position
+              RD_REG_IN_RTYPE:    in std_logic_vector(NumBitAddress-1 downto 0);                --If R-type instruction the destination register is in the RD position
+              RS1_REG_IN:         in std_logic_vector(NumBitAddress-1 downto 0);
+              RS2_REG_IN:         in std_logic_vector(NumBitAddress-1 downto 0);
+              alu_forwarding_one: out std_logic;
+              mem_forwarding_one: out std_logic;
+              alu_forwarding_two: out std_logic;
+              mem_forwarding_two: out std_logic;
+              nop_add:            out std_logic;
+              RD_OUT:             out std_logic_vector(NumBitAddress-1 downto 0));
+    end component;
 
      --component BRANCHDECISIONUNIT
      --  port(   OPCODE:       in std_logic_vector(5 downto 0);
@@ -205,6 +211,12 @@ architecture structural of decode_unit is
   signal push: std_logic;
   signal reg_in,reg_out: std_logic_vector(numbitdata-1 downto 0);
 
+  signal alu_forwarding_one_signal:  std_logic;
+  signal mem_forwarding_one_signal: std_logic;
+  signal alu_forwarding_two_signal: std_logic;
+  signal mem_forwarding_two_signal: std_logic;
+  signal nop_add_signal: std_logic;
+
   begin
 
   SIGN_REG_16 : SIGN_EXTENTION_16BIT
@@ -225,6 +237,7 @@ architecture structural of decode_unit is
   COMP : COMPARATORDU
   generic map (numbit, OP_CODE_SIZE)
   port map ( opcode_in => in_IR(31 downto 26), 
+             nop_add => nop_add_signal,
              data_in => RF_ONE_OUT,
              data_out => signal_comparator_out);
   
@@ -338,11 +351,11 @@ architecture structural of decode_unit is
             ENABLE => EN2,
             Q => NPC_OUT);
 
-  RDMUX_MUX : RDMUX
-  port map( rtype_in => in_IR(15 downto 11),
-            itype_in => in_IR(20 downto 16),
-            opcode_in => in_IR(31 downto 26),
-            rd_out => rdmux_out);
+  --RDMUX_MUX : RDMUX
+  --port map( rtype_in => in_IR(15 downto 11),
+  --          itype_in => in_IR(20 downto 16),
+  --          opcode_in => in_IR(31 downto 26),
+  --          rd_out => rdmux_out);
 
   RD_REG : REGISTER_GENERIC
   generic map(5)
@@ -352,12 +365,23 @@ architecture structural of decode_unit is
             ENABLE => EN2,
             Q => RD_OUT);
 
+  HAZARD : HAZARD_DETECTION
+  port map (  clk => clk,
+              reset => rst,
+              OPCODE => in_IR(31 downto 26),
+              RD_REG_IN_ITYPE => in_IR(20 downto 16),                --If I-type instruction the destination register is in the Rd position
+              RD_REG_IN_RTYPE => in_IR(15 downto 11),                --If R-type instruction the destination register is in the RD position
+              RS1_REG_IN => in_IR(25 downto 21),
+              RS2_REG_IN => in_IR(20 downto 16),
+              alu_forwarding_one => alu_forwarding_one_signal,
+              mem_forwarding_one => mem_forwarding_one_signal,
+              alu_forwarding_two => alu_forwarding_two_signal,
+              mem_forwarding_two => mem_forwarding_two_signal,
+              nop_add => nop_add_signal,
+              RD_OUT => rdmux_out, 
+  );
 
   NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));
-
-
-  --HAZARD : HAZARD_DETECTION
-  --port map(clk,rst,instr_fetched(31 downto 26),instr_fetched(20 downto 16),instr_fetched(15 downto 11),instr_fetched(25 downto 21),instr_fetched(20 downto 16),alu_forwarding_one,mem_forwarding_one,alu_forwarding_two,mem_forwarding_two,open);
 
   --BRANCHUNIT : BRANCHDECISIONUNIT
   --port map(in_IR(31 downto 26),in_IR(25 downto 0),in_IR(15 downto 0),npc_latch_out,RF_ONE_OUT,RF_TWO_OUT,NPC_OUT_BPU);
