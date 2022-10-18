@@ -35,6 +35,8 @@ entity CU_HARDWIRED is
              FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
              Clk : IN std_logic;
              Rst : IN std_logic;
+             alu_forwarding_one: IN std_logic;
+             alu_forwarding_two: IN std_logic;
              FLUSH : IN std_logic_vector(1 downto 0));                  -- Active high
               
 end CU_HARDWIRED;
@@ -244,9 +246,20 @@ begin
       --cw1 <= cw;
       if (FLUSH = "00") then
         cw2 <= (others => '0');
-      else
+      elsif (nop_add = '1') then
+        cw3 <= (others => '0'); ----------------------------------------------------------
+        cw4 <= (others => '0');-----------------------------------------------------------
+        else
         cw2 <= cw;                                --21
-        cw3 <= cw2(CW_SIZE - 7 downto 0);         --14
+        if (alu_forwarding_one = '1') and ( alu_forwarding_two = '0') then   
+          cw3 <= "01" & cw2(CW_SIZE -2 - 7 downto 0);
+        elsif (alu_forwarding_one = '1') and ( alu_forwarding_two = '1') then
+          cw3 <= "0101" & cw2(CW_SIZE -4 - 7 downto 0);
+        elsif (alu_forwarding_one = '0') and ( alu_forwarding_two = '1') then   
+          cw3 <= cw2(CW_SIZE - 7 downto CW_SIZE - 5) & "01" & cw2(2 downto 0);
+        else
+          cw3 <= cw2(CW_SIZE - 7 downto 0);         --14
+        end if;
         cw4 <= cw3(CW_SIZE - 8 - 7 downto 0);     --6
         cw5 <= cw4(CW_SIZE - 8 - 8 - 3 downto 0); --2
       end if;
