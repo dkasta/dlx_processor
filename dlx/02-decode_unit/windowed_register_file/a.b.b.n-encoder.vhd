@@ -18,7 +18,7 @@ begin
         if(sel = (N-1 downto 0 => '0'))then
             s   <=(others => '0');	  
         else  
-        S <= (to_integer(unsigned(sel)) => '1');
+        S(to_integer(unsigned(sel)))<='1';
         S <= (others=>'0');
         end if;
 	end process;
