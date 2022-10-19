@@ -296,12 +296,8 @@ architecture structural of decode_unit is
           read=>rd_mem,
           write=>wr_mem);
 
-  DATA_IN_MUX : MUX21_GENERIC
-  generic map(5)
-  port map ( A => "11111", 
-             B => RD_IN, 
-             SEL => jal_mux_control, 
-             Y => RF_write_address);
+ RF_write_address <= RD_IN
+
 
  REGA_MUX : MUX21_GENERIC
  generic map(5)

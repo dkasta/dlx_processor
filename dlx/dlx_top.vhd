@@ -72,7 +72,7 @@ architecture structural of DLX is
                to_IR:                 in std_logic_vector(numbit - 1 downto 0); -- In from IRAM
                ------------------------------------------------------------------
                -- ID input
-               jal_mux_control:        in std_logic;
+               wr31_enable:        in std_logic;
                write_enable:          in std_logic;
                rd1_enable:            in std_logic;
                rd2_enable:            in std_logic;
@@ -187,7 +187,7 @@ end component;
   signal DRAM_to_mux_signal : std_logic_vector(BIT_RISC - 1 downto 0);
   signal address_error_signal : std_logic;
   -- Control Unit Bus signals
-  signal jal_mux_control_signal : std_logic;
+  signal wr31_enable_signal : std_logic;
   signal write_enable_signal : std_logic;
   signal rd1_enable_signal : std_logic;
   signal rd2_enable_signal : std_logic;
@@ -270,7 +270,7 @@ begin  -- DLX
              address_error => address_error_signal);
 
     CONTROL_I : CU_HARDWIRED
-    port map( jal_mux_control => jal_mux_control_signal,
+    port map( wr31_enable => wr31_enable_signal,
               write_enable => write_enable_signal,
               rd1_enable => rd1_enable_signal,    -- MUX-B Sel
               rd2_enable => rd2_enable_signal,
@@ -311,7 +311,7 @@ begin  -- DLX
                 EN1 => EN1,
                 to_IR => toirfromiram,
                 -- ID input
-                jal_mux_control => jal_mux_control_signal,
+                wr31_enable => wr31_enable_signal,
                 write_enable => write_enable_signal,
                 rd1_enable => rd1_enable_signal,
                 rd2_enable => rd2_enable_signal,
