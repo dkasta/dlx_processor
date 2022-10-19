@@ -54,7 +54,7 @@ architecture BEHAVIORAL of CU_HARDWIRED is
                                       "00000000000000000000000",
                                       "00000000000000000000000",
                                       "0110001" & "1100010101" & "000111",     --RTYPE_SLL  SLLOP
-                                      "000000000000000000000",
+                                      "00000000000000000000000",
                                       "0110001" & "1100010111" & "000111",     --RTYPE_SRL  SRLOP
                                       "0110001" & "1100011001" & "000111",     --RTYPE_SRA  SRAOP           
                                       "00000000000000000000000",
@@ -201,7 +201,7 @@ signal cw_mem_itype : mem_array := ("00000000000000000000000",     --START NOT R
 begin
 
   -- stage one control signals
-  wr31_enable <= cw2(22)
+  wr31_enable <= cw2(22);
   rd1_enable <= cw2(21);
   rd2_enable <= cw2(20);
   call <= cw2(19);
