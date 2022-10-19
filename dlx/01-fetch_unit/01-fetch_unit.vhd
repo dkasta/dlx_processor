@@ -46,11 +46,12 @@ component register_generic
   end component;
 
 
-   component MUX31_GENERIC 
+   component MUX41_GENERIC 
     generic( NBIT : integer := BIT_RISC);
     port( A      : in  std_logic_vector(NBIT-1 downto 0);
           B      : in  std_logic_vector(NBIT-1 downto 0);
           C      : in  std_logic_vector(NBIT-1 downto 0);
+          D      : in  std_logic_vector(NBIT-1 downto 0);
           SEL    : in  std_logic_vector(1 downto 0);
           Y      : out std_logic_vector(NBIT-1 downto 0));
     end component;
@@ -85,11 +86,12 @@ component register_generic
     end process;
 
     -- SEL = 1, B is selected
-    MUX_PC : MUX31_GENERIC
+    MUX_PC : MUX41_GENERIC
     generic map(numbit)
       port map ( A => NPC_branch_jump, 
                  B => RF_ONE_OUT_IF, 
                  C => pc_adder_out,
+                 D => pc_reg_out,
                  SEL => comparator_out_to_mux, 
                  Y => pc_mux_out);
     

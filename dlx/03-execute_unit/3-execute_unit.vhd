@@ -12,10 +12,14 @@ entity execution_unit is
            b_reg_in:              in std_logic_vector(numbit-1 downto 0);
            imm_reg_in:            in std_logic_vector(numbit-1 downto 0);
            rd_reg_in:             in std_logic_vector(4 downto 0);
-           mux_one_control:       in std_logic;
-           mux_two_control:       in std_logic;
+           mux_one_control:       in std_logic_vector(1 downto 0);
+           mux_two_control:       in std_logic_vector(1 downto 0);
            alu_control:           in std_logic_vector(4 downto 0);
            EN3:                   in std_logic;
+           alu_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);
+           alu_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
+           mem_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);
+           mem_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
            rd_reg_out:            out std_logic_vector(4 downto 0));
@@ -23,12 +27,14 @@ end execution_unit;
 
 architecture structural of execution_unit is
 
-  component MUX21_GENERIC
-  generic( NBIT: integer := Bit_Mux21);
-  port(    A:    in std_logic_vector(NBIT-1 downto 0);
-           B:    in std_logic_vector(NBIT-1 downto 0);
-           SEL:  in std_logic;
-           Y:    out std_logic_vector(NBIT-1 downto 0));
+  component MUX41_GENERIC 
+  generic( NBIT : integer := BIT_RISC);
+  port( A      : in  std_logic_vector(NBIT-1 downto 0);
+        B      : in  std_logic_vector(NBIT-1 downto 0);
+        C      : in  std_logic_vector(NBIT-1 downto 0);
+        D      : in  std_logic_vector(NBIT-1 downto 0);
+        SEL    : in  std_logic_vector(1 downto 0);
+        Y      : out std_logic_vector(NBIT-1 downto 0));
   end component;
 
   component REGISTER_GENERIC
@@ -49,38 +55,29 @@ architecture structural of execution_unit is
   end component;  
 
   signal mux_one_out_rf : std_logic_vector(numbit-1 downto 0);
-  signal mux_one_out_mem_forwarding : std_logic_vector(numbit-1 downto 0);
-  signal mux_one_out_alu_forwarding : std_logic_vector(numbit-1 downto 0);
   signal mux_two_out_rf : std_logic_vector(numbit-1 downto 0);
-  signal mux_two_out_mem_forwarding : std_logic_vector(numbit-1 downto 0);
-  signal mux_two_out_alu_forwarding : std_logic_vector(numbit-1 downto 0);
   signal alu_out : std_logic_vector(numbit-1 downto 0);
   signal s_cout : std_logic;
 
   begin
 
-    MUX_ONE_RF : MUX21_GENERIC
+    MUX_ONE_RF : MUX41_GENERIC
     generic map(numbit)
     port map( A => npc_in,
-              B => a_reg_in,
+              B => alu_forwarding_one_vector,
+              C => mem_forwarding_one_vector,
+              D => a_reg_in,
               SEL => mux_one_control,
               Y => mux_one_out_rf);
 
-    MUX_TWO_RF : MUX21_GENERIC
+    MUX_TWO_RF : MUX41_GENERIC
     generic map(numbit)
     port map( A => b_reg_in,
-              B => imm_reg_in,
+              B => alu_forwarding_two_vector,
+              C => mem_forwarding_two_vector,
+              D => imm_reg_in,
               SEL => mux_two_control,
               Y => mux_two_out_rf);
-
---    MUX_TWO_MEM : MUX21_GENERIC
---    generic map(numbit)
---    port map(mux_two_out_rf,mem_forwarding_value,mem_forwarding_two,mux_two_out_mem_forwarding);
-
---    MUX_TWO_ALU : MUX21_GENERIC
---    generic map(numbit)
---    port map(mux_two_out_mem_forwarding,alu_forwarding_value,alu_forwarding_two,mux_two_out_alu_forwarding);
-
 
 
     ALU_comp : ALU

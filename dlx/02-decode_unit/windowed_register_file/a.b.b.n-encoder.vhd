@@ -18,7 +18,9 @@ begin
         if(sel = (N-1 downto 0 => '0'))then
             s   <=(others => '0');	  
         else  
-        S<=(to_integer(unsigned(sel)) =>'1', others=>'0');
+        S <= (others=>'0');
+        S(to_integer(unsigned(sel)))<='1';
+
         end if;
 	end process;
 end COMPOR;
