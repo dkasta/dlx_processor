@@ -12,8 +12,8 @@ entity write_back_unit is
            mux_wb_control: in std_logic;
            RD_OUT:         out std_logic_vector(4 downto 0);
            WB_OUT:         out std_logic_vector(N-1 downto 0);
-           mem_forwarding_one_vector:     out std_logic_vector(numbit-1 downto 0);
-           mem_forwarding_two_vector:     out std_logic_vector(numbit-1 downto 0));
+           mem_forwarding_one_vector:     out std_logic_vector(N-1 downto 0);
+           mem_forwarding_two_vector:     out std_logic_vector(N-1 downto 0));
 end write_back_unit;
 
 architecture structural of write_back_unit is
@@ -37,7 +37,7 @@ architecture structural of write_back_unit is
               Y => WB_OUT);
 
 RD_OUT <= RD_IN;
-mem_forwarding_one <= LMD;
-mem_forwarding_two <= LMD;
+mem_forwarding_one_vector <= LMD;
+mem_forwarding_two_vector <= LMD;
 end structural;
 

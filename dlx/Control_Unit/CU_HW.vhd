@@ -49,9 +49,9 @@ architecture BEHAVIORAL of CU_HARDWIRED is
   --if bits in mem_array are (others => '0') it means that either the instruction
   --is not implemented or is a NTYPE_NOP
   type mem_array is array (integer range 0 to MICROCODE_MEM_SIZE - 1) of std_logic_vector(CW_SIZE - 1 downto 0);
-  signal cw_mem_rtype : mem_array := ("000000000000000000000",
-      						                    "000000000000000000000",
-                                      "000000000000000000000",
+  signal cw_mem_rtype : mem_array := ("00000000000000000000000",
+      						                    "00000000000000000000000",
+                                      "00000000000000000000000",
                                       "000000000000000000000",
                                       "110001100101010001111",     --RTYPE_SLL
                                       "000000000000000000000",
@@ -201,15 +201,15 @@ signal cw_mem_itype : mem_array := ("000000000000000000000",     --START NOT R_T
 begin
 
   -- stage one control signals
-  rd1_enable <= cw2(20);
-  rd2_enable <= cw2(19);
-  call <= cw2(18);
-  ret <= cw2(17);
-  imm_mux_control <= cw2(16);
-  EN2 <= cw2(15);
+  rd1_enable <= cw2(22);
+  rd2_enable <= cw2(21);
+  call <= cw2(20);
+  ret <= cw2(19);
+  imm_mux_control <= cw2(18);
+  EN2 <= cw2(17);
   -- stage two control signals
-  mux_one_control <= cw3(14);
-  mux_two_control <= cw3(13);
+  mux_one_control <= cw3(16 downto 15);
+  mux_two_control <= cw3(14 downto 13);
   ALU_OPCODE <= cw3(12 downto 8); -- 12 downto 8
   EN3 <=  cw3(7);
 

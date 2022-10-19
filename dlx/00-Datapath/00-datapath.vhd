@@ -185,8 +185,8 @@ component execution_unit
            b_reg_in:              in std_logic_vector(numbit-1 downto 0);
            imm_reg_in:            in std_logic_vector(numbit-1 downto 0);
            rd_reg_in:             in std_logic_vector(4 downto 0);
-           mux_one_control:       in std_logic;
-           mux_two_control:       in std_logic;
+           mux_one_control:       in std_logic_vector(1 downto 0);
+           mux_two_control:       in std_logic_vector(1 downto 0);
            alu_control:           in std_logic_vector(4 downto 0);
            EN3:                   in std_logic;
            alu_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);

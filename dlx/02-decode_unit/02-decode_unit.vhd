@@ -380,7 +380,7 @@ architecture structural of decode_unit is
               alu_forwarding_two => alu_forwarding_two_signal,
               mem_forwarding_two => mem_forwarding_two_signal,
               nop_add => nop_add_signal,
-              RD_OUT => rdmux_out, 
+              RD_OUT => rdmux_out 
   );
 
   NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));

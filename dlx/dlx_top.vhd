@@ -141,8 +141,8 @@ architecture structural of DLX is
              EN2      : OUT std_logic;
              
             -- EX Control Signal
-            mux_one_control      : OUT std_logic;
-            mux_two_control      : OUT std_logic;
+            mux_one_control      : OUT std_logic_vector(1 downto 0);
+            mux_two_control      : OUT std_logic_vector(1 downto 0);
             ALU_OPCODE      : OUT std_logic_vector(4 downto 0);
             EN3      : OUT std_logic;
               

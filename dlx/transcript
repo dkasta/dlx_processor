@@ -12,30 +12,31 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-source ./simulation.tcl
-compile_directory
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/globals.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./packages/globals.vhd 
+# Start time: 10:03:53 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/globals.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling package globals
-# End time: 19:27:02 on Oct 18,2022, Elapsed time: 0:00:00
+# End time: 10:03:53 on Oct 19,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/myTypes.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./packages/myTypes.vhd 
+# Start time: 10:03:54 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/myTypes.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package globals
 # -- Compiling package myTypes
-# End time: 19:27:02 on Oct 18,2022, Elapsed time: 0:00:00
+# End time: 10:03:54 on Oct 19,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Control_Unit/CU_HW.vhd 
+# Start time: 10:04:00 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -45,113 +46,17 @@ compile_directory
 # -- Loading package myTypes
 # -- Compiling entity CU_HARDWIRED
 # -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
-# ** Warning: ./Control_Unit/CU_HW.vhd(228): (vcom-1400) Synthesis Warning: Signal "cw_mem_rtype" is read in the process but is not in the sensitivity list.
-# ** Warning: ./Control_Unit/CU_HW.vhd(230): (vcom-1400) Synthesis Warning: Signal "cw_mem_itype" is read in the process but is not in the sensitivity list.
-# End time: 19:27:02 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 2
+# ** Error: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(211): Cannot resolve indexed name (type ieee.std_logic_1164.STD_ULOGIC) as type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(212): Cannot resolve indexed name (type ieee.std_logic_1164.STD_ULOGIC) as type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1246) Range 14 downto 16 is null.
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1272) Length of expected is 15; length of actual is 5.
+# ** Note: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(272): VHDL Compiler exiting
+# End time: 10:04:00 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 2
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/tb_zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_zero_detector
-# -- Compiling architecture Behavioral of tb_zero_detector
-# ** Warning: ./Components/zero_detector/tb_zero_detector.vhd(23): (vcom-1253) No default binding for component instance "CompToTest : zero_detector".
-#  (No entity named "zero_detector" was found.)
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity zero_detector
-# -- Compiling architecture behavioral of zero_detector
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender16.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_16BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender26.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_26BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/tb_sign_extender.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity se_tb
-# -- Compiling architecture test of se_tb
-# ** Warning: ./Components/sign_extender/tb_sign_extender.vhd(22): (vcom-1253) No default binding for component instance "dut : sign_extender".
-#  (No entity named "sign_extender" was found.)
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/dff.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity DFF
-# -- Compiling architecture behavioral of DFF
-# ** Warning: ./Components/Registers/dff.vhd(15): Synthesis Warning: Signal 'RESET' appears in the sensitivity list of process 'Process_synch', but it is not used in the clock or reset expressions.
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/register_generic.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package globals
-# -- Compiling entity register_generic
-# -- Compiling architecture structural of register_generic
-# -- Loading entity DFF
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:03 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RegisterFile/registerfile.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity register_file
-# ** Error: ./Components/RegisterFile/registerfile.vhd(19): (vcom-1136) Unknown identifier "NumBitRegisterFile".
-# ** Note: ./Components/RegisterFile/registerfile.vhd(29): VHDL Compiler exiting
-# End time: 19:27:03 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /software/mentor/questa10.7c/questasim/linux_x86_64/vcom failed.
-compile_directory
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:57 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Control_Unit/CU_HW.vhd 
+# Start time: 10:05:21 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -161,478 +66,40 @@ compile_directory
 # -- Loading package myTypes
 # -- Compiling entity CU_HARDWIRED
 # -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
-# ** Warning: ./Control_Unit/CU_HW.vhd(228): (vcom-1400) Synthesis Warning: Signal "cw_mem_rtype" is read in the process but is not in the sensitivity list.
-# ** Warning: ./Control_Unit/CU_HW.vhd(230): (vcom-1400) Synthesis Warning: Signal "cw_mem_itype" is read in the process but is not in the sensitivity list.
-# End time: 19:27:57 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 2
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1246) Range 14 downto 16 is null.
+# ** Error: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(204): (vcom-1152) Index value 22 is out of index range 20 downto 0 of ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(205): (vcom-1152) Index value 21 is out of index range 20 downto 0 of ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(211): (vcom-1167) Index value 16 (of type ieee.std_logic_1164.STD_LOGIC_VECTOR) is out of range 14 downto 0.
+# ** Error: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(211): (vcom-1167) Index value 15 (of type ieee.std_logic_1164.STD_LOGIC_VECTOR) is out of range 14 downto 0.
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1272) Length of expected is 15; length of actual is 5.
+# ** Note: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(272): VHDL Compiler exiting
+# End time: 10:05:21 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 2
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/globals.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:57 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/tb_zero_detector.vhd 
+# Start time: 10:06:16 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/globals.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity tb_zero_detector
-# -- Compiling architecture Behavioral of tb_zero_detector
-# -- Loading entity zero_detector
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:01
+# -- Compiling package globals
+# End time: 10:06:16 on Oct 19,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/myTypes.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity zero_detector
-# -- Compiling architecture behavioral of zero_detector
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender16.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_16BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender26.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_26BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/tb_sign_extender.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity se_tb
-# -- Compiling architecture test of se_tb
-# ** Warning: ./Components/sign_extender/tb_sign_extender.vhd(22): (vcom-1253) No default binding for component instance "dut : sign_extender".
-#  (No entity named "sign_extender" was found.)
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/dff.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity DFF
-# -- Compiling architecture behavioral of DFF
-# ** Warning: ./Components/Registers/dff.vhd(15): Synthesis Warning: Signal 'RESET' appears in the sensitivity list of process 'Process_synch', but it is not used in the clock or reset expressions.
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/register_generic.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package globals
-# -- Compiling entity register_generic
-# -- Compiling architecture structural of register_generic
-# -- Loading entity DFF
-# End time: 19:27:58 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:27:58 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RegisterFile/registerfile.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity register_file
-# ** Error: ./Components/RegisterFile/registerfile.vhd(19): (vcom-1136) Unknown identifier "NumBitRegisterFile".
-# ** Note: ./Components/RegisterFile/registerfile.vhd(29): VHDL Compiler exiting
-# End time: 19:27:59 on Oct 18,2022, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 0
-# /software/mentor/questa10.7c/questasim/linux_x86_64/vcom failed.
-source ./simulation.tcl
-compile_directory
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:39 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Control_Unit/CU_HW.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package globals
-# -- Loading package myTypes
-# -- Compiling entity CU_HARDWIRED
-# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
-# ** Warning: ./Control_Unit/CU_HW.vhd(228): (vcom-1400) Synthesis Warning: Signal "cw_mem_rtype" is read in the process but is not in the sensitivity list.
-# ** Warning: ./Control_Unit/CU_HW.vhd(230): (vcom-1400) Synthesis Warning: Signal "cw_mem_itype" is read in the process but is not in the sensitivity list.
-# End time: 19:28:39 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 2
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/tb_zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_zero_detector
-# -- Compiling architecture Behavioral of tb_zero_detector
-# -- Loading entity zero_detector
-# End time: 19:28:40 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity zero_detector
-# -- Compiling architecture behavioral of zero_detector
-# End time: 19:28:40 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender16.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_16BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
-# End time: 19:28:40 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender26.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_26BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
-# End time: 19:28:40 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/tb_sign_extender.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity se_tb
-# -- Compiling architecture test of se_tb
-# ** Warning: ./Components/sign_extender/tb_sign_extender.vhd(22): (vcom-1253) No default binding for component instance "dut : sign_extender".
-#  (No entity named "sign_extender" was found.)
-# End time: 19:28:40 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/dff.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity DFF
-# -- Compiling architecture behavioral of DFF
-# ** Warning: ./Components/Registers/dff.vhd(15): Synthesis Warning: Signal 'RESET' appears in the sensitivity list of process 'Process_synch', but it is not used in the clock or reset expressions.
-# End time: 19:28:40 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:40 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/register_generic.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package globals
-# -- Compiling entity register_generic
-# -- Compiling architecture structural of register_generic
-# -- Loading entity DFF
-# End time: 19:28:41 on Oct 18,2022, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:28:41 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RegisterFile/registerfile.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity register_file
-# ** Error: ./Components/RegisterFile/registerfile.vhd(19): (vcom-1136) Unknown identifier "NumBitRegisterFile".
-# ** Note: ./Components/RegisterFile/registerfile.vhd(29): VHDL Compiler exiting
-# End time: 19:28:41 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /software/mentor/questa10.7c/questasim/linux_x86_64/vcom failed.
-compile_directory
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:33 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Control_Unit/CU_HW.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package globals
-# -- Loading package myTypes
-# -- Compiling entity CU_HARDWIRED
-# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
-# ** Warning: ./Control_Unit/CU_HW.vhd(228): (vcom-1400) Synthesis Warning: Signal "cw_mem_rtype" is read in the process but is not in the sensitivity list.
-# ** Warning: ./Control_Unit/CU_HW.vhd(230): (vcom-1400) Synthesis Warning: Signal "cw_mem_itype" is read in the process but is not in the sensitivity list.
-# End time: 19:29:33 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 2
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/tb_zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_zero_detector
-# -- Compiling architecture Behavioral of tb_zero_detector
-# -- Loading entity zero_detector
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity zero_detector
-# -- Compiling architecture behavioral of zero_detector
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender16.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_16BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender26.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_26BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/tb_sign_extender.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity se_tb
-# -- Compiling architecture test of se_tb
-# ** Warning: ./Components/sign_extender/tb_sign_extender.vhd(22): (vcom-1253) No default binding for component instance "dut : sign_extender".
-#  (No entity named "sign_extender" was found.)
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/dff.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity DFF
-# -- Compiling architecture behavioral of DFF
-# ** Warning: ./Components/Registers/dff.vhd(15): Synthesis Warning: Signal 'RESET' appears in the sensitivity list of process 'Process_synch', but it is not used in the clock or reset expressions.
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/register_generic.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package globals
-# -- Compiling entity register_generic
-# -- Compiling architecture structural of register_generic
-# -- Loading entity DFF
-# End time: 19:29:34 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:29:34 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RegisterFile/registerfile.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity register_file
-# ** Error: ./Components/RegisterFile/registerfile.vhd(19): (vcom-1136) Unknown identifier "NumBitRegisterFile".
-# ** Note: ./Components/RegisterFile/registerfile.vhd(29): VHDL Compiler exiting
-# End time: 19:29:35 on Oct 18,2022, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 0
-# /software/mentor/questa10.7c/questasim/linux_x86_64/vcom failed.
-source ./simulation.tcl
-compile_directory
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:01 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Control_Unit/CU_HW.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package globals
-# -- Loading package myTypes
-# -- Compiling entity CU_HARDWIRED
-# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
-# ** Warning: ./Control_Unit/CU_HW.vhd(228): (vcom-1400) Synthesis Warning: Signal "cw_mem_rtype" is read in the process but is not in the sensitivity list.
-# ** Warning: ./Control_Unit/CU_HW.vhd(230): (vcom-1400) Synthesis Warning: Signal "cw_mem_itype" is read in the process but is not in the sensitivity list.
-# End time: 19:31:01 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 2
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:01 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/tb_zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity tb_zero_detector
-# -- Compiling architecture Behavioral of tb_zero_detector
-# -- Loading entity zero_detector
-# End time: 19:31:01 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:01 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity zero_detector
-# -- Compiling architecture behavioral of zero_detector
-# End time: 19:31:01 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:01 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender16.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_16BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
-# End time: 19:31:01 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:01 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender26.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_26BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
-# End time: 19:31:01 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:01 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/tb_sign_extender.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity se_tb
-# -- Compiling architecture test of se_tb
-# ** Warning: ./Components/sign_extender/tb_sign_extender.vhd(22): (vcom-1253) No default binding for component instance "dut : sign_extender".
-#  (No entity named "sign_extender" was found.)
-# End time: 19:31:02 on Oct 18,2022, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/dff.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity DFF
-# -- Compiling architecture behavioral of DFF
-# ** Warning: ./Components/Registers/dff.vhd(15): Synthesis Warning: Signal 'RESET' appears in the sensitivity list of process 'Process_synch', but it is not used in the clock or reset expressions.
-# End time: 19:31:02 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/register_generic.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package globals
-# -- Compiling entity register_generic
-# -- Compiling architecture structural of register_generic
-# -- Loading entity DFF
-# End time: 19:31:02 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:31:02 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RegisterFile/registerfile.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity register_file
-# ** Error: ./Components/RegisterFile/registerfile.vhd(19): (vcom-1136) Unknown identifier "NumBitRegisterFile".
-# ** Note: ./Components/RegisterFile/registerfile.vhd(29): VHDL Compiler exiting
-# End time: 19:31:02 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /software/mentor/questa10.7c/questasim/linux_x86_64/vcom failed.
-compile_directory
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:47 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./packages/myTypes.vhd 
+# Start time: 10:06:18 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/packages/myTypes.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package globals
 # -- Compiling package myTypes
-# End time: 19:32:47 on Oct 18,2022, Elapsed time: 0:00:00
+# End time: 10:06:18 on Oct 19,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:47 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./packages/globals.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling package globals
-# End time: 19:32:47 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:47 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Control_Unit/CU_HW.vhd 
+# Start time: 10:06:25 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -642,120 +109,511 @@ compile_directory
 # -- Loading package myTypes
 # -- Compiling entity CU_HARDWIRED
 # -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
-# ** Warning: ./Control_Unit/CU_HW.vhd(228): (vcom-1400) Synthesis Warning: Signal "cw_mem_rtype" is read in the process but is not in the sensitivity list.
-# ** Warning: ./Control_Unit/CU_HW.vhd(230): (vcom-1400) Synthesis Warning: Signal "cw_mem_itype" is read in the process but is not in the sensitivity list.
-# End time: 19:32:47 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 2
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1246) Range 16 downto 18 is null.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(52): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(53): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(54): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(55): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(56): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(57): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(58): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(59): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(60): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(61): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(62): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(63): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(64): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(65): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(66): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(67): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(68): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(69): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(70): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(71): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(72): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(73): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(74): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(75): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(76): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(77): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(78): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(79): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(80): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(81): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(82): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(83): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(84): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(85): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(86): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(87): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(88): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(89): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(90): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(91): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(92): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(93): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(94): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(95): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(96): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(97): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(98): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(99): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(100): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(101): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(102): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(103): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(104): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(105): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(106): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(107): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(108): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(109): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(110): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(111): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(112): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(113): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(114): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(115): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(116): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(117): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(118): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(119): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(123): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(124): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(125): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(126): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(127): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(128): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(129): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(130): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(131): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(132): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(133): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(134): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(135): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(136): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(137): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(138): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(139): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(140): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(141): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(142): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(143): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(144): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(145): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(146): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(147): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(148): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(149): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(150): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(151): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(152): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(153): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(154): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(155): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(156): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(157): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(158): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(159): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(160): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(161): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(162): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(163): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(164): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(165): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(166): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(167): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(168): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(169): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(170): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(171): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(172): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(173): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(174): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(175): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(176): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(177): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(178): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(179): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(180): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(181): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(182): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(183): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(184): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(185): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(186): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(187): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(188): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(189): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(190): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1272) Length of expected is 17; length of actual is 5.
+# ** Note: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(272): VHDL Compiler exiting
+# End time: 10:06:25 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 136, Warnings: 2
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:47 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/tb_zero_detector.vhd 
+# Start time: 10:07:28 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity tb_zero_detector
-# -- Compiling architecture Behavioral of tb_zero_detector
-# -- Loading entity zero_detector
-# End time: 19:32:47 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:47 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/zero_detector/zero_detector.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity zero_detector
-# -- Compiling architecture behavioral of zero_detector
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender16.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_16BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/sign_extender26.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity SIGN_EXTENTION_26BIT
-# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/sign_extender/tb_sign_extender.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package globals
-# -- Compiling entity se_tb
-# -- Compiling architecture test of se_tb
-# ** Warning: ./Components/sign_extender/tb_sign_extender.vhd(22): (vcom-1253) No default binding for component instance "dut : sign_extender".
-#  (No entity named "sign_extender" was found.)
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/dff.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity DFF
-# -- Compiling architecture behavioral of DFF
-# ** Warning: ./Components/Registers/dff.vhd(15): Synthesis Warning: Signal 'RESET' appears in the sensitivity list of process 'Process_synch', but it is not used in the clock or reset expressions.
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Registers/register_generic.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package globals
-# -- Compiling entity register_generic
-# -- Compiling architecture structural of register_generic
-# -- Loading entity DFF
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RdMux/RdMux.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
 # -- Loading package globals
 # -- Loading package myTypes
-# -- Compiling entity RDMUX
-# -- Compiling architecture BEHAVIORAL of RDMUX
-# End time: 19:32:48 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# -- Compiling entity CU_HARDWIRED
+# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1246) Range 16 downto 18 is null.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(54): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(55): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(56): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(57): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(58): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(59): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(60): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(61): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(62): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(63): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(64): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(65): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(66): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(67): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(68): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(69): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(70): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(71): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(72): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(73): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(74): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(75): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(76): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(77): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(78): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(79): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(80): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(81): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(82): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(83): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(84): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(85): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(86): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(87): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(88): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(89): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(90): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(91): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(92): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(93): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(94): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(95): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(96): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(97): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(98): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(99): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(100): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(101): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(102): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(103): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(104): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(105): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(106): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(107): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(108): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(109): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(110): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(111): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(112): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(113): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(114): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(115): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(116): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(117): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(118): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(119): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(123): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(124): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(125): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(126): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(127): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(128): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(129): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(130): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(131): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(132): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(133): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(134): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(135): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(136): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(137): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(138): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(139): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(140): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(141): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(142): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(143): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(144): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(145): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(146): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(147): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(148): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(149): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(150): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(151): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(152): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(153): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(154): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(155): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(156): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(157): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(158): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(159): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(160): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(161): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(162): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(163): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(164): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(165): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(166): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(167): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(168): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(169): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(170): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(171): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(172): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(173): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(174): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(175): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(176): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(177): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(178): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(179): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(180): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(181): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(182): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(183): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(184): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(185): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(186): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(187): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(188): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(189): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(190): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1272) Length of expected is 17; length of actual is 5.
+# ** Note: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(272): VHDL Compiler exiting
+# End time: 10:07:29 on Oct 19,2022, Elapsed time: 0:00:01
+# Errors: 134, Warnings: 2
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:48 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/RdMux/tb_RdMux.vhd 
+# Start time: 10:07:49 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity CU_HARDWIRED
+# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1246) Range 16 downto 18 is null.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(55): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(56): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(57): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(58): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(59): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(60): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(61): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(62): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(63): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(64): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(65): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(66): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(67): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(68): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(69): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(70): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(71): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(72): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(73): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(74): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(75): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(76): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(77): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(78): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(79): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(80): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(81): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(82): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(83): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(84): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(85): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(86): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(87): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(88): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(89): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(90): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(91): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(92): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(93): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(94): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(95): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(96): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(97): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(98): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(99): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(100): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(101): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(102): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(103): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(104): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(105): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(106): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(107): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(108): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(109): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(110): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(111): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(112): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(113): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(114): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(115): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(116): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(117): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(118): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(119): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(123): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(124): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(125): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(126): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(127): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(128): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(129): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(130): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(131): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(132): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(133): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(134): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(135): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(136): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(137): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(138): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(139): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(140): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(141): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(142): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(143): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(144): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(145): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(146): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(147): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(148): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(149): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(150): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(151): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(152): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(153): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(154): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(155): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(156): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(157): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(158): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(159): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(160): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(161): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(162): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(163): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(164): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(165): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(166): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(167): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(168): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(169): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(170): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(171): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(172): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(173): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(174): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(175): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(176): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(177): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(178): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(179): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(180): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(181): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(182): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(183): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(184): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(185): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(186): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(187): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(188): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(189): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Error (suppressible): /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(190): (vcom-1272) Length of expected is 23; length of actual is 21.
+# ** Warning: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(262): (vcom-1272) Length of expected is 17; length of actual is 5.
+# ** Note: /home/ms22.21/dlxTest/dlx/Control_Unit/CU_HW.vhd(272): VHDL Compiler exiting
+# End time: 10:07:49 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 133, Warnings: 2
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/4to1mux/mux4to1_generic.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:08:41 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/4to1mux/mux4to1_generic.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package globals
-# -- Loading package myTypes
-# -- Compiling entity TB_RDMUX
-# -- Compiling architecture TEST of TB_RDMUX
-# -- Loading entity RDMUX
-# End time: 19:32:49 on Oct 18,2022, Elapsed time: 0:00:01
+# -- Compiling entity MUX41_GENERIC
+# -- Compiling architecture behavioural of MUX41_GENERIC
+# End time: 10:08:41 on Oct 19,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:49 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/ProgramCounter/PC.vhd 
+# Start time: 10:08:53 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/ComparatorDecodeUnit/comparatorDU.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity COMPARATORDU
+# -- Compiling architecture BEHAVIOURAL of COMPARATORDU
+# End time: 10:08:53 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Memories/DRAM/DRAM.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:08:59 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Memories/DRAM/DRAM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package globals
+# -- Compiling entity DRAM
+# -- Compiling architecture BEHAVIORAL of DRAM
+# End time: 10:08:59 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Memories/IRAM/IRAM.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:06 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Memories/IRAM/IRAM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package std_logic_textio
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity IRAM
+# -- Compiling architecture behavioural of IRAM
+# -- Compiling configuration CFG_IRAM_BEHAVIORAL
+# -- Loading entity IRAM
+# -- Loading architecture behavioural of IRAM
+# End time: 10:09:06 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/ProgramCounter/PC.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:11 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/ProgramCounter/PC.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -763,33 +621,457 @@ compile_directory
 # -- Loading package globals
 # -- Compiling entity PC
 # -- Compiling architecture behavioural of PC
-# End time: 19:32:49 on Oct 18,2022, Elapsed time: 0:00:00
+# End time: 10:09:11 on Oct 19,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/RegisterFile/registerfile.vhd
 # QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
-# Start time: 19:32:49 on Oct 18,2022
-# vcom -reportprogress 300 -pedanticerrors -check_synthesis -bindAtCompile ./Components/Memories/IRAM/tb_IRAM.vhd 
+# Start time: 10:09:17 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/RegisterFile/registerfile.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package std_logic_arith
 # -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
 # -- Loading package globals
-# -- Compiling entity TB_IRAM
-# -- Compiling architecture TEST of TB_IRAM
-# ** Warning: ./Components/Memories/IRAM/tb_IRAM.vhd(26): (vcom-1127) Entity work.iram was not selected for default binding because it is out of date relative to dependency work.mytypes, work.globals. 
-# ** Warning: ./Components/Memories/IRAM/tb_IRAM.vhd(26): (vcom-1253) No default binding for component instance "DUT : IRAM".
-#  (No entity named "IRAM" was found.)
-# -- Compiling configuration CFG_TB_IRAM
-# -- Loading entity TB_IRAM
-# -- Loading architecture TEST of TB_IRAM
-# ** Error (suppressible): (vcom-12) Recompile work.iram(behavioural) after work.iram is recompiled.
-# ** Error: (vcom-13) Recompile work.iram(behavioural) because work.mytypes, work.globals have changed.
-# ** Error (suppressible): (vcom-12) Recompile work.cfg_iram_behavioral after work.iram, work.iram(behavioural) are recompiled.
-# ** Error: (vcom-13) Recompile work.cfg_iram_behavioral because work.mytypes, work.globals have changed.
-# ** Error (suppressible): ./Components/Memories/IRAM/tb_IRAM.vhd(44): (vcom-1195) Cannot find expanded name "work.CFG_IRAM_BEHAVIORAL".
-# ** Error: ./Components/Memories/IRAM/tb_IRAM.vhd(44): (vcom-1106) Name (expanded name) is not a configuration name.
-# ** Error: ./Components/Memories/IRAM/tb_IRAM.vhd(44): Unknown expanded name.
-# ** Note: ./Components/Memories/IRAM/tb_IRAM.vhd(47): VHDL Compiler exiting
-# End time: 19:32:49 on Oct 18,2022, Elapsed time: 0:00:00
-# Errors: 7, Warnings: 2
-# /software/mentor/questa10.7c/questasim/linux_x86_64/vcom failed.
+# -- Compiling entity register_file
+# ** Error: /home/ms22.21/dlxTest/dlx/Components/RegisterFile/registerfile.vhd(19): (vcom-1136) Unknown identifier "NumBitRegisterFile".
+# ** Note: /home/ms22.21/dlxTest/dlx/Components/RegisterFile/registerfile.vhd(29): VHDL Compiler exiting
+# End time: 10:09:17 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Registers/dff.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:25 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Registers/dff.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity DFF
+# -- Compiling architecture behavioral of DFF
+# End time: 10:09:25 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Registers/register_generic.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:25 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/Registers/register_generic.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Compiling entity register_generic
+# -- Compiling architecture structural of register_generic
+# End time: 10:09:25 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:31 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender16.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package globals
+# -- Compiling entity SIGN_EXTENTION_16BIT
+# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_16BIT
+# End time: 10:09:31 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:32 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/Components/sign_extender/sign_extender26.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package globals
+# -- Compiling entity SIGN_EXTENTION_26BIT
+# -- Compiling architecture BEHAVIOURAL of SIGN_EXTENTION_26BIT
+# End time: 10:09:32 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/01-fetch_unit/01-fetch_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:38 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/01-fetch_unit/01-fetch_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package globals
+# -- Compiling entity fetch_unit
+# -- Compiling architecture behavioural of fetch_unit
+# End time: 10:09:38 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:09:45 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Loading package NUMERIC_STD
+# -- Compiling entity decode_unit
+# -- Compiling architecture structural of decode_unit
+# ** Error: /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd(384): near ")": syntax error
+# ** Note: /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd(391): VHDL Compiler exiting
+# End time: 10:09:45 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:10:29 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Loading package NUMERIC_STD
+# -- Compiling entity decode_unit
+# -- Compiling architecture structural of decode_unit
+# End time: 10:10:29 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:10:39 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/inverter.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/mux21_generic.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/2to1mux/nand2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Compiling entity IV
+# -- Compiling architecture behavioral of IV
+# -- Compiling entity MUX21_GENERIC
+# -- Compiling architecture structural of MUX21_GENERIC
+# -- Compiling entity ND2
+# -- Compiling architecture behavioral of ND2
+# End time: 10:10:39 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.p-AND2_R.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:10:46 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.a-register_generic_wrf.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.b-dff_wrf.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.c-decoder.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.e-physical_registerfile.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.f-cwp_swp.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.g-register_selection_block.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.h-mux_output.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.i-windowed_register_file.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.l-fill_enable_generator.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.m-spill_address_counter.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.n-encoder.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.o-wrf_fsm.vhd /home/ms22.21/dlxTest/dlx/02-decode_unit/windowed_register_file/a.b.b.p-AND2_R.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Compiling entity register_generic_wrf
+# -- Compiling architecture structural of register_generic_wrf
+# -- Compiling entity DFF_wrf
+# -- Compiling architecture behavioral of DFF_wrf
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Compiling entity decoder
+# -- Compiling architecture dataflow of decoder
+# -- Compiling entity physical_register_file
+# -- Compiling architecture structural of physical_register_file
+# -- Compiling entity cwp_swp
+# -- Compiling architecture beh of cwp_swp
+# -- Compiling entity sel_block
+# -- Compiling architecture beh of sel_block
+# -- Compiling entity mux_out
+# -- Compiling architecture beh of mux_out
+# -- Compiling entity wrf
+# -- Compiling architecture structural of wrf
+# -- Compiling entity fill_enable_generator
+# -- Compiling architecture beh of fill_enable_generator
+# -- Compiling entity address_counter
+# -- Compiling architecture struct of address_counter
+# -- Compiling entity encoder
+# -- Compiling architecture COMPOR of encoder
+# -- Compiling entity wrf_fsm
+# -- Compiling architecture Behavioral of wrf_fsm
+# -- Compiling entity AND2
+# -- Compiling architecture behavioral of AND2
+# End time: 10:10:46 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:10:51 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/02-decode_unit/02-decode_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Loading package NUMERIC_STD
+# -- Compiling entity decode_unit
+# -- Compiling architecture structural of decode_unit
+# End time: 10:10:51 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:10:56 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity execution_unit
+# -- Compiling architecture structural of execution_unit
+# ** Error: /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd(70): Signal [mode IN port] "mux_one_control" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd(79): Signal [mode IN port] "mux_two_control" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Note: /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd(114): VHDL Compiler exiting
+# End time: 10:10:57 on Oct 19,2022, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:11:47 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/03-execute_unit/3-execute_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity execution_unit
+# -- Compiling architecture structural of execution_unit
+# End time: 10:11:47 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a-alu.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.l-G.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:11:53 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a-alu.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.a-inv.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.b-nand2.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.c-nand3.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.d-nand4.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.e-mux21.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.f-buffer.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.g-buffer1.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.h-fa.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.i-rca.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.j-carrySelect.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.k-sumGenerator.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.l-G.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.m-PG.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.n-PGnet.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.o-carryGenerator.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.p-ClaAdder.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.q-xor2.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.r-xorGeneric.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.s-adderSub.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.t-rcaBoothMul.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.u-muxEncoderBlockBoothMul.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.w-boothMul.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.x-firstLevelT2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.y-secondLevelT2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.a-thirdLevelT2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.b-T2Shifter.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.c-comparator.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.d-logicT2.vhd /home/ms22.21/dlxTest/dlx/03-execute_unit/alu/a.b.a.z.e-outputMuxAlu.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity alu
+# -- Compiling architecture behaviour of alu
+# -- Compiling entity IVX
+# -- Compiling architecture Behavioral of IVX
+# -- Compiling entity NAND2
+# -- Compiling architecture behevioral of NAND2
+# -- Compiling entity NAND3
+# -- Compiling architecture structural of NAND3
+# -- Compiling entity NAND4
+# -- Compiling architecture structural of NAND4
+# -- Compiling entity mux21
+# -- Compiling architecture structural of mux21
+# -- Compiling entity BUF
+# -- Compiling architecture behavioral of BUF
+# -- Compiling entity BUF1
+# -- Compiling architecture behavioral of BUF1
+# -- Compiling entity fa
+# -- Compiling architecture behavioral of fa
+# -- Compiling entity rca
+# -- Compiling architecture structural of rca
+# -- Compiling entity CSblock
+# -- Compiling architecture structural of CSblock
+# -- Compiling entity sum_generator
+# -- Compiling architecture structural of sum_generator
+# -- Compiling entity G
+# -- Compiling architecture behavioral of G
+# -- Compiling entity PG
+# -- Compiling architecture behavioral of PG
+# -- Compiling entity PGnet
+# -- Compiling architecture behavioral of PGnet
+# -- Loading package MATH_REAL
+# -- Compiling entity carry_generator
+# -- Compiling architecture structural of carry_generator
+# -- Compiling entity P4_adder
+# -- Compiling architecture structural of P4_adder
+# -- Compiling entity xor_gate
+# -- Compiling architecture behav of xor_gate
+# -- Compiling entity generic_xor
+# -- Compiling architecture struct of generic_xor
+# -- Compiling entity adder_sub
+# -- Compiling architecture struct of adder_sub
+# -- Compiling entity rca_booth
+# -- Compiling architecture BEHAVIORAL of rca_booth
+# -- Compiling entity mux_encoder_block
+# -- Compiling architecture behavioral of mux_encoder_block
+# -- Compiling entity booth_mul
+# -- Compiling architecture arch of booth_mul
+# -- Compiling entity first_level
+# -- Compiling architecture behav of first_level
+# -- Compiling entity second_level
+# -- Compiling architecture behav of second_level
+# -- Compiling entity third_level
+# -- Compiling architecture behav of third_level
+# -- Compiling entity shifter_t2
+# -- Compiling architecture struct of shifter_t2
+# -- Compiling entity comparator
+# -- Compiling architecture behav of comparator
+# -- Compiling entity logic_t2
+# -- Compiling architecture structural of logic_t2
+# -- Compiling entity mux_alu
+# -- Compiling architecture behav of mux_alu
+# End time: 10:11:53 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/04-memory_unit/4-memory_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:12:04 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/04-memory_unit/4-memory_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Compiling entity memory_unit
+# -- Compiling architecture structural of memory_unit
+# End time: 10:12:04 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:12:19 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Compiling entity write_back_unit
+# ** Error: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(15): (vcom-1136) Unknown identifier "numbit".
+# ** Error: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(15): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(15): Type error in range expression.
+# ** Error: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(16): (vcom-1136) Unknown identifier "numbit".
+# ** Error: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(16): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(16): Type error in range expression.
+# ** Note: /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd(17): VHDL Compiler exiting
+# End time: 10:12:19 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:13:15 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/05-write_unit/5-write_back_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Compiling entity write_back_unit
+# -- Compiling architecture structural of write_back_unit
+# End time: 10:13:15 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:13:23 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(321): Signal [mode IN port] "mux_one_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(322): Signal [mode IN port] "mux_two_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Note: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(361): VHDL Compiler exiting
+# End time: 10:13:23 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:14:13 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(321): Signal [mode IN port] "mux_one_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(322): Signal [mode IN port] "mux_two_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Note: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(361): VHDL Compiler exiting
+# End time: 10:14:13 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:14:17 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(321): Signal [mode IN port] "mux_one_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(322): Signal [mode IN port] "mux_two_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Note: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(361): VHDL Compiler exiting
+# End time: 10:14:17 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:16:23 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(321): Signal [mode IN port] "mux_one_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(322): Signal [mode IN port] "mux_two_control" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
+# ** Note: /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd(361): VHDL Compiler exiting
+# End time: 10:16:23 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:19:12 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# End time: 10:19:12 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:19:14 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# End time: 10:19:14 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:19:14 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/00-Datapath/00-datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity datapath
+# -- Compiling architecture structural of datapath
+# End time: 10:19:14 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/dlx_top.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:19:18 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/dlx_top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity DLX
+# -- Compiling architecture structural of DLX
+# End time: 10:19:18 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/tb_dlx_top.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 10:19:20 on Oct 19,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxTest/dlx/tb_dlx_top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity tb_dlx_top
+# -- Compiling architecture behavioural of tb_dlx_top
+# End time: 10:19:20 on Oct 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
