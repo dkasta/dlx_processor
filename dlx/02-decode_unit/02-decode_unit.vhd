@@ -183,15 +183,6 @@ architecture structural of decode_unit is
               RD_OUT:             out std_logic_vector(NumBitAddress-1 downto 0));
     end component;
 
-     --component BRANCHDECISIONUNIT
-     --  port(   OPCODE:       in std_logic_vector(5 downto 0);
-     --          JOFFSET_IN:   in std_logic_vector(25 downto 0);
-     --          BOFFSET_IN:   in std_logic_vector(15 downto 0);
-     --          NPC_IN:       in std_logic_vector(31 downto 0);
-     --          REG1_IN:      in std_logic_vector(31 downto 0);
-     --          REG2_IN:      in std_logic_vector(31 downto 0);
-     --          NPC_OUT:      out std_logic_vector(31 downto 0));
-     --end component;
 
   signal sign_extention_16 : std_logic_vector(31 downto 0);
   signal sign_extention_26 : std_logic_vector(31 downto 0);
