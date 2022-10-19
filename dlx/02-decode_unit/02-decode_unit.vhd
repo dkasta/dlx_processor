@@ -38,9 +38,11 @@ entity decode_unit is
             NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
             comparator_out:        out std_logic_vector(1 downto 0);
             RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0);
-            nop_add:              out std_logic;  -- It goes in Fetch and CU
+            nop_add:              out std_logic;  -- It goes in CU
             alu_forwarding_one:   out std_logic;
-            alu_forwarding_two:   out std_logic
+            alu_forwarding_two:   out std_logic;
+            mem_forwarding_one:   out std_logic;
+            mem_forwarding_two:   out std_logic
             );
 end decode_unit;
 

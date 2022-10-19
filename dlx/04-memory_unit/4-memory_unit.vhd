@@ -16,8 +16,8 @@ entity memory_unit is
            rd_reg_out:        out std_logic_vector(4 downto 0);
            b_reg_out:         out std_logic_vector(numbit-1 downto 0);
            DRAM_addr:         out std_logic_vector(numbit-1 downto 0);
-           alu_forwarding_one_vector     out std_logic_vector(numbit-1 downto 0);
-           alu_forwarding_two_vector     out std_logic_vector(numbit-1 downto 0)
+           alu_forwarding_one_vector:     out std_logic_vector(numbit-1 downto 0);
+           alu_forwarding_two_vector:     out std_logic_vector(numbit-1 downto 0)
            );
 end memory_unit;
 

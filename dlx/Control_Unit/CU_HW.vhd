@@ -16,8 +16,8 @@ entity CU_HARDWIRED is
               EN2      : OUT std_logic;
               
              -- EX Control Signal
-             mux_one_control      : OUT std_logic;
-             mux_two_control      : OUT std_logic;
+             mux_one_control      : OUT std_logic_vector(1 downto 0);
+             mux_two_control      : OUT std_logic_vector(1 downto 0);
              ALU_OPCODE      : OUT std_logic_vector(4 downto 0);
              EN3      : OUT std_logic;
                
@@ -35,8 +35,11 @@ entity CU_HARDWIRED is
              FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
              Clk : IN std_logic;
              Rst : IN std_logic;
+             nop_add:            IN std_logic;  -- It goes in CU
              alu_forwarding_one: IN std_logic;
              alu_forwarding_two: IN std_logic;
+             mem_forwarding_one: IN std_logic;
+             mem_forwarding_two: IN std_logic;
              FLUSH : IN std_logic_vector(1 downto 0));                  -- Active high
               
 end CU_HARDWIRED;

@@ -55,11 +55,7 @@ architecture structural of execution_unit is
   end component;  
 
   signal mux_one_out_rf : std_logic_vector(numbit-1 downto 0);
-  signal mux_one_out_mem_forwarding : std_logic_vector(numbit-1 downto 0);
-  signal mux_one_out_alu_forwarding : std_logic_vector(numbit-1 downto 0);
   signal mux_two_out_rf : std_logic_vector(numbit-1 downto 0);
-  signal mux_two_out_mem_forwarding : std_logic_vector(numbit-1 downto 0);
-  signal mux_two_out_alu_forwarding : std_logic_vector(numbit-1 downto 0);
   signal alu_out : std_logic_vector(numbit-1 downto 0);
   signal s_cout : std_logic;
 
@@ -82,15 +78,6 @@ architecture structural of execution_unit is
               D => imm_reg_in,
               SEL => mux_two_control,
               Y => mux_two_out_rf);
-
---    MUX_TWO_MEM : MUX21_GENERIC
---    generic map(numbit)
---    port map(mux_two_out_rf,mem_forwarding_value,mem_forwarding_two,mux_two_out_mem_forwarding);
-
---    MUX_TWO_ALU : MUX21_GENERIC
---    generic map(numbit)
---    port map(mux_two_out_mem_forwarding,alu_forwarding_value,alu_forwarding_two,mux_two_out_alu_forwarding);
-
 
 
     ALU_comp : ALU
