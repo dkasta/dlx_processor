@@ -139,7 +139,7 @@ architecture structural of DLX is
                alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
                wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
                rd_out_wb:             out std_logic_vector(4 downto 0);
-               FLUSH:                  out std_logic_vector(1 downto 0)
+               FLUSH:                  out std_logic_vector(1 downto 0);
                -------------------------------------------------------------------
                --signal for dram WRF 
                inmemsignal : IN std_logic_vector(numbit - 1 downto 0);
@@ -147,13 +147,13 @@ architecture structural of DLX is
                addressmemsignal: OUT std_logic_vector(numbit-1 downto 0); 
                rd_memsignal:     OUT std_logic;
                wr_memsignal:  OUT std_logic;
-               ram_ready: IN std_logic;
+               ram_ready: IN std_logic
                );
     end component;
 
     component CU_HARDWIRED
       port (-- ID Control Signals
-             jal_mux_control : OUT std_logic;
+             wr31_enable : OUT std_logic;
              write_enable    : OUT std_logic;    -- MUX-A Sel
              rd1_enable    : OUT std_logic;    -- MUX-B Sel
              rd2_enable      : OUT std_logic;
@@ -226,9 +226,9 @@ end component;
   signal mux_wb_control_signal : std_logic;
   signal FLUSH_signal : std_logic_vector(1 downto 0);
   --WRF signal DRAM
-  signal inmemsignal_out : std_logic_vector(numbit - 1 downto 0);
-  signal outmemsignal_in : std_logic_vector(numbit - 1 downto 0); 
-  signal addressmemsignal_in: std_logic_vector(numbit-1 downto 0); 
+  signal inmemsignal_out : std_logic_vector(BIT_RISC - 1 downto 0);
+  signal outmemsignal_in : std_logic_vector(BIT_RISC - 1 downto 0); 
+  signal addressmemsignal_in: std_logic_vector(BIT_RISC-1 downto 0); 
   signal rd_memsignal_in:     std_logic;
   signal wr_memsignal_in:  std_logic;
   signal ram_ready_out: std_logic;
@@ -396,12 +396,12 @@ begin  -- DLX
                 alu_out_mem => alu_out_mem_signal,
                 wb_stage_out => wb_stage_out_signal,
                 rd_out_wb => rd_out_wb_signal,
-                FLUSH => FLUSH_signal;
-               inmemsignal=>inmemsignal_out;
-               outmemsignal=>outmemsignal_in; 
-               addressmemsignal=>addressmemsignal_in; 
-               rd_memsignal=>rd_memsignal_in;
-               wr_memsignal=>wr_memsignal_in;
+                FLUSH => FLUSH_signal,
+               inmemsignal=>inmemsignal_out,
+               outmemsignal=>outmemsignal_in, 
+               addressmemsignal=>addressmemsignal_in, 
+               rd_memsignal=>rd_memsignal_in,
+               wr_memsignal=>wr_memsignal_in,
                ram_ready=>ram_ready_out);
                 
 end structural;

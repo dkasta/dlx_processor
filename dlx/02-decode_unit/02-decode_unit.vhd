@@ -22,7 +22,6 @@ entity decode_unit is
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
             imm_mux_control:       in std_logic;
-            jal_mux_control:       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
@@ -49,8 +48,7 @@ entity decode_unit is
             mem_forwarding_one:   out std_logic;
             mem_forwarding_two:   out std_logic;
             ------- jump signals
-            wr31_enable:          in std_logic;
-            NPC_IN: in        std_logic_vector(numBit_data-1 downto 0)
+            wr31_enable:          in std_logic
             );
 end decode_unit;
 
@@ -307,7 +305,7 @@ architecture structural of decode_unit is
           read=>rd_mem,
           write=>wr_mem);
 
- RF_write_address <= RD_IN
+ RF_write_address <= RD_IN;
 
 
  REGA_MUX : MUX21_GENERIC

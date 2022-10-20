@@ -251,7 +251,7 @@ begin
         cw2 <= (others => '0');
       elsif (nop_add = '1') then
         cw3 <= (others => '0');
-        else
+      else
         cw2 <= cw;                                --21
         if (alu_forwarding_one = '1') and ( alu_forwarding_two = '0') then   
           cw3 <= "01" & cw2(13 downto 0);

@@ -71,7 +71,7 @@ entity datapath is
            --WB output
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_wb:              out std_logic_vector(4 downto 0);
-           FLUSH:                  out std_logic_vector (1 downto 0)
+           FLUSH:                  out std_logic_vector (1 downto 0);
 
            --signal for dram WRF 
            inmemsignal : IN std_logic_vector(numbit - 1 downto 0);
@@ -79,7 +79,7 @@ entity datapath is
            addressmemsignal: OUT std_logic_vector(numbit-1 downto 0); 
            rd_memsignal:     OUT std_logic;
            wr_memsignal:  OUT std_logic;
-           ram_ready: IN std_logic;
+           ram_ready: IN std_logic
            );
 end datapath;
 
@@ -152,7 +152,7 @@ component decode_unit is
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
             imm_mux_control:       in std_logic;
-            jal_mux_control:       in std_logic;
+            wr31_enable:       in std_logic;
        	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
        	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
@@ -289,7 +289,7 @@ end component;
               RD_IN => rdoutwbsignal,
               instr_fetched => instrfetchedsigal,
               imm_mux_control => imm_mux_control,
-              jal_mux_control => jal_mux_control,
+              wr31_enable => wr31_enable,
               RD_OUT => rdoutidsignal,
               NPC_OUT => npcoutidsignal,
               A_REG_OUT => aregsignal,
