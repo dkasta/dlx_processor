@@ -17,7 +17,7 @@ entity datapath is
            to_IR:                 in std_logic_vector(numbit - 1 downto 0); -- In from IRAM
            ------------------------------------------------------------------
            -- ID input
-           jal_mux_control:        in std_logic;
+           wr31_enable:        in std_logic;
            write_enable:          in std_logic;
            rd1_enable:            in std_logic;
            rd2_enable:            in std_logic;
