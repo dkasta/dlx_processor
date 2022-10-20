@@ -22430,3 +22430,1238 @@ run 200 ns
 #    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 13 ns  Iteration: 3  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/muxout1
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/Control_Unit/CU_HW.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:20:55 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/Control_Unit/CU_HW.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity CU_HARDWIRED
+# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
+# End time: 23:20:56 on Oct 20,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim work.tb_dlx_top
+# End time: 23:21:07 on Oct 20,2022, Elapsed time: 0:08:02
+# Errors: 1, Warnings: 156
+# vsim work.tb_dlx_top 
+# Start time: 23:21:07 on Oct 20,2022
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: /home/ms22.21/dlxtest2/dlx/dlx_top.vhd(309): (vopt-3473) Component instance "/tb_dlx_top/U1/DRAM_WRF : DRAMWRF" is not bound.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.globals
+# Loading work.mytypes
+# Loading work.tb_dlx_top(behavioural)#1
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.dlx(structural)#1
+# ** Warning: (vsim-3473) Component instance "DRAM_WRF : DRAMWRF" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1 File: /home/ms22.21/dlxtest2/dlx/dlx_top.vhd
+# Loading work.datapath(structural)#1
+# Loading work.register_generic(structural)#1
+# Loading work.decode_unit(structural)#1
+# Loading work.mux21_generic(structural)#1
+# Loading work.wrf(structural)#1
+# Loading work.physical_register_file(structural)#1
+# Loading work.register_generic_wrf(structural)#1
+# Loading work.alu(behaviour)#1
+# Loading ieee.math_real(body)
+# Loading work.p4_adder(structural)#1
+# Loading work.g(behavioral)#1
+# Loading work.pg(behavioral)#1
+# Loading work.buf(behavioral)#1
+# Loading work.csblock(structural)#1
+# Loading work.booth_mul(arch)#1
+# Loading work.rca_booth(behavioral)#1
+# Loading work.logic_t2(structural)#1
+add wave -position insertpoint sim:/tb_dlx_top/*
+add wave -position insertpoint sim:/tb_dlx_top/U1/CONTROL_I/*
+add wave -position insertpoint sim:/tb_dlx_top/U1/DATAPATH_I/*
+run 200 ns
+# ** Error: (vsim-3953) STD_LOGIC_1164.HREAD End of string encountered
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/IRAM_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/RDSEL
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/FETCH
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 9 ns  Iteration: 9  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 9 ns  Iteration: 10  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 9 ns  Iteration: 14  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/muxout2
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/RDSEL
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 13 ns  Iteration: 3  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/muxout1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 15 ns  Iteration: 9  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 19 ns  Iteration: 3  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/dlx_top.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:35:56 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/dlx_top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity DLX
+# -- Compiling architecture structural of DLX
+# End time: 23:35:57 on Oct 20,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim work.tb_dlx_top
+# End time: 23:36:07 on Oct 20,2022, Elapsed time: 0:15:00
+# Errors: 3, Warnings: 158
+# vsim work.tb_dlx_top 
+# Start time: 23:36:07 on Oct 20,2022
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: /home/ms22.21/dlxtest2/dlx/dlx_top.vhd(309): (vopt-3473) Component instance "/tb_dlx_top/U1/DRAM_WRF : DRAMWRF" is not bound.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.globals
+# Loading work.mytypes
+# Loading work.tb_dlx_top(behavioural)#1
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.dlx(structural)#1
+# ** Warning: (vsim-3473) Component instance "DRAM_WRF : DRAMWRF" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1 File: /home/ms22.21/dlxtest2/dlx/dlx_top.vhd
+# Loading work.datapath(structural)#1
+# Loading work.register_generic(structural)#1
+# Loading work.decode_unit(structural)#1
+# Loading work.mux21_generic(structural)#1
+# Loading work.wrf(structural)#1
+# Loading work.physical_register_file(structural)#1
+# Loading work.register_generic_wrf(structural)#1
+# Loading work.alu(behaviour)#1
+# Loading ieee.math_real(body)
+# Loading work.p4_adder(structural)#1
+# Loading work.g(behavioral)#1
+# Loading work.pg(behavioral)#1
+# Loading work.buf(behavioral)#1
+# Loading work.csblock(structural)#1
+# Loading work.booth_mul(arch)#1
+# Loading work.rca_booth(behavioral)#1
+# Loading work.logic_t2(structural)#1
+add wave -position insertpoint sim:/tb_dlx_top/*
+add wave -position insertpoint sim:/tb_dlx_top/U1/CONTROL_I/*
+add wave -position insertpoint sim:/tb_dlx_top/U1/DATAPATH_I/*
+run 200 ns
+# ** Error: (vsim-3953) STD_LOGIC_1164.HREAD End of string encountered
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/IRAM_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/RDSEL
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/FETCH
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 7 ns  Iteration: 9  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 7 ns  Iteration: 10  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 7 ns  Iteration: 14  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 11 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 11 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 11 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/RDSEL
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R1HazardDetection/hazard_detection_source1.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:51:47 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R1HazardDetection/hazard_detection_source1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION1
+# -- Compiling architecture BEHAVIORAL of HAZARD_DETECTION1
+# End time: 23:51:48 on Oct 20,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:51:51 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION2
+# -- Compiling architecture BEHAVIORAL of HAZARD_DETECTION2
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(39): (vcom-1136) Unknown identifier "RS1_REG_IN".
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(39): (vcom-1590) Bad expression in right operand of infix expression 'and'.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(39): Type error resolving infix expression "and" as type std.STANDARD.BOOLEAN.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(41): Illegal target for signal assignment.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(41): (vcom-1136) Unknown identifier "rs1_reg".
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(45): Illegal target for signal assignment.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(45): (vcom-1136) Unknown identifier "rs1_reg".
+# ** Note: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(124): VHDL Compiler exiting
+# End time: 23:51:51 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:52:38 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION2
+# -- Compiling architecture BEHAVIORAL of HAZARD_DETECTION2
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(45): Illegal target for signal assignment.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(45): (vcom-1136) Unknown identifier "rs1_reg".
+# ** Note: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(124): VHDL Compiler exiting
+# End time: 23:52:38 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:52:55 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION2
+# -- Compiling architecture BEHAVIORAL of HAZARD_DETECTION2
+# End time: 23:52:55 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/RDSelect/RDSelect.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:53:01 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/RDSelect/RDSelect.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity RDSELECT
+# -- Compiling architecture BEHAVIORAL of RDSELECT
+# End time: 23:53:02 on Oct 20,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/hazard_detection.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:53:04 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/hazard_detection.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION
+# -- Compiling architecture structural of HAZARD_DETECTION
+# End time: 23:53:04 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/02-decode_unit.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:53:08 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/02-decode_unit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Loading package NUMERIC_STD
+# -- Compiling entity decode_unit
+# -- Compiling architecture structural of decode_unit
+# End time: 23:53:09 on Oct 20,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/Control_Unit/CU_HW.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:53:13 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/Control_Unit/CU_HW.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity CU_HARDWIRED
+# -- Compiling architecture BEHAVIORAL of CU_HARDWIRED
+# End time: 23:53:13 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/dlx_top.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:53:15 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/dlx_top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity DLX
+# -- Compiling architecture structural of DLX
+# End time: 23:53:15 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/tb_dlx_top.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 23:53:15 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/tb_dlx_top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity tb_dlx_top
+# -- Compiling architecture behavioural of tb_dlx_top
+# End time: 23:53:16 on Oct 20,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim work.tb_dlx_top
+# End time: 23:53:27 on Oct 20,2022, Elapsed time: 0:17:20
+# Errors: 10, Warnings: 154
+# vsim work.tb_dlx_top 
+# Start time: 23:53:27 on Oct 20,2022
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: /home/ms22.21/dlxtest2/dlx/dlx_top.vhd(309): (vopt-3473) Component instance "/tb_dlx_top/U1/DRAM_WRF : DRAMWRF" is not bound.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.globals
+# Loading work.mytypes
+# Loading work.tb_dlx_top(behavioural)#1
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_textio(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.dlx(structural)#1
+# ** Warning: (vsim-3473) Component instance "DRAM_WRF : DRAMWRF" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1 File: /home/ms22.21/dlxtest2/dlx/dlx_top.vhd
+# Loading work.datapath(structural)#1
+# Loading work.register_generic(structural)#1
+# Loading work.decode_unit(structural)#1
+# Loading work.mux21_generic(structural)#1
+# Loading work.wrf(structural)#1
+# Loading work.physical_register_file(structural)#1
+# Loading work.register_generic_wrf(structural)#1
+# Loading work.alu(behaviour)#1
+# Loading ieee.math_real(body)
+# Loading work.p4_adder(structural)#1
+# Loading work.g(behavioral)#1
+# Loading work.pg(behavioral)#1
+# Loading work.buf(behavioral)#1
+# Loading work.csblock(structural)#1
+# Loading work.booth_mul(arch)#1
+# Loading work.rca_booth(behavioral)#1
+# Loading work.logic_t2(structural)#1
+add wave -position insertpoint sim:/tb_dlx_top/*
+add wave -position insertpoint sim:/tb_dlx_top/U1/CONTROL_I/*
+add wave -position insertpoint sim:/tb_dlx_top/U1/DATAPATH_I/*
+run 200 ns
+# ** Error: (vsim-3953) STD_LOGIC_1164.HREAD End of string encountered
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/IRAM_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(0)/special_case/first_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/RDSEL
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel_spill
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/sel
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/phy/ENCODER1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/RF/dec
+# ** Warning: NUMERIC_STD."<": metavalue detected, returning FALSE
+#    Time: 0 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/FETCH
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(7)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(6)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(5)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(4)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(3)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(2)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/mul/adding(1)/condition/other_rca
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 7 ns  Iteration: 9  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 7 ns  Iteration: 10  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 7 ns  Iteration: 14  Instance: /tb_dlx_top/U1/DATAPATH_I/EXECUTE/ALU_comp/comp
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 11 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 11 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 11 ns  Iteration: 5  Instance: /tb_dlx_top/U1/CONTROL_I
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/RDSEL
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 1  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R1_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 13 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
