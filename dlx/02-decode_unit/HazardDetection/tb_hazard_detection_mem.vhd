@@ -93,7 +93,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00010";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00011";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -135,7 +135,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00011";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -175,7 +175,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -215,7 +215,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -255,7 +255,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00010";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00011";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -295,7 +295,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00011";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -333,7 +333,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -371,7 +371,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -411,7 +411,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00010";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00011";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -451,7 +451,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00001";
          RS1_REG_IN_s<="00011";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -489,7 +489,7 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-         wait for clktime;
+         wait for 2*clktime;
          reset_s<='1';
          wait for clktime;
          reset_s<='0';
@@ -527,8 +527,62 @@ architecture TEST of TB_HAZARD_DETECTION is
          RD_REG_IN_RTYPE_s<="00000";
          RS1_REG_IN_s<="00001";
          RS2_REG_IN_s<="00010";
-        wait;
-        
+         wait for 2*clktime;
+         reset_s<='1';
+         wait for clktime;
+         reset_s<='0';
+        --addi r9, r2, #50    
+        --0-5 opcode "100011"
+        --6-10 rs1 "00010"
+        --11-15 rd "01001"
+        --16-31 immediate "0000000000110010"
+         OPCODE_s<="001000"; 
+         RD_REG_IN_ITYPE_s<="01001";
+         RD_REG_IN_RTYPE_s<="00000";
+         RS1_REG_IN_s<="00010";
+         RS2_REG_IN_s<="01001";
+         wait for clktime;
+        --addi r10, r2, #50 
+        --0-5 opcode "001000"
+        --6-10 rs1 "00010"
+        --11-15 rd "01010"
+        --16-31 immediate "0000000000110010"  
+         OPCODE_s<="001000"; 
+         RD_REG_IN_ITYPE_s<="01010";
+         RD_REG_IN_RTYPE_s<="00000";
+         RS1_REG_IN_s<="00010";
+         RS2_REG_IN_s<="01010";
+         wait for clktime;
+        --add r11, r9, r10   
+        --0-5 opcode "00000"
+        --6-10 rs1 "01001"
+        --11-15 rs2 "01010"
+        --16-20 rd "01011"
+        --21-25 unset
+        --26-31 func
+         OPCODE_s<="000000"; 
+         RD_REG_IN_ITYPE_s<="01010";
+         RD_REG_IN_RTYPE_s<="01011";
+         RS1_REG_IN_s<="01001";
+         RS2_REG_IN_s<="01010";
+         wait for clktime;
+        --addi r1, r2, #1
+        --0-5 opcode "001000"
+        --6-10 rs1 "00010"
+        --11-15 rd "00001"
+        --16-31 immediate "0000000000000001"
+         OPCODE_s<="001000"; 
+         RD_REG_IN_ITYPE_s<="00001";
+         RD_REG_IN_RTYPE_s<="00000";
+         RS1_REG_IN_s<="00010";
+         RS2_REG_IN_s<="00001";
+         wait for clktime;
+         OPCODE_s<="000000"; 
+         RD_REG_IN_ITYPE_s<="00000";
+         RD_REG_IN_RTYPE_s<="00000";
+         RS1_REG_IN_s<="00000";
+         RS2_REG_IN_s<="00000";
+         wait;
     end process;
-    
 end TEST;
+

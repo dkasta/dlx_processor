@@ -19,12 +19,15 @@ architecture BEHAVIORAL of HAZARD_DETECTION2 is
   signal rd_reg : std_logic_vector(NumBitAddress-1 downto 0);
   signal rd_reg_1 : std_logic_vector(NumBitAddress-1 downto 0);
   signal rd_reg_2 : std_logic_vector(NumBitAddress-1 downto 0);
+  signal rd_reg_3:  std_logic_vector(NumBitAddress-1 downto 0);
   signal rs2_reg : std_logic_vector(NumBitAddress-1 downto 0);
   signal rs2_reg_1 : std_logic_vector(NumBitAddress-1 downto 0);
   signal rs2_reg_2 : std_logic_vector(NumBitAddress-1 downto 0);
+  signal rs2_reg_3 : std_logic_vector(NumBitAddress-1 downto 0);
   signal opcode_i: std_logic_vector(OP_CODE_SIZE - 1 downto 0);
   signal opcode_1: std_logic_vector(OP_CODE_SIZE - 1 downto 0);
   signal opcode_2: std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+  signal opcode_3: std_logic_vector(OP_CODE_SIZE - 1 downto 0);
 begin
 
     IN_PROCESS : process(OPCODE,RS2_REG_IN,RD_REG_IN,RESET)
@@ -59,22 +62,28 @@ begin
 
         rs2_reg_1 <= (others => '0');
         rs2_reg_2 <= (others => '0');
+        rs2_reg_3 <= (others => '0');
         rd_reg_1 <= (others => '0');
         rd_reg_2 <= (others => '0');
+        rd_reg_3 <= (others => '0');
         opcode_1 <= NTYPE_NOP;
         opcode_2 <= NTYPE_NOP;
+        opcode_3 <= NTYPE_NOP;
       elsif(rising_edge(Clk)) then 
 
         opcode_1 <= opcode_i; --id
         opcode_2 <= opcode_1; --ex
+        opcode_3<=opcode_2; --mem
         rs2_reg_1 <= rs2_reg; --id
         rs2_reg_2 <= rs2_reg_1; --ex
+        rs2_reg_3 <= rs2_reg_2; --mem
         rd_reg_1 <= rd_reg; --id
         rd_reg_2 <= rd_reg_1; --ex
+        rd_reg_3 <= rd_reg_2; --ex
       end if;
     end process PIPE;
 
-    alu_forwarding_PROCESS : process (reset,opcode_1,opcode_i,rd_reg_1,rs2_reg)
+    alu_forwarding_PROCESS : process (reset,opcode_1,opcode_2,rd_reg_2,rs2_reg_1)
     begin
       if reset = '1' then                  -- asynchronous reset (active high)
         alu_forwarding_two <= '0';
@@ -82,9 +91,11 @@ begin
         --alu-alu alu_forwarding 
         --add R1,R2,R3 IF ID EX MEM WB -source
         --add R2,R1,R3	IF ID EX  MEM WB  -dest ALU FORWARDING
-        if(opcode_i=RTYPE and (opcode_1=opcode_i or opcode_1=ITYPE_ADDI or opcode_1=ITYPE_ANDI or opcode_1=ITYPE_ORI or opcode_1=ITYPE_SGEI or opcode_1=ITYPE_SLEI or opcode_1=ITYPE_SLLI or opcode_1=ITYPE_SNEI or opcode_1=ITYPE_SRLI or opcode_1=ITYPE_SUBI or opcode_1=ITYPE_XORI)) then
-            if(rd_reg_1=rs2_reg) then
+        if(opcode_1=RTYPE and (opcode_2=opcode_1 or opcode_2=ITYPE_ADDI or opcode_2=ITYPE_ANDI or opcode_2=ITYPE_ORI or opcode_2=ITYPE_SGEI or opcode_2=ITYPE_SLEI or opcode_2=ITYPE_SLLI or opcode_2=ITYPE_SNEI or opcode_2=ITYPE_SRLI or opcode_2=ITYPE_SUBI or opcode_2=ITYPE_XORI)) then
+            if(rd_reg_2=rs2_reg_1) then
                 alu_forwarding_two<='1';
+            else
+                alu_forwarding_two<='0';
             end if;
         else
             alu_forwarding_two<='0';
@@ -92,14 +103,16 @@ begin
       end if;
     end process alu_forwarding_PROCESS;
 
-    mem_forwarding_PROCESS : process (reset,rd_reg_2,rs2_reg,opcode_i,opcode_2)
+    mem_forwarding_PROCESS : process (reset,rd_reg_3,rs2_reg_1,opcode_1,opcode_3)
     begin
       if reset = '1' then                  -- asynchronous reset (active high)
         mem_forwarding_two <= '0';
       else                 -- rising clock edge
-        if(opcode_i=RTYPE and (opcode_2=ITYPE_ADDI or opcode_2=ITYPE_ANDI or opcode_2=ITYPE_BEQZ or opcode_2=ITYPE_BNEZ or opcode_2=ITYPE_LW or opcode_2=ITYPE_ORI or opcode_2=ITYPE_SGEI or opcode_2=ITYPE_SLEI or opcode_2=ITYPE_SLLI or opcode_2=ITYPE_SNEI or opcode_2=ITYPE_SRLI or opcode_2=ITYPE_SUBI or opcode_2=ITYPE_SW or opcode_2=ITYPE_XORI or opcode_2=RTYPE)) then
-            if(rd_reg_2=rs2_reg) then
+        if(opcode_1=RTYPE and (opcode_3=ITYPE_ADDI or opcode_3=ITYPE_ANDI or opcode_3=ITYPE_BEQZ or opcode_3=ITYPE_BNEZ or opcode_3=ITYPE_LW or opcode_3=ITYPE_ORI or opcode_3=ITYPE_SGEI or opcode_3=ITYPE_SLEI or opcode_3=ITYPE_SLLI or opcode_3=ITYPE_SNEI or opcode_3=ITYPE_SRLI or opcode_3=ITYPE_SUBI or opcode_3=ITYPE_SW or opcode_3=ITYPE_XORI or opcode_3=RTYPE)) then
+            if(rd_reg_3=rs2_reg_1) then
                 mem_forwarding_two<='1';
+            else
+                mem_forwarding_two<='0';
             end if;
         else
             mem_forwarding_two<='0';
@@ -107,14 +120,16 @@ begin
       end if;
     end process mem_forwarding_PROCESS;
 
-    nop_PROCESS : process (opcode_i,opcode_1,rd_reg_1,rs2_reg,reset)
+    nop_PROCESS : process (opcode_1,opcode_2,rd_reg_2,rs2_reg_1,reset)
     begin
       if reset = '1' then                  -- asynchronous reset (active high)
         nop_add <= '0';
       else              -- rising clock edge
-        if(opcode_i=RTYPE and (opcode_1=ITYPE_BEQZ or opcode_1=ITYPE_BNEZ or opcode_1=ITYPE_LW or opcode_1=ITYPE_SW) ) then
-            if(rd_reg_1=rs2_reg) then
+        if(opcode_1=RTYPE and (opcode_2=ITYPE_BEQZ or opcode_2=ITYPE_BNEZ or opcode_2=ITYPE_LW or opcode_2=ITYPE_SW) ) then
+            if(rd_reg_2=rs2_reg_1) then
                 nop_add<='1';
+            else
+                nop_add<='0';
             end if;
         else
             nop_add<='0';
