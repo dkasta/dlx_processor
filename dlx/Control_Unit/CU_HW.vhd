@@ -265,6 +265,10 @@ begin
           cw3 <= "1010" & cw2(11 downto 0);
         elsif (mem_forwarding_one = '0') and ( mem_forwarding_two = '1') then   
           cw3 <= cw2(15 downto 14) & "10" & cw2(11 downto 0);
+        elsif (alu_forwarding_one = '1') and ( mem_forwarding_two = '1') then   
+          cw3 <= "0110" & cw2(11 downto 0);
+        elsif (mem_forwarding_one = '1') and ( alu_forwarding_two = '1') then   
+          cw3 <= "1001" & cw2(11 downto 0);
         else
           cw3 <= cw2(15 downto 0);         --16
         end if;
