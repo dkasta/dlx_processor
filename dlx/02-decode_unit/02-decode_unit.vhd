@@ -29,12 +29,17 @@ entity decode_unit is
        	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	IMM_REG_OUT: 		      out std_logic_vector(numbit-1 downto 0);
+
+            --signal DRAM WRF
             outmem:               out std_logic_vector(numbitdata-1 downto 0); --to dmem
             inmem:                in std_logic_vector(numbitdata-1 downto 0); --from dmem
             addressmem:           out std_logic_vector(numaddr-1 downto 0); --address from wrf_cu
             rd_mem:               out std_logic;
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
+
+            -- JUMP 
+
             NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
             comparator_out:        out std_logic_vector(1 downto 0);
             RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0);
@@ -42,7 +47,10 @@ entity decode_unit is
             alu_forwarding_one:   out std_logic;
             alu_forwarding_two:   out std_logic;
             mem_forwarding_one:   out std_logic;
-            mem_forwarding_two:   out std_logic
+            mem_forwarding_two:   out std_logic;
+            ------- jump signals
+            wr31_enable:          in std_logic;
+            NPC_IN: in        std_logic_vector(numBit_data-1 downto 0)
             );
 end decode_unit;
 
@@ -81,47 +89,48 @@ architecture structural of decode_unit is
                 write:        out std_logic);
       end component;
 
-      component wrf
-        generic(
-            numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
-            numBit_data: integer := NumBitData; -- numero di bit dei registri
-            windowsbit: integer:=Windows_Bit;
-            numreg_inlocout: integer:=Numreg_IN_LOC_OUT; --number of register in each block in local out
-            numreg_global: integer:=Numreg_g; --number of register in the global block
-            num_windows: integer:= tot_windows); --number of total windows
-        port( 
-            
-            -- to external
-            clk: 		IN std_logic;
-            rst: 	    IN std_logic;
+      component wrf is
+      generic(
+          numBit_address: integer := NumBitAddress; -- bit numbers of address 5 
+          numBit_data: integer := NumBitData; -- numero di bit dei registri
+          windowsbit: integer := Windows_Bit;
+          numreg_inlocout: integer := Numreg_IN_LOC_OUT; --number of register in each block in local out
+          numreg_global: integer := Numreg_g; --number of register in the global block
+          num_windows: integer := tot_windows); --number of total windows
+      port( 
+          
+          -- to external
+          clk: 		IN std_logic;
+          rst: 	    IN std_logic;
 
-            --control signals
+          --control signals
 
-            rd1: 		    IN std_logic;
-            rd2: 		    IN std_logic;
-            WR: 		    IN std_logic;
-            call:           IN std_logic; -- 1 if there is a call to another subroutine
-            ret:            IN std_logic; --1 if there is a retur to another subroutine
-            done_fill_cu:   OUT std_logic;
-            done_spill_cu:  OUT std_logic;
-            --address and data
+          rd1: 		    IN std_logic;
+          rd2: 		    IN std_logic;
+          WR: 		    IN std_logic;
+          call:           IN std_logic; -- 1 if there is a call to another subroutine
+          ret:            IN std_logic; --1 if there is a retur to another subroutine
+          done_fill_cu:   out std_logic;
+          done_spill_cu:  out std_logic;
+          --address and data
 
-            rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
-            ADD_RD1: 	IN std_logic_vector(numBit_address - 1 downto 0);
-            ADD_RD2: 	IN std_logic_vector(numBit_address - 1 downto 0);
-            DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
-            out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-            out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
-
-            -- for MEMORY
-            pop_mem:    OUT std_logic;
-            push_mem:   OUT std_logic;
-            out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
-            in_mem:  IN std_logic_vector(numBit_data - 1 downto 0);
-            RAM_READY:  IN std_logic
-
-        );
-    end component; 
+          rw1: 	IN std_logic_vector(numBit_address - 1 downto 0); 
+          ADD_RD1: 	IN std_logic_vector(numBit_address - 1 downto 0);
+          ADD_RD2: 	IN std_logic_vector(numBit_address - 1 downto 0);
+          DATAIN: 	IN std_logic_vector(numBit_data- 1 downto 0);
+          out_reg_1: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+        out_reg_2: 		OUT std_logic_vector(numBit_data - 1 downto 0);
+          -- for MEMORY
+          pop_mem:    OUT std_logic;
+          push_mem:   OUT std_logic;
+          out_mem:  OUT std_logic_vector(numBit_data - 1 downto 0);
+          in_mem:  IN std_logic_vector(numBit_data - 1 downto 0);
+          RAM_READY:  IN std_logic;
+          --jump 
+          wr31_enable: in std_logic;
+          data_31: in  std_logic_vector(numBit_data-1 downto 0)
+      );
+  end component;
 
       component register_generic is
         generic (NBIT : integer := Bit_Register);
@@ -274,7 +283,9 @@ architecture structural of decode_unit is
           pop_mem => pop,
           push_mem => push,
           RAM_READY => ramr,
-          in_mem => reg_out
+          in_mem => reg_out,
+          wr31_enable=>wr31_enable,
+          data_31=>NPC_IN
           );
 
   RF_ONE_OUT_ID <= RF_ONE_OUT;

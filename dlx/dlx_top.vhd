@@ -61,6 +61,20 @@ architecture structural of DLX is
            address_error : OUT std_logic);
     end component;
 
+  -- Data Ram for WRF
+  component DRAMWRF
+      generic(NBIT : integer := NumBitMemoryWord;
+              NADDR : integer :=  NumMemBitAddress);
+      port(clk : IN std_logic;
+           address : IN std_logic_vector(NADDR-1 downto 0);
+           data_in : IN std_logic_vector(NBIT-1 downto 0);
+           write_enable : IN std_logic;
+           read_enable : IN std_logic;
+           reset : IN std_logic;
+           data_out : OUT std_logic_vector(NBIT-1 downto 0);
+           address_error : OUT std_logic);
+    end component;
+
   -- Datapath
   component datapath
       generic( numbit: integer := BIT_RISC);
@@ -126,6 +140,14 @@ architecture structural of DLX is
                wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
                rd_out_wb:             out std_logic_vector(4 downto 0);
                FLUSH:                  out std_logic_vector(1 downto 0)
+               -------------------------------------------------------------------
+               --signal for dram WRF 
+               inmemsignal : IN std_logic_vector(numbit - 1 downto 0);
+               outmemsignal : OUT std_logic_vector(numbit - 1 downto 0); 
+               addressmemsignal: OUT std_logic_vector(numbit-1 downto 0); 
+               rd_memsignal:     OUT std_logic;
+               wr_memsignal:  OUT std_logic;
+               ram_ready: IN std_logic;
                );
     end component;
 
@@ -203,7 +225,13 @@ end component;
   signal EN4_signal : std_logic;
   signal mux_wb_control_signal : std_logic;
   signal FLUSH_signal : std_logic_vector(1 downto 0);
-  
+  --WRF signal DRAM
+  signal inmemsignal_out : std_logic_vector(numbit - 1 downto 0);
+  signal outmemsignal_in : std_logic_vector(numbit - 1 downto 0); 
+  signal addressmemsignal_in: std_logic_vector(numbit-1 downto 0); 
+  signal rd_memsignal_in:     std_logic;
+  signal wr_memsignal_in:  std_logic;
+  signal ram_ready_out: std_logic;
   -----------------------------------------------------
   --Forwarding signals from datapath to CU
   signal nopaddsignal : std_logic;
@@ -211,7 +239,7 @@ end component;
   signal aluforwardingtwosignal : std_logic;
   signal memforwardingonesignal : std_logic;
   signal memforwardingtwosignal : std_logic;
-  ---------------------------------------------------------
+  --------------------------------------------------------- 
 
   signal npc_out_if_signal : std_logic_vector(BIT_RISC - 1 downto 0);
   signal instruction_fetched_signal : std_logic_vector(BIT_RISC - 1 downto 0);
@@ -268,6 +296,18 @@ begin  -- DLX
              reset => reset, 
              data_out => DRAM_to_mux_signal, 
              address_error => address_error_signal);
+
+    DRAM_WRF : DRAMWRF
+    generic map(BIT_RISC, NumMemBitAddress)
+    port map(clk => clk,
+             address => addressmemsignal_in, 
+             data_in => outmemsignal_in, 
+             write_enable => wr_memsignal_in, 
+             read_enable => rd_memsignal_in, 
+             reset => reset, 
+             data_out => inmemsignal_out, 
+             address_error => ram_ready_out);         
+
 
     CONTROL_I : CU_HARDWIRED
     port map( wr31_enable => wr31_enable_signal,
@@ -356,8 +396,13 @@ begin  -- DLX
                 alu_out_mem => alu_out_mem_signal,
                 wb_stage_out => wb_stage_out_signal,
                 rd_out_wb => rd_out_wb_signal,
-                FLUSH => FLUSH_signal);
+                FLUSH => FLUSH_signal;
+               inmemsignal=>inmemsignal_out;
+               outmemsignal=>outmemsignal_in; 
+               addressmemsignal=>addressmemsignal_in; 
+               rd_memsignal=>rd_memsignal_in;
+               wr_memsignal=>wr_memsignal_in;
+               ram_ready=>ram_ready_out);
                 
 end structural;
-
 

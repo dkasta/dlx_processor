@@ -38,6 +38,8 @@ begin
                     data_out <= "00";
                 elsif (opcode_in = JTYPE_RET) then 
                     data_out <= "01";
+                elsif (opcode_in = JTYPE_CALL) then
+                    data_out <= "01";
                 else
                     data_out <= "10";
                 end if;

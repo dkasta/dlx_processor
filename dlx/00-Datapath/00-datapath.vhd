@@ -72,6 +72,14 @@ entity datapath is
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_wb:              out std_logic_vector(4 downto 0);
            FLUSH:                  out std_logic_vector (1 downto 0)
+
+           --signal for dram WRF 
+           inmemsignal : IN std_logic_vector(numbit - 1 downto 0);
+           outmemsignal : OUT std_logic_vector(numbit - 1 downto 0); 
+           addressmemsignal: OUT std_logic_vector(numbit-1 downto 0); 
+           rd_memsignal:     OUT std_logic;
+           wr_memsignal:  OUT std_logic;
+           ram_ready: IN std_logic;
            );
 end datapath;
 
@@ -109,13 +117,7 @@ architecture structural of datapath is
   signal comparator_out_to_mux_signal: std_logic_vector(1 downto 0);
   signal b_reg_out_signal: std_logic_vector(numbit - 1 downto 0);
   signal RF_ONE_OUT_signal : std_logic_vector(numbit - 1 downto 0);
---signal for dram
-  signal inmemsignal : std_logic_vector(numbit - 1 downto 0);
-  signal outmemsignal : std_logic_vector(numbit - 1 downto 0); 
-  signal addressmemsignal: std_logic_vector(numbit-1 downto 0); 
-  signal rd_memsignal:     std_logic;
-  signal wr_memsignal:  std_logic;
-  signal ram_ready: std_logic;
+
 
   component fetch_unit
     generic(numbit : integer := I_SIZE);
