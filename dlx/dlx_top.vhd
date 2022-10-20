@@ -331,8 +331,8 @@ begin  -- DLX
               -- WB Control Signals
               mux_wb_control => mux_wb_control_signal,
               -- INPUTS
-              OPCODE => toirfromiram(31 downto 26),
-              FUNC => toirfromiram(10 downto 0),
+              OPCODE => ir_out_signal(31 downto 26),
+              FUNC => ir_out_signal(10 downto 0),
               Clk => clk,
               Rst => reset,
               nop_add => nopaddsignal,   -- It goes in CU
