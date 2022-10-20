@@ -36,9 +36,15 @@ begin
             opcode_i <= NTYPE_NOP;
         else 
             if (OPCODE = RTYPE or OPCODE = ITYPE_ADDI or OPCODE = ITYPE_SUBI or OPCODE = ITYPE_ANDI or OPCODE = ITYPE_ORI or OPCODE = ITYPE_XORI or OPCODE = ITYPE_SLLI or OPCODE = ITYPE_SRLI or OPCODE = ITYPE_BEQZ or OPCODE = ITYPE_SW or OPCODE = ITYPE_SNEI or OPCODE =ITYPE_BNEZ or OPCODE = ITYPE_LW or OPCODE = ITYPE_SLEI or OPCODE = ITYPE_SGEI) then      --any non rtype opcode
+                if(OPCODE=RTYPE and RD_REG_IN=(NumBitAddress-1 downto 0=>'0') and RS1_REG_IN=(NumBitAddress-1 downto 0=>'0')) then
+                  rd_reg <= (others => '0');
+                  rs1_reg <= (others => '0');
+                  opcode_i <= NTYPE_NOP;
+                else
                 rd_reg <= RD_REG_IN;
                 rs1_reg <= RS1_REG_IN;
                 opcode_i<=opcode;
+                end if;
             else
                 rd_reg <= (others => '0');
                 rs1_reg <= (others => '0');
