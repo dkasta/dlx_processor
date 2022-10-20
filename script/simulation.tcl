@@ -1,12 +1,6 @@
 set sim_root "./"
 set asm_root "../../assembly"
 
-##??
-#first write these commands in shell??
-#mkdir -p work
-#vlib work
-###??
-
 ########################################################################################################################################
 #Name			:compile_directory
 #Description 		:questaSim tcl script to analyze recursively in reverse alphanumerical order every file in every subdirectory of the main directory specified as input in order to be set for later simulation.
@@ -42,21 +36,20 @@ proc simulate_dlx {{asm_file "test.asm"} {run_time 100}} {
 	global sim_root asm_root
 
 	# Assume that the .asm fil to be converted is already in the current directory
-#	if {[file exists $asm_file] == 0} {
-#		puts "The asm_file $asm_file is not found. Exiting."
-#		return
-#	}
+	if {[file exists $asm_file] == 0} {
+		puts "The asm_file $asm_file is not found. Exiting."
+		return
+	}
 
 	# assemble asm code
-	#exec perl $asm_root/assembler/dlxasm.pl $asm_file
-	#exec $asm_root/assembler/conv2memory $asm_file.exe > $sim_root/test.asm.mem
+	exec perl $asm_root/assembler/dlxasm.pl $asm_file
+	exec $asm_root/assembler/conv2memory $asm_file.exe > $sim_root/test.asm.mem
 
 	# cleanup temporary files
-	#exec rm $asm_file.exe $asm_file.exe.hdr
+	exec rm $asm_file.exe $asm_file.exe.hdr
 
 	# simulate assembled code
-#	vsim tb_dlx
-#	vsim tb_alu
+	vsim tb_dlx
 
 	####dlx.do contains custom waveform options. Not done yet
 #	if {[file exists $asm_root/dlx.do]} {
@@ -65,8 +58,5 @@ proc simulate_dlx {{asm_file "test.asm"} {run_time 100}} {
 #		add wave *
 #	}
 
-##	run $run_time ns
+	run $run_time ns
 }
-
-
-
