@@ -43,9 +43,12 @@ entity decode_unit is
             NPC_branch_jump:       out std_logic_vector(numbit-1 downto 0);
             comparator_out:        out std_logic_vector(1 downto 0);
             RF_ONE_OUT_ID:        out std_logic_vector(numbit-1 downto 0);
-            nop_add:              out std_logic;  -- It goes in Fetch and CU
+            nop_add:              out std_logic;  -- It goes in CU
             alu_forwarding_one:   out std_logic;
             alu_forwarding_two:   out std_logic;
+            mem_forwarding_one:   out std_logic;
+            mem_forwarding_two:   out std_logic;
+            ------- jump signals
             wr31_enable:          in std_logic;
             NPC_IN: in        std_logic_vector(numBit_data-1 downto 0)
             );
@@ -189,15 +192,6 @@ architecture structural of decode_unit is
               RD_OUT:             out std_logic_vector(NumBitAddress-1 downto 0));
     end component;
 
-     --component BRANCHDECISIONUNIT
-     --  port(   OPCODE:       in std_logic_vector(5 downto 0);
-     --          JOFFSET_IN:   in std_logic_vector(25 downto 0);
-     --          BOFFSET_IN:   in std_logic_vector(15 downto 0);
-     --          NPC_IN:       in std_logic_vector(31 downto 0);
-     --          REG1_IN:      in std_logic_vector(31 downto 0);
-     --          REG2_IN:      in std_logic_vector(31 downto 0);
-     --          NPC_OUT:      out std_logic_vector(31 downto 0));
-     --end component;
 
   signal sign_extention_16 : std_logic_vector(31 downto 0);
   signal sign_extention_26 : std_logic_vector(31 downto 0);
@@ -313,12 +307,8 @@ architecture structural of decode_unit is
           read=>rd_mem,
           write=>wr_mem);
 
-  DATA_IN_MUX : MUX21_GENERIC
-  generic map(5)
-  port map ( A => "11111", 
-             B => RD_IN, 
-             SEL => jal_mux_control, 
-             Y => RF_write_address);
+ RF_write_address <= RD_IN
+
 
  REGA_MUX : MUX21_GENERIC
  generic map(5)
@@ -388,7 +378,7 @@ architecture structural of decode_unit is
               alu_forwarding_two => alu_forwarding_two_signal,
               mem_forwarding_two => mem_forwarding_two_signal,
               nop_add => nop_add_signal,
-              RD_OUT => rdmux_out, 
+              RD_OUT => rdmux_out 
   );
 
   NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));

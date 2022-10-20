@@ -86,7 +86,7 @@ architecture structural of DLX is
                to_IR:                 in std_logic_vector(numbit - 1 downto 0); -- In from IRAM
                ------------------------------------------------------------------
                -- ID input
-               jal_mux_control:        in std_logic;
+               wr31_enable:        in std_logic;
                write_enable:          in std_logic;
                rd1_enable:            in std_logic;
                rd2_enable:            in std_logic;
@@ -96,8 +96,8 @@ architecture structural of DLX is
                EN2:                   in std_logic;
                ------------------------------------------------------------------
                -- EXE input
-               mux_one_control:       in std_logic;
-               mux_two_control:       in std_logic;
+               mux_one_control:       in std_logic_vector(1 downto 0);
+               mux_two_control:       in std_logic_vector(1 downto 0);
                alu_control:           in std_logic_vector(4 downto 0);
                EN3:                    in std_logic;
                -----------------------------------------------------------------
@@ -122,6 +122,11 @@ architecture structural of DLX is
                b_reg_out:             out std_logic_vector(numbit - 1 downto 0);
                imm_reg_out:           out std_logic_vector(numbit - 1 downto 0);
                rd_out_id:             out std_logic_vector(4 downto 0);
+               nop_add:              out std_logic;  -- It goes in CU
+               alu_forwarding_one:   out std_logic;
+               alu_forwarding_two:   out std_logic;
+               mem_forwarding_one:   out std_logic;
+               mem_forwarding_two:   out std_logic;
                ------------------------------------------------------------------
                -- EXE output
                alu_out:               out std_logic_vector(numbit - 1 downto 0);
@@ -158,8 +163,8 @@ architecture structural of DLX is
              EN2      : OUT std_logic;
              
             -- EX Control Signal
-            mux_one_control      : OUT std_logic;
-            mux_two_control      : OUT std_logic;
+            mux_one_control      : OUT std_logic_vector(1 downto 0);
+            mux_two_control      : OUT std_logic_vector(1 downto 0);
             ALU_OPCODE      : OUT std_logic_vector(4 downto 0);
             EN3      : OUT std_logic;
               
@@ -177,6 +182,11 @@ architecture structural of DLX is
             FUNC   : IN  std_logic_vector(FUNC_SIZE - 1 downto 0);
             Clk : IN std_logic;
             Rst : IN std_logic;
+            nop_add:            IN std_logic;  -- It goes in CU
+            alu_forwarding_one: IN std_logic;
+            alu_forwarding_two: IN std_logic;
+            mem_forwarding_one: IN std_logic;
+            mem_forwarding_two: IN std_logic;
             FLUSH : IN std_logic_vector(1 downto 0));                 
              
 end component;
@@ -199,7 +209,7 @@ end component;
   signal DRAM_to_mux_signal : std_logic_vector(BIT_RISC - 1 downto 0);
   signal address_error_signal : std_logic;
   -- Control Unit Bus signals
-  signal jal_mux_control_signal : std_logic;
+  signal wr31_enable_signal : std_logic;
   signal write_enable_signal : std_logic;
   signal rd1_enable_signal : std_logic;
   signal rd2_enable_signal : std_logic;
@@ -207,8 +217,8 @@ end component;
   signal ret_signal : std_logic;
   signal imm_mux_control_signal : std_logic;
   signal EN2_signal : std_logic;
-  signal mux_one_control_signal : std_logic;
-  signal mux_two_control_signal : std_logic;
+  signal mux_one_control_signal : std_logic_vector(1 downto 0);
+  signal mux_two_control_signal : std_logic_vector(1 downto 0);
   signal alu_control_signal : std_logic_vector(4 downto 0);
   signal EN3_signal : std_logic;
   signal mux_mem_control_signal : std_logic;
@@ -222,6 +232,14 @@ end component;
   signal rd_memsignal_in:     std_logic;
   signal wr_memsignal_in:  std_logic;
   signal ram_ready_out: std_logic;
+  -----------------------------------------------------
+  --Forwarding signals from datapath to CU
+  signal nopaddsignal : std_logic;
+  signal aluforwardingonesignal : std_logic;
+  signal aluforwardingtwosignal : std_logic;
+  signal memforwardingonesignal : std_logic;
+  signal memforwardingtwosignal : std_logic;
+  --------------------------------------------------------- 
 
   signal npc_out_if_signal : std_logic_vector(BIT_RISC - 1 downto 0);
   signal instruction_fetched_signal : std_logic_vector(BIT_RISC - 1 downto 0);
@@ -292,7 +310,7 @@ begin  -- DLX
 
 
     CONTROL_I : CU_HARDWIRED
-    port map( jal_mux_control => jal_mux_control_signal,
+    port map( wr31_enable => wr31_enable_signal,
               write_enable => write_enable_signal,
               rd1_enable => rd1_enable_signal,    -- MUX-B Sel
               rd2_enable => rd2_enable_signal,
@@ -317,6 +335,11 @@ begin  -- DLX
               FUNC => toirfromiram(10 downto 0),
               Clk => clk,
               Rst => reset,
+              nop_add => nopaddsignal,   -- It goes in CU
+              alu_forwarding_one => aluforwardingonesignal,
+              alu_forwarding_two => aluforwardingtwosignal,
+              mem_forwarding_one => memforwardingonesignal,
+              mem_forwarding_two => memforwardingtwosignal,
               FLUSH => FLUSH_signal);
 
 
@@ -328,7 +351,7 @@ begin  -- DLX
                 EN1 => EN1,
                 to_IR => toirfromiram,
                 -- ID input
-                jal_mux_control => jal_mux_control_signal,
+                wr31_enable => wr31_enable_signal,
                 write_enable => write_enable_signal,
                 rd1_enable => rd1_enable_signal,
                 rd2_enable => rd2_enable_signal,
@@ -358,6 +381,11 @@ begin  -- DLX
                 b_reg_out => b_reg_out_signal,
                 imm_reg_out => imm_reg_out_signal,
                 rd_out_id => rd_out_id_signal,
+                nop_add => nopaddsignal,   -- It goes in CU
+                alu_forwarding_one => aluforwardingonesignal,
+                alu_forwarding_two => aluforwardingtwosignal,
+                mem_forwarding_one => memforwardingonesignal,
+                mem_forwarding_two => memforwardingtwosignal,
                 -- EXE output
                 alu_out => alu_out_signal,
                 b_reg_out_ex => b_reg_out_ex_signal,

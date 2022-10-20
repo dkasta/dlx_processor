@@ -9,7 +9,7 @@ package myTypes is
     constant FUNC_SIZE    : integer :=  11;                                             -- FUNC field size
     constant MICROCODE_MEM_SIZE : integer := 68;                                        -- size of each memory
     constant ALU_OPC_SIZE : integer := 5;                                               -- size of alu control signals
-    constant CW_SIZE : integer := 16 + ALU_OPC_SIZE;                                     -- cw final size
+    constant CW_SIZE : integer := 18 + ALU_OPC_SIZE;                                     -- cw final size
 
     --type aluOp is (NOP, ADDOP, SUBOP, MULOP, ANDOP, NANDOP, OROP, NOROP, XOROP, XNOROP, SLLOP, SRLOP, SRAOP, GTOP, GETOP, LTOP, LETOP, EQOP, NEQOP, GTUOP, GETUOP, LTUOP, LETUOP, LHIOP, LLIOP);
     
