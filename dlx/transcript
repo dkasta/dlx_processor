@@ -1450,3 +1450,41 @@ run 200 ns
 #    Time: 17 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
 # ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
 #    Time: 17 ns  Iteration: 2  Instance: /tb_dlx_top/U1/DATAPATH_I/DECODE/HAZARD/R2_HAZARD
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R1HazardDetection/hazard_detection_source1.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 12:20:22 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R1HazardDetection/hazard_detection_source1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION1
+# -- Compiling architecture BEHAVIORAL of HAZARD_DETECTION1
+# End time: 12:20:22 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd
+# QuestaSim-64 vcom 10.7c Compiler 2018.08 Aug 17 2018
+# Start time: 12:20:25 on Oct 20,2022
+# vcom -reportprogress 300 -work work /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package globals
+# -- Loading package myTypes
+# -- Compiling entity HAZARD_DETECTION2
+# -- Compiling architecture BEHAVIORAL of HAZARD_DETECTION2
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(39): (vcom-1136) Unknown identifier "RS1_REG_IN".
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(39): (vcom-1590) Bad expression in right operand of infix expression 'and'.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(39): Type error resolving infix expression "and" as type std.STANDARD.BOOLEAN.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(41): Illegal target for signal assignment.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(41): (vcom-1136) Unknown identifier "rs1_reg".
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(45): Illegal target for signal assignment.
+# ** Error: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(45): (vcom-1136) Unknown identifier "rs1_reg".
+# ** Note: /home/ms22.21/dlxtest2/dlx/02-decode_unit/HazardDetection/R2HazardDetection/hazard_detection2.vhd(124): VHDL Compiler exiting
+# End time: 12:20:25 on Oct 20,2022, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 0
