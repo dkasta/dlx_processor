@@ -379,8 +379,16 @@ architecture structural of decode_unit is
               RD_OUT => rdmux_out 
   );
 
-  NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));
+  nop_add <= nop_add_signal;
 
+  alu_forwarding_one <= alu_forwarding_one_signal;
+  alu_forwarding_two <= alu_forwarding_two_signal;
+
+  mem_forwarding_one <= mem_forwarding_one_signal;
+  mem_forwarding_two <= mem_forwarding_two_signal;
+
+  NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));
+  
   --BRANCHUNIT : BRANCHDECISIONUNIT
   --port map(in_IR(31 downto 26),in_IR(25 downto 0),in_IR(15 downto 0),npc_latch_out,RF_ONE_OUT,RF_TWO_OUT,NPC_OUT_BPU);
 
