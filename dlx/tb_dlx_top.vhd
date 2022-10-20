@@ -79,8 +79,8 @@ begin
 		clk <= not(clk) after 1 ns;
 	end process;
 
-	reset <= '0' after 3 ns;
-  EN1 <= '1' after 9 ns;
+	reset <= '0' after 4 ns;
+  EN1 <= '1' after 4 ns;
 
 
 end behavioural;

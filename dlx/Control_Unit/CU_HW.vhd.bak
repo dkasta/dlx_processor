@@ -195,6 +195,8 @@ signal cw_mem_itype : mem_array := ("00000000000000000000000",     --START NOT R
   -- control word is shifted to the correct stage
   signal cw2 : std_logic_vector(CW_SIZE - 1 downto 0);      -- decode stage         21   (20 downto 0)
   signal cw3 : std_logic_vector(CW_SIZE - 1 - 7 downto 0);     -- execute stage     16   (15 downto 0)
+  signal cw3_normal : std_logic_vector(CW_SIZE - 1 - 7 downto 0);     -- execute stage     16   (15 downto 0)
+  signal cw3_forwarding : std_logic_vector(CW_SIZE - 1 - 7 downto 0);     -- execute stage     16   (15 downto 0)
   signal cw4 : std_logic_vector(CW_SIZE - 1 - 7 - 10 downto 0); -- memory stage       6   (5 donwto 0)
   signal cw5 : std_logic_vector(CW_SIZE  - 1 - 7 - 10 - 4 downto 0); -- write back stage   2   (1 downto 0)
 
@@ -231,19 +233,17 @@ begin
 	begin
 		if (OPCODE = RTYPE) then
 			cw <= cw_mem_rtype(conv_integer(FUNC)); --(opcode = 0 for rtype)->(FUNC+OPCODE)->FUNC directly points to RTYPE addresses in memory
-    else
+		else
 			cw <= cw_mem_itype(conv_integer(OPCODE));
-    end if;
+		end if;
 	end process;
 
   --3D = 61
   -- process to pipeline control words
   CW_PIPE: process (Clk, Rst)
-  variable cpt_wait : integer;  
-
   begin  -- process Clk
     if Rst = '1' then                   -- asynchronous reset (active high)
-      --cw <= (others => '0');
+      --cw1 <= (others => '0');
       cw2 <= (others => '0');
       cw3 <= (others => '0');
       cw4 <= (others => '0');
@@ -252,28 +252,50 @@ begin
       if (FLUSH = "00") then
         cw2 <= (others => '0');
       elsif (nop_add = '1') then
-        cw3 <= (others => '0');
+        cw3_normal <= (others => '0');
       else
         cw2 <= cw;                                --21
-        if (alu_forwarding_one = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') then   
-          cw3 <= "01" & cw2(13 downto 0);
-        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') then   
-          cw3 <= cw2(15 downto 14) & "01" & cw2(11 downto 0);
-        elsif (mem_forwarding_one = '1') and ( mem_forwarding_two = '0') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') then   
-          cw3 <= "10" & cw2(13 downto 0);
-        elsif (mem_forwarding_one = '0') and ( mem_forwarding_two = '1') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') then   
-          cw3 <= cw2(15 downto 14) & "10" & cw2(11 downto 0);
-        elsif (alu_forwarding_one = '1') and ( mem_forwarding_two = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') then   
-          cw3 <= "0110" & cw2(11 downto 0);
-        elsif (mem_forwarding_one = '1') and ( alu_forwarding_two = '1') and (mem_forwarding_two = '0') and (alu_forwarding_one = '0')then   
-          cw3 <= "1001" & cw2(11 downto 0);
-        else
-          cw3 <= cw2(15 downto 0);         --16
-        end if;
+        cw3_normal <= cw2(15 downto 0);
         cw4 <= cw3(5 downto 0);     --6
         cw5 <= cw4(1 downto 0); --2
       end if;
     end if;
   end process CW_PIPE;
 
+  CW_process : process (alu_forwarding_one, alu_forwarding_two, mem_forwarding_one, mem_forwarding_two, Rst)
+  begin
+  if (Rst = '1') then 
+    cw3_forwarding <= (others => '0');
+  else
+    if (alu_forwarding_one = '1') and ( alu_forwarding_two = '0') then   
+      cw3_forwarding <= "01" & cw2(13 downto 0);
+    elsif (alu_forwarding_one = '1') and ( alu_forwarding_two = '1') then
+      cw3_forwarding <= "0101" & cw2(11 downto 0);
+    elsif (alu_forwarding_one = '0') and ( alu_forwarding_two = '1') then   
+      cw3_forwarding <= cw2(15 downto 14) & "01" & cw2(11 downto 0);
+    elsif (mem_forwarding_one = '1') and ( mem_forwarding_two = '0') then   
+      cw3_forwarding <= "10" & cw2(13 downto 0);
+    elsif (mem_forwarding_one = '1') and ( mem_forwarding_two = '1') then
+      cw3_forwarding <= "1010" & cw2(11 downto 0);
+    elsif (mem_forwarding_one = '0') and ( mem_forwarding_two = '1') then   
+      cw3_forwarding <= cw2(15 downto 14) & "10" & cw2(11 downto 0);
+    elsif (alu_forwarding_one = '1') and ( mem_forwarding_two = '1') then   
+      cw3_forwarding <= "0110" & cw2(11 downto 0);
+    elsif (mem_forwarding_one = '1') and ( alu_forwarding_two = '1') then   
+      cw3_forwarding <= "1001" & cw2(11 downto 0);
+    end if;
+end if;
+    end process;
+
+    Mux_process : process (cw3_normal, cw3_forwarding)
+    begin
+      if (cw3_forwarding = (15 downto 0 => '0')) then
+        cw3 <= cw3_normal;
+      else
+        cw3 <= cw3_forwarding;
+	cw3_forwarding <= (others => '0');      
+      end if;
+      end process;
+
 end BEHAVIORAL;
+
