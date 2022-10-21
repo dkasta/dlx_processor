@@ -84,7 +84,10 @@ begin
         if((opcode_i=RTYPE and (opcode_i=opcode_1 or opcode_1=ITYPE_ADDI or opcode_1=ITYPE_ANDI or opcode_1=ITYPE_ORI or opcode_1=ITYPE_SGEI or opcode_1=ITYPE_SLEI or opcode_1=ITYPE_SLLI or opcode_1=ITYPE_SNEI or opcode_1=ITYPE_SRLI or opcode_1=ITYPE_SUBI or opcode_1=ITYPE_XORI))or((opcode_i=ITYPE_ADDI or opcode_i=ITYPE_ANDI or opcode_i=ITYPE_BEQZ or opcode_i=ITYPE_BNEZ or opcode_i=ITYPE_LW or opcode_i=ITYPE_ORI or opcode_i=ITYPE_SGEI or opcode_i=ITYPE_SLEI or opcode_i=ITYPE_SLLI or opcode_i=ITYPE_SNEI or opcode_i=ITYPE_SRLI or opcode_i=ITYPE_SUBI or opcode_i=ITYPE_SW or opcode_i=ITYPE_XORI or opcode_i=RTYPE) and (opcode_1=RTYPE or opcode_1=ITYPE_ADDI or opcode_1=ITYPE_ANDI or opcode_1=ITYPE_ORI or opcode_1=ITYPE_SGEI or opcode_1=ITYPE_SLEI or opcode_1=ITYPE_SLLI or opcode_1=ITYPE_SNEI or opcode_1=ITYPE_SRLI or opcode_1=ITYPE_SUBI or opcode_1=ITYPE_XORI))) then
             if(rd_reg_1=rs1_reg) then
                 alu_forwarding_one<='1';
+            else
+                alu_forwarding_one<='0';
             end if;
+
         else
             alu_forwarding_one<='0';
         end if;
@@ -99,7 +102,10 @@ begin
         if((opcode_i=ITYPE_ADDI or opcode_i=ITYPE_ANDI or opcode_i=ITYPE_BEQZ or opcode_i=ITYPE_BNEZ or opcode_i=ITYPE_LW or opcode_i=ITYPE_ORI or opcode_i=ITYPE_SGEI or opcode_i=ITYPE_SLEI or opcode_i=ITYPE_SLLI or opcode_i=ITYPE_SNEI or opcode_i=ITYPE_SRLI or opcode_i=ITYPE_SUBI or opcode_i=ITYPE_SW or opcode_i=ITYPE_XORI or opcode_i=RTYPE)and(opcode_2=ITYPE_ADDI or opcode_2=ITYPE_ANDI or opcode_2=ITYPE_BEQZ or opcode_2=ITYPE_BNEZ or opcode_2=ITYPE_LW or opcode_2=ITYPE_ORI or opcode_2=ITYPE_SGEI or opcode_2=ITYPE_SLEI or opcode_2=ITYPE_SLLI or opcode_2=ITYPE_SNEI or opcode_2=ITYPE_SRLI or opcode_2=ITYPE_SUBI or opcode_2=ITYPE_SW or opcode_2=ITYPE_XORI or opcode_2=RTYPE)) then
             if(rd_reg_2=rs1_reg) then
                 mem_forwarding_one<='1';
+            else
+                mem_forwarding_one<='0';
             end if;
+
         else
             mem_forwarding_one<='0';
         end if;
@@ -114,6 +120,8 @@ begin
         if((opcode_1=ITYPE_BEQZ or opcode_1=ITYPE_BNEZ or opcode_1=ITYPE_LW or opcode_1=ITYPE_SW) and(opcode_i=ITYPE_ADDI or opcode_i=ITYPE_ANDI or opcode_i=ITYPE_BEQZ or opcode_i=ITYPE_BNEZ or opcode_i=ITYPE_LW or opcode_i=ITYPE_ORI or opcode_i=ITYPE_SGEI or opcode_i=ITYPE_SLEI or opcode_i=ITYPE_SLLI or opcode_i=ITYPE_SNEI or opcode_i=ITYPE_SRLI or opcode_i=ITYPE_SUBI or opcode_i=ITYPE_SW or opcode_i=ITYPE_XORI or opcode_i=RTYPE)  ) then
             if(rd_reg_1=rs1_reg) then
                 nop_add<='1';
+            else  
+                nop_add<='0';
             end if;
         else
             nop_add<='0';
