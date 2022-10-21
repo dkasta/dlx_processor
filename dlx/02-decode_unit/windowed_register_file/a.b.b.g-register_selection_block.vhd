@@ -26,9 +26,9 @@ begin
         --4 out_reg= tot_reg(numBit_data*10*numreg_inlocout-1 downto numBit_data*8*numreg_inlocout)&tot_reg(numBit_data*numreg_inlocout-1 downto 0)
         --i out_reg= tot_reg(numBit_data*(3+(2*i))*numreg_inlocout-1 downto numBit_data*2*i*numreg_inlocout)
         if(to_integer(unsigned(curr_win))+1/=num_windows) then
-            out_reg<=tot_reg(numBit_data*(3+(2*to_integer(unsigned(curr_win))))*numreg_inlocout-1 downto numBit_data*2*to_integer(unsigned(curr_win))*numreg_inlocout);
+            out_reg<=tot_reg(numBit_data*(3)*numreg_inlocout-1 downto 0);
         else
-            out_reg<= tot_reg(numBit_data*numreg_inlocout-1 downto 0)&tot_reg(numBit_data*(2+(2*to_integer(unsigned(curr_win))))*numreg_inlocout-1 downto numBit_data*2*to_integer(unsigned(curr_win))*numreg_inlocout);
+            out_reg<= tot_reg(numBit_data*numreg_inlocout-1 downto 0)&tot_reg(numBit_data*2*numreg_inlocout-1 downto 0);
         end if;
     end process;
 end beh;
