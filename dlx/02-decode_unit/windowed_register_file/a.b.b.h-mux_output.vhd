@@ -14,6 +14,7 @@ generic(
         en:         in std_logic;
         add_read:   in std_logic_vector(numBit_address-1 downto 0);
         out_reg:    out std_logic_vector(numBit_data-1 downto 0); 
+        ret:        in std_logic;
         in_reg:     in std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0) 
     );
 end mux_out;
@@ -34,10 +35,14 @@ begin
         end loop;
     end process;
     --select register
-    process(add_read,en)
+    process(add_read,en,ret)
     begin
         if(en='1')then
+            if(ret='0')then
             out_reg<=reg(to_integer(unsigned(add_read)));
+            else
+                out_reg<=reg(2*numreg_inlocout+numreg_global+numreg_inlocout-1);
+            end if;
         end if;
     end process;
 

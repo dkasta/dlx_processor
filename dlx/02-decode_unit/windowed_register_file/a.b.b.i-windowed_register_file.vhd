@@ -64,6 +64,7 @@ architecture structural of wrf is
             swp:   in std_logic_vector(windowsbit-1 downto 0);
             address_mem: in std_logic_vector(2*numreg_inlocout-1 downto 0); 
             wr_internal: in std_logic; --wr for call and jumps
+            call: in std_logic;
             enable: out std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0) --enable for all the registers
 
             );
@@ -118,6 +119,7 @@ architecture structural of wrf is
             en:         in std_logic;
             add_read:   in std_logic_vector(numBit_address-1 downto 0);
             out_reg:    out std_logic_vector(numBit_data-1 downto 0); 
+            ret:    in std_logic;
             in_reg:     in std_logic_vector(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto 0) 
         );
     end component;
@@ -183,15 +185,15 @@ architecture structural of wrf is
     signal wr_internal,rd1en_internal,en31: std_logic;
     begin
     dec: decoder generic map(numBit_address => NumBitAddress,windowsbit=> windowsbit,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)
-            port map(clk=>clk,rst=>rst,wr=>wr,wr_internal=>wr_internal,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable=>enable_regs,push=>push);
+            port map(clk=>clk,rst=>rst,wr=>wr,wr_internal=>wr_internal,rw1=>rw1,cwp=>curr_cwp,swp=>pop_and_swp,address_mem=>address_mem_s,enable=>enable_regs,push=>push,call=>call);
     phy: physical_register_file generic map ( numBit_data=> NumBitData,numreg_global=>numreg_global,numreg_inlocout=>numreg_inlocout,num_windows=> num_windows)	         
             port map(clk=>clk,rst=>rst,en=>enable_regs,Data_in1=>DATAIN,Data_in2=>in_mem,Data_out_reg=>tot_regs,Data_out_global=>input_mux_rd(numBit_data*numreg_global-1 downto 0),swp_en=>pop_and_swp,data31=>data_31,wr_internal=>wr_internal);
     sel: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)
             port map(tot_reg=>tot_regs,curr_win=>curr_cwp,out_reg=>input_mux_rd(numBit_data*numreg_global+numBit_data*3*numreg_inlocout-1 downto numBit_data*numreg_global ));
-    muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>numreg_global ) 
-            port map(en=>rd1en_internal,add_read=>ADD_RD1,out_reg=>out_reg_1,in_reg=>input_mux_rd);
+    muxout1: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>numreg_global) 
+            port map(en=>rd1en_internal,add_read=>ADD_RD1,out_reg=>out_reg_1,in_reg=>input_mux_rd,ret=>ret);
     muxout2: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>numreg_global ) 
-            port map(en=>rd2,add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd);
+            port map(en=>rd2,add_read=>ADD_RD2,out_reg=>out_reg_2,in_reg=>input_mux_rd,ret=>'0');
     next_cwp_m: cwp_swp generic map(windowsbit=>windowsbit) port map (curr=>curr_cwp,nex=>next_cwp,sel=>sel_cwp);
     cwp: register_generic_wrf generic map (NBIT => windowsbit) port map(D=>next_cwp,CK=>clk,EN=>'1',RESET=>rst,Q=>curr_cwp);
     next_swp_m: cwp_swp generic map(windowsbit=>windowsbit) port map (curr=>curr_swp,nex=>next_swp,sel=>sel_swp);
@@ -202,7 +204,7 @@ architecture structural of wrf is
     sel_spill: sel_block generic map ( numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,windowsbit=>windowsbit,num_windows=> num_windows)
             port map(tot_reg=>tot_regs,curr_win=>curr_swp,out_reg=>spill_regs);
     mux_spill: mux_out generic map(numBit_address=> NumBitAddress,numBit_data=> NumBitData,numreg_inlocout=>numreg_inlocout,numreg_global=>0 ) 
-            port map(en=>push,add_read=>address_spill,out_reg=>out_mem,in_reg=>spill_regs);
+            port map(en=>push,add_read=>address_spill,out_reg=>out_mem,in_reg=>spill_regs,ret=>'0');
     spill: address_counter generic map(N=>numBit_address, num_inlocout=>numreg_inlocout)
             port map(clk=>clk,rst=>rst,en=>push,ready=>ram_ready,done=>done_spill,occupied=>push_not_finish,addr=>address_spill);
 

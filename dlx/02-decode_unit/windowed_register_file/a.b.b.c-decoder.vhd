@@ -18,6 +18,7 @@ entity decoder is
          swp:   in std_logic_vector(windowsbit-1 downto 0);
          address_mem: in std_logic_vector(2*numreg_inlocout-1 downto 0); 
          wr_internal: in std_logic;
+         call: in std_logic;
          enable: out std_logic_vector(numreg_global+2*numreg_inlocout*num_windows-1 downto 0) --enable for all the registers
 
          );
@@ -41,7 +42,7 @@ begin
     end process;
     enable<=enable_reg;
     -- enable the correct physical register
-    process(decoder_choose,address_mem,swp)
+    process(wr_internal,decoder_choose,address_mem,swp)
 
     begin
     
@@ -54,7 +55,19 @@ begin
                         --swp=2 -> devo aggiungere 16 zeri all'inizio e 16*2 zeri alla fine
                         --swp=3 -> devo aggiungere 16*2 zeri all'inizio e 16 zeri alla fine
         elsif(wr ='0') then
-            if(wr_internal='1') then
+            if(call='1') then 
+                if(to_integer(unsigned(cwp))+1/=(num_windows-1)) then 
+                    enable_reg(numreg_global+2*numreg_inlocout*num_windows-1 downto 0)<=(((num_windows+1-2*((to_integer(unsigned(cwp))+1) mod num_windows))*numreg_inlocout-1 downto 0 =>'0')&'1'&(numreg_global+2*(((to_integer(unsigned(cwp))+1) mod num_windows)+1)*numreg_inlocout+numreg_inlocout-2 downto 0 =>'0'));
+                -- cwp=0 numreg_global + 4*numreg zeri +numreg-1 zeri & 1 + 3 * numreg_inlocout zeri cwp=1
+                -- cwp=1 numreg_global + 6*numreg_inlocout zeri + numreg_inlocout-1 zeri & 1 + numreg_inlocout zeri cwp=2
+                --cwp=3  numreg_global + 2*numreg_inlocout zeri + numreg_inlocout-1 zeri & 1 + 5* numreg_inlocout zeri cwp=0
+                --cwp=i  ((num_windows+1-2*cwp)*Numreg_in_loc_out-1 downto 0 =>'0') & 1 & (numreg_global+2*(cwp+1)*numreg_inlocout+numreg_inlocout-2 downto 0 =>'0')
+                else
+                --cwp=2 numreg_global +numreg-1 zeri +1 + 7 Numreg_in_loc_out zeri
+                --(((num_windows-1)*2+1)*numreg_inlocout-1 downto 0 =>'0')&'1'&(numreg_global+numreg_inlocout-2 downto 0 =>'0');
+                    enable_reg(numreg_global+2*numreg_inlocout*num_windows-1 downto 0)<=((((num_windows-1)*2+1)*numreg_inlocout-1 downto 0 =>'0')&'1'&(numreg_global+numreg_inlocout-2 downto 0 =>'0'));
+                end if;
+            elsif(wr_internal='1') then
                 if(to_integer(unsigned(cwp))+1/=num_windows) then 
                     enable_reg(numreg_global+2*numreg_inlocout*num_windows-1 downto 0)<=(((num_windows+1-2*to_integer(unsigned(cwp)))*numreg_inlocout-1 downto 0 =>'0')&'1'&(numreg_global+2*(to_integer(unsigned(cwp))+1)*numreg_inlocout+numreg_inlocout-2 downto 0 =>'0'));
                 -- cwp=0 numreg_global + 2*numreg zeri +numreg-1 zeri & 1 + 5 * numreg_inlocout zeri
@@ -104,7 +117,9 @@ begin
                 end if;
             end if;
             --write in the jump even if there is a write
-            if(wr_internal='1')then
+            if(call='1')then
+                enable_reg((numreg_global+(to_integer(unsigned(cwp))+2)*2*numreg_inlocout+numreg_inlocout-1)mod(numreg_global+2*num_windows*numreg_inlocout))<='1';
+            elsif(wr_internal='1')then
                 --scrivere nel 31simo registro nella specifica cwp
                 enable_reg((numreg_global+(to_integer(unsigned(cwp))+1)*2*numreg_inlocout+numreg_inlocout-1)mod(numreg_global+2*num_windows*numreg_inlocout))<='1';
             end if;

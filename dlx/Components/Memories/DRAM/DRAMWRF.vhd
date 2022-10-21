@@ -30,7 +30,7 @@ architecture BEHAVIORAL of DRAMWRF is
             data_out <= (others => '0');
             address_error <= '1';
          elsif write_enable = '1' then
-           if (to_integer(unsigned(address)) < 2**NADDR) then
+           if (to_integer(unsigned(address)) < 2**( NumMemBitAddress- 22)) then
              -- Write Memory
              data_memory(to_integer(unsigned(address))) <= data_in;
              address_error <= '1';
@@ -38,7 +38,7 @@ architecture BEHAVIORAL of DRAMWRF is
             address_error <= '0';
           end if;
          elsif read_enable = '1' then
-           if (to_integer(unsigned(address)) < 2**NADDR) then
+           if (to_integer(unsigned(address)) < 2**( NumMemBitAddress- 22)) then
              data_out <= data_memory(to_integer(unsigned(address)));
              address_error <= '1';
            else
