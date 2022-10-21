@@ -15,28 +15,24 @@ entity COMPARATORDU is
 end COMPARATORDU;
 
 architecture BEHAVIOURAL of COMPARATORDU is
+
 begin
 
     proc: process(opcode_in, data_in, nop_add)
-        variable beqz_flag : integer := 0;
-        variable bnez_flag : integer := 0;  
+  
         begin
             if(nop_add = '0') then
                 if (opcode_in = ITYPE_BEQZ) then 
-                    if (data_in = (NBIT - 1 downto 0 => '0') ) and (beqz_flag = 1) then
+                    if (data_in = (NBIT - 1 downto 0 => '0')) then
                         data_out <= "011";  --new value forwarded by the output of the alu
-                        beqz_flag := 0;
                     else
                         data_out <= "111";
-                        beqz_flag := beqz_flag + 1;   
                     end if;
                 elsif (opcode_in = ITYPE_BNEZ) then 
-                    if (data_in /= (NBIT - 1 downto 0 => '0')) and (bnez_flag = 1) then
-                        data_out <= "011";
-                        bnez_flag := bnez_flag;   
+                    if (data_in /= (NBIT - 1 downto 0 => '0'))  then
+                            data_out <= "011";
                     else
-                        data_out <= "111";
-                        bnez_flag := bnez_flag + 1;   
+                            data_out <= "111";
                     end if;
                 elsif (opcode_in = JTYPE_J) then 
                     data_out <= "000";

@@ -167,7 +167,7 @@ component decode_unit is
             wr_mem:               out std_logic;
             ramr:                 in std_logic;
             NPC_branch_jump:      out std_logic_vector(numbit-1 downto 0);
-            comparator_out:       out std_logic_vector(1 downto 0);
+            comparator_out:       out std_logic_vector(2 downto 0);
             RF_ONE_OUT_ID:        OUT std_logic_vector(numbit-1 downto 0);
             nop_add:              out std_logic;  -- It goes in CU
             alu_forwarding_one:   out std_logic;

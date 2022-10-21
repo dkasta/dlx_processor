@@ -124,8 +124,8 @@ signal cw_mem_itype : mem_array := ("00000000000000000000000",     --START NOT R
                                     "00000000000000000000000",
                                     "000001" & "00000000000000000",     --JTYPE_J                     --implemented in the branch prediction unit
                                     "100001" & "00000000000000000",     --JTYPE_JAL                   --not implemented
-                                    "010000" & "00000000000000000",     --ITYPE_BEQZ                  --implemented in the branch prediction unit
-                                    "010000" & "00000000000000000",     --ITYPE_BNEZ                  --implemented in the branch prediction unit
+                                    "0100001" & "0011000010000000",     --ITYPE_BEQZ                  --implemented in the branch prediction unit
+                                    "0100001" & "0011000010000000",     --ITYPE_BNEZ                  --implemented in the branch prediction unit
                                     "00000000000000000000000",     --ITYPE_BFPT                  --not implemented
                                     "00000000000000000000000",     --ITYPE_BFPF                  --not implemented
                                     "0100001" & "1111000011" & "000111",     --ITYPE_ADD
@@ -249,23 +249,23 @@ begin
       cw4 <= (others => '0');
     elsif Clk'event and Clk = '1' then  -- rising clock edge
       --cw1 <= cw;
-      if (FLUSH = "111") then
+      if (FLUSH = "011") then
         cw2 <= (others => '0');
       elsif (nop_add = '1') then
         cw3 <= (others => '0');
       else
         cw2 <= cw;                                --21
-        if (alu_forwarding_one = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') then   
+        if (alu_forwarding_one = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "01" & cw2(13 downto 0);
-        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') then   
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= cw2(15 downto 14) & "01" & cw2(11 downto 0);
-        elsif (mem_forwarding_one = '1') and ( mem_forwarding_two = '0') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') then   
+        elsif (mem_forwarding_one = '1') and ( mem_forwarding_two = '0') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "10" & cw2(13 downto 0);
-        elsif (mem_forwarding_one = '0') and ( mem_forwarding_two = '1') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') then   
+        elsif (mem_forwarding_one = '0') and ( mem_forwarding_two = '1') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= cw2(15 downto 14) & "10" & cw2(11 downto 0);
-        elsif (alu_forwarding_one = '1') and ( mem_forwarding_two = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') then   
+        elsif (alu_forwarding_one = '1') and ( mem_forwarding_two = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "0110" & cw2(11 downto 0);
-        elsif (mem_forwarding_one = '1') and ( alu_forwarding_two = '1') and (mem_forwarding_two = '0') and (alu_forwarding_one = '0')then   
+        elsif (mem_forwarding_one = '1') and ( alu_forwarding_two = '1') and (mem_forwarding_two = '0') and (alu_forwarding_one = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "1001" & cw2(11 downto 0);
         else
           cw3 <= cw2(15 downto 0);         --16
