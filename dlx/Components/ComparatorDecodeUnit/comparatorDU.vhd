@@ -18,10 +18,12 @@ architecture BEHAVIOURAL of COMPARATORDU is
 begin
 
     proc: process(opcode_in, data_in, nop_add)
+        variable branch_flag : integer;  
         begin
             if(nop_add = '0') then
                 if (opcode_in = ITYPE_BEQZ) then 
                     if (data_in = (NBIT - 1 downto 0 => '0') ) then
+
                         data_out <= "00";
                     else
                         data_out <= "10";
