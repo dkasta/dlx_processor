@@ -1,14 +1,16 @@
-
-library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use std.textio.all;
+use ieee.std_logic_textio.all;
+use WORK.myTypes.all;
 use WORK.globals.all;
 
 entity DRAM is
   generic(NBIT : integer := NumBitMemoryWord;
-          NADDR : integer :=  NumMemBitAddress);
+          NCELL : integer := NumBitMemoryCells);
   port(clk : IN std_logic;
-       address : IN std_logic_vector(NADDR-1 downto 0);
+       address : IN std_logic_vector(NBIT-1 downto 0);
        data_in : IN std_logic_vector(NBIT-1 downto 0);
        write_enable : IN std_logic;
        read_enable : IN std_logic;
@@ -18,34 +20,26 @@ entity DRAM is
 end DRAM;
 
 architecture BEHAVIORAL of DRAM is
-  type memory is array(0 to 2**( NumMemBitAddress- 22)) of std_logic_vector(NBIT-1 downto 0);
-  signal data_memory : memory := (others => (others => '0')); --initialize my data memory to 0;
+
+  
+  type DRAMtype is array (0 to NCELL - 1) of std_logic_vector(NBIT - 1 downto 0);
+  signal DRAM_mem : DRAMtype;
+  signal Dout_signal : std_logic_vector(NBIT - 1 downto 0):= (others => '0');
   begin
 
-    read_and_write: process (clk)
-   begin
-      if rising_edge(clk) then
-         if Reset = '1' then
-            -- Synchronous reset to clear memory
-            data_memory  <= (others => (others => '0'));
-            data_out <= (others => '0');
-            address_error <= '0';
-         elsif write_enable = '1' then
-           if (to_integer(unsigned(address)) < 2**NADDR) then
-             -- Write Memory
-             data_memory(to_integer(unsigned(address))) <= data_in;
-             address_error <= '0';
-           else
-            address_error <= '1';
-          end if;
-         elsif read_enable = '1' then
-           if (to_integer(unsigned(address)) < 2**NADDR) then
-             data_out <= data_memory(to_integer(unsigned(address)));
-             address_error <= '0';
-           else
-            address_error <= '1';
-          end if;
+
+    READWRITE_PROCESS : process(address, write_enable, read_enable, data_in)
+    begin
+      if (read_enable ='1') then
+         data_out <= DRAM_mem(conv_integer(unsigned(address)));
+      elsif (write_enable = '1') then 
+        DRAM_mem(conv_integer(unsigned(address))) <= data_in;
         end if;
-      end if;
-   end process;
+        
+    end process READWRITE_PROCESS;
+  
+    
+    
+  
+
   end BEHAVIORAL;

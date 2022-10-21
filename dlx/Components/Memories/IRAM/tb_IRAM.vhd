@@ -37,11 +37,3 @@ architecture TEST of TB_IRAM is
     end process test;
 
 end TEST;
-
-configuration CFG_TB_IRAM of TB_IRAM is
-  for TEST
-    for DUT : IRAM
-      use configuration WORK.CFG_IRAM_BEHAVIORAL;
-    end for;
-  end for;
-end CFG_TB_IRAM;

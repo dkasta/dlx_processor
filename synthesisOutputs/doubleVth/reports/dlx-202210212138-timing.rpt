@@ -1,0 +1,73 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : dlx
+Version: F-2011.09-SP3
+Date   : Fri Oct 21 21:38:02 2022
+****************************************
+
+Operating Conditions: nom_1.20V_25C   Library: CORE65LPLVT
+Wire Load Model Mode: enclosed
+
+  Startpoint: DTP/cnt/i_reg[1]
+              (rising edge-triggered flip-flop clocked by Clk)
+  Endpoint: DTP/cnt/tc_reg
+            (rising edge-triggered flip-flop clocked by Clk)
+  Path Group: Clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  dlx                area_3Kto4K           CORE65LPLVT
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  DTP/cnt/i_reg[1]/CP (HS65_LH_DFPRQNX4)                  0.00       0.00 r
+  DTP/cnt/i_reg[1]/QN (HS65_LH_DFPRQNX4)                  0.20       0.20 f
+  sub_x_338/U85/Z (HS65_LL_OR2X9)                         0.07       0.26 f
+  U10125/Z (HS65_LH_OR3X4)                                0.12       0.38 f
+  U10100/Z (HS65_LL_NAND4ABX3)                            0.10       0.48 f
+  sub_x_338/U45/Z (HS65_LL_OR2X9)                         0.07       0.54 f
+  sub_x_338/U43/Z (HS65_LL_OR2X9)                         0.05       0.59 f
+  sub_x_338/U41/Z (HS65_LL_OR2X9)                         0.05       0.64 f
+  sub_x_338/U39/Z (HS65_LL_OR2X9)                         0.05       0.69 f
+  sub_x_338/U37/Z (HS65_LL_OR2X9)                         0.05       0.73 f
+  sub_x_338/U35/Z (HS65_LL_OR2X9)                         0.05       0.78 f
+  sub_x_338/U33/Z (HS65_LL_OR2X9)                         0.05       0.82 f
+  sub_x_338/U31/Z (HS65_LL_OR2X9)                         0.05       0.87 f
+  sub_x_338/U29/Z (HS65_LL_OR2X9)                         0.05       0.92 f
+  sub_x_338/U27/Z (HS65_LL_OR2X9)                         0.05       0.96 f
+  sub_x_338/U25/Z (HS65_LL_OR2X9)                         0.05       1.01 f
+  sub_x_338/U23/Z (HS65_LL_OR2X9)                         0.05       1.06 f
+  sub_x_338/U21/Z (HS65_LL_OR2X9)                         0.05       1.10 f
+  sub_x_338/U19/Z (HS65_LL_OR2X9)                         0.05       1.15 f
+  sub_x_338/U17/Z (HS65_LL_OR2X9)                         0.05       1.20 f
+  sub_x_338/U15/Z (HS65_LL_OR2X9)                         0.05       1.24 f
+  sub_x_338/U13/Z (HS65_LL_OR2X9)                         0.05       1.29 f
+  sub_x_338/U11/Z (HS65_LL_OR2X9)                         0.05       1.34 f
+  sub_x_338/U9/Z (HS65_LL_OR2X9)                          0.05       1.38 f
+  sub_x_338/U7/Z (HS65_LL_OR2X9)                          0.05       1.43 f
+  sub_x_338/U5/Z (HS65_LL_OR2X9)                          0.05       1.48 f
+  U10133/Z (HS65_LH_OAI12X2)                              0.07       1.55 r
+  U10134/Z (HS65_LH_OAI13X1)                              0.13       1.68 f
+  U10123/Z (HS65_LH_NOR3X1)                               0.12       1.80 r
+  U10124/Z (HS65_LH_NOR2X2)                               0.07       1.87 f
+  DTP/cnt/tc_reg/D (HS65_LL_DFPSQX4)                      0.00       1.87 f
+  data arrival time                                                  1.87
+
+  clock Clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  DTP/cnt/tc_reg/CP (HS65_LL_DFPSQX4)                     0.00       2.00 r
+  library setup time                                     -0.09       1.91
+  data required time                                                 1.91
+  --------------------------------------------------------------------------
+  data required time                                                 1.91
+  data arrival time                                                 -1.87
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.03

@@ -50,9 +50,9 @@ architecture structural of DLX is
   -- Data Ram
   component DRAM
       generic(NBIT : integer := NumBitMemoryWord;
-              NADDR : integer :=  NumMemBitAddress);
+              NCELL : integer :=  NumBitMemoryCells);
       port(clk : IN std_logic;
-           address : IN std_logic_vector(NADDR-1 downto 0);
+           address : IN std_logic_vector(NBIT-1 downto 0);
            data_in : IN std_logic_vector(NBIT-1 downto 0);
            write_enable : IN std_logic;
            read_enable : IN std_logic;
@@ -287,7 +287,7 @@ begin  -- DLX
              Dout => toirfromiram);
 
     DRAM_I : DRAM
-    generic map(BIT_RISC, NumMemBitAddress)
+    generic map(BIT_RISC, NumBitMemoryCells)
     port map(clk => clk,
              address => DRAM_addr_signal, 
              data_in => DRAM_data_in_signal, 

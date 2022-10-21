@@ -1,0 +1,62 @@
+Loading db file '/home/ms22.21/FINAL_SYNTH/dual/tech/STcmos65/CORE65LPLVT_nom_1.20V_25C.db'
+Loading db file '/home/ms22.21/FINAL_SYNTH/dual/tech/STcmos65/CORE65LPHVT_nom_1.20V_25C.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : dlx
+Version: F-2011.09-SP3
+Date   : Fri Oct 21 21:38:09 2022
+****************************************
+
+
+Library(s) Used:
+
+    CORE65LPLVT (File: /home/ms22.21/FINAL_SYNTH/dual/tech/STcmos65/CORE65LPLVT_nom_1.20V_25C.db)
+    CORE65LPHVT (File: /home/ms22.21/FINAL_SYNTH/dual/tech/STcmos65/CORE65LPHVT_nom_1.20V_25C.db)
+
+
+Operating Conditions: nom_1.20V_25C   Library: CORE65LPLVT
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+dlx                    area_3Kto4K       CORE65LPLVT
+SNPS_CLOCK_GATE_HIGH_dlx_1
+                       area_0Kto1K       CORE65LPLVT
+SNPS_CLOCK_GATE_HIGH_dlx_2
+                       area_0Kto1K       CORE65LPLVT
+
+
+Global Operating Voltage = 1.2  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1mW
+
+
+  Cell Internal Power  =   5.1563 mW   (76%)
+  Net Switching Power  =   1.5879 mW   (24%)
+                         ---------
+Total Dynamic Power    =   6.7442 mW  (100%)
+
+Cell Leakage Power     =   1.4821 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.1272            0.8976        1.1330e-06            1.0248  (  15.19%)
+register           4.6665        7.1544e-02        2.6439e-04            4.7383  (  70.24%)
+sequential     1.5939e-02        5.9238e-03        1.3497e-06        2.1864e-02  (   0.32%)
+combinational      0.3466            0.6129        1.2152e-03            0.9607  (  14.24%)
+--------------------------------------------------------------------------------------------------
+Total              5.1563 mW         1.5879 mW     1.4821e-03 mW         6.7457 mW

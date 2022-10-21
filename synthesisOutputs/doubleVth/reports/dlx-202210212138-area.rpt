@@ -1,0 +1,28 @@
+ 
+****************************************
+Report : area
+Design : dlx
+Version: F-2011.09-SP3
+Date   : Fri Oct 21 21:38:09 2022
+****************************************
+
+Library(s) Used:
+
+    CORE65LPLVT (File: /home/ms22.21/FINAL_SYNTH/dual/tech/STcmos65/CORE65LPLVT_nom_1.20V_25C.db)
+    CORE65LPHVT (File: /home/ms22.21/FINAL_SYNTH/dual/tech/STcmos65/CORE65LPHVT_nom_1.20V_25C.db)
+
+Number of ports:                           66
+Number of nets:                           930
+Number of cells:                          859
+Number of combinational cells:            655
+Number of sequential cells:               202
+Number of macros:                           0
+Number of buf/inv:                        105
+Number of references:                      96
+
+Combinational area:       1935.439954
+Noncombinational area:    1690.000005
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:          3625.439959
+Total area:                 undefined

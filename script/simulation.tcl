@@ -1,5 +1,5 @@
 set sim_root "./"
-set asm_root "../../assembly"
+set asm_root "../assembly"
 
 ########################################################################################################################################
 #Name			:compile_directory
@@ -49,14 +49,9 @@ proc simulate_dlx {{asm_file "test.asm"} {run_time 100}} {
 	exec rm $asm_file.exe $asm_file.exe.hdr
 
 	# simulate assembled code
-	vsim tb_dlx
+	vsim tb_dlx_top
 
-	####dlx.do contains custom waveform options. Not done yet
-#	if {[file exists $asm_root/dlx.do]} {
-#		do $asm_root/dlx.do
-#	} else {
-#		add wave *
-#	}
+	add wave *
 
 	run $run_time ns
 }

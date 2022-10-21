@@ -77,8 +77,9 @@ proc synthesize_dual_vth {{top_entity "dlx"} {time_constraint 2} {low_Vth_Librar
 	set_attribute [find library $high_Vth_Library] default_threshold_voltage_group HVT -type string
 
 	# setup timing constraints
-	create_clock -period $time_constraint CLK
-	set_max_delay -from [all_inputs] -to [all_outputs] $time_constraint
+	create_clock -name "Clk" -period $time_constraint Clk
+	set_max_delay $time_constraint -from [all_inputs] -to [all_outputs]
+
 
 	# Clock gating options (to be verified)
 	set clockGatingMinBitWidth 1
@@ -137,14 +138,15 @@ proc synthesize {{top_entity "dlx"} {time_constraint 2} {wire_load_model "5K_hvr
 		file mkdir $folder_post_syn
 	}
 
-	elaborate $top_entity
+	current_design dlx
+	#elaborate $top_entity
 
 	# Setup timing constraints
-	create_clock -period $time_constraint CLK
-	set_max_delay -from [all_inputs] -to [all_outputs] $time_constraint
+	create_clock -name "Clk" -period $time_constraint Clk
+	set_max_delay $time_constraint -from [all_inputs] -to [all_outputs]
 
 	# Setup working conditions
-	set_wire_load_model -name $wire_load_model
+	#set_wire_load_model -name $wire_load_model
 
 	# Clock gating options (to be verified)
 	set clockGatingMinBitWidth 1

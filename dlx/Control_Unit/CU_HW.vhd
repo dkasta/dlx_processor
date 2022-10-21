@@ -249,7 +249,7 @@ begin
       cw4 <= (others => '0');
     elsif Clk'event and Clk = '1' then  -- rising clock edge
       --cw1 <= cw;
-      if (FLUSH = "011") then
+      if (FLUSH = "011") or (FLUSH = "000") then
         cw2 <= (others => '0');
       elsif (nop_add = '1') then
         cw3 <= (others => '0');

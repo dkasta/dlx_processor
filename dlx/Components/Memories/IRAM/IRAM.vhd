@@ -54,7 +54,7 @@ begin  -- process FILL_MEM_P
     
     if (Rst = '1') then
       --Dout <= (others => '0');
-      file_open(mem_fp,"/home/ms22.21/dlxtest2/test/assembler.bin/branch_forwarding.asm.mem",READ_MODE);
+      file_open(mem_fp,"/home/ms22.21/dlxtest2/test/assembler.bin/LoadStore.asm.mem",READ_MODE);
       while (not endfile(mem_fp)) loop
         readline(mem_fp,file_line);
         hread(file_line,tmp_data_u);
@@ -78,8 +78,3 @@ ENABLE_PROCESS : process(Addr, enable)
 
 Dout <= Dout_signal;
 end behavioural;
-
-configuration CFG_IRAM_BEHAVIORAL of IRAM is
-	for behavioural
-	end for;
-end CFG_IRAM_BEHAVIORAL;
