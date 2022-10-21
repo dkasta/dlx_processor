@@ -139,7 +139,7 @@ architecture structural of DLX is
                alu_out_mem:           out std_logic_vector(numbit - 1 downto 0);
                wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
                rd_out_wb:             out std_logic_vector(4 downto 0);
-               FLUSH:                  out std_logic_vector(1 downto 0);
+               FLUSH:                  out std_logic_vector(2 downto 0);
                -------------------------------------------------------------------
                --signal for dram WRF 
                inmemsignal : IN std_logic_vector(numbit - 1 downto 0);
@@ -187,7 +187,7 @@ architecture structural of DLX is
             alu_forwarding_two: IN std_logic;
             mem_forwarding_one: IN std_logic;
             mem_forwarding_two: IN std_logic;
-            FLUSH : IN std_logic_vector(1 downto 0));                 
+            FLUSH : IN std_logic_vector(2 downto 0));                 
              
 end component;
 
@@ -224,7 +224,7 @@ end component;
   signal mux_mem_control_signal : std_logic;
   signal EN4_signal : std_logic;
   signal mux_wb_control_signal : std_logic;
-  signal FLUSH_signal : std_logic_vector(1 downto 0);
+  signal FLUSH_signal : std_logic_vector(2 downto 0);
   --WRF signal DRAM
   signal inmemsignal_out : std_logic_vector(BIT_RISC - 1 downto 0);
   signal outmemsignal_in : std_logic_vector(BIT_RISC - 1 downto 0); 

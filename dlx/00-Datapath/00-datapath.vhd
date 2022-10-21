@@ -71,7 +71,7 @@ entity datapath is
            --WB output
            wb_stage_out:          out std_logic_vector(numbit - 1 downto 0);
            rd_out_wb:              out std_logic_vector(4 downto 0);
-           FLUSH:                  out std_logic_vector (1 downto 0);
+           FLUSH:                  out std_logic_vector (2 downto 0);
 
            --signal for dram WRF 
            inmemsignal : IN std_logic_vector(numbit - 1 downto 0);
@@ -114,10 +114,10 @@ architecture structural of datapath is
 
   signal npcoutbpusignal : std_logic_vector(numbit - 1 downto 0);
   signal NPC_branch_jump_signal: std_logic_vector(numbit - 1 downto 0);
-  signal comparator_out_to_mux_signal: std_logic_vector(1 downto 0);
+  signal comparator_out_to_mux_signal: std_logic_vector(2 downto 0);
   signal b_reg_out_signal: std_logic_vector(numbit - 1 downto 0);
   signal RF_ONE_OUT_signal : std_logic_vector(numbit - 1 downto 0);
-
+  signal alu_branch_out_signal: std_logic_vector(numbit - 1 downto 0);
 
   component fetch_unit
     generic(numbit : integer := I_SIZE);
@@ -125,8 +125,9 @@ architecture structural of datapath is
          clk : IN std_logic;
          rst : IN std_logic;
          EN1:  IN std_logic;
-         comparator_out_to_mux: IN std_logic_vector(1 downto 0);
+         comparator_out_to_mux: IN std_logic_vector(2 downto 0);
          NPC_branch_jump:    IN std_logic_vector(numbit-1 downto 0);
+         alu_branch_input: IN std_logic_vector(numbit-1 downto 0);
          RF_ONE_OUT_IF:  IN std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
          npc_out : OUT std_logic_vector(numbit-1 downto 0);
@@ -196,6 +197,7 @@ component execution_unit
            mem_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);
            mem_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
+           alu_branch_out:        out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
            rd_reg_out:            out std_logic_vector(4 downto 0));
  end component;
@@ -263,6 +265,7 @@ end component;
              comparator_out_to_mux => comparator_out_to_mux_signal,
              RF_ONE_OUT_IF => RF_ONE_OUT_signal,
              NPC_branch_jump => NPC_branch_jump_signal,
+             alu_branch_input => alu_branch_out_signal,
              to_IR => to_IR,
              to_IRAM => to_IRAM, 
              npc_out => npcoutifsignal, 
@@ -329,6 +332,7 @@ port map( clk => clk,
           mem_forwarding_one_vector => mem_forwarding_one_vector_signal,
           mem_forwarding_two_vector => mem_forwarding_two_vector_signal,
           execution_stage_out => aluoutsignal,
+          alu_branch_out => alu_branch_out_signal,
           b_reg_out => b_reg_out_signal,
           rd_reg_out => rdoutexsignal);
 

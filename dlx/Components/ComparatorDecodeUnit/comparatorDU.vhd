@@ -11,42 +11,46 @@ entity COMPARATORDU is
         port ( opcode_in : in std_logic_vector(OPCODE_SIZE - 1 downto 0);
             data_in : in std_logic_vector(NBIT-1 downto 0);
             nop_add : in std_logic;
-            data_out : out std_logic_vector(1 downto 0));
+            data_out : out std_logic_vector(2 downto 0));
 end COMPARATORDU;
 
 architecture BEHAVIOURAL of COMPARATORDU is
 begin
 
     proc: process(opcode_in, data_in, nop_add)
-        variable branch_flag : integer;  
+        variable beqz_flag : integer := 0;
+        variable bnez_flag : integer := 0;  
         begin
             if(nop_add = '0') then
                 if (opcode_in = ITYPE_BEQZ) then 
-                    if (data_in = (NBIT - 1 downto 0 => '0') ) then
-
-                        data_out <= "00";
+                    if (data_in = (NBIT - 1 downto 0 => '0') ) and (beqz_flag = 1) then
+                        data_out <= "011";  --new value forwarded by the output of the alu
+                        beqz_flag := 0;
                     else
-                        data_out <= "10";
+                        data_out <= "111";
+                        beqz_flag := beqz_flag + 1;   
                     end if;
                 elsif (opcode_in = ITYPE_BNEZ) then 
-                    if (data_in /= (NBIT - 1 downto 0 => '0')) then
-                        data_out <= "00";
+                    if (data_in /= (NBIT - 1 downto 0 => '0')) and (bnez_flag = 1) then
+                        data_out <= "011";
+                        bnez_flag := bnez_flag;   
                     else
-                        data_out <= "10";
+                        data_out <= "111";
+                        bnez_flag := bnez_flag + 1;   
                     end if;
                 elsif (opcode_in = JTYPE_J) then 
-                    data_out <= "00";
+                    data_out <= "000";
                 elsif (opcode_in = JTYPE_JAL) then 
-                    data_out <= "00";
+                    data_out <= "000";
                 elsif (opcode_in = JTYPE_RET) then 
-                    data_out <= "01";
+                    data_out <= "101";
                 elsif (opcode_in = JTYPE_CALL) then
-                    data_out <= "01";
+                    data_out <= "101";
                 else
-                    data_out <= "10";
+                    data_out <= "110";
                 end if;
             else
-                data_out <= "11";
+                data_out <= "111";
             end if;
     end process;
 

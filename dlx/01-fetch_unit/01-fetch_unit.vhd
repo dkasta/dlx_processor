@@ -9,9 +9,10 @@ entity fetch_unit is
        	  rst:	 	  	           in std_logic;
           EN1:                   in std_logic;
           to_IR:		             in std_logic_vector(numbit-1 downto 0);
-          comparator_out_to_mux: in std_logic_vector(1 downto 0);
+          comparator_out_to_mux: in std_logic_vector(2 downto 0);
           RF_ONE_OUT_IF:         in std_logic_vector(numbit-1 downto 0);
           NPC_branch_jump:        in std_logic_vector(numbit-1 downto 0);
+          alu_branch_input:       in std_logic_vector(numbit-1 downto 0);
           to_IRAM:     	         out std_logic_vector(numbit - 1 downto 0);
        	  npc_out:		           out std_logic_vector(numbit-1 downto 0);
        	  instr_reg_out:         out std_logic_vector(numbit-1 downto 0);
@@ -46,15 +47,16 @@ component register_generic
   end component;
 
 
-   component MUX41_GENERIC 
-    generic( NBIT : integer := BIT_RISC);
-    port( A      : in  std_logic_vector(NBIT-1 downto 0);
-          B      : in  std_logic_vector(NBIT-1 downto 0);
-          C      : in  std_logic_vector(NBIT-1 downto 0);
-          D      : in  std_logic_vector(NBIT-1 downto 0);
-          SEL    : in  std_logic_vector(1 downto 0);
-          Y      : out std_logic_vector(NBIT-1 downto 0));
-    end component;
+   component MUX51_GENERIC 
+   generic( NBIT : integer := BIT_RISC);
+   port( A      : in  std_logic_vector(NBIT-1 downto 0);
+         B      : in  std_logic_vector(NBIT-1 downto 0);
+         C      : in  std_logic_vector(NBIT-1 downto 0);
+         D      : in  std_logic_vector(NBIT-1 downto 0);
+         E      : in  std_logic_vector(NBIT-1 downto 0);
+         SEL    : in  std_logic_vector(2 downto 0);
+         Y      : out std_logic_vector(NBIT-1 downto 0));
+   end component;
   -----------------------------------------------------------
 --  component IRAM is
 --    generic(RAM_DEPTH : integer := RAM_DEPTH;
@@ -86,12 +88,13 @@ component register_generic
     end process;
 
     -- SEL = 1, B is selected
-    MUX_PC : MUX41_GENERIC
+    MUX_PC : MUX51_GENERIC
     generic map(numbit)
       port map ( A => NPC_branch_jump, 
                  B => RF_ONE_OUT_IF, 
                  C => pc_adder_out,
                  D => pc_reg_out,
+                 E => alu_branch_input,
                  SEL => comparator_out_to_mux, 
                  Y => pc_mux_out);
     

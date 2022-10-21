@@ -40,7 +40,7 @@ entity CU_HARDWIRED is
              alu_forwarding_two: IN std_logic;
              mem_forwarding_one: IN std_logic;
              mem_forwarding_two: IN std_logic;
-             FLUSH : IN std_logic_vector(1 downto 0));                  -- Active high
+             FLUSH : IN std_logic_vector(2 downto 0));                  -- Active high
               
 end CU_HARDWIRED;
 
@@ -249,7 +249,7 @@ begin
       cw4 <= (others => '0');
     elsif Clk'event and Clk = '1' then  -- rising clock edge
       --cw1 <= cw;
-      if (FLUSH = "00") then
+      if (FLUSH = "111") then
         cw2 <= (others => '0');
       elsif (nop_add = '1') then
         cw3 <= (others => '0');

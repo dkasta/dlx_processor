@@ -21,6 +21,7 @@ entity execution_unit is
            mem_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);
            mem_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
+           alu_branch_out:        out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
            rd_reg_out:            out std_logic_vector(4 downto 0));
 end execution_unit;
@@ -87,6 +88,8 @@ architecture structural of execution_unit is
               output => alu_out, 
               cout => s_cout);
 
+    alu_branch_out <= alu_out;
+    
     REG1 : REGISTER_GENERIC
     generic map(numbit)
     port map( D => alu_out,
