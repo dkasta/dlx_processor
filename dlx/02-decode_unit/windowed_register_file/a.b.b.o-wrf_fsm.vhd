@@ -55,8 +55,12 @@ begin
                             end if;
                             
             when fill   =>  if(ram_ready='1') then
+                                if(unsigned(curr_addr)/=(NADDR-1 downto 0=>'0')) then
                                 next_addr<=std_logic_vector(unsigned(curr_addr)-1);
                                 next_State<=fill;
+                                else
+                                next_state<=fill;
+                                end if;
                             end if;
                             if(push='1') then
                                 next_state<=spill;
