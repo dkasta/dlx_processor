@@ -6,6 +6,3 @@ dlx/05-write_unit/work/*
 dlx/00-Datapath/work/*
 work/
 *.wlf
-dlx/transcript
-dlx/02-decode_unit/HazardDetection/transcript
-dlx/transcript
