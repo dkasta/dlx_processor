@@ -1,2 +1,1 @@
-# dlx_processor
-Microelectronic System final project
+# dlx_fixed

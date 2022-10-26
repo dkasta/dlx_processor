@@ -11,6 +11,7 @@ entity fetch_unit is
           to_IR:		             in std_logic_vector(numbit-1 downto 0);
           comparator_out_to_mux: in std_logic_vector(2 downto 0);
           RF_ONE_OUT_IF:         in std_logic_vector(numbit-1 downto 0);
+          NPC_OUT_ID:            in std_logic_vector(numbit-1 downto 0);
           NPC_branch_jump:        in std_logic_vector(numbit-1 downto 0);
           alu_branch_input:       in std_logic_vector(numbit-1 downto 0);
           to_IRAM:     	         out std_logic_vector(numbit - 1 downto 0);
@@ -42,7 +43,9 @@ component register_generic
     port(clk : IN std_logic;
          reset : IN std_logic;
          PC_in : IN std_logic_vector(NBIT-1 downto 0);
+         PC_in_plusfour: IN std_logic_vector(NBIT-1 downto 0);
          enable : IN std_logic;
+         JB_enable : IN std_logic_vector(2 downto 0);
          PC_out : OUT std_logic_vector(NBIT-1 downto 0));
   end component;
 
@@ -76,8 +79,10 @@ component register_generic
     generic map (numbit)
            port map (clk => clk, 
                      reset => rst, 
-                     PC_in => pc_mux_out, 
+                     PC_in => pc_mux_out,
+                     PC_in_plusfour => pc_adder_out, 
                      enable => EN1, 
+                     JB_enable => comparator_out_to_mux,
                      PC_out => pc_reg_out); 
 
     PC_ADDER_PROCESS : process(pc_reg_out, EN1)
@@ -93,7 +98,7 @@ component register_generic
       port map ( A => NPC_branch_jump, 
                  B => RF_ONE_OUT_IF, 
                  C => pc_adder_out,
-                 D => pc_reg_out,
+                 D => NPC_OUT_ID,
                  E => alu_branch_input,
                  SEL => comparator_out_to_mux, 
                  Y => pc_mux_out);

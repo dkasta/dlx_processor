@@ -64,10 +64,24 @@ begin
   port map(OPCODE,RD_REG_IN_RTYPE,RD_REG_IN_ITYPE,rdselectoutsignal);
 
   R1_HAZARD : HAZARD_DETECTION1
-  port map(clk=>clk,reset=>reset,opcode=>OPCODE,RS1_REG_IN=>RS1_REG_IN,RD_REG_IN=>rdselectoutsignal,alu_forwarding_one=>alu_forwarding_one,mem_forwarding_one=>mem_forwarding_one,nop_add=>nop_op1);
+  port map( clk=>clk,
+            reset=>reset,
+            opcode=>OPCODE,
+            RS1_REG_IN=>RS1_REG_IN,
+            RD_REG_IN=>rdselectoutsignal,
+            alu_forwarding_one=>alu_forwarding_one,
+            mem_forwarding_one=>mem_forwarding_one,
+            nop_add=>nop_op1);
 
   R2_HAZARD : HAZARD_DETECTION2
-  port map(clk=>clk,reset=>reset,opcode=>OPCODE,RS2_REG_IN=>RS2_REG_IN,RD_REG_IN=>rdselectoutsignal,alu_forwarding_two=>alu_forwarding_two,mem_forwarding_two=>mem_forwarding_two,nop_add=>nop_op2);
+  port map( clk=>clk,
+            reset=>reset,
+            opcode=>OPCODE,
+            RS2_REG_IN=>RS2_REG_IN,
+            RD_REG_IN=>rdselectoutsignal,
+            alu_forwarding_two=>alu_forwarding_two,
+            mem_forwarding_two=>mem_forwarding_two,
+            nop_add=>nop_op2);
 
 end structural;
 

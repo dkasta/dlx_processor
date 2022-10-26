@@ -113,7 +113,7 @@ architecture behaviour of alu is
         case type_alu_operation is
         
             when ADDOP =>  -- A + B
-                s_add_or_sub <= '0';  
+                s_add_or_sub <= '0';  -- When s_add_or_sub = '0' the add is done
                 s_A_add <= operand_A; 
                 s_B_add <= operand_B;
             
@@ -265,7 +265,7 @@ architecture behaviour of alu is
                 
             
             when NEQOP => -- A /= B
-                s_add_or_sub <= '1';
+                s_add_or_sub <= '1';    -- When s_add_or_sub = '1' the sub is done
                 s_sign <= '0';             
                 s_A_add <= operand_A; 
                 s_B_add <= operand_B; 		

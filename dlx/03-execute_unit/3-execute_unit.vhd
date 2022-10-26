@@ -20,6 +20,8 @@ entity execution_unit is
            alu_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
            mem_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);
            mem_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
+           rd_out_exe: 		    out std_logic_vector(4 downto 0);
+           alu_out_exe:           out std_logic_vector(numbit-1 downto 0);
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            alu_branch_out:        out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
@@ -61,6 +63,9 @@ architecture structural of execution_unit is
   signal s_cout : std_logic;
 
   begin
+
+    rd_out_exe <= rd_reg_in;
+    alu_out_exe <= alu_out;
 
     MUX_ONE_RF : MUX41_GENERIC
     generic map(numbit)

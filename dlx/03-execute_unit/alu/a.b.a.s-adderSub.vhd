@@ -39,7 +39,7 @@ signal B_in: std_logic_vector(NBIT-1 downto 0);
 
 begin
 
-xor_g : generic_xor generic map (N) port map (B, Ci, B_in);
-add : p4_adder generic map (NBIT, NBIT_PER_BLOCK) port map (A, B_in, Ci, Sum, Cout);
+xor_g : generic_xor generic map (N) port map (B, Ci, B_in);  --XOR of B with Ci (bit by bit) to obtain the negation of B 
+add : p4_adder generic map (NBIT, NBIT_PER_BLOCK) port map (A, B_in, Ci, Sum, Cout); -- A + (Ca1 of B) + Ci (=1 in the case of comparator NEQ)
 
 end struct;

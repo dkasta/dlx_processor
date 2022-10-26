@@ -12,6 +12,8 @@ entity memory_unit is
            mux_mem_control:   in std_logic;
            EN4:               in std_logic;
            DRAM_to_mux:       in std_logic_vector(numbit - 1 downto 0);
+           rd_out_mem: 			  out std_logic_vector(4 downto 0);
+           alu_out_mem:       out std_logic_vector(numbit-1 downto 0);
            alu_out:           out std_logic_vector(numbit - 1 downto 0);
            rd_reg_out:        out std_logic_vector(4 downto 0);
            b_reg_out:         out std_logic_vector(numbit-1 downto 0);
@@ -69,6 +71,10 @@ architecture structural of memory_unit is
               ENABLE => EN4,
               Q => rd_reg_out);
 
+
+    rd_out_mem <= rd_reg_in;  
+    alu_out_mem <= alu_in;
+      
     b_reg_in_signal <= b_reg_in;
     b_reg_out <= b_reg_in_signal;
     

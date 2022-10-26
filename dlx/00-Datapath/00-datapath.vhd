@@ -119,6 +119,15 @@ architecture structural of datapath is
   signal RF_ONE_OUT_signal : std_logic_vector(numbit - 1 downto 0);
   signal alu_branch_out_signal: std_logic_vector(numbit - 1 downto 0);
 
+
+  signal rd_out_exe_signal: std_logic_vector(4 downto 0);
+  signal rd_out_mem_signal: std_logic_vector(4 downto 0);
+  signal rd_out_wb_signal: std_logic_vector(4 downto 0);
+  signal alu_out_exe_signal: std_logic_vector(numbit-1 downto 0);
+  signal alu_out_mem_signal: std_logic_vector(numbit-1 downto 0);
+  signal alu_out_wb_signal: std_logic_vector(numbit-1 downto 0);
+
+
   component fetch_unit
     generic(numbit : integer := I_SIZE);
     port(to_IR : IN std_logic_vector(numbit-1 downto 0);
@@ -129,6 +138,7 @@ architecture structural of datapath is
          NPC_branch_jump:    IN std_logic_vector(numbit-1 downto 0);
          alu_branch_input: IN std_logic_vector(numbit-1 downto 0);
          RF_ONE_OUT_IF:  IN std_logic_vector(numbit-1 downto 0);
+         NPC_OUT_ID:     IN std_logic_vector(numbit-1 downto 0);
          to_IRAM : OUT std_logic_vector(numbit - 1 downto 0);
          npc_out : OUT std_logic_vector(numbit-1 downto 0);
          instr_reg_out : OUT std_logic_vector(numbit-1 downto 0);
@@ -153,9 +163,17 @@ component decode_unit is
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
             imm_mux_control:       in std_logic;
+            alu_branch_out:          in std_logic_vector(numbit-1 downto 0);
             wr31_enable:       in std_logic;
-       	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
-       	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
+            -------------------------------------------------------------
+            rd_out_exe: 			    in std_logic_vector(4 downto 0);
+            rd_out_mem: 			    in std_logic_vector(4 downto 0);
+            rd_out_wb: 			      in std_logic_vector(4 downto 0);
+            alu_out_exe: 			    in std_logic_vector(numbit-1 downto 0);
+            alu_out_mem: 			    in std_logic_vector(numbit-1 downto 0);
+            alu_out_wb: 			    in std_logic_vector(numbit-1 downto 0);
+       	   	------------------------------------------------------------
+            RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
        	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
@@ -196,6 +214,8 @@ component execution_unit
            alu_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
            mem_forwarding_one_vector:     in std_logic_vector(numbit-1 downto 0);
            mem_forwarding_two_vector:     in std_logic_vector(numbit-1 downto 0);
+           rd_out_exe: 		        out std_logic_vector(4 downto 0);
+           alu_out_exe:           out std_logic_vector(numbit-1 downto 0);
            execution_stage_out:   out std_logic_vector(numbit-1 downto 0);
            alu_branch_out:        out std_logic_vector(numbit-1 downto 0);
            b_reg_out:             out std_logic_vector(numbit-1 downto 0);
@@ -212,6 +232,8 @@ port(   alu_in:            in std_logic_vector(numbit - 1 downto 0);
         mux_mem_control:   in std_logic;
         EN4:               in std_logic;
         DRAM_to_mux:       in std_logic_vector(numbit - 1 downto 0);
+        rd_out_mem: 			  out std_logic_vector(4 downto 0);
+        alu_out_mem:       out std_logic_vector(numbit-1 downto 0);
         alu_out:           out std_logic_vector(numbit - 1 downto 0);
         rd_reg_out:        out std_logic_vector(4 downto 0);
         b_reg_out:         out std_logic_vector(numbit-1 downto 0);
@@ -227,6 +249,8 @@ port(    LMD:     in std_logic_vector(N-1 downto 0);
          ALUOUT:  in std_logic_vector(N-1 downto 0);
          mux_wb_control: in std_logic;
          RD_IN:   in std_logic_vector(4 downto 0);
+         rd_out_wb: 		 out std_logic_vector(4 downto 0);
+         alu_out_wb:     out std_logic_vector(N-1 downto 0);
          RD_OUT:  out std_logic_vector(4 downto 0);
          WB_OUT:  out std_logic_vector(N-1 downto 0);
          mem_forwarding_one_vector:     out std_logic_vector(numbit-1 downto 0);
@@ -264,6 +288,7 @@ end component;
              EN1 => EN1,
              comparator_out_to_mux => comparator_out_to_mux_signal,
              RF_ONE_OUT_IF => RF_ONE_OUT_signal,
+             NPC_OUT_ID => npcoutidsignal,
              NPC_branch_jump => NPC_branch_jump_signal,
              alu_branch_input => alu_branch_out_signal,
              to_IR => to_IR,
@@ -292,7 +317,14 @@ end component;
               RD_IN => rdoutwbsignal,
               instr_fetched => instrfetchedsigal,
               imm_mux_control => imm_mux_control,
+              alu_branch_out => alu_branch_out_signal,
               wr31_enable => wr31_enable,
+              rd_out_exe => rd_out_exe_signal,
+              rd_out_mem => rd_out_mem_signal,
+              rd_out_wb => rd_out_wb_signal,
+              alu_out_exe => alu_out_exe_signal,
+              alu_out_mem => alu_out_mem_signal,
+              alu_out_wb => alu_out_wb_signal,
               RD_OUT => rdoutidsignal,
               NPC_OUT => npcoutidsignal,
               A_REG_OUT => aregsignal,
@@ -331,6 +363,8 @@ port map( clk => clk,
           alu_forwarding_two_vector => alu_forwarding_two_vector_signal,
           mem_forwarding_one_vector => mem_forwarding_one_vector_signal,
           mem_forwarding_two_vector => mem_forwarding_two_vector_signal,
+          rd_out_exe => rd_out_exe_signal,
+          alu_out_exe => alu_out_exe_signal,
           execution_stage_out => aluoutsignal,
           alu_branch_out => alu_branch_out_signal,
           b_reg_out => b_reg_out_signal,
@@ -346,6 +380,8 @@ port map( alu_in => aluoutsignal,
           mux_mem_control => mux_mem_control,
           EN4 => EN4,
           DRAM_to_mux => DRAM_to_mux,
+          rd_out_mem => rd_out_mem_signal,
+          alu_out_mem => alu_out_mem_signal,
           alu_out => aluoutmemsignal,
           rd_reg_out => rdoutmemsignal,
           b_reg_out => DRAM_data_in,
@@ -359,6 +395,8 @@ port map( LMD => aluoutmemsignal,
           ALUOUT => aluoutmemsignal,
           mux_wb_control => mux_wb_control,
           RD_IN => rdoutmemsignal,
+          rd_out_wb => rd_out_wb_signal,
+          alu_out_wb => alu_out_wb_signal,
           RD_OUT => rdoutwbsignal,
           WB_OUT => wbstageoutsignal,
           mem_forwarding_one_vector => mem_forwarding_one_vector_signal,

@@ -21,9 +21,17 @@ entity decode_unit is
        	   	NPC_IN: 			        in std_logic_vector(numbit-1 downto 0);
            	RD_IN: 			          in std_logic_vector(4 downto 0);
        	   	instr_fetched:        in std_logic_vector(BIT_RISC - 1 downto 0);
-            imm_mux_control:       in std_logic;
-       	   	--NPC_OUT_BPU: 		      out std_logic_vector(numbit - 1 downto 0);
-       	   	RD_OUT: 			        out std_logic_vector(4 downto 0);
+            imm_mux_control:      in std_logic;
+            alu_branch_out:       in std_logic_vector(NBIT-1 downto 0);
+            -------------------------------------------------------------
+            rd_out_exe: 			    in std_logic_vector(4 downto 0);
+            rd_out_mem: 			    in std_logic_vector(4 downto 0);
+            rd_out_wb: 			      in std_logic_vector(4 downto 0);
+            alu_out_exe: 			    in std_logic_vector(numbit-1 downto 0);
+            alu_out_mem: 			    in std_logic_vector(numbit-1 downto 0);
+            alu_out_wb: 			    in std_logic_vector(numbit-1 downto 0);
+       	   	------------------------------------------------------------
+            RD_OUT: 			        out std_logic_vector(4 downto 0);
        	   	NPC_OUT: 			        out std_logic_vector(numbit-1 downto 0);
        	   	A_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
        	   	B_REG_OUT: 		        out std_logic_vector(numbit-1 downto 0);
@@ -54,20 +62,28 @@ end decode_unit;
 
 architecture structural of decode_unit is
 
---  component REGISTER_FILE
---    generic (numBit_data : integer := NumBitData;
---             numBit_address : integer := NumBitAddress;
---             numBit_registers : integer := NumBitRegisterFile);
---    port ( clk :	IN std_logic;
---           rst : IN std_logic;
---           Write_enable : IN std_logic;
---           Write_address : IN std_logic_vector(numBit_address-1 downto 0);
---           Read_one_address :	IN std_logic_vector(numBit_address-1 downto 0);
---           Read_two_address : IN std_logic_vector(numBit_address-1 downto 0);
---           Data_in : IN std_logic_vector(numBit_data-1 downto 0);
---           Data_one_out :	OUT std_logic_vector(numBit_data-1 downto 0);
---           Data_two_out :	OUT std_logic_vector(numBit_data-1 downto 0));
---    end component;
+
+      component LS_FORWARDING
+        port ( opcode_in : in std_logic_vector(5 downto 0);
+               rd1_addr : in std_logic_vector(4 downto 0);
+               rd2_addr: in std_logic_vector(4 downto 0);
+               rd_out_exe : in std_logic_vector(4 downto 0);
+               rd_out_mem : in std_logic_vector(4 downto 0);
+               rd_out_wb : in std_logic_vector(4 downto 0);
+               LMUX : out std_logic_vector(1 downto 0);
+               SMUX : out std_logic_vector(1 downto 0));
+      end component;
+
+      component MUX41_GENERIC 
+      generic( NBIT : integer := BIT_RISC);
+      port( A      : in  std_logic_vector(NBIT-1 downto 0);
+            B      : in  std_logic_vector(NBIT-1 downto 0);
+            C      : in  std_logic_vector(NBIT-1 downto 0);
+            D      : in  std_logic_vector(NBIT-1 downto 0);
+            SEL    : in  std_logic_vector(1 downto 0);
+            Y      : out std_logic_vector(NBIT-1 downto 0));
+      end component;
+    
       component wrf_fsm 
             generic(  NBIT : integer := NumBitMemoryWord;
                       NADDR : integer :=  NumMemBitAddress );
@@ -171,6 +187,7 @@ architecture structural of decode_unit is
       port( opcode_in : in std_logic_vector(OPCODE_SIZE - 1 downto 0);
             nop_add : in std_logic;
             data_in :   in std_logic_vector(NBIT-1 downto 0);
+            alu_branch_out: in std_logic_vector(NBIT-1 downto 0);
             data_out :  out std_logic_vector(2 downto 0));
      end component;
 
@@ -194,8 +211,17 @@ architecture structural of decode_unit is
       generic ( ADDRESS_BIT : integer := NumBitAddress);
           port ( write_address : in std_logic_vector(ADDRESS_BIT-1 downto 0);
                  read_address : in std_logic_vector(ADDRESS_BIT-1 downto 0);
+                 write_enable: in std_logic;
                  mux_sel : out std_logic);
     end component;
+
+    component MUX2TO1BRANCH 
+      generic( NBIT : integer := BIT_RISC);
+      port( A      : in  std_logic_vector(NBIT-1 downto 0);
+            B      : in  std_logic_vector(NBIT-1 downto 0);
+            SEL    : in  std_logic_vector(2 downto 0);
+            Y      : out std_logic_vector(NBIT-1 downto 0));
+      end component;
 
   signal sign_extention_16 : std_logic_vector(31 downto 0);
   signal sign_extention_26 : std_logic_vector(31 downto 0);
@@ -226,7 +252,53 @@ architecture structural of decode_unit is
   signal muxrd2_signal: std_logic;
   signal RF_ONE_OUT_signal: std_logic_vector(numbit-1 downto 0);
   signal RF_TWO_OUT_signal: std_logic_vector(numbit-1 downto 0);
+  signal RF_ONE_OUT_FORWARDED: std_logic_vector(numbit-1 downto 0);
+  signal RF_TWO_OUT_FORWARDED: std_logic_vector(numbit-1 downto 0);
+  signal RF_TWO_OUT_TO_REGB_signal: std_logic_vector(numbit-1 downto 0);
+
+  signal LMUX_signal: std_logic_vector(1 downto 0);
+  signal SMUX_signal: std_logic_vector(1 downto 0);
+
   begin
+
+
+
+
+   LSFORWARDING : LS_FORWARDING
+   port map( opcode_in => in_IR(31 downto 26),
+             rd1_addr => in_IR(25 downto 21),
+             rd2_addr => in_IR(20 downto 16),
+             rd_out_exe => rd_out_exe,
+             rd_out_mem => rd_out_mem,
+             rd_out_wb => rd_out_wb,
+             LMUX => LMUX_signal,
+             SMUX => SMUX_signal);
+
+  L_MUX_ONE_RF : MUX41_GENERIC
+  generic map(numbit)
+  port map( A => RF_ONE_OUT_signal,   --00
+            B => alu_out_mem,   --01
+            C => alu_out_wb,   --10
+            D => alu_out_exe,   --11
+            SEL => LMUX_signal,
+            Y => RF_ONE_OUT_FORWARDED);
+            
+  S_MUX_TWO_RF : MUX41_GENERIC
+  generic map(numbit)
+  port map( A => RF_TWO_OUT_TO_REGB_signal,
+            B => alu_out_mem,
+            C => alu_out_wb,
+            D => alu_out_exe,
+            SEL => SMUX_signal,
+            Y => RF_TWO_OUT_FORWARDED);
+
+
+  MUX2TO1_B : MUX2TO1BRANCH
+  generic map(numbit)
+  port map ( A => RF_TWO_OUT_signal, 
+             B => (others => '0'), 
+             SEL => signal_comparator_out, 
+             Y => RF_TWO_OUT_TO_REGB_signal);
 
   SIGN_REG_16 : SIGN_EXTENTION_16BIT
   port map( data_in => in_IR(15 downto 0),
@@ -248,14 +320,16 @@ architecture structural of decode_unit is
   port map ( opcode_in => in_IR(31 downto 26), 
              nop_add => nop_add_signal,
              data_in => RF_ONE_OUT,
+             alu_branch_out => alu_branch_out,
              data_out => signal_comparator_out);
   
   comparator_out <= signal_comparator_out;
 
   ADDRCOMP_RD1 : ADDRESSCOMPARATOR
   generic map (5)
-  port map ( write_address => in_IR(25 downto 21), 
-             read_address => in_IR(20 downto 16),
+  port map ( write_address => RF_write_address, 
+             read_address => in_IR(25 downto 21),
+             write_enable => write_enable,
              mux_sel => muxrd1_signal);
 
   MUX_RF_ONE_OUT : MUX21_GENERIC
@@ -269,8 +343,9 @@ architecture structural of decode_unit is
 
   ADDRCOMP_RD2 : ADDRESSCOMPARATOR
   generic map (5)
-  port map ( write_address => in_IR(25 downto 21), 
+  port map ( write_address => RF_write_address, 
              read_address => in_IR(20 downto 16),
+             write_enable => write_enable,
              mux_sel => muxrd2_signal);
 
   
@@ -315,7 +390,7 @@ architecture structural of decode_unit is
           data_31=>NPC_IN
           );
 
-  RF_ONE_OUT_ID <= RF_ONE_OUT;
+  RF_ONE_OUT_ID <= RF_ONE_OUT_signal;
 
   WRF_CU: wrf_fsm
       generic map (  NBIT=>NumBitMemoryWord, NADDR=> NumMemBitAddress)
@@ -346,7 +421,7 @@ architecture structural of decode_unit is
   
   REG_A : REGISTER_GENERIC
   generic map(numbit)
-  port map( D => RF_ONE_OUT_signal,
+  port map( D => RF_ONE_OUT_FORWARDED,
             CK => clk,
             RESET => rst, 
             ENABLE => EN2, 
@@ -354,7 +429,7 @@ architecture structural of decode_unit is
 
   REG_B : REGISTER_GENERIC
   generic map(numbit)
-  port map( D => RF_TWO_OUT_signal,
+  port map( D => RF_TWO_OUT_FORWARDED,
             CK => clk,
             RESET => rst, 
             ENABLE => EN2,
@@ -377,12 +452,6 @@ architecture structural of decode_unit is
             RESET => rst, 
             ENABLE => EN2,
             Q => NPC_OUT);
-
-  --RDMUX_MUX : RDMUX
-  --port map( rtype_in => in_IR(15 downto 11),
-  --          itype_in => in_IR(20 downto 16),
-  --          opcode_in => in_IR(31 downto 26),
-  --          rd_out => rdmux_out);
 
   RD_REG : REGISTER_GENERIC
   generic map(5)
@@ -418,7 +487,5 @@ architecture structural of decode_unit is
 
   NPC_branch_jump <= std_logic_vector(unsigned(NPC_IN) + unsigned(sign_extention_mux_out));
   
-  --BRANCHUNIT : BRANCHDECISIONUNIT
-  --port map(in_IR(31 downto 26),in_IR(25 downto 0),in_IR(15 downto 0),npc_latch_out,RF_ONE_OUT,RF_TWO_OUT,NPC_OUT_BPU);
 
 end structural;

@@ -122,10 +122,10 @@ architecture BEHAVIORAL of CU_HARDWIRED is
 
 signal cw_mem_itype : mem_array := ("00000000000000000000000",     --START NOT R_TYPE
                                     "00000000000000000000000",
-                                    "000001" & "00000000000000000",     --JTYPE_J                     --implemented in the branch prediction unit
-                                    "100001" & "00000000000000000",     --JTYPE_JAL                   --not implemented
-                                    "0100001" & "0011000010000000",     --ITYPE_BEQZ                  --implemented in the branch prediction unit
-                                    "0100001" & "0011000010000000",     --ITYPE_BNEZ                  --implemented in the branch prediction unit
+                                    "0000010" & "0000000000000000",     --JTYPE_J                     --implemented in the branch prediction unit
+                                    "1000010" & "0000000000000000",     --JTYPE_JAL                   --not implemented
+                                    "0100001" & "1100100010000000",     --ITYPE_BEQZ                  --implemented in the branch prediction unit
+                                    "0100001" & "1100100100000000",     --ITYPE_BNEZ                  --implemented in the branch prediction unit
                                     "00000000000000000000000",     --ITYPE_BFPT                  --not implemented
                                     "00000000000000000000000",     --ITYPE_BFPF                  --not implemented
                                     "0100001" & "1111000011" & "000111",     --ITYPE_ADD
@@ -163,7 +163,7 @@ signal cw_mem_itype : mem_array := ("00000000000000000000000",     --START NOT R
                                     "00000000000000000000000",     --ITYPE_SB                    --not implemented
                                     "00000000000000000000000",     --ITYPE_SH                    --not implemented
                                     "00000000000000000000000",
-                                    "0110001" & "1111000011" & "100110",     --ITYPE_SW
+                                    "0110001" & "1111000011" & "100010",     --ITYPE_SW
                                     "00000000000000000000000",
                                     "00000000000000000000000",
                                     "00000000000000000000000",     --ITYPE_SF                    --not implemented
@@ -249,7 +249,7 @@ begin
       cw4 <= (others => '0');
     elsif Clk'event and Clk = '1' then  -- rising clock edge
       --cw1 <= cw;
-      if (FLUSH = "011") or (FLUSH = "000") then
+      if (FLUSH = "011") then
         cw2 <= (others => '0');
       elsif (nop_add = '1') then
         cw3 <= (others => '0');
@@ -259,15 +259,33 @@ begin
           cw3 <= "01" & cw2(13 downto 0);
         elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= cw2(15 downto 14) & "01" & cw2(11 downto 0);
-        elsif (mem_forwarding_one = '1') and ( mem_forwarding_two = '0') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '0') and (mem_forwarding_one = '1') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "10" & cw2(13 downto 0);
-        elsif (mem_forwarding_one = '0') and ( mem_forwarding_two = '1') and (alu_forwarding_one = '0') and ( alu_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= cw2(15 downto 14) & "10" & cw2(11 downto 0);
-        elsif (alu_forwarding_one = '1') and ( mem_forwarding_two = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
+          cw3 <= "0101" & cw2(11 downto 0);
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '0') and (mem_forwarding_one = '1') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
+          cw3 <= "1010" & cw2(11 downto 0);         
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "0110" & cw2(11 downto 0);
-        elsif (mem_forwarding_one = '1') and ( alu_forwarding_two = '1') and (mem_forwarding_two = '0') and (alu_forwarding_one = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '1') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then   
           cw3 <= "1001" & cw2(11 downto 0);
-        else
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '1') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then
+          cw3 <= "01" & cw2(13 downto 0);
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then
+          cw3 <= cw2(15 downto 14) & "01" & cw2(11 downto 0);
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '1') and (mem_forwarding_one = '0') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then  
+          cw3 <= "0101" & cw2(11 downto 0);
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '1') and (mem_forwarding_one = '1') and (mem_forwarding_two = '0') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then  
+          cw3 <= "0101" & cw2(11 downto 0);
+        elsif (alu_forwarding_one = '0') and (alu_forwarding_two = '1') and (mem_forwarding_one = '1') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then  
+          cw3 <= "1001" & cw2(11 downto 0);
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '0') and (mem_forwarding_one = '1') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then  
+          cw3 <= "0110" & cw2(11 downto 0);  
+        elsif (alu_forwarding_one = '1') and (alu_forwarding_two = '1') and (mem_forwarding_one = '1') and (mem_forwarding_two = '1') and (OPCODE /= ITYPE_BNEZ) and (OPCODE /= ITYPE_BEQZ) then  
+          cw3 <= "0101" & cw2(11 downto 0);
+        else   -- if (alu_forwarding_one = '0') and (alu_forwarding_two = '0') and (mem_forwarding_one = '0') and (mem_forwarding_two = '0')
           cw3 <= cw2(15 downto 0);         --16
         end if;
         cw4 <= cw3(5 downto 0);     --6

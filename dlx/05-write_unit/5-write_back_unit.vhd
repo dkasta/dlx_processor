@@ -10,6 +10,8 @@ entity write_back_unit is
            ALUOUT:         in std_logic_vector(N-1 downto 0);
            RD_IN:          in std_logic_vector(4 downto 0);
            mux_wb_control: in std_logic;
+           rd_out_wb: 		 out std_logic_vector(4 downto 0);
+           alu_out_wb:     out std_logic_vector(N-1 downto 0);
            RD_OUT:         out std_logic_vector(4 downto 0);
            WB_OUT:         out std_logic_vector(N-1 downto 0);
            mem_forwarding_one_vector:     out std_logic_vector(N-1 downto 0);
@@ -36,6 +38,8 @@ architecture structural of write_back_unit is
               SEL => mux_wb_control,
               Y => WB_OUT);
 
+rd_out_wb <= RD_IN;
+alu_out_wb <= LMD;
 RD_OUT <= RD_IN;
 mem_forwarding_one_vector <= LMD;
 mem_forwarding_two_vector <= LMD;
